@@ -1,0 +1,5 @@
+Diagnostics: {
+    Suppress: [
+        static_assert_requirement_failed
+    ]
+}

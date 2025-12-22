@@ -1,0 +1,41 @@
+{
+    WURPLSVersion: "0.1",
+    
+    Name: "RedCore",
+    Version: "1.0.0",
+    Type: "CoreAPI",
+    
+    IncludeDirs: [
+        "include",
+        
+        "libs/headers",
+        
+        "libs/sead/engine/library/include",
+        "libs/sead/packages/agl/include",
+        "libs/sead/packages/nw_ptcl/library/include",
+        
+        "libs/Sys/include",
+        "libs/G3d/include",
+        "libs/Snd/include",
+        "libs/Lyt/include",
+        "libs/Eft/include",
+        
+        "libs/FFL/include"
+    ],
+    
+    BuildOptions: [
+        "-DNW_RELEASE"
+    ],
+
+    Targets: {
+        US: {
+            TitleID: "0005000E-10101D00"
+        },
+        EU: {
+            TitleID: "0005000E-10101E00"
+        },
+        JP: {
+            TitleID: "0005000E-10101C00"
+        }
+    }
+}

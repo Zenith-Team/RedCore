@@ -1,0 +1,24 @@
+[submodule "libs/headers"]
+	path = libs/headers
+	url = https://github.com/nsmbu/headers.git
+[submodule "libs/sead"]
+	path = libs/sead
+	url = https://github.com/nsmbu/sead.git
+[submodule "libs/Sys"]
+	path = libs/Sys
+	url = https://github.com/nsmbu/Sys.git
+[submodule "libs/Snd"]
+	path = libs/Snd
+	url = https://github.com/nsmbu/Snd.git
+[submodule "libs/Lyt"]
+	path = libs/Lyt
+	url = https://github.com/nsmbu/Lyt.git
+[submodule "libs/G3d"]
+	path = libs/G3d
+	url = https://github.com/nsmbu/G3d.git
+[submodule "libs/Eft"]
+	path = libs/Eft
+	url = https://github.com/nsmbu/Eft.git
+[submodule "libs/FFL"]
+	path = libs/FFL
+	url = https://github.com/nsmbu/FFL.git
