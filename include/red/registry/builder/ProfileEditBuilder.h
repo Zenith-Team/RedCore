@@ -8,6 +8,10 @@ namespace red {
     
 class ProfileEditBuilder : public ProfileBuilder<ProfileEditBuilder> {
 public:
+    ProfileEditBuilder(s32 id)
+        : mID()
+    { }
+
     Profile* build() {
         Profile* profilePtr = Profile::get(mID);
         PublicProfile* profile = reinterpret_cast<PublicProfile*>(profilePtr);

@@ -35,19 +35,21 @@ extern "C" void LoadSpritemap(sead::Heap* heap) {
     if (file == nullptr) {
         // level has no custom sprites
         // do nothing?
+        OSReport("Level has no spritemap.bin, skipping...\n");
         return;
     }
     
     const char* data = static_cast<const char*>(file);
     
     u32 spritemapVersion = read<u32>(data);
-    if (spritemapVersion != red::cSpritemapVerion) {
-        // TODO: Log
+    if (spritemapVersion != red::cSpritemapVersion) {
+        OSReport("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, red::cSpritemapVersion);
         return;
     }
     
     red::sSpritemapCount = read<u32>(data);
     if (red::sSpritemapCount == 0) {
+        OSReport("Spritemap was empty, skipping...\n");
         return;
     }
     
@@ -59,6 +61,8 @@ extern "C" void LoadSpritemap(sead::Heap* heap) {
         entry.value = data;
         
         data += std::strlen(entry.value) + 1;
+        
+        OSReport("Loaded spritemap entry [%i]->[%s]\n", entry.key, entry.value);
     }
 }
 
@@ -67,11 +71,13 @@ sead::SafeString ResolveLocalSprite(s16 spriteID) {
         red::SpritemapEntry& entry = red::sSpritemapEntries[i];
         
         if (entry.key == spriteID) {
+            OSReport("Mapped requested ID %i to identifier %s\n", spriteID, entry.value);
+            
             return entry.value;
         }
     }
     
-    // TODO: Log
+    OSReport("ERROR: Failed to find sprite: %i\n", int(spriteID));
     return "NULL";
 }
 

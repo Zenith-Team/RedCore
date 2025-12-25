@@ -8,7 +8,7 @@
 
 namespace red {
 
-template <class T> requires std::derived_from<T, Actor>
+template <class T> requires std::derived_from<T, ActorBase>
 class ProfileReplaceBuilder : public ProfileBuilder<ProfileReplaceBuilder<T>> {
 public:
     ProfileReplaceBuilder(s32 id)

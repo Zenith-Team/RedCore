@@ -9,7 +9,7 @@
 
 namespace red {
 
-template <class T> requires std::derived_from<T, Actor>
+template <class T> requires std::derived_from<T, ActorBase>
 class ProfileCreateBuilder : public ProfileBuilder<ProfileCreateBuilder<T>> {
 public:
     ProfileCreateBuilder(const sead::SafeString* identifier)

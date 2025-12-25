@@ -30,7 +30,7 @@ public:
     [[nodiscard]]
     T& createInfo(const ActorCreateInfo* createInfo) {
         if (mCreateInfoModified) {
-            //! warning this overrides the old value
+            OSReport("WARNING: .createInfo() called twice\n");
         }
         
         mCreateInfoModified = true;
@@ -41,7 +41,7 @@ public:
     [[nodiscard]]
     T& flag(u32 flag) {
         if (mFlagModified) {
-            //!
+            OSReport("WARNING: .flag() called twice\n");
         }
         
         mFlagModified = true;
@@ -52,7 +52,7 @@ public:
     [[nodiscard]]
     T& drawPriority(s16 drawPriority) {
         if (mDrawPriorityModified) {
-            //!
+            OSReport("WARNING: .drawPriority() called twice\n");
         }
         
         mDrawPriorityModified = true;
@@ -66,8 +66,7 @@ public:
         static const sead::SafeArray<sead::SafeString, sizeof...(Args)> sResources{ Args.cstr()... };
         static bool instanciationUsed = false;
         if (instanciationUsed) {
-            //! Error? Warning?
-            // TODO
+            OSReport("WARNING: SafeArray instanciation already used. Might be bad...\n");
         }
         instanciationUsed = true;
         

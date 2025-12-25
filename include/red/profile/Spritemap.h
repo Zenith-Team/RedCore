@@ -4,7 +4,7 @@
 
 namespace red {
 
-constexpr u32 cSpritemapVerion = 1;
+constexpr u32 cSpritemapVersion = 1;
 
 struct SpritemapEntry {
     s32 key;

@@ -14,66 +14,95 @@ public:
     [[nodiscard]]
     static Profile* get(const sead::SafeString& identifier) {
         Profile** it = sCustomProfiles.find(identifier);
-        // TODO: Check null
+        if (it == nullptr) [[unlikely]] {
+            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+            return nullptr;
+        }
         return *it;
     }
     
     [[nodiscard]]
     static Profile* get(s32 id) {
-        // TODO: Check range
-        
+        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
+            OSReport("ERROR: Profile ID %i was not found\n", id);
+            return nullptr;
+        }
         return Profile::get(id);
     }
     
     [[nodiscard]]
     static s16 getDrawPriority(const sead::SafeString& identifier) {
         s16* it = sCustomProfileDrawPriorities.find(identifier);
-        // TODO: Check null
+        if (it == nullptr) [[unlikely]] {
+            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+            return 0;
+        }
         return *it;
     }
     
     [[nodiscard]]
     static s16 getDrawPriority(s32 id) {
-        // TODO: Check range
+        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
+            OSReport("ERROR: Profile ID %i was not found\n", id);
+            return 0;
+        }
         return ProfileInfo::getDrawPriority(id);
     }
     
     [[nodiscard]]
     static ProfileInfo::ResType getResType(const sead::SafeString& identifier) {
         ResourceData* it = sCustomProfileResources.find(identifier);
-        // TODO: Check null
+        if (it == nullptr) [[unlikely]] {
+            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+            return ProfileInfo::cResType_Num;
+        }
         return it->resource_type;
     }
     
     [[nodiscard]]
     static ProfileInfo::ResType getResType(s32 id) {
-        // TODO: Check range
+        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
+            OSReport("ERROR: Profile ID %i was not found\n", id);
+            return ProfileInfo::cResType_Num;
+        }
         return ProfileInfo::getResType(id);
     }
     
     [[nodiscard]]
     static u32 getResNum(const sead::SafeString& identifier) {
         ResourceData* it = sCustomProfileResources.find(identifier);
-        // TODO: Check null
+        if (it == nullptr) [[unlikely]] {
+            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+            return 0;
+        }
         return it->resource_count;
     }
     
     [[nodiscard]]
     static u32 getResNum(s32 id) {
-        // TODO: Check range
+        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
+            OSReport("ERROR: Profile ID %i was not found\n", id);
+            return 0;
+        }
         return ProfileInfo::getResNum(id);
     }
     
     [[nodiscard]]
     static const sead::SafeString* getResList(const sead::SafeString& identifier) {
         ResourceData* it = sCustomProfileResources.find(identifier);
-        // TODO: Check null
+        if (it == nullptr) [[unlikely]] {
+            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+            return nullptr;
+        }
         return it->resources;
     }
     
     [[nodiscard]]
     static const sead::SafeString* getResList(s32 id) {
-        // TODO: Check range
+        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
+            OSReport("ERROR: Profile ID %i was not found\n", id);
+            return nullptr;
+        }
         return ProfileInfo::getResList(id);
     }
 
