@@ -3,3 +3,6 @@
 out
 notes
 compile_commands.json
+
+# For development purposes only
+project-deps.json
