@@ -11,6 +11,5 @@ _ZN4sead14SafeStringBaseIcE9cNullCharE = 0x10000044;
 _ZN15ActorCreateInfo8cDefaultE = 0x100018F4;
 _ZN7Profile12sProfileListE = 0x101ED8DC;
 _ZN10CourseData14loadCourseDataEv = 0x269a244;
-strlen = 0x2afd51c;
 _ZN8MapActor10cProfileIDE = 0x101ecd8c;
 _ZN7Profile3getEi = 0x2019774;
