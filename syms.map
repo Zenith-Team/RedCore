@@ -1,6 +1,7 @@
 _ZN4sead7HeapMgr12sInstancePtrE = 0x101E8040;
 _ZN4sead7HeapMgr15setCurrentHeap_EPNS_4HeapE = 0x2A0D584;
 _ZdaPv = 0x29f17d0;
+_ZdlPv = 0x29f1748;
 _ZN6ResMgr9sInstanceE = 0x101E7D94;
 _ZNK6ResMgr27getFileFromCourseArchiveResERKN4sead14SafeStringBaseIcEEPj = 0x29d33ec;
 _Znam = 0x029F1630;
