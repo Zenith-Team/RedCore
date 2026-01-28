@@ -18,9 +18,9 @@ public:
     { }
 
     Profile* build() {
-        static Profile sProfile = Profile(&TActorFactory<T>, -1, mIdentifier, this->mCreateInfo, this->mFlag);
-        ProfileEx::setDrawPriority(mIdentifier, this->mDrawPriority);
-        ProfileEx::setResources(mIdentifier, this->mResourceType, this->mResources, this->mResourceCount);
+        static Profile sProfile = Profile(&TActorFactory<T>, -1, *mIdentifier, this->mCreateInfo, this->mFlag);
+        ProfileEx::setDrawPriority(*mIdentifier, this->mDrawPriority);
+        ProfileEx::setResources(*mIdentifier, this->mResourceType, this->mResources, this->mResourceCount);
 
         return &sProfile;
     }

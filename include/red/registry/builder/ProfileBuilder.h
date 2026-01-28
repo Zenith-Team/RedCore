@@ -24,45 +24,45 @@ private:
     char mValue[N];
 };
 
-template <class T> //requires std::derived_from<T, ProfileBuilder>
+template <typename Derived> //requires std::derived_from<T, ProfileBuilder>
 class ProfileBuilder {
 public:
     [[nodiscard]]
-    T& createInfo(const ActorCreateInfo* createInfo) {
+    Derived& createInfo(const ActorCreateInfo* createInfo) {
         if (mCreateInfoModified) {
             OSReport("WARNING: .createInfo() called twice\n");
         }
         
         mCreateInfoModified = true;
         mCreateInfo = createInfo;
-        return *this;
+        return *static_cast<Derived*>(this);
     }
 
     [[nodiscard]]
-    T& flag(u32 flag) {
+    Derived& flag(const Profile::Flag flag) {
         if (mFlagModified) {
             OSReport("WARNING: .flag() called twice\n");
         }
         
         mFlagModified = true;
         mFlag = flag;
-        return *this;
+        return *static_cast<Derived*>(this);
     }
 
     [[nodiscard]]
-    T& drawPriority(s16 drawPriority) {
+    Derived& drawPriority(const s16 drawPriority) {
         if (mDrawPriorityModified) {
             OSReport("WARNING: .drawPriority() called twice\n");
         }
         
         mDrawPriorityModified = true;
         mDrawPriority = drawPriority;
-        return *this;
+        return *static_cast<Derived*>(this);
     }
     
     template <ComptimeFixedString... Args> requires (sizeof...(Args) > 0)
     [[nodiscard]]
-    T& resources(ProfileInfo::ResType type) {
+    Derived& resources(ProfileInfo::ResType type) {
         static const sead::SafeArray<sead::SafeString, sizeof...(Args)> sResources{ Args.cstr()... };
         static bool instanciationUsed = false;
         if (instanciationUsed) {
@@ -74,12 +74,12 @@ public:
         mResources = sResources.getBufferPtr();
         mResourceType = type;
         
-        return *this;
+        return *static_cast<Derived*>(this);
     }
     
 protected:
     const ActorCreateInfo* mCreateInfo = nullptr;
-    u32 mFlag = 0;
+    Profile::Flag mFlag = Profile::cFlag_None;
     s16 mDrawPriority = ProfileInfo::cProfileID_Max;
     u8 mResourceCount = 0;
     sead::SafeString* mResources = nullptr;

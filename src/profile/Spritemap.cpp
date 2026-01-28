@@ -1,5 +1,9 @@
 #define TELKIN_REGISTERS
 #include <cstring>
+
+#define TELKIN_REGISTERS
+#include <telkin/Telkin.h>
+
 #include <heap/seadHeap.h>
 #include <heap/seadHeapMgr.h>
 #include <system/ResMgr.h>
