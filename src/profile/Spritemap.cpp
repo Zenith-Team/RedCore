@@ -1,9 +1,8 @@
-#define TELKIN_REGISTERS
 #include <cstring>
 
 #define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
-
+#define PROFILE_INFO_AS_NAMESPACE
 #include <heap/seadHeap.h>
 #include <heap/seadHeapMgr.h>
 #include <system/ResMgr.h>
@@ -38,7 +37,7 @@ extern "C" void LoadSpritemap(sead::Heap* heap) {
     void* file = ResMgr::instance()->getFileFromCourseArchiveRes("course/spritemap.bin");
     if (file == nullptr) {
         // level has no custom sprites
-        // do nothing?
+        // do nothing
         OSReport("Level has no spritemap.bin, skipping...\n");
         return;
     }

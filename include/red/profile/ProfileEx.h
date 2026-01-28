@@ -1,6 +1,7 @@
 #pragma once
 
 #include <container/seadStrTreeMap.h>
+#include <actor/ProfileInfo.h>
 #include <actor/Profile.h>
 
 namespace red {
@@ -23,11 +24,33 @@ public:
     
     [[nodiscard]]
     static Profile* get(s32 id) {
-        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
+        if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
             OSReport("ERROR: Profile ID %i was not found\n", id);
             return nullptr;
         }
-        return Profile::get(id);
+        
+        if (id < ProfileInfo::cProfileID_Max) {
+            return Profile::get(id);
+        }
+        
+        sead::SafeString identifier = getName(id);
+        
+        if (identifier.isEmpty()) [[unlikely]] {
+            OSReport("ERROR: Failed to get draw priority\n");
+            return nullptr;
+        }
+        
+        return get(identifier);
+    }
+    
+    [[nodiscard]]
+    static const char* getName(s32 id) {
+        if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
+            OSReport("ERROR: Profile ID %i was not found\n", id);
+            return "";
+        }
+        
+        return sProfileNames[id];
     }
     
     [[nodiscard]]
@@ -42,11 +65,31 @@ public:
     
     [[nodiscard]]
     static s16 getDrawPriority(s32 id) {
-        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
+        if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
             OSReport("ERROR: Profile ID %i was not found\n", id);
             return 0;
         }
-        return ProfileInfo::getDrawPriority(id);
+        
+        if (id < ProfileInfo::cProfileID_Max) {
+            return ProfileInfo::cDrawPriority[id];
+        }
+        
+        sead::SafeString identifier = getName(id);
+        
+        if (identifier.isEmpty()) [[unlikely]] {
+            OSReport("ERROR: Failed to get draw priority\n");
+            return 0;
+        }
+        
+        s16* it = sCustomProfileDrawPriorities.find(identifier);
+        if (it == nullptr) [[unlikely]] {
+            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+            return 0;
+        }
+        if (*it < 0) {
+            OSReport("PROFILE [%i:%s] PRIO: %i", id, identifier.cstr(), int(*it));
+        }
+        return *it;
     }
     
     [[nodiscard]]
@@ -120,6 +163,10 @@ public: //! The below are RedCore-internal APIs, do not use!
         sCustomProfileResources.insert(identifier, data);
     }
     
+    static void setName(s32 id, const char* name) {
+        sProfileNames[id] = name;
+    }
+    
     static void setDrawPriority(const sead::SafeString& identifier, s16 priority) {
         sCustomProfileDrawPriorities.insert(identifier, priority);
     }
@@ -130,10 +177,13 @@ public: //! The below are RedCore-internal APIs, do not use!
         ProfileInfo::ResType resource_type = ProfileInfo::cResType_Course;
     };
     
+    static s32 sProfileCount;
+
 private:
     static sead::FixedStrTreeMap<cNameMaxLen, Profile*, cMaxCustomProfiles> sCustomProfiles;
     static sead::FixedStrTreeMap<cNameMaxLen, ResourceData, cMaxCustomProfiles> sCustomProfileResources;
     static sead::FixedStrTreeMap<cNameMaxLen, s16, cMaxCustomProfiles> sCustomProfileDrawPriorities;
+    static const char* sProfileNames[];
 };
 
 } // namespace red
