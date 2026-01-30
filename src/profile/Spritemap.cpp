@@ -11,6 +11,7 @@
 #include <red/profile/ProfileEx.h>
 #include <red/profile/Spritemap.h>
 #include <telkin/Telkin.h>
+#include <red/util/Log.h>
 
 u32 red::sSpritemapCount = 0;
 red::SpritemapEntry* red::sSpritemapEntries = nullptr;
@@ -38,7 +39,7 @@ extern "C" void LoadSpritemap(sead::Heap* heap) {
     if (file == nullptr) {
         // level has no custom sprites
         // do nothing
-        OSReport("Level has no spritemap.bin, skipping...\n");
+        red::print("Level has no spritemap.bin, skipping...\n");
         return;
     }
     
@@ -46,13 +47,13 @@ extern "C" void LoadSpritemap(sead::Heap* heap) {
     
     u32 spritemapVersion = read<u32>(data);
     if (spritemapVersion != red::cSpritemapVersion) {
-        OSReport("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, red::cSpritemapVersion);
+        red::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, red::cSpritemapVersion);
         return;
     }
     
     red::sSpritemapCount = read<u32>(data);
     if (red::sSpritemapCount == 0) {
-        OSReport("Spritemap was empty, skipping...\n");
+        red::print("Spritemap was empty, skipping...\n");
         return;
     }
     
@@ -65,7 +66,7 @@ extern "C" void LoadSpritemap(sead::Heap* heap) {
         
         data += std::strlen(entry.value) + 1;
         
-        OSReport("Loaded spritemap entry [%i]->[%s]\n", entry.key, entry.value);
+        red::print("Loaded spritemap entry [%i]->[%s]\n", entry.key, entry.value);
     }
 }
 
@@ -74,13 +75,13 @@ sead::SafeString ResolveLocalSprite(s16 spriteID) {
         red::SpritemapEntry& entry = red::sSpritemapEntries[i];
         
         if (entry.key == spriteID) {
-            OSReport("Mapped requested ID %i to identifier %s\n", spriteID, entry.value);
+            red::print("Mapped requested ID %i to identifier %s\n", spriteID, entry.value);
             
             return entry.value;
         }
     }
     
-    OSReport("ERROR: Failed to find sprite: %i\n", int(spriteID));
+    red::print("ERROR: Failed to find sprite: %i\n", int(spriteID));
     return "NULL";
 }
 

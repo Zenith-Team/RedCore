@@ -13,163 +13,43 @@ public:
 
 public:
     [[nodiscard]]
-    static Profile* get(const sead::SafeString& identifier) {
-        Profile** it = sCustomProfiles.find(identifier);
-        if (it == nullptr) [[unlikely]] {
-            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
-            return nullptr;
-        }
-        return *it;
-    }
+    static Profile* get(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static Profile* get(s32 id) {
-        if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-            OSReport("ERROR: Profile ID %i was not found\n", id);
-            return nullptr;
-        }
-        
-        if (id < ProfileInfo::cProfileID_Max) {
-            return Profile::get(id);
-        }
-        
-        sead::SafeString identifier = getName(id);
-        
-        if (identifier.isEmpty()) [[unlikely]] {
-            OSReport("ERROR: Failed to get draw priority\n");
-            return nullptr;
-        }
-        
-        return get(identifier);
-    }
+    static Profile* get(const s32 id);
     
     [[nodiscard]]
-    static const char* getName(s32 id) {
-        if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-            OSReport("ERROR: Profile ID %i was not found\n", id);
-            return "";
-        }
-        
-        return sProfileNames[id];
-    }
+    static const char* getName(const s32 id);
     
     [[nodiscard]]
-    static s16 getDrawPriority(const sead::SafeString& identifier) {
-        s16* it = sCustomProfileDrawPriorities.find(identifier);
-        if (it == nullptr) [[unlikely]] {
-            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
-            return 0;
-        }
-        return *it;
-    }
+    static s16 getDrawPriority(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static s16 getDrawPriority(s32 id) {
-        if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-            OSReport("ERROR: Profile ID %i was not found\n", id);
-            return 0;
-        }
-        
-        if (id < ProfileInfo::cProfileID_Max) {
-            return ProfileInfo::cDrawPriority[id];
-        }
-        
-        sead::SafeString identifier = getName(id);
-        
-        if (identifier.isEmpty()) [[unlikely]] {
-            OSReport("ERROR: Failed to get draw priority\n");
-            return 0;
-        }
-        
-        s16* it = sCustomProfileDrawPriorities.find(identifier);
-        if (it == nullptr) [[unlikely]] {
-            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
-            return 0;
-        }
-        if (*it < 0) {
-            OSReport("PROFILE [%i:%s] PRIO: %i", id, identifier.cstr(), int(*it));
-        }
-        return *it;
-    }
+    static s16 getDrawPriority(const s32 id);
     
     [[nodiscard]]
-    static ProfileInfo::ResType getResType(const sead::SafeString& identifier) {
-        ResourceData* it = sCustomProfileResources.find(identifier);
-        if (it == nullptr) [[unlikely]] {
-            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
-            return ProfileInfo::cResType_Num;
-        }
-        return it->resource_type;
-    }
+    static ProfileInfo::ResType getResType(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static ProfileInfo::ResType getResType(s32 id) {
-        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
-            OSReport("ERROR: Profile ID %i was not found\n", id);
-            return ProfileInfo::cResType_Num;
-        }
-        return ProfileInfo::getResType(id);
-    }
+    static ProfileInfo::ResType getResType(const s32 id);
     
     [[nodiscard]]
-    static u32 getResNum(const sead::SafeString& identifier) {
-        ResourceData* it = sCustomProfileResources.find(identifier);
-        if (it == nullptr) [[unlikely]] {
-            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
-            return 0;
-        }
-        return it->resource_count;
-    }
+    static u32 getResNum(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static u32 getResNum(s32 id) {
-        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
-            OSReport("ERROR: Profile ID %i was not found\n", id);
-            return 0;
-        }
-        return ProfileInfo::getResNum(id);
-    }
+    static u32 getResNum(const s32 id);
     
     [[nodiscard]]
-    static const sead::SafeString* getResList(const sead::SafeString& identifier) {
-        ResourceData* it = sCustomProfileResources.find(identifier);
-        if (it == nullptr) [[unlikely]] {
-            OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
-            return nullptr;
-        }
-        return it->resources;
-    }
+    static const sead::SafeString* getResList(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static const sead::SafeString* getResList(s32 id) {
-        if (id < 0 || id > ProfileInfo::cProfileID_Max) [[unlikely]] {
-            OSReport("ERROR: Profile ID %i was not found\n", id);
-            return nullptr;
-        }
-        return ProfileInfo::getResList(id);
-    }
+    static const sead::SafeString* getResList(const s32 id);
 
 public: //! The below are RedCore-internal APIs, do not use!
-    static void addIdentifierProfile(const sead::SafeString& identifier, Profile* profile) {
-        sCustomProfiles.insert(identifier, profile);
-    }
-    
-    static void setResources(const sead::SafeString& identifier, ProfileInfo::ResType resourceType, sead::SafeString* resources, u8 resourceCount) {
-        ResourceData data = {
-            .resource_count = resourceCount,
-            .resources = resources,
-            .resource_type = resourceType
-        };
-        sCustomProfileResources.insert(identifier, data);
-    }
-    
-    static void setName(s32 id, const char* name) {
-        sProfileNames[id] = name;
-    }
-    
-    static void setDrawPriority(const sead::SafeString& identifier, s16 priority) {
-        sCustomProfileDrawPriorities.insert(identifier, priority);
-    }
+    static void addIdentifierProfile(const sead::SafeString& identifier, Profile* profile);
+    static void setResources(const sead::SafeString& identifier, const ProfileInfo::ResType resourceType, sead::SafeString* resources, const u8 resourceCount);
+    static void setName(const s32 id, const char* name);
+    static void setDrawPriority(const sead::SafeString& identifier, const s16 priority);
     
     struct ResourceData {
         u8 resource_count = 0;

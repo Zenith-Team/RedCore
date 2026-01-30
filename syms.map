@@ -13,3 +13,6 @@ _ZN7Profile12sProfileListE = 0x101ED8DC;
 _ZN10CourseData14loadCourseDataEv = 0x269a244;
 _ZN8MapActor10cProfileIDE = 0x101ecd8c;
 _ZN11ProfileInfo13cDrawPriorityE = 0x10001940;
+_ZN11ProfileInfo8cResTypeE = 0x10002064;
+_ZN11ProfileInfo7cResNumE = 0x100023f8;
+_ZN11ProfileInfo8cResListE = 0x101c321c;
