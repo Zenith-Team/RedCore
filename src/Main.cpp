@@ -1,5 +1,7 @@
 #include <cafe.h>
 
+#include <red/util/Log.h>
+
 void main() {
-    OSReport("Welcome to REDCORE\n");
+    red::print("Welcome to REDCORE\n");
 }

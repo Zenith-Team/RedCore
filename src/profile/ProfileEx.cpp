@@ -6,10 +6,8 @@
 #include <red/util/Log.h>
 
 static s32 getNext(s32 id) {
-    red::ProfileEx::sProfileCount++;
-    
-    if (id == -1) {
-        return red::ProfileEx::sProfileCount;
+    if (id == -1) { // string-profile
+        return ++red::ProfileEx::sProfileCount;
     }
     
     return id;
@@ -26,8 +24,10 @@ Profile::Profile(ActorFactory factory, s32 id, const sead::SafeString& name, con
     red::ProfileEx::setName(mID, name.cstr());
     
     if (id != -1 && id < ProfileInfo::cProfileID_Max) { // vanilla replacements
+        red::print("Registering vanilla profile %i\n", id);
         sProfileList[id] = this;
     } else {
+        red::print("Registering custom profile [%i:%i:%s]\n", id, mID, name.cstr());
         red::ProfileEx::addIdentifierProfile(name, this);
     }
 }
@@ -41,12 +41,12 @@ sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, red::ProfileEx::ResourceData,
 sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, s16, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfileDrawPriorities;
 
 const char* red::ProfileEx::sProfileNames[ProfileInfo::cProfileID_Max + cMaxCustomProfiles] = { nullptr };
-s32 red::ProfileEx::sProfileCount = 0;
+s32 red::ProfileEx::sProfileCount = ProfileInfo::cProfileID_Max;
 
 Profile* red::ProfileEx::get(const sead::SafeString& identifier)  {
     Profile** it = sCustomProfiles.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+        red::print("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
         return nullptr;
     }
     return *it;
@@ -80,7 +80,7 @@ const char* red::ProfileEx::getName(const s32 id) {
     
     const char* name = sProfileNames[id];
     
-    red::print("Mapped ID [%i:%u]\n", id, name);
+    //red::print("Mapped ID [%i:%u]\n", id, name);
     
     return name;
 }
@@ -88,7 +88,7 @@ const char* red::ProfileEx::getName(const s32 id) {
 s16 red::ProfileEx::getDrawPriority(const sead::SafeString& identifier) {
     s16* it = sCustomProfileDrawPriorities.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+        red::print("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
         return 0;
     }
     return *it;
@@ -116,16 +116,13 @@ s16 red::ProfileEx::getDrawPriority(const s32 id) {
         red::print("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
         return 0;
     }
-    if (*it < 0) {
-        red::print("PROFILE [%i:%s] PRIO: %i", id, identifier.cstr(), int(*it));
-    }
     return *it;
 }
 
 ProfileInfo::ResType red::ProfileEx::getResType(const sead::SafeString& identifier) {
     ResourceData* it = sCustomProfileResources.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+        red::print("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
         return ProfileInfo::cResType_Num;
     }
     return it->resource_type;
@@ -154,7 +151,7 @@ ProfileInfo::ResType red::ProfileEx::getResType(const s32 id) {
 u32 red::ProfileEx::getResNum(const sead::SafeString& identifier) {
     ResourceData* it = sCustomProfileResources.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+        red::print("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
         return 0;
     }
     return it->resource_count;
@@ -183,7 +180,7 @@ u32 red::ProfileEx::getResNum(const s32 id) {
 const sead::SafeString* red::ProfileEx::getResList(const sead::SafeString& identifier) {
     ResourceData* it = sCustomProfileResources.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        OSReport("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+        red::print("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
         return nullptr;
     }
     return it->resources;
@@ -241,41 +238,37 @@ tPatch16(0x200457A, 0xFFFF);
 
 // Patch info
 
-extern "C" Profile* GetProfileHook(s32 id) {
+extern "C" Profile* red_GetProfileHook(s32 id) {
     return red::ProfileEx::get(id);
 }
 
 // Profile::get
-tHook(0x2019774, "GetProfileHook", tk::BranchType::b);
+tHook(0x2019774, "red_GetProfileHook", tk::BranchType::b);
 
-extern "C" s16 DrawPriorityHook(s32 id) {
-    s16 p = red::ProfileEx::getDrawPriority(id);
-    
-    red::print("ID %i PRIO %i\n", id, int(p));
-    
-    return p;
+extern "C" s16 red_DrawPriorityHook(s32 id) {
+    return red::ProfileEx::getDrawPriority(id);
 }
 
 // ProfileInfo::getDrawPriority
-tHook(0x2019988, "DrawPriorityHook", tk::BranchType::b);
+tHook(0x2019988, "red_DrawPriorityHook", tk::BranchType::b);
 
-extern "C" ProfileInfo::ResType GetResTypeHook(const s32 id) {
+extern "C" ProfileInfo::ResType red_GetResTypeHook(const s32 id) {
     return red::ProfileEx::getResType(id);
 }
 
 // ProfileInfo::getResType
-tHook(0x20199A8, "GetResTypeHook", tk::BranchType::b);
+tHook(0x20199A8, "red_GetResTypeHook", tk::BranchType::b);
 
-extern "C" u32 GetResNumHook(const s32 id) {
+extern "C" u32 red_GetResNumHook(const s32 id) {
     return red::ProfileEx::getResNum(id);
 }
 
 // ProfileInfo::getResNum
-tHook(0x20199CC, "GetResNumHook", tk::BranchType::b);
+tHook(0x20199CC, "red_GetResNumHook", tk::BranchType::b);
 
-extern "C" const sead::SafeString* GetResListHook(const s32 id) {
+extern "C" const sead::SafeString* red_GetResListHook(const s32 id) {
     return red::ProfileEx::getResList(id);
 }
 
 // ProfileInfo::getResList
-tHook(0x20199EC, "GetResListHook", tk::BranchType::b);
+tHook(0x20199EC, "red_GetResListHook", tk::BranchType::b);

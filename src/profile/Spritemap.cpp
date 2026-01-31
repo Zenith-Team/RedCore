@@ -25,7 +25,7 @@ namespace {
     }
 }
 
-extern "C" void LoadSpritemap(sead::Heap* heap) {
+extern "C" void red_LoadSpritemap(sead::Heap* heap) {
     sead::CurrentHeapSetter scopedHeap = heap;
     
     // cleanup old data
@@ -85,7 +85,7 @@ sead::SafeString ResolveLocalSprite(s16 spriteID) {
     return "NULL";
 }
 
-extern "C" Profile* SpriteToProfileSmart(s16 spriteID) {
+extern "C" Profile* red_SpriteToProfileSmart(s16 spriteID) {
     if (spriteID < ProfileInfo::cProfileID_Max) {
         return Profile::get(MapActor::cProfileID[spriteID]);
     }
@@ -94,53 +94,53 @@ extern "C" Profile* SpriteToProfileSmart(s16 spriteID) {
     return red::ProfileEx::get(identifier);
 }
 
-extern "C" Profile* SpriteProfileR0Hook() tAssembly(
+extern "C" Profile* red_SpriteProfileR0Hook() tAssembly(
     mr r3, r0;
-    b SpriteToProfileSmart;
+    b red_SpriteToProfileSmart;
 );
 
-extern "C" Profile* SpriteProfileR6Hook() tAssembly(
+extern "C" Profile* red_SpriteProfileR6Hook() tAssembly(
     mr r3, r6;
-    b SpriteToProfileSmart;
+    b red_SpriteToProfileSmart;
 );
 
-extern "C" Profile* SpriteProfileR9Hook() tAssembly(
+extern "C" Profile* red_SpriteProfileR9Hook() tAssembly(
     mr r3, r9;
-    b SpriteToProfileSmart;
+    b red_SpriteToProfileSmart;
 );
 
 // ActorCreateMgr::spawnSpriteActor
-tHook(0x2004dbc, "SpriteProfileR6Hook", tk::BranchType::bl);
+tHook(0x2004dbc, "red_SpriteProfileR6Hook", tk::BranchType::bl);
 // ActorCreateMgr::spawnSprites
-tHook(0x2005028, "SpriteProfileR6Hook", tk::BranchType::bl);
+tHook(0x2005028, "red_SpriteProfileR6Hook", tk::BranchType::bl);
 // ActorCreateMgr::update
-tHook(0x2007c70, "SpriteProfileR0Hook", tk::BranchType::bl);
+tHook(0x2007c70, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::??
-tHook(0x200845C, "SpriteProfileR0Hook", tk::BranchType::bl);
+tHook(0x200845C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::??
-tHook(0x2008270, "SpriteProfileR0Hook", tk::BranchType::bl);
+tHook(0x2008270, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::??
-tHook(0x200807C, "SpriteProfileR0Hook", tk::BranchType::bl);
+tHook(0x200807C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::getNumCoinSpritesInLocation
-tHook(0x2004588, "SpriteProfileR9Hook", tk::BranchType::bl);
+tHook(0x2004588, "red_SpriteProfileR9Hook", tk::BranchType::bl);
 
 // CourseCacheMgr::load
-tHook(0x29cb3f8, "LoadSpritemapCacheHook", tk::BranchType::bl);
-extern "C" void LoadSpritemapCacheHook() tAssembly(
+tHook(0x29cb3f8, "red_LoadSpritemapCacheHook", tk::BranchType::bl);
+extern "C" void red_LoadSpritemapCacheHook() tAssembly(
     tSaveVolatileRegisters;
     lwz r3, 0x20(r29);
-    bl LoadSpritemap;
+    bl red_LoadSpritemap;
     tRestoreVolatileRegisters;
     li r23, 0x0; // replaced instruction
     blr;
 );
 
 // CourseTask::prepare
-tHook(0x24bdf50, "LoadSpritemapPrepareHook", tk::BranchType::bl);
-extern "C" void LoadSpritemapPrepareHook() tAssembly(
+tHook(0x24bdf50, "red_LoadSpritemapPrepareHook", tk::BranchType::bl);
+extern "C" void red_LoadSpritemapPrepareHook() tAssembly(
     tSaveVolatileRegisters;
     li r3, 0x0;
-    bl LoadSpritemap;
+    bl red_LoadSpritemap;
     tRestoreVolatileRegisters;
     b _ZN10CourseData14loadCourseDataEv; // replaced call
 );
