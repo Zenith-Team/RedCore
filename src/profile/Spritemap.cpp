@@ -71,6 +71,11 @@ extern "C" void red_LoadSpritemap(sead::Heap* heap) {
 }
 
 sead::SafeString ResolveLocalSprite(s16 spriteID) {
+    if (red::sSpritemapEntries == nullptr) {
+        red::print("ERROR: Requesting OOB sprite ID %i without spritemap present\n", int(spriteID));
+        return "NULL";
+    }
+    
     for (s32 i = 0; i < red::sSpritemapCount; i++) {
         red::SpritemapEntry& entry = red::sSpritemapEntries[i];
         
@@ -86,7 +91,7 @@ sead::SafeString ResolveLocalSprite(s16 spriteID) {
 }
 
 extern "C" Profile* red_SpriteToProfileSmart(s16 spriteID) {
-    if (spriteID < ProfileInfo::cProfileID_Max) {
+    if (spriteID < 0x2D4) { // TODO: dehardcode this
         return Profile::get(MapActor::cProfileID[spriteID]);
     }
 
@@ -97,17 +102,23 @@ extern "C" Profile* red_SpriteToProfileSmart(s16 spriteID) {
 extern "C" Profile* red_SpriteProfileR0Hook() tAssembly(
     mr r3, r0;
     b red_SpriteToProfileSmart;
-);
+)
 
 extern "C" Profile* red_SpriteProfileR6Hook() tAssembly(
     mr r3, r6;
     b red_SpriteToProfileSmart;
-);
+)
 
 extern "C" Profile* red_SpriteProfileR9Hook() tAssembly(
     mr r3, r9;
     b red_SpriteToProfileSmart;
-);
+)
+
+extern "C" Profile* red_ActorResLoaderHook() tAssembly(
+    li r2, 0x4;
+    divw r3, r11, r2;
+    b red_SpriteToProfileSmart;
+)
 
 // ActorCreateMgr::spawnSpriteActor
 tHook(0x2004dbc, "red_SpriteProfileR6Hook", tk::BranchType::bl);
@@ -123,6 +134,8 @@ tHook(0x2008270, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 tHook(0x200807C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::getNumCoinSpritesInLocation
 tHook(0x2004588, "red_SpriteProfileR9Hook", tk::BranchType::bl);
+// ActorResLoader::load
+tHook(0x200a830, "red_ActorResLoaderHook", tk::BranchType::bl);
 
 // CourseCacheMgr::load
 tHook(0x29cb3f8, "red_LoadSpritemapCacheHook", tk::BranchType::bl);
