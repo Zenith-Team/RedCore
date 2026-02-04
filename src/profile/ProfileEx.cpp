@@ -62,10 +62,10 @@ Profile* red::ProfileEx::get(const s32 id) {
         return Profile::get(id); // Not infinite loop because we define a custom impl above, not link to original
     }
     
-    sead::SafeString identifier = getName(id);
+    sead::SafeString identifier = ProfileEx::getName(id);
     
     if (identifier.isEmpty()) [[unlikely]] {
-        red::print("ERROR: Failed to get draw priority\n");
+        red::print("ERROR: Failed to get profile\n");
         return nullptr;
     }
     
@@ -226,15 +226,6 @@ void red::ProfileEx::setName(const s32 id, const char* name) {
 void red::ProfileEx::setDrawPriority(const sead::SafeString& identifier, const s16 priority) {
     sCustomProfileDrawPriorities.insert(identifier, priority);
 }
-
-// Increase all instances of the 0x2D4 spriteToProfileTable limit to 0xFFFF
-// TODO: Only keep the ones that are needed, else it may crash trying to use out of bounds sprite id to perform array lookup
-tPatch16(0x200501A, 0xFFFF);
-tPatch16(0x2007C62, 0xFFFF);
-tPatch16(0x200806E, 0xFFFF);
-tPatch16(0x2008262, 0xFFFF);
-tPatch16(0x200844E, 0xFFFF);
-tPatch16(0x200457A, 0xFFFF);
 
 // Patch info
 

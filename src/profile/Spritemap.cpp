@@ -115,8 +115,7 @@ extern "C" Profile* red_SpriteProfileR9Hook() tAssembly(
 )
 
 extern "C" Profile* red_ActorResLoaderHook() tAssembly(
-    li r2, 0x4;
-    divw r3, r11, r2;
+    srwi r3, r11, 0x2;
     b red_SpriteToProfileSmart;
 )
 
@@ -157,3 +156,18 @@ extern "C" void red_LoadSpritemapPrepareHook() tAssembly(
     tRestoreVolatileRegisters;
     b _ZN10CourseData14loadCourseDataEv; // replaced call
 );
+
+// Increase all instances of the 0x2D4 spriteToProfileTable limit to 0xFFFF
+// TODO: Only keep the ones that are needed, else it may crash trying to use out of bounds sprite id to perform array lookup
+// ActorCreateMgr::spawnSprites
+tPatch16(0x200501A, 0xFFFF);
+// ActorCreateMgr::update
+tPatch16(0x2007C62, 0xFFFF);
+// ActorCreateMgr::FUN_2007FC0
+tPatch16(0x200806E, 0xFFFF);
+// ActorCreateMgr::FUN_20081B8
+tPatch16(0x2008262, 0xFFFF);
+// ActorCreateMgr::FUN_20083A0
+tPatch16(0x200844E, 0xFFFF);
+// ActorCreateMgr::getNumCoinSpritesInLocation
+tPatch16(0x200457A, 0xFFFF);
