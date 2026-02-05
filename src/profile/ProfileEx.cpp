@@ -10,7 +10,7 @@ s32 red_sProfileCount = ProfileInfo::cProfileID_Max;
 
 static s32 getNext(s32 id) {
     if (id == -1) { // string-profile
-        return ++red_sProfileCount;
+        return red_sProfileCount++;
     }
     
     return id;
@@ -26,7 +26,7 @@ Profile::Profile(ActorFactory factory, s32 id, const sead::SafeString& name, con
 {
     red::ProfileEx::setName(mID, name.cstr());
     
-    if (id != -1 && id <= ProfileInfo::cProfileID_Max) { // vanilla replacements
+    if (id != -1 && id < ProfileInfo::cProfileID_Max) { // vanilla replacements
         red::print("Registering vanilla profile %i\n", id);
         sProfileList[id] = this;
     } else {
@@ -60,7 +60,7 @@ Profile* red::ProfileEx::get(const s32 id) {
         return nullptr;
     }
     
-    if (id <= ProfileInfo::cProfileID_Max) {
+    if (id < ProfileInfo::cProfileID_Max) {
         return Profile::get(id); // Not infinite loop because we define a custom impl above, not link to original
     }
     
@@ -102,7 +102,7 @@ s16 red::ProfileEx::getDrawPriority(const s32 id) {
         return 0;
     }
     
-    if (id <= ProfileInfo::cProfileID_Max) {
+    if (id < ProfileInfo::cProfileID_Max) {
         return ProfileInfo::cDrawPriority[id];
     }
     
@@ -138,7 +138,7 @@ ProfileInfo::ResType red::ProfileEx::getResType(const s32 id) {
         return ProfileInfo::cResType_Boot;
     }
     
-    if (id <= ProfileInfo::cProfileID_Max) {
+    if (id < ProfileInfo::cProfileID_Max) {
         //red::print("ID was less than %i, using cResType\n", ProfileInfo::cProfileID_Max);
         return static_cast<const ProfileInfo::ResType>(ProfileInfo::cResType[id]);
     }
@@ -171,7 +171,7 @@ u32 red::ProfileEx::getResNum(const s32 id) {
         return 0;
     }
     
-    if (id <= ProfileInfo::cProfileID_Max) {
+    if (id < ProfileInfo::cProfileID_Max) {
         return ProfileInfo::cResNum[id];
     }
     
@@ -200,7 +200,7 @@ const sead::SafeString* red::ProfileEx::getResList(const s32 id) {
         return nullptr;
     }
     
-    if (id <= ProfileInfo::cProfileID_Max) {
+    if (id < ProfileInfo::cProfileID_Max) {
         return ProfileInfo::cResList[id];
     }
     
