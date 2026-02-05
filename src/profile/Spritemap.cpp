@@ -99,6 +99,10 @@ extern "C" Profile* red_SpriteToProfileSmart(s16 spriteID) {
     return red::ProfileEx::get(identifier);
 }
 
+extern "C" s32 red_SpriteToProfileIDSmart(s16 spriteID) {
+    return red_SpriteToProfileSmart(spriteID)->getID();
+}
+
 extern "C" Profile* red_SpriteProfileR0Hook() tAssembly(
     mr r3, r0;
     b red_SpriteToProfileSmart;
@@ -114,9 +118,9 @@ extern "C" Profile* red_SpriteProfileR9Hook() tAssembly(
     b red_SpriteToProfileSmart;
 )
 
-extern "C" Profile* red_ActorResLoaderHook() tAssembly(
-    srwi r3, r11, 0x2;
-    b red_SpriteToProfileSmart;
+extern "C" Profile* red_SpriteProfileIDR0Hook() tAssembly(
+    mr r3, r0;
+    b red_SpriteToProfileIDSmart;
 )
 
 // ActorCreateMgr::spawnSpriteActor
@@ -134,7 +138,9 @@ tHook(0x200807C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::getNumCoinSpritesInLocation
 tHook(0x2004588, "red_SpriteProfileR9Hook", tk::BranchType::bl);
 // ActorResLoader::load
-tHook(0x200a830, "red_ActorResLoaderHook", tk::BranchType::bl);
+tHook(0x200a82c, "red_SpriteProfileIDR0Hook", tk::BranchType::bl);
+tPatch32(0x200a830, 0x7C7D1B78); // mr r29, r3
+tPatchNop(0x200a834);
 
 // CourseCacheMgr::load
 tHook(0x29cb3f8, "red_LoadSpritemapCacheHook", tk::BranchType::bl);
