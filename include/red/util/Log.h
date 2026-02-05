@@ -8,35 +8,36 @@
 namespace red {
     
     namespace internal {
-        struct LogFormat {
-            const char* fmt;
-            std::source_location loc;
-            
-            consteval LogFormat(const char* s, std::source_location l = std::source_location::current())
-                : fmt(s)
-                , loc(l)
-            { }
-        };
+        consteval const char* basename(const char* path) {
+            const char* last = path;
         
-        constexpr std::string_view basename(std::string_view path) {
-            std::size_t last = 0;
-        
-            for (std::size_t i = 0; i < path.size(); ++i) {
-                if (path[i] == '/' || path[i] == '\\') {
-                    last = i + 1;
+            for (const char* p = path; *p; ++p) {
+                if (*p == '/' || *p == '\\') {
+                    last = p + 1;
                 }
             }
         
-            return path.substr(last);
+            return last;
         }
+        
+        struct LogFormat {
+            const char* fmt;
+            const char* file;
+            u32 line;
+            
+            consteval LogFormat(const char* str, std::source_location loc = std::source_location::current())
+                : fmt(str)
+                , file(basename(loc.file_name()))
+                , line(loc.line())
+            { }
+        };
     }
     
     template <typename... Args>
     void print(internal::LogFormat format, Args&&... args) {
-        const auto& loc = format.loc;
         const auto& fmt = format.fmt;
         
-        OSReport("[%s:%d] ", internal::basename(loc.file_name()).data(), loc.line());
+        OSReport("[%s:%d] ", format.file, format.line);
         OSReport(fmt, args...);
     }
 }
