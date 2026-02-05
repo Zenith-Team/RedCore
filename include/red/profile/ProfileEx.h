@@ -56,8 +56,6 @@ public: //! The below are RedCore-internal APIs, do not use!
         const sead::SafeString* resources = nullptr;
         ProfileInfo::ResType resource_type = ProfileInfo::cResType_Course;
     };
-    
-    static s32 sProfileCount;
 
 private:
     static sead::FixedStrTreeMap<cNameMaxLen, Profile*, cMaxCustomProfiles> sCustomProfiles;

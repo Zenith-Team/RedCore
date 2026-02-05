@@ -1,13 +1,16 @@
 #define PROFILE_INFO_AS_NAMESPACE
 #include <red/profile/ProfileEx.h>
 
+#define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
 
 #include <red/util/Log.h>
 
+s32 red_sProfileCount = ProfileInfo::cProfileID_Max;
+
 static s32 getNext(s32 id) {
     if (id == -1) { // string-profile
-        return ++red::ProfileEx::sProfileCount;
+        return ++red_sProfileCount;
     }
     
     return id;
@@ -23,7 +26,7 @@ Profile::Profile(ActorFactory factory, s32 id, const sead::SafeString& name, con
 {
     red::ProfileEx::setName(mID, name.cstr());
     
-    if (id != -1 && id < ProfileInfo::cProfileID_Max) { // vanilla replacements
+    if (id != -1 && id <= ProfileInfo::cProfileID_Max) { // vanilla replacements
         red::print("Registering vanilla profile %i\n", id);
         sProfileList[id] = this;
     } else {
@@ -41,7 +44,6 @@ sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, red::ProfileEx::ResourceData,
 sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, s16, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfileDrawPriorities;
 
 const char* red::ProfileEx::sProfileNames[ProfileInfo::cProfileID_Max + cMaxCustomProfiles] = { nullptr };
-s32 red::ProfileEx::sProfileCount = ProfileInfo::cProfileID_Max;
 
 Profile* red::ProfileEx::get(const sead::SafeString& identifier)  {
     Profile** it = sCustomProfiles.find(identifier);
@@ -58,7 +60,7 @@ Profile* red::ProfileEx::get(const s32 id) {
         return nullptr;
     }
     
-    if (id < ProfileInfo::cProfileID_Max) {
+    if (id <= ProfileInfo::cProfileID_Max) {
         return Profile::get(id); // Not infinite loop because we define a custom impl above, not link to original
     }
     
@@ -100,7 +102,7 @@ s16 red::ProfileEx::getDrawPriority(const s32 id) {
         return 0;
     }
     
-    if (id < ProfileInfo::cProfileID_Max) {
+    if (id <= ProfileInfo::cProfileID_Max) {
         return ProfileInfo::cDrawPriority[id];
     }
     
@@ -129,22 +131,28 @@ ProfileInfo::ResType red::ProfileEx::getResType(const sead::SafeString& identifi
 }
 
 ProfileInfo::ResType red::ProfileEx::getResType(const s32 id) {
+    //red::print("Requesting res type for ProfileID %i\n", id);
+    
     if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
         red::print("ERROR: ProfileID %i (0x%x) was not found\n", id, id);
         return ProfileInfo::cResType_Boot;
     }
     
-    if (id < ProfileInfo::cProfileID_Max) {
+    if (id <= ProfileInfo::cProfileID_Max) {
+        //red::print("ID was less than %i, using cResType\n", ProfileInfo::cProfileID_Max);
         return static_cast<const ProfileInfo::ResType>(ProfileInfo::cResType[id]);
     }
     
+    //red::print("ID was >= %i, querying name... ", ProfileInfo::cProfileID_Max);
     sead::SafeString identifier = getName(id);
+    OSReport("%s.\n", identifier.cstr());
     
     if (identifier.isEmpty()) [[unlikely]] {
         red::print("ERROR: Failed to get res type\n");
         return ProfileInfo::cResType_Boot;
     }
     
+    //red::print("Querying overload\n");
     return ProfileEx::getResType(identifier);
 }
 
@@ -163,7 +171,7 @@ u32 red::ProfileEx::getResNum(const s32 id) {
         return 0;
     }
     
-    if (id < ProfileInfo::cProfileID_Max) {
+    if (id <= ProfileInfo::cProfileID_Max) {
         return ProfileInfo::cResNum[id];
     }
     
@@ -192,7 +200,7 @@ const sead::SafeString* red::ProfileEx::getResList(const s32 id) {
         return nullptr;
     }
     
-    if (id < ProfileInfo::cProfileID_Max) {
+    if (id <= ProfileInfo::cProfileID_Max) {
         return ProfileInfo::cResList[id];
     }
     
@@ -263,3 +271,24 @@ extern "C" const sead::SafeString* red_GetResListHook(const s32 id) {
 
 // ProfileInfo::getResList
 tHook(0x20199EC, "red_GetResListHook", tk::BranchType::b);
+
+// Profile count patches
+
+extern "C" s32 red_LoadProfileCountR29() tAssembly(
+    lis r29, red_sProfileCount@ha;
+    addi r29, r29, red_sProfileCount@l;
+    lwz r29, 0x0(r29);
+    blr;
+)
+
+// ActorResLoader::load
+tHook(0x200A89C, "red_LoadProfileCountR29", tk::BranchType::bl);
+
+extern "C" s32 red_LoadProfileCountR30() tAssembly(
+    lis r30, red_sProfileCount@ha;
+    lwz r30, red_sProfileCount@l(r30);
+    blr;
+)
+
+// ActorResLoader::unload
+tHook(0x200a950, "red_LoadProfileCountR30", tk::BranchType::bl);

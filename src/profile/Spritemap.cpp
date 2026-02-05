@@ -151,7 +151,7 @@ extern "C" void red_LoadSpritemapCacheHook() tAssembly(
     tRestoreVolatileRegisters;
     li r23, 0x0; // replaced instruction
     blr;
-);
+)
 
 // CourseTask::prepare
 tHook(0x24bdf50, "red_LoadSpritemapPrepareHook", tk::BranchType::bl);
@@ -161,7 +161,7 @@ extern "C" void red_LoadSpritemapPrepareHook() tAssembly(
     bl red_LoadSpritemap;
     tRestoreVolatileRegisters;
     b _ZN10CourseData14loadCourseDataEv; // replaced call
-);
+)
 
 // Increase all instances of the 0x2D4 spriteToProfileTable limit to 0xFFFF
 // TODO: Only keep the ones that are needed, else it may crash trying to use out of bounds sprite id to perform array lookup
