@@ -14,14 +14,22 @@ public:
     ProfileReplaceBuilder(s32 id)
         : ProfileBuilder<ProfileReplaceBuilder<T>>()
         , mID(id)
-    { }
+    {
+        if (id > ProfileInfo::cProfileID_Max) {
+            red::print("ERROR: Attempting to replace invalid vanilla profile ID: %i\n", id);
+        }
+    }
     
     Profile* build() {
+        if (mID > ProfileInfo::cProfileID_Max) {
+            return nullptr;
+        }
+        
         Profile* profilePtr = Profile::get(mID);
         PublicProfile* profile = reinterpret_cast<PublicProfile*>(profilePtr);
         
         profile->factory = &TActorFactory<T>;
-        profile->actor_create_info = this->mCreateInfo;
+        profile->actor_create_info = this->mCreateInfo != nullptr ? this->mCreateInfo : &ActorCreateInfo::cDefault;
         profile->is_res_loaded = false;
         profile->flag = this->mFlag;
     
