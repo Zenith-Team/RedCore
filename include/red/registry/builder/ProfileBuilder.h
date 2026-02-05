@@ -8,11 +8,12 @@
 
 namespace red {
 
-template <s32 N>
-class ComptimeFixedString {
-public:
+template <size_t N>
+struct ComptimeFixedString {
+    char mValue[N];
+
     constexpr ComptimeFixedString(const char (&str)[N]) {
-        for (s32 i = 0; i < N; i++) {
+        for (size_t i = 0; i < N; i++) {
             mValue[i] = str[i];
         }
     }
@@ -20,9 +21,6 @@ public:
     constexpr const char* cstr() const {
         return mValue;
     }
-
-private:
-    char mValue[N];
 };
 
 template <typename Derived> //requires std::derived_from<T, ProfileBuilder>
@@ -64,15 +62,15 @@ public:
     template <ComptimeFixedString... Args> requires (sizeof...(Args) > 0)
     [[nodiscard]]
     Derived& resources(ProfileInfo::ResType type) {
-        static const sead::SafeArray<sead::SafeString, sizeof...(Args)> sResources{ Args.cstr()... };
+        static sead::SafeString sResources[] = { sead::SafeString(Args.cstr())... };
         static bool instanciationUsed = false;
         if (instanciationUsed) {
             red::print("WARNING: SafeArray instanciation already used. Might be bad...\n");
         }
         instanciationUsed = true;
         
-        mResourceCount = static_cast<u8>(sResources.size());
-        mResources = sResources.getBufferPtr();
+        mResourceCount = static_cast<u8>(sizeof...(Args));
+        mResources = sResources;
         mResourceType = type;
         
         return *static_cast<Derived*>(this);
