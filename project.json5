@@ -29,13 +29,13 @@
 
     Targets: {
         US: {
-            TitleID: "0005000E-10101D00"
+            TitleID: "00050000-10101D00"
         },
         EU: {
-            TitleID: "0005000E-10101E00"
+            TitleID: "00050000-10101E00"
         },
         JP: {
-            TitleID: "0005000E-10101C00"
+            TitleID: "00050000-10101C00"
         }
     }
 }
