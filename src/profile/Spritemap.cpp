@@ -80,7 +80,7 @@ sead::SafeString ResolveLocalSprite(s16 spriteID) {
         red::SpritemapEntry& entry = red::sSpritemapEntries[i];
         
         if (entry.key == spriteID) {
-            red::print("Mapped requested ID %i to identifier %s\n", spriteID, entry.value);
+            //red::print("Mapped requested ID %i to identifier %s\n", spriteID, entry.value);
             
             return entry.value;
         }

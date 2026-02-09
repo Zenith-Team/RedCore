@@ -145,7 +145,6 @@ ProfileInfo::ResType red::ProfileEx::getResType(const s32 id) {
     
     //red::print("ID was >= %i, querying name... ", ProfileInfo::cProfileID_Max);
     sead::SafeString identifier = getName(id);
-    OSReport("%s.\n", identifier.cstr());
     
     if (identifier.isEmpty()) [[unlikely]] {
         red::print("ERROR: Failed to get res type\n");
