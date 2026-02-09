@@ -16,3 +16,7 @@ _ZN11ProfileInfo13cDrawPriorityE = 0x10001940;
 _ZN11ProfileInfo8cResTypeE = 0x10002064;
 _ZN11ProfileInfo7cResNumE = 0x100023f8;
 _ZN11ProfileInfo8cResListE = 0x101c321c;
+_ZnwmPN4sead4HeapEi = 0x029f1858;
+_ZN13ModelResourceC1Ev = 0x024F5548;
+_ZN13ModelResource4loadERKN4sead14SafeStringBaseIcEEPNS0_4HeapE = 0x024F5C14;
+_ZN16ModelResourceMgr19ModelResourceHolderC1ERKN4sead14SafeStringBaseIcEEP13ModelResource = 0x024F5F88;
