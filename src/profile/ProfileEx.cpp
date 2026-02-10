@@ -241,35 +241,35 @@ extern "C" Profile* red_GetProfileHook(s32 id) {
 }
 
 // Profile::get
-tHook(0x2019774, "red_GetProfileHook", tk::BranchType::b);
+tBranch(0x2019774, "red_GetProfileHook", tk::BranchType::b);
 
 extern "C" s16 red_DrawPriorityHook(s32 id) {
     return red::ProfileEx::getDrawPriority(id);
 }
 
 // ProfileInfo::getDrawPriority
-tHook(0x2019988, "red_DrawPriorityHook", tk::BranchType::b);
+tBranch(0x2019988, "red_DrawPriorityHook", tk::BranchType::b);
 
 extern "C" ProfileInfo::ResType red_GetResTypeHook(const s32 id) {
     return red::ProfileEx::getResType(id);
 }
 
 // ProfileInfo::getResType
-tHook(0x20199A8, "red_GetResTypeHook", tk::BranchType::b);
+tBranch(0x20199A8, "red_GetResTypeHook", tk::BranchType::b);
 
 extern "C" u32 red_GetResNumHook(const s32 id) {
     return red::ProfileEx::getResNum(id);
 }
 
 // ProfileInfo::getResNum
-tHook(0x20199CC, "red_GetResNumHook", tk::BranchType::b);
+tBranch(0x20199CC, "red_GetResNumHook", tk::BranchType::b);
 
 extern "C" const sead::SafeString* red_GetResListHook(const s32 id) {
     return red::ProfileEx::getResList(id);
 }
 
 // ProfileInfo::getResList
-tHook(0x20199EC, "red_GetResListHook", tk::BranchType::b);
+tBranch(0x20199EC, "red_GetResListHook", tk::BranchType::b);
 
 // Profile count patches
 
@@ -281,7 +281,7 @@ extern "C" s32 red_LoadProfileCountR29() tAssembly(
 )
 
 // ActorResLoader::load
-tHook(0x200A89C, "red_LoadProfileCountR29", tk::BranchType::bl);
+tBranch(0x200A89C, "red_LoadProfileCountR29", tk::BranchType::bl);
 
 extern "C" s32 red_LoadProfileCountR30() tAssembly(
     lis r30, red_sProfileCount@ha;
@@ -290,4 +290,4 @@ extern "C" s32 red_LoadProfileCountR30() tAssembly(
 )
 
 // ActorResLoader::unload
-tHook(0x200a950, "red_LoadProfileCountR30", tk::BranchType::bl);
+tBranch(0x200a950, "red_LoadProfileCountR30", tk::BranchType::bl);

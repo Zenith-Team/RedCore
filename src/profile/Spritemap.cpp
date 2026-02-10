@@ -124,26 +124,26 @@ extern "C" Profile* red_SpriteProfileIDR0Hook() tAssembly(
 )
 
 // ActorCreateMgr::spawnSpriteActor
-tHook(0x2004dbc, "red_SpriteProfileR6Hook", tk::BranchType::bl);
+tBranch(0x2004dbc, "red_SpriteProfileR6Hook", tk::BranchType::bl);
 // ActorCreateMgr::spawnSprites
-tHook(0x2005028, "red_SpriteProfileR6Hook", tk::BranchType::bl);
+tBranch(0x2005028, "red_SpriteProfileR6Hook", tk::BranchType::bl);
 // ActorCreateMgr::update
-tHook(0x2007c70, "red_SpriteProfileR0Hook", tk::BranchType::bl);
+tBranch(0x2007c70, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::??
-tHook(0x200845C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
+tBranch(0x200845C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::??
-tHook(0x2008270, "red_SpriteProfileR0Hook", tk::BranchType::bl);
+tBranch(0x2008270, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::??
-tHook(0x200807C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
+tBranch(0x200807C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
 // ActorCreateMgr::getNumCoinSpritesInLocation
-tHook(0x2004588, "red_SpriteProfileR9Hook", tk::BranchType::bl);
+tBranch(0x2004588, "red_SpriteProfileR9Hook", tk::BranchType::bl);
 // ActorResLoader::load
-tHook(0x200a82c, "red_SpriteProfileIDR0Hook", tk::BranchType::bl);
+tBranch(0x200a82c, "red_SpriteProfileIDR0Hook", tk::BranchType::bl);
 tPatch32(0x200a830, 0x7C7D1B78); // mr r29, r3
 tPatchNop(0x200a834);
 
 // CourseCacheMgr::load
-tHook(0x29cb3f8, "red_LoadSpritemapCacheHook", tk::BranchType::bl);
+tBranch(0x29cb3f8, "red_LoadSpritemapCacheHook", tk::BranchType::bl);
 extern "C" void red_LoadSpritemapCacheHook() tAssembly(
     tSaveVolatileRegisters;
     lwz r3, 0x20(r29);
@@ -154,7 +154,7 @@ extern "C" void red_LoadSpritemapCacheHook() tAssembly(
 )
 
 // CourseTask::prepare
-tHook(0x24bdf50, "red_LoadSpritemapPrepareHook", tk::BranchType::bl);
+tBranch(0x24bdf50, "red_LoadSpritemapPrepareHook", tk::BranchType::bl);
 extern "C" void red_LoadSpritemapPrepareHook() tAssembly(
     tSaveVolatileRegisters;
     li r3, 0x0;
