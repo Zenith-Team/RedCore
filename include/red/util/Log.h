@@ -3,7 +3,7 @@
 #include <cafe.h>
 
 #include <source_location>
-#include <string_view>
+#include <utility>
 
 namespace red {
     
@@ -38,6 +38,6 @@ namespace red {
         const auto& fmt = format.fmt;
         
         OSReport("[%s:%d] ", format.file, format.line);
-        OSReport(fmt, args...);
+        OSReport(fmt, std::forward<Args>(args)...);
     }
 }
