@@ -10,7 +10,6 @@
 #include <actor/MapActor.h>
 #include <red/profile/ProfileEx.h>
 #include <red/profile/Spritemap.h>
-#include <telkin/Telkin.h>
 #include <red/util/Log.h>
 
 u32 red::sSpritemapCount = 0;
@@ -25,143 +24,149 @@ namespace {
     }
 }
 
-extern "C" void red_LoadSpritemap(sead::Heap* heap) {
-    sead::CurrentHeapSetter scopedHeap = heap;
-    
-    // cleanup old data
-    if (red::sSpritemapEntries != nullptr) {
-        delete[] red::sSpritemapEntries;
-        red::sSpritemapEntries = nullptr;
-        red::sSpritemapCount = 0;
-    }
-    
-    void* file = ResMgr::instance()->getFileFromCourseArchiveRes("course/spritemap.bin");
-    if (file == nullptr) {
-        // level has no custom sprites
-        // do nothing
-        red::print("Level has no spritemap.bin, skipping...\n");
-        return;
-    }
-    
-    const char* data = static_cast<const char*>(file);
-    
-    u32 spritemapVersion = read<u32>(data);
-    if (spritemapVersion != red::cSpritemapVersion) {
-        red::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, red::cSpritemapVersion);
-        return;
-    }
-    
-    red::sSpritemapCount = read<u32>(data);
-    if (red::sSpritemapCount == 0) {
-        red::print("Spritemap was empty, skipping...\n");
-        return;
-    }
-    
-    red::sSpritemapEntries = new red::SpritemapEntry[red::sSpritemapCount];
-    for (s32 i = 0; i < red::sSpritemapCount; i++) {
-        red::SpritemapEntry& entry = red::sSpritemapEntries[i];
+namespace red {
+    void loadSpritemap(sead::Heap* heap) {
+        sead::CurrentHeapSetter scopedHeap = heap;
         
-        entry.key = read<s32>(data);
-        entry.value = data;
+        // cleanup old data
+        if (red::sSpritemapEntries != nullptr) {
+            delete[] red::sSpritemapEntries;
+            red::sSpritemapEntries = nullptr;
+            red::sSpritemapCount = 0;
+        }
         
-        data += std::strlen(entry.value) + 1;
+        void* file = ResMgr::instance()->getFileFromCourseArchiveRes("course/spritemap.bin");
+        if (file == nullptr) {
+            // level has no custom sprites
+            // do nothing
+            red::print("Level has no spritemap.bin, skipping...\n");
+            return;
+        }
         
-        red::print("Loaded spritemap entry [%i]->[%s]\n", entry.key, entry.value);
-    }
-}
-
-sead::SafeString ResolveLocalSprite(s16 spriteID) {
-    if (red::sSpritemapEntries == nullptr) {
-        red::print("ERROR: Requesting OOB sprite ID %i without spritemap present\n", int(spriteID));
-        return "NULL";
-    }
-    
-    for (s32 i = 0; i < red::sSpritemapCount; i++) {
-        red::SpritemapEntry& entry = red::sSpritemapEntries[i];
+        const char* data = static_cast<const char*>(file);
         
-        if (entry.key == spriteID) {
-            //red::print("Mapped requested ID %i to identifier %s\n", spriteID, entry.value);
+        u32 spritemapVersion = read<u32>(data);
+        if (spritemapVersion != red::cSpritemapVersion) {
+            red::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, red::cSpritemapVersion);
+            return;
+        }
+        
+        red::sSpritemapCount = read<u32>(data);
+        if (red::sSpritemapCount == 0) {
+            red::print("Spritemap was empty, skipping...\n");
+            return;
+        }
+        
+        red::sSpritemapEntries = new red::SpritemapEntry[red::sSpritemapCount];
+        for (s32 i = 0; i < red::sSpritemapCount; i++) {
+            red::SpritemapEntry& entry = red::sSpritemapEntries[i];
             
-            return entry.value;
+            entry.key = read<s32>(data);
+            entry.value = data;
+            
+            data += std::strlen(entry.value) + 1;
+            
+            red::print("Loaded spritemap entry [%i]->[%s]\n", entry.key, entry.value);
         }
     }
     
-    red::print("ERROR: Failed to find sprite: %i\n", int(spriteID));
-    return "NULL";
-}
-
-extern "C" Profile* red_SpriteToProfileSmart(s16 spriteID) {
-    if (spriteID < 0x2D4) { // TODO: dehardcode this
-        return Profile::get(MapActor::cProfileID[spriteID]);
+    sead::SafeString resolveLocalSprite(s16 spriteID) {
+        if (red::sSpritemapEntries == nullptr) {
+            red::print("ERROR: Requesting OOB sprite ID %i without spritemap present\n", int(spriteID));
+            return "NULL";
+        }
+        
+        for (s32 i = 0; i < red::sSpritemapCount; i++) {
+            red::SpritemapEntry& entry = red::sSpritemapEntries[i];
+            
+            if (entry.key == spriteID) {
+                //red::print("Mapped requested ID %i to identifier %s\n", spriteID, entry.value);
+                
+                return entry.value;
+            }
+        }
+        
+        red::print("ERROR: Failed to find sprite: %i\n", int(spriteID));
+        return "NULL";
     }
+    
+    Profile* spriteToProfileSmart(s16 spriteID) {
+        if (spriteID < 0x2D4) { // TODO: dehardcode this
+            return Profile::get(MapActor::cProfileID[spriteID]);
+        }
+    
+        sead::SafeString identifier = resolveLocalSprite(spriteID);
+        return red::ProfileEx::get(identifier);
+    }
+    
+    s32 spriteToProfileIDSmart(s16 spriteID)  {
+        return spriteToProfileSmart(spriteID)->getID();
+    }
+    
+    Profile* spriteProfileR0Hook() tAssembly(
+        mr r3, r0;
+        b _ZN3red20spriteToProfileSmartEs;
+    )
+    
+    Profile* spriteProfileR6Hook() tAssembly(
+        mr r3, r6;
+        b _ZN3red20spriteToProfileSmartEs;
+    )
 
-    sead::SafeString identifier = ResolveLocalSprite(spriteID);
-    return red::ProfileEx::get(identifier);
+    Profile* spriteProfileR9Hook() tAssembly(
+        mr r3, r9;
+        b _ZN3red20spriteToProfileSmartEs;
+    )
+    
+    Profile* spriteProfileIDR0Hook() tAssembly(
+        mr r3, r0;
+        b _ZN3red22spriteToProfileIDSmartEs;
+    )
 }
-
-extern "C" s32 red_SpriteToProfileIDSmart(s16 spriteID) {
-    return red_SpriteToProfileSmart(spriteID)->getID();
-}
-
-extern "C" Profile* red_SpriteProfileR0Hook() tAssembly(
-    mr r3, r0;
-    b red_SpriteToProfileSmart;
-)
-
-extern "C" Profile* red_SpriteProfileR6Hook() tAssembly(
-    mr r3, r6;
-    b red_SpriteToProfileSmart;
-)
-
-extern "C" Profile* red_SpriteProfileR9Hook() tAssembly(
-    mr r3, r9;
-    b red_SpriteToProfileSmart;
-)
-
-extern "C" Profile* red_SpriteProfileIDR0Hook() tAssembly(
-    mr r3, r0;
-    b red_SpriteToProfileIDSmart;
-)
 
 // ActorCreateMgr::spawnSpriteActor
-tBranch(0x2004dbc, "red_SpriteProfileR6Hook", tk::BranchType::bl);
+tBranch(0x2004dbc, red::spriteProfileR6Hook, tk::BranchType::bl);
 // ActorCreateMgr::spawnSprites
-tBranch(0x2005028, "red_SpriteProfileR6Hook", tk::BranchType::bl);
+tBranch(0x2005028, red::spriteProfileR6Hook, tk::BranchType::bl);
 // ActorCreateMgr::update
-tBranch(0x2007c70, "red_SpriteProfileR0Hook", tk::BranchType::bl);
+tBranch(0x2007c70, red::spriteProfileR0Hook, tk::BranchType::bl);
 // ActorCreateMgr::??
-tBranch(0x200845C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
+tBranch(0x200845C, red::spriteProfileR0Hook, tk::BranchType::bl);
 // ActorCreateMgr::??
-tBranch(0x2008270, "red_SpriteProfileR0Hook", tk::BranchType::bl);
+tBranch(0x2008270, red::spriteProfileR0Hook, tk::BranchType::bl);
 // ActorCreateMgr::??
-tBranch(0x200807C, "red_SpriteProfileR0Hook", tk::BranchType::bl);
+tBranch(0x200807C, red::spriteProfileR0Hook, tk::BranchType::bl);
 // ActorCreateMgr::getNumCoinSpritesInLocation
-tBranch(0x2004588, "red_SpriteProfileR9Hook", tk::BranchType::bl);
+tBranch(0x2004588, red::spriteProfileR9Hook, tk::BranchType::bl);
 // ActorResLoader::load
-tBranch(0x200a82c, "red_SpriteProfileIDR0Hook", tk::BranchType::bl);
+tBranch(0x200a82c, red::spriteProfileIDR0Hook, tk::BranchType::bl);
 tPatch32(0x200a830, 0x7C7D1B78); // mr r29, r3
 tPatchNop(0x200a834);
 
 // CourseCacheMgr::load
-tBranch(0x29cb3f8, "red_LoadSpritemapCacheHook", tk::BranchType::bl);
-extern "C" void red_LoadSpritemapCacheHook() tAssembly(
-    tSaveVolatileRegisters;
-    lwz r3, 0x20(r29);
-    bl red_LoadSpritemap;
-    tRestoreVolatileRegisters;
-    li r23, 0x0; // replaced instruction
-    blr;
-)
+namespace red {
+    void loadSpritemapCacheHook() tAssembly(
+        tSaveVolatileRegisters;
+        lwz r3, 0x20(r29);
+        bl _ZN3red13loadSpritemapEPN4sead4HeapE;
+        tRestoreVolatileRegisters;
+        li r23, 0x0; // replaced instruction
+        blr;
+    )
+}
+tBranch(0x29cb3f8, red::loadSpritemapCacheHook, tk::BranchType::bl);
 
 // CourseTask::prepare
-tBranch(0x24bdf50, "red_LoadSpritemapPrepareHook", tk::BranchType::bl);
-extern "C" void red_LoadSpritemapPrepareHook() tAssembly(
-    tSaveVolatileRegisters;
-    li r3, 0x0;
-    bl red_LoadSpritemap;
-    tRestoreVolatileRegisters;
-    b _ZN10CourseData14loadCourseDataEv; // replaced call
-)
+namespace red {
+    void loadSpritemapPrepareHook() tAssembly(
+        tSaveVolatileRegisters;
+        li r3, 0x0;
+        bl _ZN3red13loadSpritemapEPN4sead4HeapE;
+        tRestoreVolatileRegisters;
+        b _ZN10CourseData14loadCourseDataEv; // replaced call
+    )
+}
+tBranch(0x24bdf50, red::loadSpritemapPrepareHook, tk::BranchType::bl);
 
 // Increase all instances of the 0x2D4 spriteToProfileTable limit to 0xFFFF
 // TODO: Only keep the ones that are needed, else it may crash trying to use out of bounds sprite id to perform array lookup

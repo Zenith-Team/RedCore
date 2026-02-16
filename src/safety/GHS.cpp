@@ -1,14 +1,17 @@
 #include <telkin/Telkin.h>
 #include <red/util/Log.h>
 
-tBranch(0x2AFA554, "red_HandlePVC", tk::BranchType::b);
-extern "C" void red_HandlePVC() {
-    red::print("ERROR: A pure virtual function was called\n");
-    return;
+namespace red {
+    void handlePVC() {
+        red::print("ERROR: A pure virtual function was called\n");
+        return;
+    }
+    
+    void handleDVC() {
+        red::print("ERROR: A deleted virtual function was called\n");
+        return;
+    }
 }
 
-tBranch(0x2AFA5E8, "red_HandleDVC", tk::BranchType::b);
-extern "C" void red_HandleDVC() {
-    red::print("ERROR: A deleted virtual function was called\n");
-    return;
-}
+tBranch(0x2AFA554, red::handlePVC, tk::BranchType::b);
+tBranch(0x2AFA5E8, red::handleDVC, tk::BranchType::b);

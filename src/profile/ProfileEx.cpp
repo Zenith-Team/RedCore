@@ -236,58 +236,41 @@ void red::ProfileEx::setDrawPriority(const sead::SafeString& identifier, const s
 
 // Patch info
 
-extern "C" Profile* red_GetProfileHook(s32 id) {
-    return red::ProfileEx::get(id);
-}
-
 // Profile::get
-tBranch(0x2019774, "red_GetProfileHook", tk::BranchType::b);
-
-extern "C" s16 red_DrawPriorityHook(s32 id) {
-    return red::ProfileEx::getDrawPriority(id);
-}
+tBranch(0x2019774, red::ProfileEx::get, Profile*(const s32), tk::BranchType::b);
 
 // ProfileInfo::getDrawPriority
-tBranch(0x2019988, "red_DrawPriorityHook", tk::BranchType::b);
-
-extern "C" ProfileInfo::ResType red_GetResTypeHook(const s32 id) {
-    return red::ProfileEx::getResType(id);
-}
+tBranch(0x2019988, red::ProfileEx::getDrawPriority, s16(const s32), tk::BranchType::b);
 
 // ProfileInfo::getResType
-tBranch(0x20199A8, "red_GetResTypeHook", tk::BranchType::b);
-
-extern "C" u32 red_GetResNumHook(const s32 id) {
-    return red::ProfileEx::getResNum(id);
-}
+tBranch(0x20199A8, red::ProfileEx::getResType, ProfileInfo::ResType(const s32), tk::BranchType::b);
 
 // ProfileInfo::getResNum
-tBranch(0x20199CC, "red_GetResNumHook", tk::BranchType::b);
-
-extern "C" const sead::SafeString* red_GetResListHook(const s32 id) {
-    return red::ProfileEx::getResList(id);
-}
+tBranch(0x20199CC, red::ProfileEx::getResNum, u32(const s32), tk::BranchType::b);
 
 // ProfileInfo::getResList
-tBranch(0x20199EC, "red_GetResListHook", tk::BranchType::b);
+tBranch(0x20199EC, red::ProfileEx::getResList, const sead::SafeString*(const sead::SafeString&), tk::BranchType::b);
 
 // Profile count patches
 
-extern "C" s32 red_LoadProfileCountR29() tAssembly(
-    lis r29, red_sProfileCount@ha;
-    addi r29, r29, red_sProfileCount@l;
-    lwz r29, 0x0(r29);
-    blr;
-)
-
+namespace red {
+    s32 loadProfileCountR29() tAssembly(
+        lis r29, red_sProfileCount@ha;
+        addi r29, r29, red_sProfileCount@l;
+        lwz r29, 0x0(r29);
+        blr;
+    )
+}
 // ActorResLoader::load
-tBranch(0x200A89C, "red_LoadProfileCountR29", tk::BranchType::bl);
+tBranch(0x200A89C, red::loadProfileCountR29, tk::BranchType::bl);
 
-extern "C" s32 red_LoadProfileCountR30() tAssembly(
-    lis r30, red_sProfileCount@ha;
-    lwz r30, red_sProfileCount@l(r30);
-    blr;
-)
+namespace red {
+    s32 loadProfileCountR30() tAssembly(
+        lis r30, red_sProfileCount@ha;
+        lwz r30, red_sProfileCount@l(r30);
+        blr;
+    )
+}
 
 // ActorResLoader::unload
-tBranch(0x200a950, "red_LoadProfileCountR30", tk::BranchType::bl);
+tBranch(0x200a950, red::loadProfileCountR30, tk::BranchType::bl);
