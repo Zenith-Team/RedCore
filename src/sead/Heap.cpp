@@ -3,7 +3,6 @@
 #include <heap/seadFrameHeap.h>
 #include <heap/seadSeparateHeap.h>
 #include <heap/seadExpHeap.h>
-#include <player/PlayerObject.h>
 
 const void* sead::UnitHeap::getStartAddress() const {
     return mStart;
