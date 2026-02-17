@@ -20,3 +20,9 @@ _ZnwmPN4sead4HeapEi = 0x029f1858;
 _ZN13ModelResourceC1Ev = 0x024F5548;
 _ZN13ModelResource4loadERKN4sead14SafeStringBaseIcEEPNS0_4HeapE = 0x024F5C14;
 _ZN16ModelResourceMgr19ModelResourceHolderC1ERKN4sead14SafeStringBaseIcEEP13ModelResource = 0x024F5F88;
+
+_ZNK4sead7HeapMgr14getCurrentHeapEv = 0x2a0d554;
+_ZN4sead9IDisposerC2Ev = 0x02a0a2fc;
+_ZN4sead9IDisposerD1Ev = 0x02a0a384;
+_ZnamPN4sead4HeapEi = 0x029f18dc;
+_ZNK4sead7HeapMgr15findContainHeapEPKv = 0x02a0d45c;
