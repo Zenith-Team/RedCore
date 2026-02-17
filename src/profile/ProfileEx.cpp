@@ -249,7 +249,7 @@ tBranch(0x20199A8, red::ProfileEx::getResType, ProfileInfo::ResType(const s32), 
 tBranch(0x20199CC, red::ProfileEx::getResNum, u32(const s32), tk::BranchType::b);
 
 // ProfileInfo::getResList
-tBranch(0x20199EC, red::ProfileEx::getResList, const sead::SafeString*(const sead::SafeString&), tk::BranchType::b);
+tBranch(0x20199EC, red::ProfileEx::getResList, const sead::SafeString*(const s32), tk::BranchType::b);
 
 // Profile count patches
 
