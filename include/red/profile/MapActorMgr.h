@@ -5,7 +5,7 @@
 
 namespace red {
 
-constexpr u32 cMapActorNum = 724; // TODO: Move to game headers ?
+constexpr s32 cMapActorNum = 724; // TODO: Move to game headers ?
 
 class MapActorMgr
 {
