@@ -23,6 +23,9 @@ struct ComptimeFixedString {
     }
 };
 
+template <size_t N>
+ComptimeFixedString(const char (&)[N]) -> ComptimeFixedString<N>;
+
 template <typename Derived> //requires std::derived_from<T, ProfileBuilder>
 class ProfileBuilder {
 public:

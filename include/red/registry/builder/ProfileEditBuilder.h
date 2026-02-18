@@ -9,7 +9,7 @@ namespace red {
 class ProfileEditBuilder : public ProfileBuilder<ProfileEditBuilder> {
 public:
     ProfileEditBuilder(s32 id)
-        : mID()
+        : mID(id)
     { }
 
     Profile* build() {

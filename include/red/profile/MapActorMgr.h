@@ -9,7 +9,7 @@ constexpr s32 cMapActorNum = 724; // TODO: Move to game headers ?
 
 class MapActorMgr
 {
-    SEAD_SINGLETON_DISPOSER(MapActorMgr);
+    SEAD_SINGLETON_DISPOSER(MapActorMgr)
 
 public:
     static constexpr u32 cSpritemapVersion = 2;
