@@ -54,9 +54,9 @@ void MapActorMgr::init(sead::Heap* heap)
     const u8* data = static_cast<const u8*>(file);
 
     u32 spritemapVersion = read<u32>(data);
-    if (spritemapVersion != red::cSpritemapVersion)
+    if (spritemapVersion != cSpritemapVersion)
     {
-        red::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, red::cSpritemapVersion);
+        red::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, cSpritemapVersion);
         return;
     }
 
@@ -97,18 +97,13 @@ s32 MapActorMgr::mapToProf(s16 mapActor)
         return MapActor::cProfileID[mapActor];
     }
 
-    if (mapActor == 1000) // TODO: REMOVE TEMP CUZ I DIDNT EDIT LEVELS
-    {
-        mapActor = 0x1000;
-    }
-
-    if ((mapActor & 0xF000) != 0x1000)
+    if (!(mapActor & cMapMetaMask))
     {
         red::print("ERROR: Requested mapActor(0x%04X) is not a valid name map actor\n", int(mapActor));
         return -1;
     }
 
-    mapActor &= 0x0FFF; //? Remove metadata so it can used as a index
+    mapActor &= ~cMapMetaMask; //? Remove metadata so it can used as a index
 
     if (!mProfileID.isBufferReady())
     {

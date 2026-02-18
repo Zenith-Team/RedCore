@@ -5,12 +5,15 @@
 
 namespace red {
 
-constexpr u32 cSpritemapVersion = 1;
 constexpr u32 cMapActorNum = 724; // TODO: Move to game headers ?
 
 class MapActorMgr
 {
     SEAD_SINGLETON_DISPOSER(MapActorMgr);
+
+public:
+    static constexpr u32 cSpritemapVersion = 2;
+    static constexpr u16 cMapMetaMask = 0b1111000000000000;
 
 public:
     MapActorMgr();
