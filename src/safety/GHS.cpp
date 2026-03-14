@@ -1,14 +1,13 @@
 #include <telkin/Telkin.h>
-#include <red/util/Log.h>
 
 namespace red {
     void handlePVC() {
-        red::print("ERROR: A pure virtual function was called\n");
+        tk::print("ERROR: A pure virtual function was called\n");
         return;
     }
     
     void handleDVC() {
-        red::print("ERROR: A deleted virtual function was called\n");
+        tk::print("ERROR: A deleted virtual function was called\n");
         return;
     }
 }

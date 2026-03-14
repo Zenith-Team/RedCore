@@ -12,7 +12,6 @@
 
 #include <red/profile/MapActorMgr.h>
 #include <red/profile/ProfileEx.h>
-#include <red/util/Log.h>
 
 namespace {
     template <typename T>
@@ -34,20 +33,20 @@ MapActorMgr::MapActorMgr()
 
 MapActorMgr::~MapActorMgr()
 {
-    red::print("Unloading spritemap...\n");
+    tk::print("Unloading spritemap...\n");
     mProfileID.freeBuffer();
 }
 
 void MapActorMgr::init(sead::Heap* heap)
 {
-    red::print("Loading spritemap...\n");
+    tk::print("Loading spritemap...\n");
 
     sead::CurrentHeapSetter chs(heap);
 
     const u8* file = static_cast<u8*>(ResMgr::instance()->getFileFromCourseArchiveRes("course/spritemap.bin"));
     if (file == nullptr)
     {
-        red::print("Level has no spritemap.bin, skipping...\n");
+        tk::print("Level has no spritemap.bin, skipping...\n");
         return;
     }
 
@@ -56,14 +55,14 @@ void MapActorMgr::init(sead::Heap* heap)
     u32 spritemapVersion = read<u32>(data);
     if (spritemapVersion != cSpritemapVersion)
     {
-        red::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, cSpritemapVersion);
+        tk::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, cSpritemapVersion);
         return;
     }
 
     u32 entryNum = read<u32>(data);
     if (entryNum == 0)
     {
-        red::print("Spritemap was empty, skipping...\n");
+        tk::print("Spritemap was empty, skipping...\n");
         return;
     }
 
@@ -80,13 +79,13 @@ void MapActorMgr::init(sead::Heap* heap)
         Profile* prof = ProfileEx::get(id);
         if (!prof)
         {
-            red::print("ERROR: Failed to find profile for spritemap entry %u with identifier \"%s\"\n", i, id);
+            tk::print("ERROR: Failed to find profile for spritemap entry %u with identifier \"%s\"\n", i, id);
             mProfileID[i] = -1;
             continue;
         }
 
         mProfileID[i] = prof->getID();
-        red::print("Loaded spritemap entry [%u]->[%s]\n", i, id);
+        tk::print("Loaded spritemap entry [%u]->[%s]\n", i, id);
     }
 }
 
@@ -99,7 +98,7 @@ s32 MapActorMgr::mapToProf(s16 mapActor)
 
     if (!(mapActor & cMapMetaMask))
     {
-        red::print("ERROR: Requested mapActor(0x%04X) is not a valid name map actor\n", int(mapActor));
+        tk::print("ERROR: Requested mapActor(0x%04X) is not a valid name map actor\n", int(mapActor));
         return -1;
     }
 
@@ -107,13 +106,13 @@ s32 MapActorMgr::mapToProf(s16 mapActor)
 
     if (!mProfileID.isBufferReady())
     {
-        red::print("ERROR: Requesting mapActor(%i) without spritemap present\n", int(mapActor));
+        tk::print("ERROR: Requesting mapActor(%i) without spritemap present\n", int(mapActor));
         return -1;
     }
 
     if (mapActor >= mProfileID.size())
     {
-        red::print("ERROR: Requested mapActor(%i) is out of bounds(%i)\n", int(mapActor), mProfileID.size());
+        tk::print("ERROR: Requested mapActor(%i) is out of bounds(%i)\n", int(mapActor), mProfileID.size());
         return -1;
     }
 

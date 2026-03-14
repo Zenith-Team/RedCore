@@ -1,5 +1,5 @@
-#include <red/util/Log.h>
+#include <telkin/Print.h>
 
 void main() {
-    red::print("Welcome to REDCORE\n");
+    tk::print("Welcome to REDCORE\n");
 }
