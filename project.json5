@@ -11,6 +11,7 @@
         "libs/headers",
         
         "libs/sead/engine/library/include",
+        "libs/sead/engine/library/modules/include",
         "libs/sead/packages/agl/include",
         "libs/sead/packages/nw_ptcl/library/include",
         
