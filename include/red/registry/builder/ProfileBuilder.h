@@ -4,7 +4,7 @@
 #include <actor/ProfileInfo.h>
 #include <basis/seadTypes.h>
 #include <actor/Profile.h>
-#include <red/util/Log.h>
+#include <telkin/Print.h>
 
 namespace red {
 
@@ -32,7 +32,7 @@ public:
     [[nodiscard]]
     Derived& createInfo(const ActorCreateInfo* createInfo) {
         if (mCreateInfoModified) {
-            red::print("WARNING: .createInfo() called twice\n");
+            tk::print("WARNING: .createInfo() called twice\n");
         }
         
         mCreateInfoModified = true;
@@ -43,7 +43,7 @@ public:
     [[nodiscard]]
     Derived& flag(const Profile::Flag flag) {
         if (mFlagModified) {
-            red::print("WARNING: .flag() called twice\n");
+            tk::print("WARNING: .flag() called twice\n");
         }
         
         mFlagModified = true;
@@ -54,7 +54,7 @@ public:
     [[nodiscard]]
     Derived& drawPriority(const s16 drawPriority) {
         if (mDrawPriorityModified) {
-            red::print("WARNING: .drawPriority() called twice\n");
+            tk::print("WARNING: .drawPriority() called twice\n");
         }
         
         mDrawPriorityModified = true;
@@ -68,7 +68,7 @@ public:
         static sead::SafeString sResources[] = { sead::SafeString(Args.cstr())... };
         static bool instanciationUsed = false;
         if (instanciationUsed) {
-            red::print("WARNING: SafeArray instanciation already used. Might be bad...\n");
+            tk::print("WARNING: SafeArray instanciation already used. Might be bad...\n");
         }
         instanciationUsed = true;
         

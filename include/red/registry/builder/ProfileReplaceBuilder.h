@@ -16,7 +16,7 @@ public:
         , mID(id)
     {
         if (id > ProfileInfo::cProfileID_Max) {
-            red::print("ERROR: Attempting to replace invalid vanilla profile ID: %i\n", id);
+            tk::print("ERROR: Attempting to replace invalid vanilla profile ID: %i\n", id);
         }
     }
     
