@@ -91,6 +91,11 @@ void MapActorMgr::init(sead::Heap* heap)
 
 s32 MapActorMgr::mapToProf(s16 mapActor)
 {
+    if (mapActor < 0) {
+        tk::print("ERROR: Requested mapActor -1\n");
+        return -1;
+    }
+    
     if (mapActor < cMapActorNum)
     {
         return MapActor::cProfileID[mapActor];
