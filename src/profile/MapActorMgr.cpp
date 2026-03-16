@@ -53,7 +53,7 @@ void MapActorMgr::init(sead::Heap* heap)
     const u8* data = static_cast<const u8*>(file);
 
     u32 spritemapVersion = read<u32>(data);
-    if (spritemapVersion != cSpritemapVersion)
+    if (spritemapVersion != cSpritemapVersion) [[unlikely]]
     {
         tk::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, cSpritemapVersion);
         return;
@@ -77,7 +77,7 @@ void MapActorMgr::init(sead::Heap* heap)
         const char* id = reinterpret_cast<const char*>(file + strOffset);
 
         Profile* prof = ProfileEx::get(id);
-        if (!prof)
+        if (!prof) [[unlikely]]
         {
             tk::print("ERROR: Failed to find profile for spritemap entry %u with identifier \"%s\"\n", i, id);
             mProfileID[i] = -1;
@@ -91,7 +91,8 @@ void MapActorMgr::init(sead::Heap* heap)
 
 s32 MapActorMgr::mapToProf(s16 mapActor)
 {
-    if (mapActor < 0) {
+    if (mapActor < 0) [[unlikely]]
+    {
         tk::print("ERROR: Requested mapActor -1\n");
         return -1;
     }
@@ -101,7 +102,7 @@ s32 MapActorMgr::mapToProf(s16 mapActor)
         return MapActor::cProfileID[mapActor];
     }
 
-    if (!(mapActor & cMapMetaMask))
+    if (!(mapActor & cMapMetaMask)) [[unlikely]]
     {
         tk::print("ERROR: Requested mapActor(0x%04X) is not a valid name map actor\n", int(mapActor));
         return -1;
@@ -109,13 +110,13 @@ s32 MapActorMgr::mapToProf(s16 mapActor)
 
     mapActor &= ~cMapMetaMask; //? Remove metadata so it can used as a index
 
-    if (!mProfileID.isBufferReady())
+    if (!mProfileID.isBufferReady()) [[unlikely]]
     {
         tk::print("ERROR: Requesting mapActor(%i) without spritemap present\n", int(mapActor));
         return -1;
     }
 
-    if (mapActor >= mProfileID.size())
+    if (mapActor >= mProfileID.size()) [[unlikely]]
     {
         tk::print("ERROR: Requested mapActor(%i) is out of bounds(%i)\n", int(mapActor), mProfileID.size());
         return -1;
