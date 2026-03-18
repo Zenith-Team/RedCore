@@ -1,6 +1,8 @@
+#pragma once
+
 #define PROFILE_INFO_AS_NAMESPACE
 #include <actor/ProfileInfo.h>
-
+#include <telkin/Privilege.h>
 #include <red/registry/builder/ProfileBuilder.h>
 #include <red/util/PublicProfile.h>
 
@@ -25,8 +27,9 @@ public:
         }
         
         if (mDrawPriorityModified) {
-            s16* priorities = const_cast<s16*>(ProfileInfo::cDrawPriority);
-            priorities[mID] = mDrawPriority;
+            //s16* priorities = const_cast<s16*>(ProfileInfo::cDrawPriority);
+            //priorities[mID] = mDrawPriority;
+            tk::privilegedWrite(ProfileInfo::cDrawPriority + mID, &mDrawPriority, sizeof(s16));
         }
         
         return profilePtr;
