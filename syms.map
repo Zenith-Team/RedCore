@@ -123,6 +123,9 @@
     _ZNK9ActorBase27checkDerivedRuntimeTypeInfoEPKN4sead15RuntimeTypeInfo9InterfaceE = 0x2002f40;
     _ZNK9ActorBase18getRuntimeTypeInfoEv = __deleted_virtual_called;
 
+// ActorBgCollisionCheck
+    _ZN21ActorBgCollisionCheckD1Ev = 0x0218ADFC;
+
 // ActorBgCollisionMgr
     _ZN19ActorBgCollisionMgr9sInstanceE = 0x101C9360;
 
@@ -136,6 +139,7 @@
     _ZN14ActorCollision8doDeleteEv = 0x02003724;
     _ZN14ActorCollision5vf13CEv = 0x02004008;
     _ZN14ActorCollision5vf144Ei = 0x0200375C;
+    _ZTV14ActorCollision = 0x1000084C;
 
 // ActorCollisionCheck
     _ZN19ActorCollisionCheck3setEP5ActorRKNS_13CollisionDataEP30ActorCollisionDrcTouchCallback = 0x0219AF1C;
