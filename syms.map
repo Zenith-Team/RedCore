@@ -225,7 +225,7 @@
     _ZN5Enemy27vsChibiYoshiHitCheck_NormalEP19ActorCollisionCheckS1_ = 0x02329A08;
     // iceballInvalid__5EnemySFP19ActorCollisionCheck = 0x02329A0C;
     // spinfumiEffect__5EnemyFP5Actor = 0x02329B20;
-    // fumiCheck__5EnemyFP19ActorCollisionCheckT1Q2_5Enemy10FumiSeType = 0x02329B88;
+    _ZN5Enemy9fumiCheckEP19ActorCollisionCheckS1_NS_10FumiSeTypeE = 0x02329B88;
     _ZN5Enemy11fumiJumpSetEP5Actor = 0x02329EA4;
     _ZN5Enemy12fumiScoreSetEP5Actor = 0x02329FA8;
     _ZN5Enemy16yoshiFumiJumpSetEP5Actor = 0x02329FAC;
@@ -248,7 +248,7 @@
     _ZN5Enemy13setAwaInvalidEP5Actor = 0x0232A864;
     // calcMdl_Normal__5EnemyFv = 0x023291DC;
     // isDead__5EnemyCFv = 0x0232CAEC;
-    // setDeathInfo_SpinFumi__5EnemyFP5Actor = 0x0232CC98;
+    _ZN5Enemy21setDeathInfo_SpinFumiEP5Actor = 0x0232CC98;
     _ZN5Enemy16hitCallback_StarEP19ActorCollisionCheckS1_ = 0x0232CE84;
     _ZN5Enemy16hitCallback_SlipEP19ActorCollisionCheckS1_ = 0x0232CF20;
     _ZN5Enemy16hitCallback_SpinEP19ActorCollisionCheckS1_ = 0x0232D014;
@@ -268,7 +268,7 @@
     _ZN5Enemy27hitCallback_ChibiYoshiLightEP19ActorCollisionCheckS1_ = 0x0232DA0C;
     _ZN5Enemy26hitCallback_ChibiYoshiStarEP19ActorCollisionCheckS1_ = 0x0232DA14;
     _ZN5Enemy23hitCallback_AttackUnk27EPbP19ActorCollisionCheckS2_ = 0x0232DA24;
-    // setDeathInfo_Fumi__5EnemyFP5ActorQ2_4sead16Vector2__tm__2_fRC7StateID = 0x0232DA34;
+    _ZN5Enemy17setDeathInfo_FumiEP5ActorRKN4sead7Vector2IfEERK7StateID = 0x0232DA34;
     _ZN5Enemy18setDeathInfo_QuakeEi = 0x0232DAF0;
     _ZN5Enemy15setSmokeDamage_EP5Actor = 0x0232DC88;
     _ZN5Enemy21setDeathInfo_IceBreakEv = 0x0232DD48;
@@ -333,12 +333,12 @@
     _ZTV5Enemy = 0x1007209C;
     // __LSG__typeInfo__L0__getRuntimeTypeInfoStatic__5EnemySFv = 0x101E9EEC;
     _ZN5Enemy9sTypeInfoE = 0x101E9EF0;
-    // cBaseAngleY__5Enemy = 0x10200DD8;
+    _ZN5Enemy11cBaseAngleYE = 0x10200DD8;
     // StateID_DieFumi__5Enemy = 0x10200FB0;
     // StateID_DieFall__5Enemy = 0x10200FD4;
     // StateID_DieYoshiFumi__5Enemy = 0x10200FF8;
     // StateID_DieSmoke__5Enemy = 0x1020101C;
-    // StateID_DieOther__5Enemy = 0x10201064;
+    _ZN5Enemy16StateID_DieOtherE = 0x10201064;
     // StateID_EatIn__5Enemy = 0x1020111C;
     // StateID_Ice__5Enemy = 0x10201218;
 
