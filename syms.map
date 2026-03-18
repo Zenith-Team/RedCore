@@ -298,6 +298,9 @@
     _ZN5Enemy13blockHitInit_Ev = 0x02328914;
     _ZN5EnemyC2ERK16ActorCreateParam = 0x02328494;
 
+// FrameCtrl
+    _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
+
 // IceMgr
     _ZN6IceMgrD1Ev = 0x0237CD54;
 
