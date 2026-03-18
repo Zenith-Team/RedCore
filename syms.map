@@ -87,41 +87,52 @@
     _ZN4sead8ViewportC1Effff = 0x2a072fc;
 
 // Actor
-    _ZN5ActorC2ERK16ActorCreateParam = 0x2000ac8;
-    _ZN5Actor9sTypeInfoE = 0x101e9cc0;
-    _ZN5ActorD1Ev = 0x02000f18;
-    _ZN5Actor10postCreateEN9ActorBase9MainStateE = 0x2000fb8;
-    _ZN5Actor10preExecuteEv = 0x2000fe8;
-    _ZN5Actor11postExecuteEN9ActorBase9MainStateE = 0x20010bc;
-    _ZN5Actor7preDrawEv = 0x20011a0;
-    _ZN5Actor20removeCollisionCheckEv = 0x20002cc;
-    _ZN5Actor20reviveCollisionCheckEv = 0x2000328;
-    _ZN5Actor19allEnemyDeathEffSetEv = 0x2002ad8;
-    _ZN5Actor17waterSplashEffectERKN4sead7Vector3IfEE = 0x2002adc;
-    _ZN5Actor17yoganSplashEffectERKN4sead7Vector3IfEE = 0x2002ae0;
-    _ZN5Actor21yoganWaveSplashEffectERKN4sead7Vector3IfEE = 0x2000960;
-    _ZN5Actor18poisonSplashEffectERKN4sead7Vector3IfEE = 0x2002ae4;
-    _ZN5Actor14drawCullCheck_Ev = 0x2001254;
+    _ZN5Actor20removeCollisionCheckEv = 0x020002CC;
+    _ZN5Actor20reviveCollisionCheckEv = 0x02000328;
+    // incComboCnt__5ActorFv = 0x0200042C;
+    // slideComboSE__5ActorFib = 0x02000454;
     _ZN5Actor16searchNearPlayerERN4sead7Vector2IfEE = 0x020005A4;
+    // directionToPlayerH__5ActorFRCQ2_4sead16Vector3__tm__2_f = 0x020005EC;
+    // directionToPlayerV__5ActorFRCQ2_4sead16Vector3__tm__2_f = 0x020006B4;
+    // deleteActor__5ActorFb = 0x02000774;
+    // screenOutCheck__5ActorFUs = 0x020007A0;
+    _ZN5Actor21yoganWaveSplashEffectERKN4sead7Vector3IfEE = 0x02000960;
+    // getEffectZPos__5ActorCFv = 0x02000970;
+    _ZN5ActorC2ERK16ActorCreateParam = 0x02000AC8;
+    _ZN5ActorD1Ev = 0x02000F18;
+    _ZN5Actor10postCreateEN9ActorBase9MainStateE = 0x02000FB8;
+    _ZN5Actor10preExecuteEv = 0x02000FE8;
+    _ZN5Actor11postExecuteEN9ActorBase9MainStateE = 0x020010BC;
+    _ZN5Actor7preDrawEv = 0x020011A0;
+    _ZN5Actor14drawCullCheck_Ev = 0x02001254;
+    // splashEffect___5ActorFRCQ2_4sead16Vector3__tm__2_fiUcPCc = 0x02001304;
+    _ZN5Actor19allEnemyDeathEffSetEv = 0x02002AD8;
+    _ZN5Actor17waterSplashEffectERKN4sead7Vector3IfEE = 0x02002ADC;
+    _ZN5Actor17yoganSplashEffectERKN4sead7Vector3IfEE = 0x02002AE0;
+    _ZN5Actor18poisonSplashEffectERKN4sead7Vector3IfEE = 0x02002AE4;
+    // __vtbl__5Actor = 0x10000268;
+    // __LSG__typeInfo__L0__getRuntimeTypeInfoStatic__5ActorSFv = 0x101E9CBC;
+    _ZN5Actor9sTypeInfoE = 0x101E9CC0;
 
 // ActorBase
-    _ZN9ActorBaseC2ERK16ActorCreateParam = 0x2002ce0;
+    // getProfileID__9ActorBaseCFv = 0x02002C80;
+    // __ct__9ActorBaseFRC16ActorCreateParam = 0x02002CE0;
+    // __dt__9ActorBaseFv = 0x02002E68;
+    // postCreate___9ActorBaseFQ2_9ActorBase9MainState = 0x02002F00;
+    // preExecute___9ActorBaseFv = 0x02002F04;
+    // postExecute___9ActorBaseFQ2_9ActorBase9MainState = 0x02002F34;
+    _ZN9ActorBase8postDrawENS_9MainStateE = 0x02002F38;
+    _ZN9ActorBase10postDeleteENS_9MainStateE = 0x02002F3C;
+    _ZN9ActorBase9preCreateEv = 0x02002F7C;
+    // execute___9ActorBaseFv = 0x02002F8C;
+    _ZN9ActorBase11finalUpdateEv = 0x02002F94;
+    // preDraw___9ActorBaseFv = 0x02002F98;
+    // draw___9ActorBaseFv = 0x02002FA0;
+    _ZN9ActorBase9preDeleteEv = 0x02002FA8;
+    _ZN9ActorBase8doDeleteEv = 0x02002FB0;
+    // __vtbl__9ActorBase = 0x100006C0;
+    // __LSG__typeInfo__L0__getRuntimeTypeInfoStatic__9ActorBaseSFv = 0x101E9CC4;
     _ZN9ActorBase9sTypeInfoE = 0x101E9CC8;
-    _ZN9ActorBaseD1Ev = 0x2002e680;
-    _ZN9ActorBase9preCreateEv = 0x2002f7c;
-    _ZN9ActorBase10postCreateENS_9MainStateE = 0x2002f00;
-    _ZN9ActorBase10preExecuteEv = 0x2002f04;
-    _ZN9ActorBase7executeEv = 0x2002f8c;
-    _ZN9ActorBase11postExecuteENS_9MainStateE = 0x2002f34;
-    _ZN9ActorBase11finalUpdateEv = 0x2002f94;
-    _ZN9ActorBase7preDrawEv = 0x2002f98;
-    _ZN9ActorBase4drawEv = 0x2002fa0;
-    _ZN9ActorBase8postDrawENS_9MainStateE = 0x2002f38;
-    _ZN9ActorBase9preDeleteEv = 0x2002fa8;
-    _ZN9ActorBase8doDeleteEv = 0x2002fb0;
-    _ZN9ActorBase10postDeleteENS_9MainStateE = 0x2002f3c;
-    _ZNK9ActorBase27checkDerivedRuntimeTypeInfoEPKN4sead15RuntimeTypeInfo9InterfaceE = 0x2002f40;
-    _ZNK9ActorBase18getRuntimeTypeInfoEv = __deleted_virtual_called;
 
 // ActorBgCollisionCheck
     _ZN21ActorBgCollisionCheckD1Ev = 0x0218ADFC;
@@ -133,22 +144,32 @@
     _ZN22ActorCircleBgCollision9sTypeInfoE = 0x101EA398;
 
 // ActorCollision
-    _ZN14ActorCollision9sTypeInfoE = 0x101E9CD8;
     _ZN14ActorCollision10postCreateEN9ActorBase9MainStateE = 0x0200354C;
+    // preExecute___14ActorCollisionFv = 0x020035FC;
     _ZN14ActorCollision11postExecuteEN9ActorBase9MainStateE = 0x020036D8;
     _ZN14ActorCollision8doDeleteEv = 0x02003724;
-    _ZN14ActorCollision5vf13CEv = 0x02004008;
     _ZN14ActorCollision5vf144Ei = 0x0200375C;
+    // setSmokeDamage___14ActorCollisionFP5Actor = 0x02003760;
+    // bgCheck___14ActorCollisionFv = 0x020037F4;
+    // calcSpeedY___14ActorCollisionFv = 0x020039AC;
+    // posMove___14ActorCollisionFv = 0x02003AE4;
+    // calcJumpSpeedF___14ActorCollisionFv = 0x02003C10;
+    _ZN14ActorCollision5vf13CEv = 0x02004008;
     _ZTV14ActorCollision = 0x1000084C;
+    // __LSG__typeInfo__L0__getRuntimeTypeInfoStatic__14ActorCollisionSFv = 0x101E9CD4;
+    _ZN14ActorCollision9sTypeInfoE = 0x101E9CD8;
 
 // ActorCollisionCheck
+    // __ct__19ActorCollisionCheckFv = 0x0219A960;
+    // __dt__19ActorCollisionCheckFv = 0x0219AB90;
     _ZN19ActorCollisionCheck3setEP5ActorRKNS_13CollisionDataEP30ActorCollisionDrcTouchCallback = 0x0219AF1C;
+    _ZNK19ActorCollisionCheck9getTopPosEv = 0x0219B434;
+    _ZNK19ActorCollisionCheck11getUnderPosEv = 0x0219B450;
+    _ZNK19ActorCollisionCheck13getCenterPosYEv = 0x0219B46C;
     _ZNK19ActorCollisionCheck11getRightPosEv = 0x0219B480;
     _ZNK19ActorCollisionCheck10getLeftPosEv = 0x0219B49C;
-    _ZNK19ActorCollisionCheck11getUnderPosEv = 0x0219B450;
-    _ZNK19ActorCollisionCheck9getTopPosEv = 0x0219B434;
-    _ZNK19ActorCollisionCheck13getCenterPosYEv = 0x0219B46C;
     _ZNK19ActorCollisionCheck13getCenterPosXEv = 0x0219B4B8;
+    // cDefault__Q2_19ActorCollisionCheck13CollisionData = 0x10041BC0;
 
 // ActorCollisionCheckMgr
     _ZN22ActorCollisionCheckMgr9sInstanceE = 0x101C95D8;
@@ -163,9 +184,14 @@
     _ZN15ActorMultiState9sTypeInfoE = 0x101E9CE8;
 
 // AnimModel
-    _ZN9AnimModelC1EP5Modeljjjjj = 0x24d4798;
-    _ZN9AnimModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x24d49a0;
-    _ZN9AnimModel7calcMdlEv = 0x24d4e84;
+    // __ct__9AnimModelFP5ModelUiN42 = 0x024D4798;
+    // __CPR91__init__9AnimModelFP13ModelResourcePCQ2_4sead32PtrArray__tm__16_J18JPQ2_J38J4Heap = 0x024D49A0;
+    // playAnmFrameCtrl__9AnimModelFv = 0x024D4D20;
+    // calcMdl__9AnimModelFv = 0x024D4E84;
+
+    // _ZN9AnimModelC1EP5Modeljjjjj = 0x24d4798;
+    // _ZN9AnimModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x24d49a0;
+    // _ZN9AnimModel7calcMdlEv = 0x24d4e84;
 
 // AreaTask
     _ZN8AreaTask11drawLayer3DERKN3agl3lyr10RenderInfoE = 0x024B84A8;
@@ -176,21 +202,16 @@
 // BgScrollMgr
     _ZN11BgScrollMgr9sInstanceE = 0x101e7c54;
 
-// CourseData
-    _ZN10CourseData14loadCourseDataEv = 0x269a244;
-
 // Enemy
-    _ZN5Enemy15setSmokeDamage_EP5Actor = 0x0232DC88;
-    _ZN5Enemy18setTouchDrcDamage_ERKN4sead7Vector2IfEE = 0x0232E1A4;
-    _ZN5Enemy11changeStateERK7StateID = 0x02330404;
+    _ZN5EnemyC2ERK16ActorCreateParam = 0x02328494;
+    _ZN5Enemy10preExecuteEv = 0x02328644;
+    // hitdamageEffect__5EnemyFRCQ2_4sead16Vector3__tm__2_f = 0x023288BC;
+    _ZN5Enemy13blockHitInit_Ev = 0x02328914;
     _ZN5Enemy9setDamageEP19ActorCollisionCheckS1_ = 0x02328B84;
+    _ZN5Enemy16normal_collcheckEP19ActorCollisionCheckS1_ = 0x02328C50;
     _ZN5Enemy14checkComboClapEi = 0x0232910C;
-    _ZN5Enemy14createIceActorEv = 0x023304F8;
-    _ZN5Enemy9setIceAnmEv = 0x023310BC;
-    _ZN5Enemy13returnAnm_IceEv = 0x023310C0;
-    _ZN5Enemy15returnState_IceEv = 0x02330568;
-    _ZN5Enemy12calcMdl_BaseEv = 0x0232A858;
-    _ZN5Enemy5vf1CCEv = 0x0232A85C;
+    // calcComboPlFumiCnt__5EnemyFP5Actor = 0x02329130;
+    // bound__5EnemyFfN21 = 0x02329168;
     _ZN5Enemy16enemyDamageCheckEP19ActorCollisionCheckS1_ = 0x023291F8;
     _ZN5Enemy17playerDamageCheckEP19ActorCollisionCheckS1_ = 0x02329250;
     _ZN5Enemy19enemyPreDamageCheckEPbP19ActorCollisionCheckS2_ = 0x02329520;
@@ -199,32 +220,12 @@
     _ZN5Enemy21chibiYoshiDamageCheckEP19ActorCollisionCheckS1_ = 0x023296E8;
     _ZN5Enemy14etcDamageCheckEP19ActorCollisionCheckS1_ = 0x02329800;
     _ZN5Enemy22vsEnemyHitCheck_NormalEP19ActorCollisionCheckS1_ = 0x023299F0;
+    _ZN5Enemy23vsPlayerHitCheck_NormalEP19ActorCollisionCheckS1_ = 0x023299F4;
     _ZN5Enemy22vsYoshiHitCheck_NormalEP19ActorCollisionCheckS1_ = 0x02329A04;
     _ZN5Enemy27vsChibiYoshiHitCheck_NormalEP19ActorCollisionCheckS1_ = 0x02329A08;
-    _ZN5Enemy16hitCallback_StarEP19ActorCollisionCheckS1_ = 0x0232CE84;
-    _ZN5Enemy16hitCallback_SlipEP19ActorCollisionCheckS1_ = 0x0232CF20;
-    _ZN5Enemy16hitCallback_SpinEP19ActorCollisionCheckS1_ = 0x0232D014;
-    _ZN5Enemy19hitCallback_WireNetEP19ActorCollisionCheckS1_ = 0x0232D0E4;
-    _ZN5Enemy19hitCallback_HipAttkEP19ActorCollisionCheckS1_ = 0x0232D240;
-    _ZN5Enemy24hitCallback_YoshiHipAttkEP19ActorCollisionCheckS1_ = 0x0232D3B4;
-    _ZN5Enemy24hitCallback_PenguinSlideEP19ActorCollisionCheckS1_ = 0x0232D48C;
-    _ZN5Enemy18hitCallback_CannonEP19ActorCollisionCheckS1_ = 0x0232D49C;
-    _ZN5Enemy23hitCallback_AttackUnk25EP19ActorCollisionCheckS1_ = 0x0232D56C;
-    _ZN5Enemy17hitCallback_ShellEP19ActorCollisionCheckS1_ = 0x0232D57C;
-    _ZN5Enemy16hitCallback_FireEP19ActorCollisionCheckS1_ = 0x0232D70C;
-    _ZN5Enemy15hitCallback_IceEP19ActorCollisionCheckS1_ = 0x0232D7A4;
-    _ZN5Enemy23hitCallback_YoshiBulletEP19ActorCollisionCheckS1_ = 0x0232D824;
-    _ZN5Enemy21hitCallback_YoshiFireEP19ActorCollisionCheckS1_ = 0x0232D938;
-    _ZN5Enemy25hitCallback_ChibiYoshiUnkEP19ActorCollisionCheckS1_ = 0x0232DA04;
-    _ZN5Enemy27hitCallback_ChibiYoshiLightEP19ActorCollisionCheckS1_ = 0x0232DA0C;
-    _ZN5Enemy26hitCallback_ChibiYoshiStarEP19ActorCollisionCheckS1_ = 0x0232DA14;
-    _ZN5Enemy23hitCallback_AttackUnk27EPbP19ActorCollisionCheckS2_ = 0x0232DA24;
-    _ZN5Enemy18setDeathInfo_QuakeEi = 0x0232DAF0;
-    _ZN5Enemy21setDeathInfo_IceBreakEv = 0x0232DD48;
-    _ZN5Enemy17setDeathInfo_StarEP19ActorCollisionCheckS1_ = 0x0232E048;
-    _ZN5Enemy13isQuakeDamageEv = 0x0232E2EC;
-    _ZN5Enemy18setDeathSound_FireEv = 0x0232E2F8;
-    _ZN5Enemy21setDeathSound_HipAttkEv = 0x0232E358;
+    // iceballInvalid__5EnemySFP19ActorCollisionCheck = 0x02329A0C;
+    // spinfumiEffect__5EnemyFP5Actor = 0x02329B20;
+    // fumiCheck__5EnemyFP19ActorCollisionCheckT1Q2_5Enemy10FumiSeType = 0x02329B88;
     _ZN5Enemy11fumiJumpSetEP5Actor = 0x02329EA4;
     _ZN5Enemy12fumiScoreSetEP5Actor = 0x02329FA8;
     _ZN5Enemy16yoshiFumiJumpSetEP5Actor = 0x02329FAC;
@@ -242,27 +243,74 @@
     _ZN5Enemy9setAwaHitEP5Actor = 0x0232A364;
     _ZN5Enemy12awaCatchMoveEP5Actor = 0x0232A418;
     _ZN5Enemy14setAwaCatchEndEP5Actor = 0x0232A4CC;
+    _ZN5Enemy12calcMdl_BaseEv = 0x0232A858;
+    _ZN5Enemy5vf1CCEv = 0x0232A85C;
     _ZN5Enemy13setAwaInvalidEP5Actor = 0x0232A864;
+    // calcMdl_Normal__5EnemyFv = 0x023291DC;
+    // isDead__5EnemyCFv = 0x0232CAEC;
+    // setDeathInfo_SpinFumi__5EnemyFP5Actor = 0x0232CC98;
+    _ZN5Enemy16hitCallback_StarEP19ActorCollisionCheckS1_ = 0x0232CE84;
+    _ZN5Enemy16hitCallback_SlipEP19ActorCollisionCheckS1_ = 0x0232CF20;
+    _ZN5Enemy16hitCallback_SpinEP19ActorCollisionCheckS1_ = 0x0232D014;
+    _ZN5Enemy19hitCallback_WireNetEP19ActorCollisionCheckS1_ = 0x0232D0E4;
+    _ZN5Enemy19hitCallback_HipAttkEP19ActorCollisionCheckS1_ = 0x0232D240;
+    // setDeathInfo_YoshiFumi__5EnemyFP5Actor = 0x0232D31C;
+    _ZN5Enemy24hitCallback_YoshiHipAttkEP19ActorCollisionCheckS1_ = 0x0232D3B4;
+    _ZN5Enemy24hitCallback_PenguinSlideEP19ActorCollisionCheckS1_ = 0x0232D48C;
+    _ZN5Enemy18hitCallback_CannonEP19ActorCollisionCheckS1_ = 0x0232D49C;
+    _ZN5Enemy23hitCallback_AttackUnk25EP19ActorCollisionCheckS1_ = 0x0232D56C;
+    _ZN5Enemy17hitCallback_ShellEP19ActorCollisionCheckS1_ = 0x0232D57C;
+    _ZN5Enemy16hitCallback_FireEP19ActorCollisionCheckS1_ = 0x0232D70C;
+    _ZN5Enemy15hitCallback_IceEP19ActorCollisionCheckS1_ = 0x0232D7A4;
+    _ZN5Enemy23hitCallback_YoshiBulletEP19ActorCollisionCheckS1_ = 0x0232D824;
+    _ZN5Enemy21hitCallback_YoshiFireEP19ActorCollisionCheckS1_ = 0x0232D938;
+    _ZN5Enemy25hitCallback_ChibiYoshiUnkEP19ActorCollisionCheckS1_ = 0x0232DA04;
+    _ZN5Enemy27hitCallback_ChibiYoshiLightEP19ActorCollisionCheckS1_ = 0x0232DA0C;
+    _ZN5Enemy26hitCallback_ChibiYoshiStarEP19ActorCollisionCheckS1_ = 0x0232DA14;
+    _ZN5Enemy23hitCallback_AttackUnk27EPbP19ActorCollisionCheckS2_ = 0x0232DA24;
+    // setDeathInfo_Fumi__5EnemyFP5ActorQ2_4sead16Vector2__tm__2_fRC7StateID = 0x0232DA34;
+    _ZN5Enemy18setDeathInfo_QuakeEi = 0x0232DAF0;
+    _ZN5Enemy15setSmokeDamage_EP5Actor = 0x0232DC88;
+    _ZN5Enemy21setDeathInfo_IceBreakEv = 0x0232DD48;
+    _ZN5Enemy17setDeathInfo_StarEP19ActorCollisionCheckS1_ = 0x0232E048;
+    // applyWaterRollDec__5EnemyF5Angle = 0x0232E144;
+    _ZN5Enemy18setTouchDrcDamage_ERKN4sead7Vector2IfEE = 0x0232E1A4;
+    _ZN5Enemy13isQuakeDamageEv = 0x0232E2EC;
+    _ZN5Enemy18setDeathSound_FireEv = 0x0232E2F8;
+    _ZN5Enemy21setDeathSound_HipAttkEv = 0x0232E358;
     _ZN5Enemy23initializeState_DieFumiEv = 0x0232E518;
     _ZN5Enemy20executeState_DieFumiEv = 0x0232E5E8;
-    _ZN5Enemy21finalizeState_DieFumiEv = 0x0232EED0;
     _ZN5Enemy23initializeState_DieFallEv = 0x0232E63C;
     _ZN5Enemy20executeState_DieFallEv = 0x0232E640;
-    _ZN5Enemy21finalizeState_DieFallEv = 0x0232EED4;
     _ZN5Enemy28initializeState_DieYoshiFumiEv = 0x0232E72C;
     _ZN5Enemy25executeState_DieYoshiFumiEv = 0x0232E79C;
-    _ZN5Enemy26finalizeState_DieYoshiFumiEv = 0x0232EED8;
     _ZN5Enemy24initializeState_DieSmokeEv = 0x0232E7A8;
     _ZN5Enemy21executeState_DieSmokeEv = 0x0232E7B8;
-    _ZN5Enemy22finalizeState_DieSmokeEv = 0x0232EEDC;
     _ZN5Enemy28initializeState_DieIceVanishEv = 0x0232E7C4;
     _ZN5Enemy25executeState_DieIceVanishEv = 0x0232E7C8;
-    _ZN5Enemy26finalizeState_DieIceVanishEv = 0x0232EEE0;
+    _ZN5Enemy24initializeState_DieOtherEv = 0x0232E7D4;
     _ZN5Enemy22initializeState_DieAwaEv = 0x0232E7E0;
+    _ZN5Enemy21finalizeState_DieFumiEv = 0x0232EED0;
+    _ZN5Enemy21finalizeState_DieFallEv = 0x0232EED4;
+    _ZN5Enemy26finalizeState_DieYoshiFumiEv = 0x0232EED8;
+    _ZN5Enemy22finalizeState_DieSmokeEv = 0x0232EEDC;
+    _ZN5Enemy26finalizeState_DieIceVanishEv = 0x0232EEE0;
+    _ZN5Enemy21executeState_DieOtherEv = 0x0232EEE4;
+    _ZN5Enemy22finalizeState_DieOtherEv = 0x0232EEE8;
     _ZN5Enemy19executeState_DieAwaEv = 0x0232EEEC;
     _ZN5Enemy20finalizeState_DieAwaEv = 0x0232EEF0;
+    _ZN5Enemy11changeStateERK7StateID = 0x02330404;
+    _ZN5Enemy14createIceActorEv = 0x023304F8;
+    _ZN5Enemy15returnState_IceEv = 0x02330568;
     _ZN5Enemy21initializeState_EatInEv = 0x023305E4;
     _ZN5Enemy18executeState_EatInEv = 0x023305EC;
+    _ZN5Enemy26initializeState_ChibiEatInEv = 0x023306E8;
+    _ZN5Enemy23executeState_ChibiEatInEv = 0x023306F0;
+    _ZN5Enemy19initializeState_IceEv = 0x02330720;
+    _ZN5Enemy16executeState_IceEv = 0x023307A0;
+    _ZN5Enemy17finalizeState_IceEv = 0x02330944;
+    _ZN5Enemy9setIceAnmEv = 0x023310BC;
+    _ZN5Enemy13returnAnm_IceEv = 0x023310C0;
     _ZN5Enemy19finalizeState_EatInEv = 0x023310C4;
     _ZN5Enemy22initializeState_EatNowEv = 0x023310C8;
     _ZN5Enemy19executeState_EatNowEv = 0x023310CC;
@@ -270,8 +318,6 @@
     _ZN5Enemy22initializeState_EatOutEv = 0x023310D4;
     _ZN5Enemy19executeState_EatOutEv = 0x023310D8;
     _ZN5Enemy20finalizeState_EatOutEv = 0x023310DC;
-    _ZN5Enemy26initializeState_ChibiEatInEv = 0x023306E8;
-    _ZN5Enemy23executeState_ChibiEatInEv = 0x023306F0;
     _ZN5Enemy24finalizeState_ChibiEatInEv = 0x023310E0;
     _ZN5Enemy27initializeState_ChibiEatNowEv = 0x023310E4;
     _ZN5Enemy24executeState_ChibiEatNowEv = 0x023310E8;
@@ -282,21 +328,19 @@
     _ZN5Enemy25initializeState_EnemyUnk1Ev = 0x023310FC;
     _ZN5Enemy22executeState_EnemyUnk1Ev = 0x02331100;
     _ZN5Enemy23finalizeState_EnemyUnk1Ev = 0x02331104;
-    _ZN5Enemy19initializeState_IceEv = 0x02330720;
-    _ZN5Enemy16executeState_IceEv = 0x023307A0;
-    _ZN5Enemy17finalizeState_IceEv = 0x02330944;
-    _ZN5Enemy16normal_collcheckEP19ActorCollisionCheckS1_ = 0x02328C50;
+    // cDefaultGravity__5Enemy = 0x10072070;
+    // cEnMuki__5Enemy = 0x10072094;
     _ZTV5Enemy = 0x1007209C;
-    _ZN5Enemy11cBaseAngleYE = 0x10200DD8;
-    _ZN5Enemy9fumiCheckEP19ActorCollisionCheckS1_NS_10FumiSeTypeE = 0x02329B88;
-    _ZN5Enemy16StateID_DieOtherE = 0x10201064;
-    _ZN5Enemy17setDeathInfo_FumiEP5ActorRKN4sead7Vector2IfEERK7StateID = 0x0232DA34;
-    _ZN5Enemy21setDeathInfo_SpinFumiEP5Actor = 0x0232CC98;
-    _ZN5Enemy23vsPlayerHitCheck_NormalEP19ActorCollisionCheckS1_ = 0x023299F4;
+    // __LSG__typeInfo__L0__getRuntimeTypeInfoStatic__5EnemySFv = 0x101E9EEC;
     _ZN5Enemy9sTypeInfoE = 0x101E9EF0;
-    _ZN5Enemy10preExecuteEv = 0x02328644;
-    _ZN5Enemy13blockHitInit_Ev = 0x02328914;
-    _ZN5EnemyC2ERK16ActorCreateParam = 0x02328494;
+    // cBaseAngleY__5Enemy = 0x10200DD8;
+    // StateID_DieFumi__5Enemy = 0x10200FB0;
+    // StateID_DieFall__5Enemy = 0x10200FD4;
+    // StateID_DieYoshiFumi__5Enemy = 0x10200FF8;
+    // StateID_DieSmoke__5Enemy = 0x1020101C;
+    // StateID_DieOther__5Enemy = 0x10201064;
+    // StateID_EatIn__5Enemy = 0x1020111C;
+    // StateID_Ice__5Enemy = 0x10201218;
 
 // FrameCtrl
     _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
@@ -314,14 +358,6 @@
 
 // MapActor
     _ZN8MapActor10cProfileIDE = 0x101ecd8c;
-
-// Model
-    _ZN5Model9createG3dERK13ModelResourceRKN4sead14SafeStringBaseIcEEiiiiiNS_12BoundingModeEPNS3_4HeapE = 0x024ee440;
-
-// ModelResource
-    _ZN13ModelResourceC1Ev = 0x024F5548;
-    _ZN13ModelResource4loadERKN4sead14SafeStringBaseIcEEPNS0_4HeapE = 0x024F5C14;
-    _ZN16ModelResourceMgr19ModelResourceHolderC1ERKN4sead14SafeStringBaseIcEEP13ModelResource = 0x024F5F88;
 
 // ModelResourceMgr
     _ZN16ModelResourceMgr9sInstanceE = 0x101d2d50;
