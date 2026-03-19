@@ -612,7 +612,6 @@ static inline void drawBgCollision(const BgCollision& bg_collision, const agl::l
 static inline void drawBgUnitCollision(const agl::lyr::RenderInfo& render_info)
 {
     BgScrollMgr& bg_scroll_mgr = *BgScrollMgr::instance();
-    Bg& bg = *Bg::instance();
     UnitBgCollisionHolder& bg_collision_holder = *UnitBgCollisionHolder::instance();
 
     const s32 unit_size = 16;
