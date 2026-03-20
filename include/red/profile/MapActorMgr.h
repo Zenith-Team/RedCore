@@ -20,7 +20,7 @@ public:
     ~MapActorMgr();
 
     void init(sead::Heap* heap);
-    s32 mapToProf(s16 mapActor);
+    s32 mapToProf(u16 mapActor);
 
 private:
     sead::Buffer<s32> mProfileID;

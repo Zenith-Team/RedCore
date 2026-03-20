@@ -68,7 +68,7 @@ void MapActorMgr::init(sead::Heap* heap)
 
     // red::print("entryNum: %u\n", entryNum);
 
-    mProfileID.allocBuffer(entryNum);
+    mProfileID.allocBuffer(static_cast<s32>(entryNum));
     for (u32 i = 0; i < entryNum; i++)
     {
         u32 strOffset = read<u32>(data);
@@ -89,9 +89,9 @@ void MapActorMgr::init(sead::Heap* heap)
     }
 }
 
-s32 MapActorMgr::mapToProf(s16 mapActor)
+s32 MapActorMgr::mapToProf(u16 mapActor)
 {
-    if (mapActor < 0) [[unlikely]]
+    if (mapActor == 0xFFFF) [[unlikely]]
     {
         tk::print("ERROR: Requested mapActor -1\n");
         return -1;
@@ -125,7 +125,7 @@ s32 MapActorMgr::mapToProf(s16 mapActor)
     return mProfileID[mapActor];
 }
 
-// s32* MapActorMgr::mapToProf(s16 mapActor)
+// s32* MapActorMgr::mapToProf(u16 mapActor)
 // {
 //     if (mapActor < cMapActorNum)
 //     {
@@ -196,12 +196,12 @@ tPatch16(0x0200844E, 0xFFFF);
 
 tPatch32(0x02004950, 0x38600000); // TODO: REMOVE TEMP (li r3, 0)
 
-extern "C" s32 red_MapToProf(s16 mapActor)
+extern "C" s32 red_MapToProf(u16 mapActor)
 {
     return red::MapActorMgr::instance()->mapToProf(mapActor);
 }
 
-// extern "C" s32* red_MapToProf(s16 mapActor)
+// extern "C" s32* red_MapToProf(u16 mapActor)
 // {
 //     return red::MapActorMgr::instance()->mapToProf(mapActor);
 // }

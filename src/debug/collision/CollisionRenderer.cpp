@@ -312,8 +312,8 @@ static inline void drawBgCollision_Circle(const ActorCircleBgCollision& bg_colli
     const sead::Vector2f center(bg_collision.getCenterPosX(), bg_collision.getCenterPosY());
     const f32 z = bg_collision.getFollowArg().position->z;
     const f32 radius = bg_collision.getRadius();
-    const u32 arc_start = bg_collision.getArcStart();
-    const u32 arc_end = bg_collision.getArcEnd();
+    const u32 arc_start = static_cast<u32>(bg_collision.getArcStart());
+    const u32 arc_end = static_cast<u32>(bg_collision.getArcEnd());
 
     drawArc(center, z, radius, arc_start, arc_end, color, 1.0f);
 }
@@ -322,7 +322,7 @@ static inline void drawBgCollision_Ellipse(const ActorEllipseBgCollision& bg_col
     const sead::Vector2f center(bg_collision.getCenterPosX(), bg_collision.getCenterPosY());
     const f32 z = bg_collision.getFollowArg().position->z;
     const sead::Vector2f& radii = bg_collision.getHalfSize();
-    const u32 angle = bg_collision.getAngle();
+    const u32 angle = static_cast<u32>(bg_collision.getAngle());
 
     drawEllipse(center, z, radii.x, radii.y, angle, color, 1.0f);
 }
@@ -483,7 +483,7 @@ static inline void drawBgUnitCollision(const agl::lyr::RenderInfo& render_info) 
 
     const s32 unit_size = 16;
     const s32 delta = unit_size - 1;
-    const u32 mask = ~delta;
+    const s32 mask = ~delta;
 
     const s32 left = s32(std::floor(bg_scroll_mgr.getScreenLeft())) & mask;
     const s32 right = (s32(std::ceil(bg_scroll_mgr.getScreenRight())) + delta) & mask;
