@@ -341,7 +341,7 @@
     // StateID_DieSmoke__5Enemy = 0x1020101C;
     _ZN5Enemy16StateID_DieOtherE = 0x10201064;
     // StateID_EatIn__5Enemy = 0x1020111C;
-    // StateID_Ice__5Enemy = 0x10201218;
+    _ZN5Enemy11StateID_IceE = 0x10201218;
 
 // FrameCtrl
     _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
@@ -353,6 +353,8 @@
     _ZN15JointBlendModel6setAnmERKN4sead14SafeStringBaseIcEEfN9FrameCtrl8PlayModeEff = 0x024DFFB4;
     _ZN15JointBlendModelC1EP5Modeliiiii = 0x024DFBF0;
     _ZN15JointBlendModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x024DFC78;
+    _ZN15JointBlendModel16playAnmFrameCtrlEv = 0x024DFC7C;
+    _ZN15JointBlendModel9calcBlendEv = 0x024DFC80;
 
 // LoopRideLineBgCollision
     _ZN23LoopRideLineBgCollision9sTypeInfoE = 0x101E9FB4;
@@ -389,6 +391,7 @@
 
 // StateMethod
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
+    _ZNK11StateMethod10getStateIDEv = 0x029C4B88;
 
 // UnitBgCollisionHolder
     _ZN21UnitBgCollisionHolder13setFromBgUnitERKN4sead7Vector2IfEEhRKNS0_7BitFlagIhEE = 0x021B1094;
