@@ -1,100 +1,100 @@
 @addresses_from "00050000-10101D00"
 
 // C
-    ceilf = 0x2afdaf8;
-    floorf = 0x2afda5c;
-    sinf = 0x02afdd40;
-    cosf = 0x02afe528;
-    asinf = 0x02afe868;
+    ceilf = 0x02AFDAF8;
+    floorf = 0x02AFDA5C;
+    sinf = 0x02AFDD40;
+    cosf = 0x02AFE528;
+    asinf = 0x02AFE868;
 
 // C++
-    _ZdaPv = 0x29f17d0;
+    _ZdaPv = 0x029F17D0;
     _ZdlPv = 0x029F1748;
     _Znam = 0x029F1630;
-    _Znwm = 0x29F1594;
+    _Znwm = 0x029F1594;
     _ZdlPvm = _ZdlPv;
-    _ZnwmPN4sead4HeapEi = 0x029f1858;
-    _ZnamPN4sead4HeapEi = 0x029f18dc;
+    _ZnwmPN4sead4HeapEi = 0x029F1858;
+    _ZnamPN4sead4HeapEi = 0x029F18DC;
 
 // Cafe
-    ASM_MTXConcat = 0x2af98a0;
-    ASM_VECMag = 0x2af96c4;
-    ASM_MTXScale = 0x2af9b64;
-    ASM_VECCrossProduct = 0x2af9660;
+    ASM_MTXConcat = 0x02AF98A0;
+    ASM_VECMag = 0x02AF96C4;
+    ASM_MTXScale = 0x02AF9B64;
+    ASM_VECCrossProduct = 0x02AF9660;
 
 // GHS
-    __deleted_virtual_called = 0x2afa5e8;
-    __pure_virtual_called = 0x2afa554;
+    __deleted_virtual_called = 0x02AFA5E8;
+    __pure_virtual_called = 0x02AFA554;
 
 // sead::BufferedSafeStringBase<char>
-    _ZN4sead22BufferedSafeStringBaseIcE6formatEPKcz = 0x2a0f1e4;
+    _ZN4sead22BufferedSafeStringBaseIcE6formatEPKcz = 0x02A0F1E4;
 
 // sead::Color4f
-    _ZN4sead7Color4f5cBlueE = 0x105ea0d0;
-    _ZN4sead7Color4f8cMagentaE = 0x105ea0f0;
-    _ZN4sead7Color4f6cGreenE = 0x105ea0c0;
-    _ZN4sead7Color4f5cGrayE = 0x105ea090;
-    _ZN4sead7Color4f6cBlackE = 0x105ea080;
-    _ZN4sead7Color4f4cRedE = 0x105ea0b0;
-    _ZN4sead7Color4f6cWhiteE = 0x105ea0a0;
+    _ZN4sead7Color4f5cBlueE = 0x105EA0D0;
+    _ZN4sead7Color4f8cMagentaE = 0x105EA0F0;
+    _ZN4sead7Color4f6cGreenE = 0x105EA0C0;
+    _ZN4sead7Color4f5cGrayE = 0x105EA090;
+    _ZN4sead7Color4f6cBlackE = 0x105EA080;
+    _ZN4sead7Color4f4cRedE = 0x105EA0B0;
+    _ZN4sead7Color4f6cWhiteE = 0x105EA0A0;
 
 // sead::GlobalRandom
-    _ZN4sead12GlobalRandom9sInstanceE = 0x101e806c;
+    _ZN4sead12GlobalRandom9sInstanceE = 0x101A806C;
 
 // sead::Graphics
-    _ZN4sead8Graphics9sInstanceE = 0x101e8000;
+    _ZN4sead8Graphics9sInstanceE = 0x101E8000;
 
 // sead::GraphicsContext
-    _ZNK4sead15GraphicsContext5applyEv = 0x2a07cb0;
-    _ZN4sead15GraphicsContextC1Ev = 0x2a07bbc;
+    _ZNK4sead15GraphicsContext5applyEv = 0x02A07CB0;
+    _ZN4sead15GraphicsContextC1Ev = 0x02A07BBC;
 
 // sead::HeapMgr
     _ZN4sead7HeapMgr12sInstancePtrE = 0x101E8040;
-    _ZN4sead7HeapMgr15setCurrentHeap_EPNS_4HeapE = 0x2A0D584;
-    _ZNK4sead7HeapMgr14getCurrentHeapEv = 0x2a0d554;
-    _ZNK4sead7HeapMgr15findContainHeapEPKv = 0x02a0d45c;
+    _ZN4sead7HeapMgr15setCurrentHeap_EPNS_4HeapE = 0x02A0D584;
+    _ZNK4sead7HeapMgr14getCurrentHeapEv = 0x02A0D554;
+    _ZNK4sead7HeapMgr15findContainHeapEPKv = 0x02A0D45C;
 
 // sead::IDisposer
-    _ZN4sead9IDisposerC2Ev = 0x02a0a2fc;
-    _ZN4sead9IDisposerD1Ev = 0x02a0a384;
+    _ZN4sead9IDisposerC2Ev = 0x02A0A2FC;
+    _ZN4sead9IDisposerD1Ev = 0x02A0A384;
 
 // sead::MathCalcCommon<float>
-    _ZN4sead14MathCalcCommonIfE8atanIdx_Ef = 0x2a0e124;
+    _ZN4sead14MathCalcCommonIfE8atanIdx_Ef = 0x02A0E124;
     _ZN4sead14MathCalcCommonIfE10cSinCosTblE = 0x10191538;
 
 // sead::MathCalcCommon<int>
-    _ZN4sead14MathCalcCommonIjE5chaseEPjjj = 0x29E0DE8;
+    _ZN4sead14MathCalcCommonIjE5chaseEPjjj = 0x029E0DE8;
 
 // sead::PrimitiveRenderer
-    _ZN4sead17PrimitiveRenderer3endEv = 0x2a0841c;
-    _ZN4sead17PrimitiveRenderer5beginEv = 0x2a08408;
-    _ZN4sead17PrimitiveRenderer13setProjectionERKNS_10ProjectionE = 0x2a083e4;
-    _ZN4sead17PrimitiveRenderer9setCameraERKNS_6CameraE = 0x2a083d0;
-    _ZN4sead17PrimitiveRenderer9sInstanceE = 0x101e8010;
+    _ZN4sead17PrimitiveRenderer3endEv = 0x02A0841C;
+    _ZN4sead17PrimitiveRenderer5beginEv = 0x02A08408;
+    _ZN4sead17PrimitiveRenderer13setProjectionERKNS_10ProjectionE = 0x02A083E4;
+    _ZN4sead17PrimitiveRenderer9setCameraERKNS_6CameraE = 0x02A083D0;
+    _ZN4sead17PrimitiveRenderer9sInstanceE = 0x101E8010;
 
 // sead::PrimitiveRenderer::QuadArg
-    _ZN4sead17PrimitiveRenderer7QuadArg8setColorERKNS_7Color4fES4_ = 0x2a08628;
+    _ZN4sead17PrimitiveRenderer7QuadArg8setColorERKNS_7Color4fES4_ = 0x02A08628;
 
 // sead::Quat<float>
-    _ZN4sead4QuatIfE4unitE = 0x105ea598;
+    _ZN4sead4QuatIfE4unitE = 0x105EA598;
 
 // sead::Random
-    _ZN4sead6Random6getU32Ev = 0x02a13780;
+    _ZN4sead6Random6getU32Ev = 0x02A13780;
 
 // sead::SafeStringBase<char>
     _ZN4sead14SafeStringBaseIcE9cNullCharE = 0x10000044;
 
 // sead::Vector3<float>
-    _ZN4sead7Vector3IfE4onesE = 0x105ea790;
-    _ZN4sead7Vector3IfE4zeroE = 0x105ea760;
+    _ZN4sead7Vector3IfE4onesE = 0x105EA790;
+    _ZN4sead7Vector3IfE4zeroE = 0x105EA760;
 
 // sead::Vector4<float>
-    _ZN4sead7Vector4IfE4zeroE = 0x105ea79c;
+    _ZN4sead7Vector4IfE4zeroE = 0x105EA79C;
 
 // sead::Viewport
-    _ZNK4sead8Viewport20getOnFrameBufferSizeEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x2a077b0;
-    _ZNK4sead8Viewport19getOnFrameBufferPosEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x2a07570;
-    _ZN4sead8ViewportC1Effff = 0x2a072fc;
+    _ZNK4sead8Viewport20getOnFrameBufferSizeEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x02A077B0;
+    _ZNK4sead8Viewport19getOnFrameBufferPosEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x02A07570;
+    _ZN4sead8ViewportC1Effff = 0x02A072FC;
 
 // Actor
     _ZN5Actor20removeCollisionCheckEv = 0x020002CC;
@@ -202,9 +202,9 @@
     // playAnmFrameCtrl__9AnimModelFv = 0x024D4D20;
     // calcMdl__9AnimModelFv = 0x024D4E84;
 
-    // _ZN9AnimModelC1EP5Modeljjjjj = 0x24d4798;
-    // _ZN9AnimModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x24d49a0;
-    // _ZN9AnimModel7calcMdlEv = 0x24d4e84;
+    // _ZN9AnimModelC1EP5Modeljjjjj = 0x024D4798;
+    // _ZN9AnimModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x024D49A0;
+    // _ZN9AnimModel7calcMdlEv = 0x024D4E84;
 
 // AreaTask
     _ZN8AreaTask11drawLayer3DERKN3agl3lyr10RenderInfoE = 0x024B84A8;
@@ -213,7 +213,7 @@
     _ZN24BasicRideLineBgCollision9sTypeInfoE = 0x101E9FA8;
 
 // BgScrollMgr
-    _ZN11BgScrollMgr9sInstanceE = 0x101e7c54;
+    _ZN11BgScrollMgr9sInstanceE = 0x101E7C54;
 
 // Enemy
     _ZN5EnemyC2ERK16ActorCreateParam = 0x02328494;
@@ -378,14 +378,14 @@
     _ZN23LoopRideLineBgCollision9sTypeInfoE = 0x101E9FB4;
 
 // MapActor
-    _ZN8MapActor10cProfileIDE = 0x101ecd8c;
+    _ZN8MapActor10cProfileIDE = 0x101ECD8C;
 
 // ModelResourceMgr
-    _ZN16ModelResourceMgr9sInstanceE = 0x101d2d50;
+    _ZN16ModelResourceMgr9sInstanceE = 0x101D2D50;
     _ZNK16ModelResourceMgr11getResourceERKN4sead14SafeStringBaseIcEE = 0x024F60EC;
 
 // ModelUtil
-    _ZN9ModelUtil9createG3dERK13ModelResourceRKN4sead14SafeStringBaseIcEEiiiiiN5Model12BoundingModeEPNS3_4HeapE = 0x024ee440;
+    _ZN9ModelUtil9createG3dERK13ModelResourceRKN4sead14SafeStringBaseIcEEiiiiiN5Model12BoundingModeEPNS3_4HeapE = 0x024EE440;
 
 // PoleRopeBgCollision
     _ZN19PoleRopeBgCollision9sTypeInfoE = 0x101EA384;
@@ -396,16 +396,16 @@
 // ProfileInfo
     _ZN11ProfileInfo13cDrawPriorityE = 0x10001940;
     _ZN11ProfileInfo8cResTypeE = 0x10002064;
-    _ZN11ProfileInfo7cResNumE = 0x100023f8;
-    _ZN11ProfileInfo8cResListE = 0x101c321c;
+    _ZN11ProfileInfo7cResNumE = 0x100023F8;
+    _ZN11ProfileInfo8cResListE = 0x101C321C;
 
 // Renderer
-    _ZN8Renderer9sInstanceE = 0x101d2d88;
+    _ZN8Renderer9sInstanceE = 0x101D2D88;
     _ZN8Renderer9drawModelEPK9AnimModel = 0x024FAC98;
 
 // ResMgr
     _ZN6ResMgr9sInstanceE = 0x101E7D94;
-    _ZNK6ResMgr27getFileFromCourseArchiveResERKN4sead14SafeStringBaseIcEEPj = 0x29d33ec;
+    _ZNK6ResMgr27getFileFromCourseArchiveResERKN4sead14SafeStringBaseIcEEPj = 0x029D33EC;
 
 // StateMethod
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
