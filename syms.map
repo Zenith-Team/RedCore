@@ -184,6 +184,9 @@
 // ActorMultiState
     _ZN15ActorMultiState9sTypeInfoE = 0x101E9CE8;
 
+// Angle
+    _ZN5Angle9chaseRestERKS_S1_ = 0x029E117C;
+
 // AnimModel
     // __ct__9AnimModelFP5ModelUiN42 = 0x024D4798;
     // __CPR91__init__9AnimModelFP13ModelResourcePCQ2_4sead32PtrArray__tm__16_J18JPQ2_J38J4Heap = 0x024D49A0;
