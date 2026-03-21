@@ -1,30 +1,38 @@
 @addresses_from "00050000-10101D00"
 
 // C
-    ceilf = 0x02AFDAF8;
+    qsort = 0x02AFD2A4;
+    fmodf = 0x02AFD97C;
     floorf = 0x02AFDA5C;
+    ceilf = 0x02AFDAF8;
+    sqrtf = 0x02AFDCCC;
     sinf = 0x02AFDD40;
+    powf = 0x02AFDEA8;
+    logf = 0x02AFE104;
     cosf = 0x02AFE528;
+    atan2f = 0x02AFE670;
     asinf = 0x02AFE868;
+    acosf = 0x02AFE8F4;
 
 // C++
-    _ZdaPv = 0x029F17D0;
-    _ZdlPv = 0x029F1748;
-    _Znam = 0x029F1630;
     _Znwm = 0x029F1594;
-    _ZdlPvm = _ZdlPv;
+    _Znam = 0x029F1630;
+    _ZdlPv = 0x029F1748;
+    _ZdaPv = 0x029F17D0;
+    // _ZdlPvm = _ZdlPv;
     _ZnwmPN4sead4HeapEi = 0x029F1858;
     _ZnamPN4sead4HeapEi = 0x029F18DC;
 
 // Cafe
-    ASM_MTXConcat = 0x02AF98A0;
-    ASM_VECMag = 0x02AF96C4;
-    ASM_MTXScale = 0x02AF9B64;
     ASM_VECCrossProduct = 0x02AF9660;
+    ASM_VECMag = 0x02AF96C4;
+    ASM_MTXConcat = 0x02AF98A0;
+    ASM_MTXTrans = 0x02AF9AD4;
+    ASM_MTXScale = 0x02AF9B64;
 
 // GHS
-    __deleted_virtual_called = 0x02AFA5E8;
     __pure_virtual_called = 0x02AFA554;
+    __deleted_virtual_called = 0x02AFA5E8;
 
 // sead::BufferedSafeStringBase<char>
     _ZN4sead22BufferedSafeStringBaseIcE6formatEPKcz = 0x02A0F1E4;
