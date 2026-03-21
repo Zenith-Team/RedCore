@@ -51,52 +51,54 @@
     _ZN4sead22BufferedSafeStringBaseIcE6formatEPKcz = 0x02A0F1E4;
 
 // sead::Color4f
-    _ZN4sead7Color4f5cBlueE = 0x105EA0D0;
-    _ZN4sead7Color4f8cMagentaE = 0x105EA0F0;
-    _ZN4sead7Color4f6cGreenE = 0x105EA0C0;
-    _ZN4sead7Color4f5cGrayE = 0x105EA090;
     _ZN4sead7Color4f6cBlackE = 0x105EA080;
-    _ZN4sead7Color4f4cRedE = 0x105EA0B0;
+    _ZN4sead7Color4f5cGrayE = 0x105EA090;
     _ZN4sead7Color4f6cWhiteE = 0x105EA0A0;
+    _ZN4sead7Color4f4cRedE = 0x105EA0B0;
+    _ZN4sead7Color4f6cGreenE = 0x105EA0C0;
+    _ZN4sead7Color4f5cBlueE = 0x105EA0D0;
+    _ZN4sead7Color4f8cYellowE = 0x105EA0E0;
+    _ZN4sead7Color4f8cMagentaE = 0x105EA0F0;
+    _ZN4sead7Color4f8cCyanE = 0x105EA100;
+
+// sead::FrameBuffer
+    _ZNK4sead11FrameBuffer4bindEv = 0x02A058F0;
 
 // sead::GlobalRandom
-    _ZN4sead12GlobalRandom9sInstanceE = 0x101A806C;
+    _ZN4sead12GlobalRandom9sInstanceE = 0x101E806C;
 
 // sead::Graphics
     _ZN4sead8Graphics9sInstanceE = 0x101E8000;
 
 // sead::GraphicsContext
-    _ZNK4sead15GraphicsContext5applyEv = 0x02A07CB0;
     _ZN4sead15GraphicsContextC1Ev = 0x02A07BBC;
+    _ZNK4sead15GraphicsContext5applyEv = 0x02A07CB0;
 
 // sead::HeapMgr
-    _ZN4sead7HeapMgr12sInstancePtrE = 0x101E8040;
-    _ZN4sead7HeapMgr15setCurrentHeap_EPNS_4HeapE = 0x02A0D584;
-    _ZNK4sead7HeapMgr14getCurrentHeapEv = 0x02A0D554;
     _ZNK4sead7HeapMgr15findContainHeapEPKv = 0x02A0D45C;
+    _ZNK4sead7HeapMgr14getCurrentHeapEv = 0x02A0D554;
+    _ZN4sead7HeapMgr15setCurrentHeap_EPNS_4HeapE = 0x02A0D584;
+    _ZN4sead7HeapMgr12sInstancePtrE = 0x101E8040;
 
 // sead::IDisposer
     _ZN4sead9IDisposerC2Ev = 0x02A0A2FC;
     _ZN4sead9IDisposerD1Ev = 0x02A0A384;
 
-// sead::MathCalcCommon<float>
+// sead::MathCalcCommon<f32>
     _ZN4sead14MathCalcCommonIfE8atanIdx_Ef = 0x02A0E124;
     _ZN4sead14MathCalcCommonIfE10cSinCosTblE = 0x10191538;
 
-// sead::MathCalcCommon<int>
-    _ZN4sead14MathCalcCommonIjE5chaseEPjjj = 0x029E0DE8;
-
 // sead::PrimitiveRenderer
-    _ZN4sead17PrimitiveRenderer3endEv = 0x02A0841C;
-    _ZN4sead17PrimitiveRenderer5beginEv = 0x02A08408;
-    _ZN4sead17PrimitiveRenderer13setProjectionERKNS_10ProjectionE = 0x02A083E4;
     _ZN4sead17PrimitiveRenderer9setCameraERKNS_6CameraE = 0x02A083D0;
+    _ZN4sead17PrimitiveRenderer13setProjectionERKNS_10ProjectionE = 0x02A083E4;
+    _ZN4sead17PrimitiveRenderer5beginEv = 0x02A08408;
+    _ZN4sead17PrimitiveRenderer3endEv = 0x02A0841C;
     _ZN4sead17PrimitiveRenderer9sInstanceE = 0x101E8010;
 
 // sead::PrimitiveRenderer::QuadArg
     _ZN4sead17PrimitiveRenderer7QuadArg8setColorERKNS_7Color4fES4_ = 0x02A08628;
 
-// sead::Quat<float>
+// sead::Quat<f32>
     _ZN4sead4QuatIfE4unitE = 0x105EA598;
 
 // sead::Random
@@ -105,17 +107,19 @@
 // sead::SafeStringBase<char>
     _ZN4sead14SafeStringBaseIcE9cNullCharE = 0x10000044;
 
-// sead::Vector3<float>
-    _ZN4sead7Vector3IfE4onesE = 0x105EA790;
+// sead::Vector3<f32>
     _ZN4sead7Vector3IfE4zeroE = 0x105EA760;
+    _ZN4sead7Vector3IfE4onesE = 0x105EA790;
 
-// sead::Vector4<float>
+// sead::Vector4<f32>
     _ZN4sead7Vector4IfE4zeroE = 0x105EA79C;
 
 // sead::Viewport
-    _ZNK4sead8Viewport20getOnFrameBufferSizeEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x02A077B0;
-    _ZNK4sead8Viewport19getOnFrameBufferPosEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x02A07570;
     _ZN4sead8ViewportC1Effff = 0x02A072FC;
+    _ZN4sead8ViewportC1ERKNS_18LogicalFrameBufferE = 0x02A074C8;
+    _ZNK4sead8Viewport19getOnFrameBufferPosEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x02A07570;
+    _ZNK4sead8Viewport20getOnFrameBufferSizeEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x02A077B0;
+    _ZNK4sead8Viewport5applyERKNS_18LogicalFrameBufferE = 0x02A0783C;
 
 // agl::lyr::Renderer
     _ZN3agl3lyr8Renderer9sInstanceE = 0x101E8A2C;
