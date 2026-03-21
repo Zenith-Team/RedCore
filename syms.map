@@ -351,6 +351,7 @@
 
 // IceMgr
     _ZN6IceMgrD1Ev = 0x0237CD54;
+    _ZN6IceMgr9createIceEP7IceInfoi = 0x0237D63C;
 
 // JointBlendModel
     _ZN15JointBlendModel6setAnmERKN4sead14SafeStringBaseIcEEfN9FrameCtrl8PlayModeEff = 0x024DFFB4;
@@ -358,6 +359,7 @@
     _ZN15JointBlendModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x024DFC78;
     _ZN15JointBlendModel16playAnmFrameCtrlEv = 0x024DFC7C;
     _ZN15JointBlendModel9calcBlendEv = 0x024DFC80;
+    _ZN15JointBlendModel7calcMdlEv = 0x024DFD04;
 
 // LoopRideLineBgCollision
     _ZN23LoopRideLineBgCollision9sTypeInfoE = 0x101E9FB4;
