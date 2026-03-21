@@ -117,6 +117,9 @@
     _ZNK4sead8Viewport19getOnFrameBufferPosEPNS_7Vector2IfEERKNS_18LogicalFrameBufferE = 0x02A07570;
     _ZN4sead8ViewportC1Effff = 0x02A072FC;
 
+// agl::lyr::Renderer
+    _ZN3agl3lyr8Renderer9sInstanceE = 0x101E8A2C;
+
 // Actor
     _ZN5Actor20removeCollisionCheckEv = 0x020002CC;
     _ZN5Actor20reviveCollisionCheckEv = 0x02000328;
