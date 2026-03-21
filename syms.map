@@ -345,6 +345,10 @@
     _ZN5Enemy16StateID_DieOtherE = 0x10201064;
     // StateID_EatIn__5Enemy = 0x1020111C;
     _ZN5Enemy11StateID_IceE = 0x10201218;
+    _ZN5Enemy22setDeathInfo_YoshiFumiEP5Actor = 0x0232D31C;
+
+// EnemyEatData
+    _ZN12EnemyEatDataC1E13ActorUniqueID = 0x0232F00C;
 
 // FrameCtrl
     _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
