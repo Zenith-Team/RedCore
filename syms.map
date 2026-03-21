@@ -30,6 +30,19 @@
     ASM_MTXTrans = 0x02AF9AD4;
     ASM_MTXScale = 0x02AF9B64;
 
+// GFD
+    _GFDCheckHeaderVersions = 0x02AF8A18;
+    _GFDCheckBlockHeaderMagicVersions = 0x02AF8ABC;
+    GFDGetVertexShaderCount = 0x02AF8C04;
+    GFDGetPixelShaderCount = 0x02AF8C10;
+    GFDGetVertexShaderHeaderSize = 0x02AF8D00;
+    GFDGetPixelShaderHeaderSize = 0x02AF8D10;
+    GFDGetVertexShaderProgramSize = 0x02AF8D30;
+    GFDGetPixelShaderProgramSize = 0x02AF8D40;
+    _GFDRelocateBlock = 0x02AF8E04;
+    GFDGetVertexShader = 0x02AF8E3C;
+    GFDGetPixelShader = 0x02AF8FC0;
+
 // GHS
     __pure_virtual_called = 0x02AFA554;
     __deleted_virtual_called = 0x02AFA5E8;
