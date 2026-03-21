@@ -1,6 +1,9 @@
 @addresses_from "00050000-10101D00"
 
 // C
+    vsnprintf = 0x02AFB954;
+    snprintf = 0x02AFB9B4;
+    sscanf = 0x02AFCD14;
     qsort = 0x02AFD2A4;
     fmodf = 0x02AFD97C;
     floorf = 0x02AFDA5C;
