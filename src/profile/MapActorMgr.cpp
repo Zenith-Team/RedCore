@@ -182,19 +182,19 @@ tBranchEx(0x024BDF5C, "red_CreateMapActorMgrHook", tk::BranchType::bl); // Cours
 // Increase all instances of the cMapActorNum MapActor::cProfileID limit to 0xFFFF
 // TODO: Only keep the ones that are needed, else it may crash trying to use out of bounds sprite id to perform array lookup
 // ActorCreateMgr::getNumCoinSpritesInLocation
-tPatch16(0x0200457A, 0xFFFF);
+tPatch16u(0x0200457A, 0xFFFF);
 // ActorCreateMgr::spawnSprites
-tPatch16(0x0200501A, 0xFFFF);
+tPatch16u(0x0200501A, 0xFFFF);
 // ActorCreateMgr::update
-tPatch16(0x02007C62, 0xFFFF);
+tPatch16u(0x02007C62, 0xFFFF);
 // ActorCreateMgr::FUN_2007FC0
-tPatch16(0x0200806E, 0xFFFF);
+tPatch16u(0x0200806E, 0xFFFF);
 // ActorCreateMgr::FUN_20081B8
-tPatch16(0x02008262, 0xFFFF);
+tPatch16u(0x02008262, 0xFFFF);
 // ActorCreateMgr::FUN_20083A0
-tPatch16(0x0200844E, 0xFFFF);
+tPatch16u(0x0200844E, 0xFFFF);
 
-tPatch32(0x02004950, 0x38600000); // TODO: REMOVE TEMP (li r3, 0)
+tPatch32u(0x02004950, 0x38600000); // TODO: REMOVE TEMP (li r3, 0)
 
 extern "C" s32 red_MapToProf(u16 mapActor)
 {
@@ -225,7 +225,7 @@ extern "C" s32 red_MapToProfR9R3Hook() tAssembly
 tBranchEx(0x02004584, "red_MapToProfR9R3Hook", tk::BranchType::bl);
 
 tBranchEx(0x020045B0, "red_MapToProfR9R3Hook", tk::BranchType::bl);
-tPatch32(0x020045B4, 0x7C661B78); // mr r6, r3
+tPatch32u(0x020045B4, 0x7C661B78); // mr r6, r3
 
 extern "C" s32 red_MapToProfR6R3Hook() tAssembly
 (
@@ -254,7 +254,7 @@ tBranchEx(0x02007C6C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
 tBranchEx(0x02008078, "red_MapToProfR0R3Hook", tk::BranchType::bl);
 
 tBranchEx(0x020080A4, "red_MapToProfR0R3Hook", tk::BranchType::bl);
-tPatch32(0x020080A8, 0x7C661B78); // mr r6, r3
+tPatch32u(0x020080A8, 0x7C661B78); // mr r6, r3
 
 tBranchEx(0x0200826C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
 
@@ -264,12 +264,12 @@ extern "C" s32 red_MapToProfR8R3Hook() tAssembly
     b red_MapToProfGeneric;
 )
 tBranchEx(0x0200828C, "red_MapToProfR8R3Hook", tk::BranchType::bl);
-tPatch32(0x02008290, 0x7C601B78); // mr r0, r3
+tPatch32u(0x02008290, 0x7C601B78); // mr r0, r3
 
 tBranchEx(0x02008458, "red_MapToProfR0R3Hook", tk::BranchType::bl);
 
 tBranchEx(0x0200869C, "red_MapToProfR8R3Hook", tk::BranchType::bl);
-tPatch32(0x020086A0, 0x7C691B78); // mr r9, r3
+tPatch32u(0x020086A0, 0x7C691B78); // mr r9, r3
 
 tBranchEx(0x0200A82C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
-tPatch32(0x0200A830, 0x7C7D1B78); // mr r29, r3
+tPatch32u(0x0200A830, 0x7C7D1B78); // mr r29, r3
