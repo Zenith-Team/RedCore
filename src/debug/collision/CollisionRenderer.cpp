@@ -4,6 +4,8 @@
 #define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
 
+#include <red/event/RenderStepEvent.h>
+
 #include <actor/Actor.h>
 #include <actor/ActorMgr.h>
 #include <collision/ActorBgCollisionCheck.h>
@@ -17,6 +19,7 @@
 #include <collision/LoopRideLineBgCollision.h>
 #include <collision/PoleRopeBgCollision.h>
 #include <collision/UnitBgCollisionHolder.h>
+#include <game/AreaLayerMgr.h>
 #include <game/AreaTask.h>
 #include <gfx/seadGraphicsContext.h>
 #include <gfx/seadPrimitiveRenderer.h>
@@ -549,9 +552,6 @@ static inline void drawActorBgCollisionCheck(const ActorBgCollisionCheck& bc) {
 namespace red {
 
 void renderCollisions(const agl::lyr::RenderInfo& render_info) {
-    if (render_info.getRenderStep() != RenderObjLayer::cRenderStep_PostFx)
-        return;
-
     sead::GraphicsContext context;
     // context.setDepthEnable(true, true);                         // Automatically set by ctor
     // context.setDepthFunc(sead::Graphics::cDepthFunc_LessEqual); // ^^
@@ -632,18 +632,19 @@ void renderCollisions(const agl::lyr::RenderInfo& render_info) {
     sead::PrimitiveRenderer::instance()->end();
 }
 
-// TODO: Make this an event+callback
-void debugDraw(AreaTask* at, const agl::lyr::RenderInfo& render_info) {
-    at->drawLayer3D(render_info);
-    renderCollisions(render_info);
+Listener<RenderStepEvent> AreaTaskDebugDraw(EventStage::BeforePost, [](RenderStepEvent& e) {
+    if (!AreaTask::instance())
+        return;
+    
+    if (!e.filterLayer(AreaLayerMgr::cLayer_3D, AreaLayerMgr::cLayer_3D_DRC))
+        return;
+    
+    if (!e.filterRenderStep(RenderObjLayer::cRenderStep_PostFx))
+        return;
+    
+    red::renderCollisions(e.getRenderInfo());
+    
+    return;
+});
+
 }
-
-void areaTaskSetDrawDebug() tAssembly(
-    lis r9, _ZN3red9debugDrawEP8AreaTaskRKN3agl3lyr10RenderInfoE@ha;
-    addi r9, r9, _ZN3red9debugDrawEP8AreaTaskRKN3agl3lyr10RenderInfoE@l;
-    blr;
-)
-
-}
-
-tBranch(0x024B65E0, red::areaTaskSetDrawDebug, tk::BranchType::bl);
