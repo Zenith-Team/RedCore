@@ -87,6 +87,13 @@
     _ZN4sead9IDisposerC2Ev = 0x02A0A2FC;
     _ZN4sead9IDisposerD1Ev = 0x02A0A384;
 
+// sead::ListImpl
+    _ZN4sead8ListImpl4sortEiPFiPKvS2_E = 0x029F1BC4;
+
+// sead::ListNode
+    _ZN4sead8ListNode12insertFront_EPS0_ = 0x029F1A50;
+    _ZN4sead8ListNode6erase_Ev = 0x029F1A70;
+
 // sead::MathCalcCommon<f32>
     _ZN4sead14MathCalcCommonIfE8atanIdx_Ef = 0x02A0E124;
     _ZN4sead14MathCalcCommonIfE10cSinCosTblE = 0x10191538;
@@ -238,6 +245,7 @@
 
 // AreaTask
     _ZN8AreaTask11drawLayer3DERKN3agl3lyr10RenderInfoE = 0x024B84A8;
+    _ZN8AreaTask9sInstanceE = 0x101D1598;
 
 // BasicRideLineBgCollision
     _ZN24BasicRideLineBgCollision9sTypeInfoE = 0x101E9FA8;
