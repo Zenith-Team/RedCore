@@ -12,11 +12,7 @@
 
 namespace red {
     
-    class RenderStepEvent : public EventBase {
-    public:
-        using Delegator = EventDelegator<RenderStepEvent>;
-        using Listener = Delegator::Listener;
-    
+    class RenderStepEvent : public EventBase<RenderStepEvent> {
     public:
         // Supported stages: Pre, AfterPre, BeforePost, Post
         static void subscribe(Listener& listener, EventStage stage);
@@ -64,9 +60,14 @@ namespace red {
         [[nodiscard]]
         static Delegator& getDelegatorPost();
         
-        // Pre:  0x02A39644, 0x02A395D0
-        // Post: 0x02A39668, 0x02A395F4
-        static void emit(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo, EventStage stage) tRegSave;
+        // 0x02A39644, 0x02A395D0
+        static void emitPre(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave;
+        // 0x02A39644, 0x02A395D0
+        static void emitAfterPre(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave;
+        // 0x02A39668, 0x02A395F4
+        static void emitBeforePost(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave;
+        // 0x02A39668, 0x02A395F4
+        static void emitPost(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave;
         
     public: //! TODO: Make private
         static void hookPre();

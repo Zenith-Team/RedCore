@@ -50,30 +50,24 @@ void red::RenderStepEvent::subscribe(Listener& listener, EventStage stage) {
     }
 }
 
-void red::RenderStepEvent::emit(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo, EventStage stage) tRegSave {
+void red::RenderStepEvent::emitPre(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave {
     RenderStepEvent event(layer, renderAsDL, renderStep, renderInfo);
-    
-    switch (stage) {
-        case EventStage::Pre: {
-            return getDelegatorPre().fire(event);
-        }
-        
-        case EventStage::AfterPre: {
-            return getDelegatorAfterPre().fire(event);
-        }
-        
-        case EventStage::BeforePost: {
-            return getDelegatorBeforePost().fire(event);
-        }
-        
-        case EventStage::Post: {
-            return getDelegatorPost().fire(event);
-        }
-        
-        default: {
-            tk::print("ERROR: Invalid event stage: %d\n", stage);
-        }
-    }
+    getDelegatorPre().fire(event);
+}
+
+void red::RenderStepEvent::emitAfterPre(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave {
+    RenderStepEvent event(layer, renderAsDL, renderStep, renderInfo);
+    getDelegatorAfterPre().fire(event);
+}
+
+void red::RenderStepEvent::emitBeforePost(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave {
+    RenderStepEvent event(layer, renderAsDL, renderStep, renderInfo);
+    getDelegatorBeforePost().fire(event);
+}
+
+void red::RenderStepEvent::emitPost(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave {
+    RenderStepEvent event(layer, renderAsDL, renderStep, renderInfo);
+    getDelegatorPost().fire(event);
 }
 
 void red::RenderStepEvent::hookPre() tAssembly(
@@ -88,10 +82,8 @@ void red::RenderStepEvent::hookPre() tAssembly(
     mr r5, r29;
     // renderinfo: sp+0x94
     addi r6, r2, 0x94;
-    // stage: pre
-    li r7, 1;
-    // emit!
-    bl _ZN3red15RenderStepEvent4emitEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoENS_10EventStageE;
+    // emit! (Pre)
+    bl _ZN3red15RenderStepEvent7emitPreEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
     
     bctrl; // replaced instruction
     
@@ -104,10 +96,8 @@ void red::RenderStepEvent::hookPre() tAssembly(
     mr r5, r29;
     // renderinfo: sp+0x94
     addi r6, r2, 0x94;
-    // stage: afterpre
-    li r7, 2;
-    // emit!
-    bl _ZN3red15RenderStepEvent4emitEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoENS_10EventStageE;
+    // emit! (AfterPre)
+    bl _ZN3red15RenderStepEvent12emitAfterPreEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
     
     tRestoreVolatileRegisters;
     blr;
@@ -127,10 +117,8 @@ void red::RenderStepEvent::hookPost() tAssembly(
     mr r5, r29;
     // renderinfo: sp+0x94
     addi r6, r2, 0x94;
-    // stage: beforepost
-    li r7, 3;
-    // emit!
-    bl _ZN3red15RenderStepEvent4emitEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoENS_10EventStageE;
+    // emit! (BeforePost)
+    bl _ZN3red15RenderStepEvent14emitBeforePostEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
     
     bctrl; // replaced instruction
     
@@ -143,10 +131,8 @@ void red::RenderStepEvent::hookPost() tAssembly(
     mr r5, r29;
     // renderinfo: sp+0x94
     addi r6, r2, 0x94;
-    // stage: post
-    li r7, 4;
-    // emit!
-    bl _ZN3red15RenderStepEvent4emitEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoENS_10EventStageE;
+    // emit! (Post)
+    bl _ZN3red15RenderStepEvent8emitPostEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
     
     tRestoreVolatileRegisters;
     blr;
