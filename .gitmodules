@@ -22,3 +22,7 @@
 [submodule "libs/FFL"]
 	path = libs/FFL
 	url = https://github.com/nsmbu/FFL.git
+[submodule "libs/imgui"]
+	path = libs/imgui
+	url = https://github.com/ocornut/imgui.git
+	branch = docking

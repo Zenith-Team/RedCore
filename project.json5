@@ -21,11 +21,14 @@
         "libs/Lyt/include",
         "libs/Eft/include",
         
-        "libs/FFL/include"
+        "libs/FFL/include",
+
+        "libs" //? For <imgui/...>
     ],
     
     BuildOptions: [
-        "-DNW_RELEASE"
+        "-DNW_RELEASE",
+        "-DIMGUI_USER_CONFIG=\"imgui/imgui_config.h\""
     ],
 
     Targets: {
