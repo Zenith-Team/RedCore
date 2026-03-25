@@ -85,7 +85,7 @@ void red::RenderStepEvent::hookPre() tAssembly(
     // emit! (Pre)
     bl _ZN3red15RenderStepEvent7emitPreEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
     
-    bctrl; // replaced instruction
+    bctrl; // replaced instruction agl::lyr::Layer::preDraw(this, &renderInfo);
     
     // reload.
     // layer: r28
@@ -120,7 +120,7 @@ void red::RenderStepEvent::hookPost() tAssembly(
     // emit! (BeforePost)
     bl _ZN3red15RenderStepEvent14emitBeforePostEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
     
-    bctrl; // replaced instruction
+    bctrl; // replaced instruction agl::lyr::Layer::postDraw(this, &renderInfo);
     
     // reload.
     // layer: r28

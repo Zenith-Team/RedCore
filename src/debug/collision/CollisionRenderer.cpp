@@ -1,9 +1,6 @@
 #define COLLISION_DRAW_DIAGONAL 1
 #define COLLISION_DRAW_BG 1
 
-#define TELKIN_REGISTERS
-#include <telkin/Telkin.h>
-
 #include <red/event/RenderStepEvent.h>
 
 #include <actor/Actor.h>

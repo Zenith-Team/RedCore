@@ -2,8 +2,7 @@
 
 namespace sead {
 
-void PrimitiveRenderer::drawBox(const QuadArg& arg)
-{
+void PrimitiveRenderer::drawBox(const QuadArg& arg) {
     // TODO: The actual decompilation from sead triggers a compiler bug
 
     Matrix34f mtx;
@@ -20,12 +19,12 @@ void PrimitiveRenderer::drawBox(const QuadArg& arg)
     const f32 sinV = (f32)(do_rotate);
     const f32 cosV = (f32)(no_rotate);
 
-    mtx(0, 0) = sx *  cosV;
-    mtx(1, 0) = sx *  sinV;
+    mtx(0, 0) = sx * cosV;
+    mtx(1, 0) = sx * sinV;
     mtx(2, 0) = 0.0f;
 
     mtx(0, 1) = sy * -sinV;
-    mtx(1, 1) = sy *  cosV;
+    mtx(1, 1) = sy * cosV;
     mtx(2, 1) = 0.0f;
 
     mtx(0, 2) = 0.0f;
@@ -42,8 +41,7 @@ void PrimitiveRenderer::drawBox(const QuadArg& arg)
     mRendererImpl->drawBoxImpl(outMtx, arg.getColor0(), arg.getColor1());
 }
 
-void PrimitiveRenderer::drawLine(const Vector3f& from, const Vector3f& to, const Color4f& c0, const Color4f& c1)
-{
+void PrimitiveRenderer::drawLine(const Vector3f& from, const Vector3f& to, const Color4f& c0, const Color4f& c1) {
     Vector3f dir = to - from;
 
     Matrix34f mtxS;
@@ -71,8 +69,7 @@ void PrimitiveRenderer::drawLine(const Vector3f& from, const Vector3f& to, const
     mRendererImpl->drawLineImpl(outMtx, c0, c1);
 }
 
-void PrimitiveRenderer::drawCircle16(const Vector3f& pos, f32 radius, const Color4f& color)
-{
+void PrimitiveRenderer::drawCircle16(const Vector3f& pos, f32 radius, const Color4f& color) {
     f32 diameter = 2.0f * radius;
     Vector3f scale(diameter, diameter, diameter);
 
@@ -85,8 +82,7 @@ void PrimitiveRenderer::drawCircle16(const Vector3f& pos, f32 radius, const Colo
     mRendererImpl->drawCircle16Impl(outMtx, color);
 }
 
-void PrimitiveRenderer::drawCircle32(const Vector3f& pos, f32 radius, const Color4f& color)
-{
+void PrimitiveRenderer::drawCircle32(const Vector3f& pos, f32 radius, const Color4f& color) {
     f32 diameter = 2.0f * radius;
     Vector3f scale(diameter, diameter, diameter);
 
@@ -99,9 +95,7 @@ void PrimitiveRenderer::drawCircle32(const Vector3f& pos, f32 radius, const Colo
     mRendererImpl->drawCircle32Impl(outMtx, color);
 }
 
-PrimitiveRenderer::QuadArg&
-PrimitiveRenderer::QuadArg::setBoundBox(const BoundBox2f& box, f32 z)
-{
+PrimitiveRenderer::QuadArg& PrimitiveRenderer::QuadArg::setBoundBox(const BoundBox2f& box, f32 z) {
     Vector2f p;
     box.getCenter(&p);
 

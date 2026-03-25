@@ -1,6 +1,6 @@
+#include <dynamic_libs/gx2_functions.h>
 #include <gfx/cafe/seadPrimitiveRendererCafe.h>
 #include <telkin/Telkin.h>
-#include <dynamic_libs/gx2_functions.h>
 
 void sead::PrimitiveRendererCafe::drawLines_(const Matrix34f& model_mtx, const Color4f& c0, const Color4f& c1, PrimitiveRendererUtil::Vertex* vtx, u32 vtx_num, u16* idx, u32 idx_num) {
     GX2SetVertexUniformReg(mParamUserOffset, 12, &model_mtx);
