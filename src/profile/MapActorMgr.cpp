@@ -166,16 +166,16 @@ extern "C" s32 red_MapToProfR0R3Hook() tAssembly(
     b _ZN3red11mapToProfR3Et;
 )
 
-tBranchEx(0x02007C6C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
+tBranch(0x02007C6C, red_MapToProfR0R3Hook, tk::BranchType::bl);
 
-tBranchEx(0x02008078, "red_MapToProfR0R3Hook", tk::BranchType::bl);
+tBranch(0x02008078, red_MapToProfR0R3Hook, tk::BranchType::bl);
 
-tBranchEx(0x020080A4, "red_MapToProfR0R3Hook", tk::BranchType::bl);
+tBranch(0x020080A4, red_MapToProfR0R3Hook, tk::BranchType::bl);
 tPatch32u(0x020080A8, 0x7C661B78); // mr r6, r3
 
-tBranchEx(0x0200826C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
+tBranch(0x0200826C, red_MapToProfR0R3Hook, tk::BranchType::bl);
 
-tBranchEx(0x02008458, "red_MapToProfR0R3Hook", tk::BranchType::bl);
+tBranch(0x02008458, red_MapToProfR0R3Hook, tk::BranchType::bl);
 
-tBranchEx(0x0200A82C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
+tBranch(0x0200A82C, red_MapToProfR0R3Hook, tk::BranchType::bl);
 tPatch32u(0x0200A830, 0x7C7D1B78); // mr r29, r3
