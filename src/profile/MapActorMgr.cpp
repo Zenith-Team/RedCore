@@ -23,13 +23,10 @@ MapActorMgr::MapActorMgr()
 { }
 
 MapActorMgr::~MapActorMgr() {
-    tk::print("Unloading spritemap...\n");
     mProfileID.freeBuffer();
 }
 
 void MapActorMgr::init(sead::Heap* heap) {
-    tk::print("Loading spritemap...\n");
-
     sead::CurrentHeapSetter chs(heap);
 
     const u8* file = static_cast<u8*>(ResMgr::instance()->getFileFromCourseArchiveRes("course/spritemap.bin"));
@@ -109,73 +106,66 @@ extern "C" void red_CreateMapActorMgr() {
     red::MapActorMgr::instance()->init(nullptr);
 }
 
-extern "C" void red_CreateMapActorMgrHook() tAssembly(
-    tSaveVolatileRegisters;
-    bl red_CreateMapActorMgr;
-    tRestoreVolatileRegisters;
-    li r22, 0x0; // replaced instruction
-    blr;
-)
-tBranchEx(0x024BDF5C, "red_CreateMapActorMgrHook", tk::BranchType::bl); // CourseTask::prepare
+namespace red {
+    void createMapActorMgrHook() tAssembly(
+        tSaveVolatileRegisters;
+        bl red_CreateMapActorMgr;
+        tRestoreVolatileRegisters;
+        li r22, 0x0; // replaced instruction
+        blr;
+    )
+}
+
+tBranch(0x024BDF5C, red::createMapActorMgrHook, tk::BranchType::bl); // CourseTask::prepare
 
 // Increase all instances of the cMapActorNum MapActor::cProfileID limit to 0xFFFF
 // TODO: Only keep the ones that are needed, else it may crash trying to use out of bounds sprite id to perform array lookup
-// ActorCreateMgr::getNumCoinSpritesInLocation
-tPatch16u(0x0200457A, 0xFFFF);
-// ActorCreateMgr::spawnSprites
-tPatch16u(0x0200501A, 0xFFFF);
-// ActorCreateMgr::update
-tPatch16u(0x02007C62, 0xFFFF);
-// ActorCreateMgr::FUN_2007FC0
-tPatch16u(0x0200806E, 0xFFFF);
-// ActorCreateMgr::FUN_20081B8
-tPatch16u(0x02008262, 0xFFFF);
-// ActorCreateMgr::FUN_20083A0
-tPatch16u(0x0200844E, 0xFFFF);
+tPatch16u(0x0200457A, 0xFFFF); // ActorCreateMgr::getNumCoinSpritesInLocation
+tPatch16u(0x0200501A, 0xFFFF); // ActorCreateMgr::spawnSprites
+tPatch16u(0x02007C62, 0xFFFF); // ActorCreateMgr::update
+tPatch16u(0x0200806E, 0xFFFF); // ActorCreateMgr::FUN_2007FC0
+tPatch16u(0x02008262, 0xFFFF); // ActorCreateMgr::FUN_20081B8
+tPatch16u(0x0200844E, 0xFFFF); // ActorCreateMgr::FUN_20083A0
 
-tPatch32u(0x02004950, 0x38600000); // TODO: REMOVE TEMP (li r3, 0)
-
-extern "C" s32 red_MapToProf(u16 mapActor) {
-    return red::MapActorMgr::instance()->mapToProf(mapActor);
+namespace red {
+    s32 mapToProfR3(u16 mapActor) tRegSave {
+        return red::MapActorMgr::instance()->mapToProf(mapActor);
+    }
+    
+    s32 mapToProfR6(int, int, int, u16 mapActor) tRegSave {
+        return red::MapActorMgr::instance()->mapToProf(mapActor);
+    }
+    
+    s32 mapToProfR8(int, int, int, int, int, u16 mapActor) tRegSave {
+        return red::MapActorMgr::instance()->mapToProf(mapActor);
+    }
+    
+    s32 mapToProfR9(int, int, int, int, int, int, u16 mapActor) tRegSave {
+        return red::MapActorMgr::instance()->mapToProf(mapActor);
+    }
 }
 
-extern "C" s32 red_MapToProfGeneric() tAssembly(
-    tSaveVolatileRegisters;
-    bl red_MapToProf;
-    mr r2, r3;
-    tRestoreVolatileRegisters;
-
-    mr r3, r2; blr;
-)
-
-extern "C" s32 red_MapToProfR9R3Hook() tAssembly(
-    mr r3, r9;
-    b red_MapToProfGeneric;
-)
-tBranchEx(0x02004584, "red_MapToProfR9R3Hook", tk::BranchType::bl);
-
-tBranchEx(0x020045B0, "red_MapToProfR9R3Hook", tk::BranchType::bl);
+tBranch(0x02004584, red::mapToProfR9, tk::BranchType::bl);
+tBranch(0x020045B0, red::mapToProfR9, tk::BranchType::bl);
 tPatch32u(0x020045B4, 0x7C661B78); // mr r6, r3
 
-extern "C" s32 red_MapToProfR6R3Hook() tAssembly(
-    mr r3, r6;
-    b red_MapToProfGeneric;
-)
+tBranch(0x02004948, red::mapToProfR6, tk::BranchType::bl);
+tPatchNop(0x200C990); // we're not passing a pointer so skip the deref
 
-extern "C" s32 red_MapToProfR6R3Hookerr() tAssembly(
-    mr r3, r6;
-    b red_MapToProfGeneric;
-)
-tBranchEx(0x02004948, "red_MapToProfR6R3Hookerr", tk::BranchType::bl);
+tBranch(0x02004DA8, red::mapToProfR6, tk::BranchType::bl);
+tBranch(0x02005024, red::mapToProfR6, tk::BranchType::bl);
 
-tBranchEx(0x02004DA8, "red_MapToProfR6R3Hook", tk::BranchType::bl);
+tBranch(0x0200828C, red::mapToProfR8, tk::BranchType::bl);
+tPatch32u(0x02008290, 0x7C601B78); // mr r0, r3
 
-tBranchEx(0x02005024, "red_MapToProfR6R3Hook", tk::BranchType::bl);
+tBranch(0x0200869C, red::mapToProfR8, tk::BranchType::bl);
+tPatch32u(0x020086A0, 0x7C691B78); // mr r9, r3
 
 extern "C" s32 red_MapToProfR0R3Hook() tAssembly(
     mr r3, r0;
-    b red_MapToProfGeneric;
+    b _ZN3red11mapToProfR3Et;
 )
+
 tBranchEx(0x02007C6C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
 
 tBranchEx(0x02008078, "red_MapToProfR0R3Hook", tk::BranchType::bl);
@@ -185,17 +175,7 @@ tPatch32u(0x020080A8, 0x7C661B78); // mr r6, r3
 
 tBranchEx(0x0200826C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
 
-extern "C" s32 red_MapToProfR8R3Hook() tAssembly(
-    mr r3, r8;
-    b red_MapToProfGeneric;
-)
-tBranchEx(0x0200828C, "red_MapToProfR8R3Hook", tk::BranchType::bl);
-tPatch32u(0x02008290, 0x7C601B78); // mr r0, r3
-
 tBranchEx(0x02008458, "red_MapToProfR0R3Hook", tk::BranchType::bl);
-
-tBranchEx(0x0200869C, "red_MapToProfR8R3Hook", tk::BranchType::bl);
-tPatch32u(0x020086A0, 0x7C691B78); // mr r9, r3
 
 tBranchEx(0x0200A82C, "red_MapToProfR0R3Hook", tk::BranchType::bl);
 tPatch32u(0x0200A830, 0x7C7D1B78); // mr r29, r3
