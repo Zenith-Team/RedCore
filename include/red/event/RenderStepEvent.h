@@ -101,8 +101,8 @@ namespace red {
         static void emitPost(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave;
         
     public: //! TODO: Make private
-        static void hookPre();
-        static void hookPost();
+        static void hookPre(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo);
+        static void hookPost(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo);
         
     private:
         agl::lyr::Layer* mLayer;

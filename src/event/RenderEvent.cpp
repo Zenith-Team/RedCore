@@ -62,72 +62,20 @@ void red::RenderStepEvent::emitPost(agl::lyr::Layer* layer, bool renderAsDL, agl
     getDelegatorPost().fire(event);
 }
 
-void red::RenderStepEvent::hookPre() tAssembly(
-    mr r2, r1; // reg saving modifies the stack pointer, so smuggle it through r2
-    
-    tSaveVolatileRegisters;
-    
-    // layer: r3 (inherited)
-    // renderasdl: r27
-    mr r4, r27;
-    // renderstep: r29
-    mr r5, r29;
-    // renderinfo: sp+0x94
-    addi r6, r2, 0x94;
-    // emit! (Pre)
-    bl _ZN3red15RenderStepEvent7emitPreEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
-    
-    bctrl; // replaced instruction agl::lyr::Layer::preDraw(this, &renderInfo);
-    
-    // reload.
-    // layer: r28
-    mr r3, r28;
-    // renderasdl: r27
-    mr r4, r27;
-    // renderstep: r29
-    mr r5, r29;
-    // renderinfo: sp+0x94
-    addi r6, r2, 0x94;
-    // emit! (AfterPre)
-    bl _ZN3red15RenderStepEvent12emitAfterPreEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
-    
-    tRestoreVolatileRegisters;
-    blr;
-)
+void red::RenderStepEvent::hookPre(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo)
+{
+    emitPre(layer, agl::lyr::Renderer::instance()->isDisplayList__(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
+    layer->preDraw(*renderInfo);
+    emitAfterPre(layer, agl::lyr::Renderer::instance()->isDisplayList__(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
+}
 tBranch(0x02A39644, red::RenderStepEvent::hookPre, tk::BranchType::bl); // agl::lyr::Layer::draw_()
 tBranch(0x02A395D0, red::RenderStepEvent::hookPre, tk::BranchType::bl); // agl::lyr::Layer::draw_()
 
-void red::RenderStepEvent::hookPost() tAssembly(
-    mr r2, r1; // reg saving modifies the stack pointer, so smuggle it through r2
-    
-    tSaveVolatileRegisters;
-    
-    // layer: r3 (inherited)
-    // renderasdl: r27
-    mr r4, r27;
-    // renderstep: r29
-    mr r5, r29;
-    // renderinfo: sp+0x94
-    addi r6, r2, 0x94;
-    // emit! (BeforePost)
-    bl _ZN3red15RenderStepEvent14emitBeforePostEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
-    
-    bctrl; // replaced instruction agl::lyr::Layer::postDraw(this, &renderInfo);
-    
-    // reload.
-    // layer: r28
-    mr r3, r28;
-    // renderasdl: r27
-    mr r4, r27;
-    // renderstep: r29
-    mr r5, r29;
-    // renderinfo: sp+0x94
-    addi r6, r2, 0x94;
-    // emit! (Post)
-    bl _ZN3red15RenderStepEvent8emitPostEPN3agl3lyr5LayerEbPNS2_10RenderStepEPNS2_10RenderInfoE;
-    
-    tRestoreVolatileRegisters;
-    blr;
-)
+void red::RenderStepEvent::hookPost(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo)
+{
+    emitBeforePost(layer, agl::lyr::Renderer::instance()->isDisplayList__(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
+    layer->postDraw(*renderInfo);
+    emitPost(layer, agl::lyr::Renderer::instance()->isDisplayList__(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
+}
 tBranch(0x02A39668, red::RenderStepEvent::hookPost, tk::BranchType::bl); // agl::lyr::Layer::draw_()
 tBranch(0x02A395F4, red::RenderStepEvent::hookPost, tk::BranchType::bl); // agl::lyr::Layer::draw_()
