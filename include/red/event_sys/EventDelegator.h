@@ -1,8 +1,6 @@
 #pragma once
 
 #include <container/seadTList.h>
-#include <red/event_sys/EventBase.h>
-#include <red/event_sys/Listener.h>
 #include <telkin/Print.h>
 
 namespace red {
@@ -16,7 +14,7 @@ namespace red {
         class Listener {
         public:
             // higher priority = fires earlier
-            Listener(Callback callback, s32 priority = 0)
+            Listener(Callback callback, s32 priority)
                 : mCallback(callback)
                 , mPriority(priority)
                 , mNode(this)

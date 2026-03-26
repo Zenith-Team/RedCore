@@ -26,28 +26,20 @@ red::RenderStepEvent::Delegator& red::RenderStepEvent::getDelegatorPost() {
     return sDelegator;
 }
 
-void red::RenderStepEvent::subscribe(Listener& listener, EventStage stage) {
-    switch (stage) {
-        case EventStage::Pre: {
-            return getDelegatorPre().connect(listener);
-        }
-        
-        case EventStage::AfterPre: {
-            return getDelegatorAfterPre().connect(listener);
-        }
-        
-        case EventStage::BeforePost: {
-            return getDelegatorBeforePost().connect(listener);
-        }
-        
-        case EventStage::Post: {
-            return getDelegatorPost().connect(listener);
-        }
-        
-        default: {
-            tk::print("ERROR: Invalid event stage: %d\n", stage);
-        }
-    }
+void red::RenderStepEvent::subscribePre(EventDelegator<RenderStepEvent>::Listener& listener) {
+    getDelegatorPre().connect(listener);
+}
+
+void red::RenderStepEvent::subscribeAfterPre(EventDelegator<RenderStepEvent>::Listener& listener) {
+    getDelegatorAfterPre().connect(listener);
+}
+
+void red::RenderStepEvent::subscribeBeforePost(EventDelegator<RenderStepEvent>::Listener& listener) {
+    getDelegatorBeforePost().connect(listener);
+}
+
+void red::RenderStepEvent::subscribePost(EventDelegator<RenderStepEvent>::Listener& listener) {
+    getDelegatorPost().connect(listener);
 }
 
 void red::RenderStepEvent::emitPre(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave {

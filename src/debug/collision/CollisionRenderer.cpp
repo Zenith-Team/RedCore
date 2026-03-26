@@ -629,7 +629,7 @@ void renderCollisions(const agl::lyr::RenderInfo& render_info) {
     sead::PrimitiveRenderer::instance()->end();
 }
 
-Listener<RenderStepEvent> AreaTaskDebugDraw(EventStage::BeforePost, [](RenderStepEvent& e) {
+RenderStepEvent::Listener<RenderStepEvent::Stage::BeforePost> AreaTaskDebugDraw([](RenderStepEvent& e) {
     if (!AreaTask::instance())
         return;
     

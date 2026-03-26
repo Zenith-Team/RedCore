@@ -8,7 +8,7 @@ namespace red {
     class EventBase {
     public:
         using Delegator = EventDelegator<T>;
-        using Listener = Delegator::Listener;
+        using ListenerFunc = void (*)(T&);
         
     public:
         void consume() { mConsumed = true; }
