@@ -456,6 +456,7 @@
 // GameAudio
     _ZN9GameAudio20convertAudioObjctPosEPN4sead7Vector2IfEERKS2_ = 0x02029368;
     _ZN9GameAudio12sAudioObjEmyE = 0x101C63CC;
+    _ZN9GameAudio12sAudioObjMapE = 0x101C63D0;
 
 // IceMgr
     _ZN6IceMgrD1Ev = 0x0237CD54;
@@ -507,8 +508,11 @@
     _ZNK6ResMgr27getFileFromCourseArchiveResERKN4sead14SafeStringBaseIcEEPj = 0x029D33EC;
     _ZN6ResMgr9sInstanceE = 0x101E7D94;
 
-// SndObjctEmy
-    _ZN14SndObjctCmnEmy10startSoundEPKcRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BEAA0;
+// SndObjctCmnEmy
+    _ZN14SndObjctCmnEmy10startSoundEPKcRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BEB48;
+
+// SndObjctCmnMap
+    _ZN14SndObjctCmnMap10startSoundEPKcRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BED48;
 
 // StateMethod
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
