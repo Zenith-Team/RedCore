@@ -51,7 +51,17 @@
     __deleted_virtual_called = 0x02AFA5E8;
 
 // sead::BufferedSafeStringBase<char>
+    _ZN4sead22BufferedSafeStringBaseIcE7formatVEPKcP13__va_list_tag = 0x02A0F1CC;
     _ZN4sead22BufferedSafeStringBaseIcE6formatEPKcz = 0x02A0F1E4;
+
+// sead::CafeDRCController
+    _ZN4sead17CafeDRCController9sTypeInfoE = 0x101EAE84;
+
+// sead::CafeRemoteController
+    _ZN4sead20CafeRemoteController9sTypeInfoE = 0x101EAE80;
+
+// sead::CafeVPadDevice::VPadInfo
+    _ZN4sead14CafeVPadDevice8VPadInfoC1Ev = 0x029F4EDC;
 
 // sead::Color4f
     _ZN4sead7Color4f6cBlackE = 0x105EA080;
@@ -64,6 +74,19 @@
     _ZN4sead7Color4f8cMagentaE = 0x105EA0F0;
     _ZN4sead7Color4f8cCyanE = 0x105EA100;
 
+// sead::ControllerMgr
+    _ZN4sead13ControllerMgr9sInstanceE = 0x101E7EFC;
+
+// sead::CriticalSection
+    _ZN4sead15CriticalSection4lockEv = 0x02A18F20;
+    _ZN4sead15CriticalSection6unlockEv = 0x02A18F54;
+
+// sead::DualScreenMethodTreeMgr
+    _ZN4sead23DualScreenMethodTreeMgr4calcEv = 0x029FD93C;
+
+// sead::ExpHeap
+    _ZN4sead7ExpHeap9tryCreateEjRKNS_14SafeStringBaseIcEEPNS_4HeapENS5_13HeapDirectionEb = 0x02A0A7AC;
+
 // sead::FrameBuffer
     _ZNK4sead11FrameBuffer4bindEv = 0x02A058F0;
 
@@ -71,6 +94,8 @@
     _ZN4sead12GlobalRandom9sInstanceE = 0x101E806C;
 
 // sead::Graphics
+    _ZN4sead8Graphics15lockDrawContextEv = 0x02A07A54;
+    _ZN4sead8Graphics17unlockDrawContextEv = 0x02A07AF8;
     _ZN4sead8Graphics9sInstanceE = 0x101E8000;
 
 // sead::GraphicsContext
@@ -82,6 +107,9 @@
     _ZNK4sead7HeapMgr14getCurrentHeapEv = 0x02A0D554;
     _ZN4sead7HeapMgr15setCurrentHeap_EPNS_4HeapE = 0x02A0D584;
     _ZN4sead7HeapMgr12sInstancePtrE = 0x101E8040;
+    _ZN4sead7HeapMgr10sRootHeapsE = 0x105EA148;
+    _ZN4sead7HeapMgr15sHeapTreeLockCSE = 0x105EA164;
+    _ZN4sead7HeapMgr17sIndependentHeapsE = 0x105EA1A0;
 
 // sead::IDisposer
     _ZN4sead9IDisposerC2Ev = 0x02A0A2FC;
@@ -97,6 +125,10 @@
 // sead::MathCalcCommon<f32>
     _ZN4sead14MathCalcCommonIfE8atanIdx_Ef = 0x02A0E124;
     _ZN4sead14MathCalcCommonIfE10cSinCosTblE = 0x10191538;
+
+// sead::MethodTreeNode
+    _ZN4sead14MethodTreeNode5lock_Ev = 0x029FF410;
+    _ZN4sead14MethodTreeNode7unlock_Ev = 0x029FF420;
 
 // sead::PrimitiveRenderer
     _ZN4sead17PrimitiveRenderer9setCameraERKNS_6CameraE = 0x02A083D0;
@@ -117,6 +149,15 @@
 // sead::SafeStringBase<char>
     _ZN4sead14SafeStringBaseIcE9cNullCharE = 0x10000044;
 
+// sead::TaskMgr
+    _ZN4sead7TaskMgr9afterCalcEv = 0x02A0183C;
+
+// sead::Thread
+    _ZN4sead6Thread5sleepENS_8TickSpanE = 0x02A19A50;
+
+// sead::TickSpan
+    _ZN4sead8TickSpan10cFrequencyE = 0x105EAFB8;
+
 // sead::Vector3<f32>
     _ZN4sead7Vector3IfE4zeroE = 0x105EA760;
     _ZN4sead7Vector3IfE4onesE = 0x105EA790;
@@ -132,6 +173,7 @@
     _ZNK4sead8Viewport5applyERKNS_18LogicalFrameBufferE = 0x02A0783C;
 
 // agl::lyr::Renderer
+    _ZNK3agl3lyr8Renderer14isDisplayList_Ev = 0x02A3AA94;
     _ZN3agl3lyr8Renderer9sInstanceE = 0x101E8A2C;
 
 // Actor
@@ -224,6 +266,9 @@
 
 // ActorEllipseBgCollision
     _ZN23ActorEllipseBgCollision9sTypeInfoE = 0x101EA3A0;
+
+// ActorMgr
+    _ZN8ActorMgr9sInstanceE = 0x101C30C8;
 
 // ActorMultiState
     _ZN15ActorMultiStateC2ERK16ActorCreateParam = 0x0200AA8C;
@@ -410,6 +455,10 @@
     _ZN15JointBlendModel7calcMdlEv = 0x024DFD04;
     _ZN15JointBlendModel6setAnmERKN4sead14SafeStringBaseIcEEfN9FrameCtrl8PlayModeEff = 0x024DFFB4;
 
+// LayerMgr
+    _ZN8LayerMgr16calcParallelExecEv = 0x024E0FEC;
+    _ZN8LayerMgr9sInstanceE = 0x101D2BE4;
+
 // LoopRideLineBgCollision
     _ZN23LoopRideLineBgCollision9sTypeInfoE = 0x101E9FB4;
 
@@ -430,6 +479,7 @@
     _ZN7Profile12sProfileListE = 0x101ED8DC;
 
 // ProfileInfo
+    _ZN11ProfileInfo15getDrawPriorityEi = 0x02019988;
     _ZN11ProfileInfo13cDrawPriorityE = 0x10001940;
     _ZN11ProfileInfo8cResTypeE = 0x10002064;
     _ZN11ProfileInfo7cResNumE = 0x100023F8;
@@ -446,6 +496,9 @@
 // StateMethod
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
     _ZNK11StateMethod10getStateIDEv = 0x029C4B88;
+
+// SysController
+    _ZN13SysController9sTypeInfoE = 0x101EAE78;
 
 // UnitBgCollisionHolder
     _ZN21UnitBgCollisionHolder13setFromBgUnitERKN4sead7Vector2IfEEhRKNS0_7BitFlagIhEE = 0x021B1094;
