@@ -62,7 +62,7 @@ void red::RenderStepEvent::emitPost(agl::lyr::Layer* layer, bool renderAsDL, agl
     getDelegatorPost().fire(event);
 }
 
-void red::RenderStepEvent::hookPre(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo) tRegSave {
+void red::RenderStepEvent::hookPre(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo) {
     emitPre(layer, agl::lyr::Renderer::instance()->isDisplayList__(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
     layer->preDraw(*renderInfo);
     emitAfterPre(layer, agl::lyr::Renderer::instance()->isDisplayList__(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
@@ -70,7 +70,7 @@ void red::RenderStepEvent::hookPre(agl::lyr::Layer* layer, agl::lyr::RenderInfo*
 tBranch(0x02A39644, red::RenderStepEvent::hookPre, tk::BranchType::bl); // agl::lyr::Layer::draw_()
 tBranch(0x02A395D0, red::RenderStepEvent::hookPre, tk::BranchType::bl); // agl::lyr::Layer::draw_()
 
-void red::RenderStepEvent::hookPost(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo) tRegSave {
+void red::RenderStepEvent::hookPost(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo) {
     emitBeforePost(layer, agl::lyr::Renderer::instance()->isDisplayList__(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
     layer->postDraw(*renderInfo);
     emitPost(layer, agl::lyr::Renderer::instance()->isDisplayList__(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
