@@ -26,3 +26,6 @@
 	path = libs/imgui
 	url = https://github.com/ocornut/imgui.git
 	branch = docking
+[submodule "libs/imgui_gx2"]
+	path = libs/imgui_gx2
+	url = https://github.com/Zenith-Team/imgui_gx2.git
