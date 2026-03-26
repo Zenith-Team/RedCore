@@ -447,6 +447,9 @@
     _ZN5Enemy13StateID_EatInE = 0x1020111C;
     _ZN5Enemy11StateID_IceE = 0x10201218;
 
+// EnemyChibiYoshiEatData
+    _ZN22EnemyChibiYoshiEatDataC1E13ActorUniqueID = 0x0232ADAC;
+
 // EnemyEatData
     _ZN12EnemyEatDataC1E13ActorUniqueID = 0x0232F00C;
 
