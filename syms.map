@@ -301,6 +301,10 @@
 // BgScrollMgr
     _ZN11BgScrollMgr9sInstanceE = 0x101E7C54;
 
+// CourseTimer
+    _ZN11CourseTimer9sInstanceE = 0x101D15F4;
+    _ZN11CourseTimer19addTimeLimitSecondsEj = 0x024C14C0;
+
 // Enemy
     _ZN5EnemyC2ERK16ActorCreateParam = 0x02328494;
     _ZN5Enemy10preExecuteEv = 0x02328644;
