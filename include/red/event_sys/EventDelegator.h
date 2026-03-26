@@ -15,9 +15,9 @@ namespace red {
         public:
             // higher priority = fires earlier
             Listener(Callback callback, s32 priority)
-                : mCallback(callback)
+                : mNode(this)
+                , mCallback(callback)
                 , mPriority(priority)
-                , mNode(this)
             { }
         
             [[clang::always_inline]]
