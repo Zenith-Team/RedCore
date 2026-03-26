@@ -6,7 +6,6 @@
 #include <layer/aglRenderer.h>
 #include <red/event_sys/EventBase.h>
 #include <red/event_sys/EventDelegator.h>
-#include <red/event_sys/EventStage.h>
 #include <telkin/Assembly.h>
 #include <concepts>
 
@@ -14,9 +13,35 @@ namespace red {
     
     class RenderStepEvent : public EventBase<RenderStepEvent> {
     public:
-        // Supported stages: Pre, AfterPre, BeforePost, Post
-        static void subscribe(Listener& listener, EventStage stage);
+        enum class Stage {
+            Pre,
+            AfterPre,
+            BeforePost,
+            Post
+        };
     
+        template <Stage S>
+        class Listener {
+        public:
+            Listener(ListenerFunc f, /* filters here, */ s32 priority = 0)
+                : mListener(f, priority)
+            {
+                if constexpr (S == Stage::Pre) {
+                    RenderStepEvent::subscribePre(mListener);
+                } else if constexpr (S == Stage::AfterPre) {
+                    RenderStepEvent::subscribeAfterPre(mListener);
+                } else if constexpr (S == Stage::BeforePost) {
+                    RenderStepEvent::subscribeBeforePost(mListener);
+                } else if constexpr (S == Stage::Post) {
+                    RenderStepEvent::subscribePost(mListener);
+                }
+            }
+            
+        private:
+            EventDelegator<RenderStepEvent>::Listener mListener;
+        };
+        
+    public:
         [[nodiscard]]
         agl::lyr::Layer& getLayer() const { return *mLayer; }
         
@@ -60,6 +85,12 @@ namespace red {
         [[nodiscard]]
         static Delegator& getDelegatorPost();
         
+    private:
+        static void subscribePre(EventDelegator<RenderStepEvent>::Listener& listener);
+        static void subscribeAfterPre(EventDelegator<RenderStepEvent>::Listener& listener);
+        static void subscribeBeforePost(EventDelegator<RenderStepEvent>::Listener& listener);
+        static void subscribePost(EventDelegator<RenderStepEvent>::Listener& listener);
+    
         // 0x02A39644, 0x02A395D0
         static void emitPre(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) tRegSave;
         // 0x02A39644, 0x02A395D0
