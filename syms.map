@@ -149,6 +149,9 @@
 // sead::SafeStringBase<char>
     _ZN4sead14SafeStringBaseIcE9cNullCharE = 0x10000044;
 
+// sead::TaskBase
+    _ZNK4sead8TaskBase12getFrameworkEv = 0x029FFA64;
+
 // sead::TaskMgr
     _ZN4sead7TaskMgr9afterCalcEv = 0x02A0183C;
 
