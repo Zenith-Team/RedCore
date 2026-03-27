@@ -6,7 +6,7 @@
 #include <actor/ProfileInfo.h>
 #include <actor/Actor.h>
 #include <red/registry/builder/ProfileBuilder.h>
-#include <red/util/PublicProfile.h>
+#include <red/public/Profile.h>
 
 namespace red {
 
@@ -27,15 +27,14 @@ public:
             return nullptr;
         }
         
-        Profile* profilePtr = Profile::get(mID);
-        PublicProfile* profile = reinterpret_cast<PublicProfile*>(profilePtr);
+        pub::Profile* profile = static_cast<pub::Profile*>(Profile::get(mID));
         
-        profile->factory = &TActorFactory<T>;
-        profile->actor_create_info = this->mCreateInfo != nullptr ? this->mCreateInfo : &ActorCreateInfo::cDefault;
-        profile->is_res_loaded = false;
-        profile->flag = this->mFlag;
+        profile->mFactory = &TActorFactory<T>;
+        profile->mActorCreateInfo = this->mCreateInfo != nullptr ? this->mCreateInfo : &ActorCreateInfo::cDefault;
+        profile->mIsResLoaded = false;
+        profile->mFlag = this->mFlag;
     
-        return profilePtr;
+        return profile;
     }
 
 private:

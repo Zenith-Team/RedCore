@@ -13,6 +13,8 @@
 #include <graphics/LayerMgr.h>
 #include <system/ApplicationFramework.h>
 
+#include <red/public/seadGameFrameworkCafe.h>
+
 #include <telkin/Hooks.h>
 
 static ImGui_ImplWiiU_ControllerInput sImguiInput;
@@ -68,13 +70,13 @@ void beginImGui(sead::GameFrameworkCafe* fw)
 
     ImGui::ShowDemoWindow();
 
-    fw->procDraw__();
+    static_cast<red::pub::GameFrameworkCafe*>(fw)->procDraw_();
 }
 tBranch(0x02A031DC, beginImGui, tk::BranchType::bl); // sead::GameFrameworkCafe::procFrame_
 
 void endImGui(sead::GameFrameworkCafe* fw)
 {
-    fw->procCalc__();
+    static_cast<red::pub::GameFrameworkCafe*>(fw)->procCalc_();
 
     ImGui::Render();
 

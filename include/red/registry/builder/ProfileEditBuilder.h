@@ -4,7 +4,7 @@
 #include <actor/ProfileInfo.h>
 #include <telkin/Privilege.h>
 #include <red/registry/builder/ProfileBuilder.h>
-#include <red/util/PublicProfile.h>
+#include <red/public/Profile.h>
 
 namespace red {
     
@@ -15,15 +15,14 @@ public:
     { }
 
     Profile* build() {
-        Profile* profilePtr = Profile::get(mID);
-        PublicProfile* profile = reinterpret_cast<PublicProfile*>(profilePtr);
+        pub::Profile* profile = static_cast<pub::Profile*>(Profile::get(mID));
 
         if (mCreateInfoModified) {
-            profile->actor_create_info = mCreateInfo;
+            profile->mActorCreateInfo = mCreateInfo;
         }
         
         if (mFlagModified) {
-            profile->flag = mFlag;
+            profile->mFlag = mFlag;
         }
         
         if (mDrawPriorityModified) {
@@ -32,7 +31,7 @@ public:
             tk::privilegedWrite(ProfileInfo::cDrawPriority + mID, &mDrawPriority, sizeof(s16));
         }
         
-        return profilePtr;
+        return profile;
     }
 
 private:
