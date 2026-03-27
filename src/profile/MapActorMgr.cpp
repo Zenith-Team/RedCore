@@ -6,8 +6,6 @@
 #define PROFILE_INFO_AS_NAMESPACE
 #include <actor/MapActor.h>
 #include <actor/Profile.h>
-#include <heap/seadHeap.h>
-#include <heap/seadHeapMgr.h>
 #include <system/ResMgr.h>
 
 #include <red/profile/MapActorMgr.h>
@@ -26,9 +24,7 @@ MapActorMgr::~MapActorMgr() {
     mProfileID.freeBuffer();
 }
 
-void MapActorMgr::init(sead::Heap* heap) {
-    sead::CurrentHeapSetter chs(heap);
-
+void MapActorMgr::init() {
     const u8* file = static_cast<u8*>(ResMgr::instance()->getFileFromCourseArchiveRes("course/spritemap.bin"));
     if (file == nullptr) {
         //tk::print("Level has no spritemap.bin, skipping...\n");
@@ -103,7 +99,7 @@ s32 MapActorMgr::mapToProf(u16 mapActor) {
 
 extern "C" void red_CreateMapActorMgr() {
     red::MapActorMgr::createInstance(nullptr); //? Allocated on a CourseTask sub-heap, so it is freed when CourseTask dies
-    red::MapActorMgr::instance()->init(nullptr);
+    red::MapActorMgr::instance()->init();
 }
 
 namespace red {

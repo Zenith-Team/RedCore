@@ -19,7 +19,7 @@ public:
     MapActorMgr();
     ~MapActorMgr();
 
-    void init(sead::Heap* heap);
+    void init();
     s32 mapToProf(u16 mapActor);
 
 private:
