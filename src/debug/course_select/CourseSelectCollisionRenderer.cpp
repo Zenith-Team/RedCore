@@ -35,7 +35,7 @@ static void renderID(const agl::lyr::RenderInfo& renderInfo, const CourseSelectA
     
     char buf[128] = { 0 };
     __os_snprintf(buf, 128, "0x%08X", actor->getActorUniqueID().getValue());
-    ImGui::GetForegroundDrawList()->AddText(ImVec2(pos.x, pos.y), ImColor(1.0f, 0.0f, 1.0f, 1.0f), buf);
+    ImGui::GetForegroundDrawList()->AddText(ImVec2(pos.x, pos.y), ImColor(1.0f, 0.0f, 0.0f, 1.0f), buf);
     //__os_snprintf(buf, 128, "%f, %f", actor->position.x, actor->position.y);
     //ImGui::GetForegroundDrawList()->AddText(ImVec2(pos.x, pos.y + 20.0f), ImColor(1.0f, 0.0f, 1.0f, 1.0f), buf);
 }
@@ -91,7 +91,7 @@ void renderCourseSelectCollisions(const agl::lyr::RenderInfo& renderInfo) {
     for (auto it = ActorMgr::instance()->getActorBegin(); it != ActorMgr::instance()->getActorEnd(); it++) {
         const CourseSelectActor* actor = sead::DynamicCast<CourseSelectActor>(*it);
         if (actor != nullptr) {
-            //renderID(renderInfo, actor);
+            renderID(renderInfo, actor);
             renderRotation(actor);
         }
     }
@@ -103,7 +103,7 @@ RenderStepEvent::Listener<RenderStepEvent::Stage::BeforePost> CourseSelectCollis
     if (!CourseSelectTask::instance() || !CourseSelectCollisionCheckMgr::instance())
         return;
 
-    if (!e.filterLayer(CourseSelectLayerMgr::cLayer3D, CourseSelectLayerMgr::cLayer3D_DRC))
+    if (!e.filterLayer(CourseSelectLayerMgr::cLayer3D)) // TODO: DRC breaks the text rendering
         return;
 
     if (!e.filterRenderStep(RenderObjLayer::cRenderStep_PostFx))

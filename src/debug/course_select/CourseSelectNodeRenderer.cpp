@@ -1,17 +1,15 @@
-#include "gfx/seadColor.h"
-#include "math/seadVector.h"
-#include <layer/aglRenderInfo.h>
-#include <course_select/CourseSelectTask.h>
-#include <graphics/RenderObjLayer.h>
-#include <red/event/RenderStepEvent.h>
-#include <gfx/seadGraphicsContext.h>
 #include <actor/ActorMgr.h>
 #include <course_select/CourseSelectActor.h>
-#include <imgui/imgui.h>
-#include <gfx/seadPrimitiveRenderer.h>
 #include <course_select/CourseSelectCollisionCheckMgr.h>
 #include <course_select/CourseSelectLayerMgr.h>
 #include <course_select/CourseSelectMap.h>
+#include <course_select/CourseSelectTask.h>
+#include <gfx/seadGraphicsContext.h>
+#include <gfx/seadPrimitiveRenderer.h>
+#include <graphics/RenderObjLayer.h>
+#include <imgui/imgui.h>
+#include <layer/aglRenderInfo.h>
+#include <red/event/RenderStepEvent.h>
 
 namespace red {
 
