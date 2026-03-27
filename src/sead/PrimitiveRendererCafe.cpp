@@ -30,3 +30,13 @@ void sead::PrimitiveRendererCafe::drawCircle32Impl(const Matrix34f& model_mtx, c
     drawLines_(model_mtx, edge, edge, mDiskLVertexBuf, 33, mCircleLIndexBuf, 32);
 }
 tPointer(0x10190F8C, sead::PrimitiveRendererCafe::drawCircle32Impl, false);
+
+void sead::PrimitiveRendererCafe::drawCubeImpl(const sead::Matrix34f& modelMtx, const Color4f& c0, const Color4f& c1) {
+    drawTriangles_(modelMtx, c0, c1, mCubeVertexBuf, 8, mCubeIndexBuf, 36, nullptr);
+}
+tPointer(0x10190F4C, sead::PrimitiveRendererCafe::drawCubeImpl, false);
+
+void sead::PrimitiveRendererCafe::drawWireCubeImpl(const sead::Matrix34f& modelMtx, const Color4f& c0, const Color4f& c1) {
+    drawLines_(modelMtx, c0, c1, mWireCubeVertexBuf, 8, mWireCubeIndexBuf, 17);
+}
+tPointer(0x10190F54, sead::PrimitiveRendererCafe::drawWireCubeImpl, false);
