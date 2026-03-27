@@ -63,6 +63,9 @@
 // sead::CafeVPadDevice::VPadInfo
     _ZN4sead14CafeVPadDevice8VPadInfoC1Ev = 0x029F4EDC;
 
+// sead::Camera
+    _ZNK4sead6Camera15projectByMatrixEPNS_7Vector2IfEERKNS_7Vector3IfEERKNS_10ProjectionERKNS_8ViewportE = 0x02A04A34;
+
 // sead::Color4f
     _ZN4sead7Color4f6cBlackE = 0x105EA080;
     _ZN4sead7Color4f5cGrayE = 0x105EA090;
@@ -70,9 +73,9 @@
     _ZN4sead7Color4f4cRedE = 0x105EA0B0;
     _ZN4sead7Color4f6cGreenE = 0x105EA0C0;
     _ZN4sead7Color4f5cBlueE = 0x105EA0D0;
-    _ZN4sead7Color4f8cYellowE = 0x105EA0E0;
+    _ZN4sead7Color4f7cYellowE = 0x105EA0E0;
     _ZN4sead7Color4f8cMagentaE = 0x105EA0F0;
-    _ZN4sead7Color4f8cCyanE = 0x105EA100;
+    _ZN4sead7Color4f5cCyanE = 0x105EA100;
 
 // sead::ControllerMgr
     _ZN4sead13ControllerMgr9sInstanceE = 0x101E7EFC;
@@ -130,15 +133,22 @@
     _ZN4sead14MethodTreeNode5lock_Ev = 0x029FF410;
     _ZN4sead14MethodTreeNode7unlock_Ev = 0x029FF420;
 
+// sead::Matrix34<f32>
+    _ZN4sead8Matrix34IfE5identE = 0x105EA258;
+
 // sead::PrimitiveRenderer
     _ZN4sead17PrimitiveRenderer9setCameraERKNS_6CameraE = 0x02A083D0;
     _ZN4sead17PrimitiveRenderer13setProjectionERKNS_10ProjectionE = 0x02A083E4;
+    _ZN4sead17PrimitiveRenderer14setModelMatrixERKNS_8Matrix34IfEE = 0x02A083F8;
     _ZN4sead17PrimitiveRenderer5beginEv = 0x02A08408;
     _ZN4sead17PrimitiveRenderer3endEv = 0x02A0841C;
     _ZN4sead17PrimitiveRenderer9sInstanceE = 0x101E8010;
 
 // sead::PrimitiveRenderer::QuadArg
     _ZN4sead17PrimitiveRenderer7QuadArg8setColorERKNS_7Color4fES4_ = 0x02A08628;
+
+// sead::PrimitiveRendererCafe
+    _ZN4sead21PrimitiveRendererCafe14drawTriangles_ERKNS_8Matrix34IfEERKNS_7Color4fES7_PNS_21PrimitiveRendererUtil6VertexEjPtjPK11_GX2Texture = 0x02A0A190;
 
 // sead::Quat<f32>
     _ZN4sead4QuatIfE4unitE = 0x105EA598;
@@ -279,6 +289,9 @@
     _ZN11StateMethod17changeStateMethodERK7StateID = 0x0200B090;
     _ZN15ActorMultiState9sTypeInfoE = 0x101E9CE8;
 
+// ActorPtrCache
+    _ZNK13ActorPtrCache11getActorPtrE13ActorUniqueID = 0x0200A5C8;
+
 // ActorState
     _ZN10ActorStateC2ERK16ActorCreateParam = 0x0200A9C0;
     _ZN10ActorState9sTypeInfoE = 0x101E9CE0;
@@ -301,6 +314,15 @@
 
 // BgScrollMgr
     _ZN11BgScrollMgr9sInstanceE = 0x101E7C54;
+
+// CourseSelectActor
+    _ZN17CourseSelectActor9sTypeInfoE = 0x101EA3C8;
+
+// CourseSelectCollisionCheckMgr
+    _ZN29CourseSelectCollisionCheckMgr9sInstanceE = 0x101C9758;
+
+// CourseSelectTask
+    _ZN16CourseSelectTask9sInstanceE = 0x101CC96C;
 
 // CourseTimer
     _ZN11CourseTimer19addTimeLimitSecondsEj = 0x024C14C0;
