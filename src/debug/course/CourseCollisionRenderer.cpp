@@ -327,7 +327,8 @@ static inline void drawBgCollision_Ellipse(const ActorEllipseBgCollision& bg_col
     drawEllipse(center, z, radii.x, radii.y, angle, color, 1.0f);
 }
 
-template <typename T> static inline bool drawBgCollision_RideLine(const T& bg_collision, const sead::Color4f& color) {
+template <typename T>
+static inline bool drawBgCollision_RideLine(const T& bg_collision, const sead::Color4f& color) {
     const sead::Buffer<BasicRideLine>& ride_line = bg_collision.getRideLine();
     if (ride_line.size() < 1)
         return false;
@@ -548,7 +549,7 @@ static inline void drawActorBgCollisionCheck(const ActorBgCollisionCheck& bc) {
 
 namespace red {
 
-void renderCollisions(const agl::lyr::RenderInfo& render_info) {
+void renderCourseCollisions(const agl::lyr::RenderInfo& render_info) {
     sead::GraphicsContext context;
     // context.setDepthEnable(true, true);                         // Automatically set by ctor
     // context.setDepthFunc(sead::Graphics::cDepthFunc_LessEqual); // ^^
@@ -639,7 +640,7 @@ RenderStepEvent::Listener<RenderStepEvent::Stage::BeforePost> AreaTaskDebugDraw(
     if (!e.filterRenderStep(RenderObjLayer::cRenderStep_PostFx))
         return;
     
-    red::renderCollisions(e.getRenderInfo());
+    red::renderCourseCollisions(e.getRenderInfo());
     
     return;
 });
