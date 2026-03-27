@@ -1,4 +1,3 @@
-#include "layer/aglRenderer.h"
 #define TELKIN_REGISTERS
 #include <layer/aglLayer.h>
 #include <layer/aglRenderStep.h>
