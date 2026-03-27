@@ -1,11 +1,11 @@
 #define TELKIN_REGISTERS
 #include <layer/aglLayer.h>
-#include <layer/aglRenderStep.h>
 #include <layer/aglRenderInfo.h>
+#include <layer/aglRenderStep.h>
 #include <prim/seadDelegateEventSlot.h>
 #include <red/event/RenderStepEvent.h>
-#include <telkin/Telkin.h>
 #include <red/public/aglRenderer.h>
+#include <telkin/Hooks.h>
 
 template <red::RenderStepEvent::Stage S>
 red::RenderStepEvent::Delegator& red::RenderStepEvent::getDelegator() {
