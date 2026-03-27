@@ -33,6 +33,8 @@ static void renderID(const agl::lyr::RenderInfo& renderInfo, const CourseSelectA
     pos.y = pos.y +  720.0f / 2.0f;
     pos.y = -pos.y + 720.0f;
     
+    pos.y += 16.0f; // don't interfere with bone labels
+    
     char buf[128] = { 0 };
     __os_snprintf(buf, 128, "0x%08X", actor->getActorUniqueID().getValue());
     ImGui::GetForegroundDrawList()->AddText(ImVec2(pos.x, pos.y), ImColor(1.0f, 0.0f, 0.0f, 1.0f), buf);
