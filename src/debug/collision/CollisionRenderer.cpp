@@ -630,7 +630,7 @@ void renderCollisions(const agl::lyr::RenderInfo& render_info) {
 }
 
 RenderStepEvent::Listener<RenderStepEvent::Stage::BeforePost> AreaTaskDebugDraw([](RenderStepEvent& e) {
-    if (!AreaTask::instance())
+    if (!AreaTask::instance() || !BgScrollMgr::instance())
         return;
     
     if (!e.filterLayer(AreaLayerMgr::cLayer_3D, AreaLayerMgr::cLayer_3D_DRC))
