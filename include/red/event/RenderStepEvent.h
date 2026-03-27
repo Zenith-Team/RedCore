@@ -26,15 +26,7 @@ namespace red {
             Listener(ListenerFunc f, /* filters here, */ s32 priority = 0)
                 : mListener(f, priority)
             {
-                if constexpr (S == Stage::Pre) {
-                    RenderStepEvent::subscribePre(mListener);
-                } else if constexpr (S == Stage::AfterPre) {
-                    RenderStepEvent::subscribeAfterPre(mListener);
-                } else if constexpr (S == Stage::BeforePost) {
-                    RenderStepEvent::subscribeBeforePost(mListener);
-                } else if constexpr (S == Stage::Post) {
-                    RenderStepEvent::subscribePost(mListener);
-                }
+                RenderStepEvent::subscribe<S>(mListener);
             }
             
         private:
@@ -73,32 +65,23 @@ namespace red {
             , mRenderAsDL(renderAsDL)
         { }
     
+        template <Stage S>
         [[nodiscard]]
-        static Delegator& getDelegatorPre();
-        
-        [[nodiscard]]
-        static Delegator& getDelegatorAfterPre();
-        
-        [[nodiscard]]
-        static Delegator& getDelegatorBeforePost();
-        
-        [[nodiscard]]
-        static Delegator& getDelegatorPost();
+        static Delegator& getDelegator();
         
     private:
-        static void subscribePre(EventDelegator<RenderStepEvent>::Listener& listener);
-        static void subscribeAfterPre(EventDelegator<RenderStepEvent>::Listener& listener);
-        static void subscribeBeforePost(EventDelegator<RenderStepEvent>::Listener& listener);
-        static void subscribePost(EventDelegator<RenderStepEvent>::Listener& listener);
+        template <Stage S>
+        static void subscribe(EventDelegator<RenderStepEvent>::Listener& listener) {
+            getDelegator<S>().connect(listener);
+        }
     
-        // 0x02A39644, 0x02A395D0
-        static void emitPre(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo);
-        // 0x02A39644, 0x02A395D0
-        static void emitAfterPre(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo);
-        // 0x02A39668, 0x02A395F4
-        static void emitBeforePost(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo);
-        // 0x02A39668, 0x02A395F4
-        static void emitPost(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo);
+        // Pre/AfterPre: 0x02A39644, 0x02A395D0
+        // BeforePost/Post: 0x02A39668, 0x02A395F4
+        template <Stage S>
+        static void emit(agl::lyr::Layer* layer, bool renderAsDL, agl::lyr::RenderStep* renderStep, agl::lyr::RenderInfo* renderInfo) {
+            RenderStepEvent event(layer, renderAsDL, renderStep, renderInfo);
+            getDelegator<S>().fire(event);
+        }
         
     public: //! TODO: Make private
         static void hookPre(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo);
