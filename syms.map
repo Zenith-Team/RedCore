@@ -237,6 +237,7 @@
 // ActorBgCollisionCheck
     _ZN21ActorBgCollisionCheckD1Ev = 0x0218ADFC;
     _ZN21ActorBgCollisionCheck3setEP5ActorPKNS_6SensorES4_S4_ = 0x0218AF6C;
+    _ZNK21ActorBgCollisionCheck9getSensorEh = 0x0218CE74;
 
 // ActorBgCollisionMgr
     _ZN19ActorBgCollisionMgr9sInstanceE = 0x101C9360;

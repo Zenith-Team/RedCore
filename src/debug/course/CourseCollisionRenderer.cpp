@@ -6,7 +6,7 @@
 #include <actor/Actor.h>
 #include <actor/ActorMgr.h>
 #include <collision/ActorBgCollisionCheck.h>
-// #include <collision/ActorBgCollisionCheckMgr.h>
+#include <red/collision/ActorBgCollisionCheckMgr.h>
 #include <collision/ActorBgCollisionMgr.h>
 #include <collision/ActorCircleBgCollision.h>
 #include <collision/ActorCollisionCheck.h>
@@ -410,7 +410,7 @@ static inline void drawBgCollision(const BgCollision& bg_collision, const agl::l
 
     const sead::BoundBox2f& affected_area = bg_collision.getAffectedArea();
 
-    // drawBox(affected_area, 3600, sead::Color4f::cRed, 1.0f);
+    drawBox(affected_area, 3600, sead::Color4f::cRed, 1.0f);
 
     const f32 x = ((affected_area.getMin().x - 0.5f) - screen_left) * w_ratio;
     const f32 y = ((affected_area.getMin().y - 0.5f) - screen_bottom) * h_ratio;
@@ -615,17 +615,15 @@ void renderCourseCollisions(const agl::lyr::RenderInfo& render_info) {
     drawBgUnitCollision(render_info);
 #endif // COLLISION_DRAW_BG
 
-    // TODO: impl ActorBgCollisionCheckMgr+hooks
-    // for (LineNodeMgr<ActorBgCollisionCheck>::Node* node = ActorBgCollisionCheckMgr::instance()->getDrawList().front(); node != nullptr;)
-    // {
-    //     LineNodeMgr<ActorBgCollisionCheck>::Node* temp_node = node;
-    //     node = node->next;
-    //     ActorBgCollisionCheck* bc = temp_node->obj;
-    //   //SEAD_ASSERT(p_bc != nullptr);
-    //     ActorBgCollisionCheckMgr::instance()->release(*bc);
+    for (LineNodeMgr<ActorBgCollisionCheck>::Node* node = red::ActorBgCollisionCheckMgr::instance()->getDrawList().front(); node != nullptr;) {
+        LineNodeMgr<ActorBgCollisionCheck>::Node* temp_node = node;
+        node = node->next;
+        ActorBgCollisionCheck* bc = temp_node->obj;
+      //SEAD_ASSERT(p_bc != nullptr);
+        red::ActorBgCollisionCheckMgr::instance()->release(*bc);
 
-    //     drawActorBgCollisionCheck(*bc);
-    // }
+        drawActorBgCollisionCheck(*bc);
+    }
 
     sead::PrimitiveRenderer::instance()->end();
 }
