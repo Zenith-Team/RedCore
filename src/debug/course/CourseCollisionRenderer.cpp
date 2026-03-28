@@ -33,7 +33,9 @@ static inline f32 calcZ(const f32 z) {
     return (31 * z + 392500) / 71;
 }
 
-static void drawLine(const sead::Vector2f& position, const f32 rotation, const f32 z, const sead::Color4f& color, const f32 lineLength, const f32 lineThickness) {
+static void drawLine(const sead::Vector2f& position, const f32 rotation, f32 z, const sead::Color4f& color, const f32 lineLength, const f32 lineThickness) {
+    z = calcZ(z);
+    
     sead::Vector3f scale(lineLength, lineThickness, 1.0f);
     sead::Vector3f rot(0.0f, 0.0f, rotation);
     sead::Vector3f pos(position.x + (lineLength * sead::Mathf::cos(rotation)) / 2, position.y + (lineLength * sead::Mathf::sin(rotation)) / 2, z);
@@ -55,9 +57,7 @@ static inline void drawLine(const sead::Vector2f& point1, const sead::Vector2f& 
     drawLine(leftPoint, angle, z, color, length, line_width);
 }
 
-static inline void drawBox(const sead::BoundBox2f& box, f32 z, const sead::Color4f& color, const f32 line_width) {
-    z = calcZ(z);
-    
+static inline void drawBox(const sead::BoundBox2f& box, const f32 z, const sead::Color4f& color, const f32 line_width) {
     sead::Vector2f point1 = box.getTL();
     sead::Vector2f point2 = box.getTR();
     sead::Vector2f point3 = box.getBR();
@@ -75,7 +75,7 @@ static inline void drawBox(const sead::BoundBox2f& box, f32 z, const sead::Color
 #if COLLISION_DRAW_FILL
     sead::PrimitiveRenderer::instance()->drawQuad(
         sead::PrimitiveRenderer::QuadArg()
-            .setBoundBox(box, z)
+            .setBoundBox(box, calcZ(z))
             .setColor(sead::Color4f(color.r, color.g, color.b, 0.3f))
     );
 #endif // COLLISION_DRAW_FILL
