@@ -1,5 +1,6 @@
 #define COLLISION_DRAW_DIAGONAL 1
 #define COLLISION_DRAW_BG 1
+#define COLLISION_DRAW_FILL 1
 
 #include <red/event/RenderStepEvent.h>
 
@@ -32,20 +33,52 @@ static inline f32 calcZ(const f32 z) {
     return (31 * z + 392500) / 71;
 }
 
-static inline void drawLine(const sead::Vector2f& point1, const sead::Vector2f& point2, const f32 z, const sead::Color4f& color, const f32 line_width) {
-    // TODO: Line width
-    const sead::Vector3f _p1(point1.x, point1.y, calcZ(z));
-    const sead::Vector3f _p2(point2.x, point2.y, calcZ(z));
-    sead::PrimitiveRenderer::instance()->drawLine(_p1, _p2, color, color);
+static void drawLine(const sead::Vector2f& position, const f32 rotation, const f32 z, const sead::Color4f& color, const f32 lineLength, const f32 lineThickness) {
+    sead::Vector3f scale(lineLength, lineThickness, 1.0f);
+    sead::Vector3f rot(0.0f, 0.0f, rotation);
+    sead::Vector3f pos(position.x + (lineLength * sead::Mathf::cos(rotation)) / 2, position.y + (lineLength * sead::Mathf::sin(rotation)) / 2, z);
+
+    sead::Matrix34f mtx;
+    mtx.makeSRT(scale, rot, pos);
+    sead::PrimitiveRenderer::instance()->setModelMatrix(mtx);
+    sead::PrimitiveRenderer::instance()->drawQuad(color);
+    sead::PrimitiveRenderer::instance()->setModelMatrix(sead::Matrix34f::ident);
 }
 
-static inline void drawBox(const sead::BoundBox2f& box, const f32 z, const sead::Color4f& color, const f32 line_width) {
-    // TODO: Line width
-    sead::PrimitiveRenderer::instance()->drawBox(sead::PrimitiveRenderer::QuadArg().setBoundBox(box, calcZ(z)).setColor(color, color));
+static inline void drawLine(const sead::Vector2f& point1, const sead::Vector2f& point2, const f32 z, const sead::Color4f& color, const f32 line_width) {
+    f32 length = sead::Mathf::sqrt(sead::Mathf::pow(point1.x - point2.x, 2) + sead::Mathf::pow(point1.y - point2.y, 2));
+
+    const sead::Vector2f& leftPoint = (point1.x < point2.x) ? point1 : point2;
+    const sead::Vector2f& rightPoint = (&leftPoint == &point1) ? point2 : point1;
+    f32 angle = sead::Mathf::atan2(rightPoint.y - leftPoint.y, rightPoint.x - leftPoint.x);
+
+    drawLine(leftPoint, angle, z, color, length, line_width);
+}
+
+static inline void drawBox(const sead::BoundBox2f& box, f32 z, const sead::Color4f& color, const f32 line_width) {
+    z = calcZ(z);
+    
+    sead::Vector2f point1 = box.getTL();
+    sead::Vector2f point2 = box.getTR();
+    sead::Vector2f point3 = box.getBR();
+    sead::Vector2f point4 = box.getBL();
+
+    drawLine(point1, point2, z, color, line_width);
+    drawLine(point2, point3, z, color, line_width);
+    drawLine(point3, point4, z, color, line_width);
+    drawLine(point1, point4, z, color, line_width);
 
 #if COLLISION_DRAW_DIAGONAL
     drawLine(sead::Vector2f(box.getMin().x, box.getMax().y), sead::Vector2f(box.getMax().x, box.getMin().y), z, color, line_width); // Diagonal line
 #endif // COLLISION_DRAW_DIAGONAL
+
+#if COLLISION_DRAW_FILL
+    sead::PrimitiveRenderer::instance()->drawQuad(
+        sead::PrimitiveRenderer::QuadArg()
+            .setBoundBox(box, z)
+            .setColor(sead::Color4f(color.r, color.g, color.b, 0.3f))
+    );
+#endif // COLLISION_DRAW_FILL
 }
 
 static inline void drawCircle(const sead::Vector2f& center, const f32 z, const f32 radius, const sead::Color4f& color, const f32 line_width) {
@@ -219,7 +252,7 @@ static inline void drawActorCollisionCheck_Box(const ActorCollisionCheck& cc) {
     const sead::BoundBox2f& box = cc.getBoundBox();
     const f32 z = cc.getOwner()->getPos().z;
 
-    drawBox(box, z, sead::Color4f::cRed, 1.0f);
+    drawBox(box, z, sead::Color4f::cRed, 0.5f);
 }
 
 static inline void drawActorCollisionCheck_Circle(const ActorCollisionCheck& cc) {
@@ -228,7 +261,7 @@ static inline void drawActorCollisionCheck_Circle(const ActorCollisionCheck& cc)
     const f32 r_x = cc.getHalfSizeX();
     const f32 r_y = cc.getHalfSizeY();
 
-    drawEllipse(center, z, r_x, r_y, sead::Color4f::cRed, 1.0f);
+    drawEllipse(center, z, r_x, r_y, sead::Color4f::cRed, 0.5f);
 }
 
 static inline void drawActorCollisionCheck_DaikeiUD(const ActorCollisionCheck& cc) {
@@ -244,12 +277,12 @@ static inline void drawActorCollisionCheck_DaikeiUD(const ActorCollisionCheck& c
 
     const f32 z = cc.getOwner()->getPos().z;
 
-    drawLine(tl, tr, z, sead::Color4f::cRed, 1.0f);
-    drawLine(tr, br, z, sead::Color4f::cRed, 1.0f);
-    drawLine(br, bl, z, sead::Color4f::cRed, 1.0f);
-    drawLine(bl, tl, z, sead::Color4f::cRed, 1.0f);
+    drawLine(tl, tr, z, sead::Color4f::cRed, 0.5f);
+    drawLine(tr, br, z, sead::Color4f::cRed, 0.5f);
+    drawLine(br, bl, z, sead::Color4f::cRed, 0.5f);
+    drawLine(bl, tl, z, sead::Color4f::cRed, 0.5f);
 #if COLLISION_DRAW_DIAGONAL
-    drawLine(tl, br, z, sead::Color4f::cRed, 1.0f); // Diagonal line
+    drawLine(tl, br, z, sead::Color4f::cRed, 0.5f); // Diagonal line
 #endif // COLLISION_DRAW_DIAGONAL
 }
 
@@ -266,12 +299,12 @@ static inline void drawActorCollisionCheck_DaikeiLR(const ActorCollisionCheck& c
 
     const f32 z = cc.getOwner()->getPos().z;
 
-    drawLine(tl, tr, z, sead::Color4f::cRed, 1.0f);
-    drawLine(tr, br, z, sead::Color4f::cRed, 1.0f);
-    drawLine(br, bl, z, sead::Color4f::cRed, 1.0f);
-    drawLine(bl, tl, z, sead::Color4f::cRed, 1.0f);
+    drawLine(tl, tr, z, sead::Color4f::cRed, 0.5f);
+    drawLine(tr, br, z, sead::Color4f::cRed, 0.5f);
+    drawLine(br, bl, z, sead::Color4f::cRed, 0.5f);
+    drawLine(bl, tl, z, sead::Color4f::cRed, 0.5f);
 #if COLLISION_DRAW_DIAGONAL
-    drawLine(tl, br, z, sead::Color4f::cRed, 1.0f); // Diagonal line
+    drawLine(tl, br, z, sead::Color4f::cRed, 0.5f); // Diagonal line
 #endif // COLLISION_DRAW_DIAGONAL
 }
 
@@ -315,7 +348,7 @@ static inline void drawBgCollision_Circle(const ActorCircleBgCollision& bg_colli
     const u32 arc_start = static_cast<u32>(bg_collision.getArcStart());
     const u32 arc_end = static_cast<u32>(bg_collision.getArcEnd());
 
-    drawArc(center, z, radius, arc_start, arc_end, color, 1.0f);
+    drawArc(center, z, radius, arc_start, arc_end, color, 0.5f);
 }
 
 static inline void drawBgCollision_Ellipse(const ActorEllipseBgCollision& bg_collision, const sead::Color4f& color) {
@@ -324,7 +357,7 @@ static inline void drawBgCollision_Ellipse(const ActorEllipseBgCollision& bg_col
     const sead::Vector2f& radii = bg_collision.getHalfSize();
     const u32 angle = static_cast<u32>(bg_collision.getAngle());
 
-    drawEllipse(center, z, radii.x, radii.y, angle, color, 1.0f);
+    drawEllipse(center, z, radii.x, radii.y, angle, color, 0.5f);
 }
 
 template <typename T>
@@ -338,7 +371,7 @@ static inline bool drawBgCollision_RideLine(const T& bg_collision, const sead::C
 
     for (sead::Buffer<BasicRideLine>::constIterator itr_ride_line = ride_line.begin(), itr_ride_line_end = ride_line.end(); itr_ride_line != itr_ride_line_end; ++itr_ride_line) {
         const sead::Segment2f& segment = itr_ride_line->getSegment().getSegment();
-        drawLine(pos + segment.getPos0(), pos + segment.getPos1(), z, color, 1.0f);
+        drawLine(pos + segment.getPos0(), pos + segment.getPos1(), z, color, 0.5f);
     }
 
     return true;
@@ -361,7 +394,7 @@ static inline void drawBgCollision_Polygon(const LoopRideLineBgCollision& bg_col
 
     const sead::Segment2f& segment1 = ride_line[0].getSegment().getSegment();
     const sead::Segment2f& segment2 = ride_line[ride_line.size() / 2 - 1].getSegment().getSegment();
-    drawLine(pos + segment1.getPos0(), pos + segment2.getPos1(), z, color, 1.0f);
+    drawLine(pos + segment1.getPos0(), pos + segment2.getPos1(), z, color, 0.5f);
 #endif // COLLISION_DRAW_DIAGONAL
 }
 
@@ -380,10 +413,10 @@ static inline void drawBgCollision_PoleRope(const PoleRopeBgCollision& bg_collis
 
     if (sead::Mathf::abs(radius) <= sead::Mathf::epsilon()) {
         for (s32 i = 0; i + 1 < point_num; i++)
-            drawLine(pos + point_buf[i], pos + point_buf[i + 1], z, color, 1.0f);
+            drawLine(pos + point_buf[i], pos + point_buf[i + 1], z, color, 0.5f);
     } else {
         for (s32 i = 0; i + 1 < point_num; i++)
-            drawCapsule(pos + point_buf[i], pos + point_buf[i + 1], z, radius, color, 1.0f);
+            drawCapsule(pos + point_buf[i], pos + point_buf[i + 1], z, radius, color, 0.5f);
     }
 }
 
@@ -410,7 +443,7 @@ static inline void drawBgCollision(const BgCollision& bg_collision, const agl::l
 
     const sead::BoundBox2f& affected_area = bg_collision.getAffectedArea();
 
-    drawBox(affected_area, 3600, sead::Color4f::cRed, 1.0f);
+    drawBox(affected_area, 3600, sead::Color4f::cRed, 0.5f);
 
     const f32 x = ((affected_area.getMin().x - 0.5f) - screen_left) * w_ratio;
     const f32 y = ((affected_area.getMin().y - 0.5f) - screen_bottom) * h_ratio;
@@ -537,12 +570,12 @@ static inline void drawActorBgCollisionCheck(const ActorBgCollisionCheck& bc) {
             const sead::Vector2f point1(x + sensor_center_offset, y + p1);
             const sead::Vector2f point2(x + sensor_center_offset, y + p2);
 
-            drawLine(point1, point2, z, sead::Color4f::cYellow, 1.0f);
+            drawLine(point1, point2, z, sead::Color4f::cYellow, 0.5f);
         } else {
             const sead::Vector2f point1(x + p1, y + sensor_center_offset);
             const sead::Vector2f point2(x + p2, y + sensor_center_offset);
 
-            drawLine(point1, point2, z, (j == 2) ? sead::Color4f::cWhite : sead::Color4f::cCyan, 1.0f);
+            drawLine(point1, point2, z, (j == 2) ? sead::Color4f::cWhite : sead::Color4f::cCyan, 0.5f);
         }
     }
 }
@@ -551,10 +584,6 @@ namespace red {
 
 void renderCourseCollisions(const agl::lyr::RenderInfo& render_info) {
     sead::GraphicsContext context;
-    // context.setDepthEnable(true, true);                         // Automatically set by ctor
-    // context.setDepthFunc(sead::Graphics::cDepthFunc_LessEqual); // ^^
-    context.setCullingMode(sead::Graphics::cCullingMode_None);
-    context.setBlendEnable(false);
     context.apply();
 
     sead::PrimitiveRenderer::instance()->setCamera(*render_info.getCamera());

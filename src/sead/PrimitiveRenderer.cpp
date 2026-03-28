@@ -1,5 +1,7 @@
 #include <gfx/seadPrimitiveRenderer.h>
 
+// TODO: Should we just #include the decomp here? (How does this interact with the vanilla funcs from syms)
+
 static sead::Matrix34f* ASM_MTXMultiply(sead::Matrix34f* out, sead::Matrix34f* p1, sead::Matrix34f* p2) {
     ASM_MTXConcat(p1->m, p2->m, out->m);
     return out;
@@ -117,6 +119,26 @@ void PrimitiveRenderer::drawCircle32(const sead::Vector3f& position, f32 radius,
     ASM_MTXMultiply(&outMtx, &mModelMtx, &mtx);
 
     mRendererImpl->drawCircle32Impl(outMtx, color);
+}
+
+void PrimitiveRenderer::drawQuad(const QuadArg& arg) {
+    Matrix34f mtx;
+    if (arg.isHorizontal())
+        mtx.makeSRT(
+            Vector3f(arg.getSize().y, arg.getSize().x, 1.0f),
+            Vector3f(0.0f, 0.0f, Mathf::deg2rad(90)),
+            arg.getCenter()
+        );
+    else
+        mtx.makeST(
+            Vector3f(arg.getSize().x, arg.getSize().y, 1.0f),
+            arg.getCenter()
+        );
+
+    Matrix34f outMtx;
+    outMtx.setMul(mModelMtx, mtx);
+
+    mRendererImpl->drawQuadImpl(outMtx, arg.getColor0(), arg.getColor1());
 }
 
 }
