@@ -5,6 +5,8 @@
     Version: "1.0.0",
     Type: "CoreAPI",
     
+    PrecompiledHeader: "src/PCH.h",
+    
     IncludeDirs: [
         "include",
         
