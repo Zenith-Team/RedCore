@@ -2,4 +2,10 @@
 #define TK_IMPL_ISLOWER
 #define TK_IMPL_TOUPPER
 #define TK_IMPL_STRNCPY
+#define TK_IMPL_ISDIGIT
+#define TK_IMPL_STRCMP
+#define TK_IMPL_STRLEN
+#define TK_IMPL_STRNCMP
+#define TK_IMPL_STRCHR
+#define TK_IMPL_STRCPY
 #include <telkin/Runtime.h>
