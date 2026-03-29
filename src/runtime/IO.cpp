@@ -2,6 +2,9 @@
 #include <limits.h>
 #include <cafe/os.h>
 
+#define TK_IMPL_PRINTF
+#include <telkin/Runtime.h>
+
 extern "C" int sprintf(char* buffer, const char* format, ...) {
     __va_list va;
     va_start(va, format);

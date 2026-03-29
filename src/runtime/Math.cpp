@@ -1,5 +1,10 @@
 #include <cmath>
 
+#define TK_IMPL_FABS
+#define TK_IMPL_FABSF
+#define TK_IMPL_ATOF
+#include <telkin/Runtime.h>
+
 extern "C" double floor(double x) {
     return floorf(x);
 }
