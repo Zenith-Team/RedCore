@@ -22,7 +22,6 @@
     _Znam = 0x029F1630;
     _ZdlPv = 0x029F1748;
     _ZdaPv = 0x029F17D0;
-    // _ZdlPvm = _ZdlPv;
     _ZnwmPN4sead4HeapEi = 0x029F1858;
     _ZnamPN4sead4HeapEi = 0x029F18DC;
 
