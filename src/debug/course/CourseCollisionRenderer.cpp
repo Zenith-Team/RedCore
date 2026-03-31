@@ -1,5 +1,5 @@
 #define COLLISION_DRAW_DIAGONAL 1
-#define COLLISION_DRAW_BG 1
+#define COLLISION_DRAW_BG 0
 #define COLLISION_DRAW_FILL 1
 
 #include <red/event/RenderStepEvent.h>
@@ -48,13 +48,13 @@ static void drawLine(const sead::Vector2f& position, const f32 rotation, f32 z, 
 }
 
 static inline void drawLine(const sead::Vector2f& point1, const sead::Vector2f& point2, const f32 z, const sead::Color4f& color, const f32 line_width) {
-    f32 length = sead::Mathf::sqrt(sead::Mathf::pow(point1.x - point2.x, 2) + sead::Mathf::pow(point1.y - point2.y, 2));
-
-    const sead::Vector2f& leftPoint = (point1.x < point2.x) ? point1 : point2;
-    const sead::Vector2f& rightPoint = (&leftPoint == &point1) ? point2 : point1;
-    f32 angle = sead::Mathf::atan2(rightPoint.y - leftPoint.y, rightPoint.x - leftPoint.x);
-
-    drawLine(leftPoint, angle, z, color, length, line_width);
+    f32 dx = point2.x - point1.x;
+    f32 dy = point2.y - point1.y;
+    
+    f32 length = sead::Mathf::sqrt(dx * dx + dy * dy);
+    f32 angle = sead::Mathf::atan2(dy, dx);
+    
+    drawLine(point1, angle, z, color, length, line_width);
 }
 
 static inline void drawBox(const sead::BoundBox2f& box, const f32 z, const sead::Color4f& color, const f32 line_width) {
@@ -76,7 +76,7 @@ static inline void drawBox(const sead::BoundBox2f& box, const f32 z, const sead:
     sead::PrimitiveRenderer::instance()->drawQuad(
         sead::PrimitiveRenderer::QuadArg()
             .setBoundBox(box, calcZ(z))
-            .setColor(sead::Color4f(color.r, color.g, color.b, 0.3f))
+            .setColor(sead::Color4f(color.r, color.g, color.b, 0.2f))
     );
 #endif // COLLISION_DRAW_FILL
 }
@@ -590,6 +590,8 @@ void renderCourseCollisions(const agl::lyr::RenderInfo& render_info) {
     sead::PrimitiveRenderer::instance()->setProjection(*render_info.getProjection());
     sead::PrimitiveRenderer::instance()->begin();
 
+    // draw hitboxes (red colliders)
+    
     for (LineNodeMgr<ActorCollisionCheck>::Node* node = ActorCollisionCheckMgr::instance()->getActiveList().front(); node != nullptr; node = node->next) {
         ActorCollisionCheck* p_cc = node->obj;
         if (p_cc == nullptr)
@@ -623,6 +625,8 @@ void renderCourseCollisions(const agl::lyr::RenderInfo& render_info) {
 
         drawActorCollisionCheck(*p_cc);
     }
+    
+    // draw tile colliders (blue colliders)
 
     for (LineNodeMgr<BgCollision>::Node* node = ActorBgCollisionMgr::instance()->getActiveList().front(); node != nullptr; node = node->next) {
         BgCollision* p_bg_collision = node->obj;
@@ -643,6 +647,8 @@ void renderCourseCollisions(const agl::lyr::RenderInfo& render_info) {
 #if COLLISION_DRAW_BG
     drawBgUnitCollision(render_info);
 #endif // COLLISION_DRAW_BG
+
+    // draw tile sensors (white and yellow lines)
 
     for (LineNodeMgr<ActorBgCollisionCheck>::Node* node = red::ActorBgCollisionCheckMgr::instance()->getDrawList().front(); node != nullptr;) {
         LineNodeMgr<ActorBgCollisionCheck>::Node* temp_node = node;
