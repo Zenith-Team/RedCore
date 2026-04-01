@@ -6,4 +6,4 @@ IndentPPDirectives: BeforeHash
 AllowShortLambdasOnASingleLine: Empty
 LambdaBodyIndentation: Signature
 BinPackArguments: true
-ColumnLimit: 2147483647
+ColumnLimit: 0
