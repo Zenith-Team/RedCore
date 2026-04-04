@@ -21,6 +21,7 @@ while (false)
 #define IMGUI_DISABLE_DEFAULT_SHELL_FUNCTIONS
 #define IMGUI_DISABLE_FILE_FUNCTIONS
 #define IMGUI_DISABLE_DEFAULT_ALLOCATORS
+#define IMGUI_DISABLE_DEFAULT_FONT
 
 #define IM_VEC2_CLASS_EXTRA                                                 \
         constexpr ImVec2(const sead::Vector2f& f) : x(f.x), y(f.y) {}       \

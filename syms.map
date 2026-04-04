@@ -1,4 +1,4 @@
-@addresses_from "00050000-10101D00"
+@addresses_from "00050000-10101D00" // US v1.3.0 (v64)
 
 // C
     vsnprintf = 0x02AFB954;
@@ -88,6 +88,10 @@
 
 // sead::ExpHeap
     _ZN4sead7ExpHeap9tryCreateEjRKNS_14SafeStringBaseIcEEPNS_4HeapENS5_13HeapDirectionEb = 0x02A0A7AC;
+
+// sead::FileDeviceMgr
+    _ZN4sead13FileDeviceMgr7tryLoadERNS_10FileDevice7LoadArgE = 0x029F8BBC;
+    _ZN4sead13FileDeviceMgr9sInstanceE = 0x101E7F18;
 
 // sead::FrameBuffer
     _ZNK4sead11FrameBuffer4bindEv = 0x02A058F0;
