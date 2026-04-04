@@ -1,0 +1,67 @@
+name: Bug Report (Cemu)
+description: Create a bug report to help us improve
+title: "Enter a title for the bug report here"
+labels: bug
+body:
+  - type: markdown
+    id: md_readme
+    attributes:
+      value: |
+        If you discovered a bug you can report it here. Please make sure of the following first:
+        - You are using the [**latest version**](https://github.com/Zenith-Team/RedCore/releases/latest) of RedCore.
+        - The problem isn't already mentioned on the [issue tracker](https://github.com/Zenith-Team/RedCore/issues).
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: Current Behavior
+      description: "What the bug is, in a brief description"
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: "What did you expect to happen?"
+    validations:
+      required: true
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: "How to reproduce the issue"
+    validations:
+      required: true
+  - type: textarea
+    id: sys_info
+    attributes:
+      label: System Info (Optional)
+      description: "Tell us about your environment"
+      placeholder: |
+        Info
+        OS: Windows 10
+        GPU: NVIDIA GeForce RTX 4090
+        Cemu Version: 2.7
+        Telkin Version: 1.0.0
+        RedCore Version: 1.0.0
+      value: |
+        OS: 
+        GPU: 
+        Cemu Version: 
+        Telkin Version: 
+        RedCore Version: 
+  - type: textarea
+    id: loaded_mods
+    attributes:
+      label: Mods Loaded (Optional)
+      description: |
+        Any other mods that were loaded. You can leave this empty if you were playing with only RedCore.
+    validations:
+      required: false
+  - type: textarea
+    id: logs_files
+    attributes:
+      label: "Logs (Optional)"
+      description: |
+        "Attach `log.txt` from your Cemu folder (*File > Open Cemu folder*)".
+    validations:
+      required: false
