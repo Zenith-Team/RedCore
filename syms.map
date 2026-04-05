@@ -153,6 +153,9 @@
 // sead::PrimitiveRendererCafe
     _ZN4sead21PrimitiveRendererCafe14drawTriangles_ERKNS_8Matrix34IfEERKNS_7Color4fES7_PNS_21PrimitiveRendererUtil6VertexEjPtjPK11_GX2Texture = 0x02A0A190;
 
+// sead::PtrArrayImpl
+    _ZN4sead12PtrArrayImpl9setBufferEiPv = 0x029F1E88;
+
 // sead::Quat<f32>
     _ZN4sead4QuatIfE4unitE = 0x105EA598;
 
