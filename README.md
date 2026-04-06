@@ -1,9 +1,18 @@
-# RedCore
+<img alt="banner" src="https://github.com/user-attachments/assets/274eb044-4277-4771-9aa3-939f25d0ad06" />
+<div align="center">
+  <img alt="wiiu" height="56" src="https://github.com/user-attachments/assets/fc1f38b1-46a1-44ee-acfb-ac436d900dc6">
+  <a href="https://go.nsmbu.net/discord">
+    <img alt="discord" height="56" src="https://github.com/user-attachments/assets/495433d7-1ddc-47f1-8c8e-f4ef137754c2">
+  </a>
+  <a href="https://zenith.nsmbu.net/wiki/RedCore">
+    <img alt="docs" height="56" src="https://github.com/user-attachments/assets/dc583842-a4d3-4635-b036-33d5f9bfc4d5">
+  </a>
+</div>
 
 ## Overview
 A modern C++ API and modding framework for **New Super Mario Bros. U** codemods.
 
-### Features
+## Features
 - **Dynamic**: Powered by [Telkin](https://github.com/Zenith-Team/Telkin), multiple codemods using RedCore can be loaded simultaneously!
 - **Headers**: All libraries and game interfaces are accessible and rapidly updated.
 - **Target Support**: Pre-configured for US, EU, and JP titles on both Cemu and Console.
@@ -11,10 +20,10 @@ A modern C++ API and modding framework for **New Super Mario Bros. U** codemods.
 - **Event System**: Delegate-based event handling with listeners for simple hooks without ASM/RE or conflicts.
 - **ImGui**: Easily produce visual interfaces for fast debugging and development.
 
-### Quick Start
+## Quick Start
 TODO (Fork a template repo, install tachyon, compile & launch)
 
-### Usage (Actor)
+## Usage (Actor)
 Create a registrar for your mod:
 ```cpp
 // Re-use this function globally
@@ -88,8 +97,8 @@ bool DemoActor::draw() {
 ```
 See the [documentation](https://zenith.nsmbu.net/wiki/RedCore) for comprehensive information on advanced usage.
 
-### Usage (Event)
-Hooking into the rendering loop using the RedCore event system:
+## Usage (Event)
+Hooking into the rendering loop using the event system:
 ```cpp
 #include <red/event/RenderEvent.h>
 using namespace red;
@@ -112,3 +121,11 @@ RenderStepEvent::Listener<RenderStepEvent::Stage::BeforePost> MyEvent([](RenderS
 });
 ```
 See the [documentation](https://zenith.nsmbu.net/wiki/RedCore) for a list of all available events.
+
+## Credits
+- [Luminyx](https://github.com/Luminyx1) - API packages, Infrastructure, Headers
+- [stupidestmodder](https://github.com/stupidestmodder) - API packages, Headers
+- [jhmaster](https://github.com/jhmaster2000) - Infrastructure
+- [AboodXD](https://github.com/aboood40091) - Headers
+- [Omar](https://github.com/ocornut) - ImGui Library
+- [GaryOderNichts](https://github.com/GaryOderNichts) - ImGui GX2 Backend
