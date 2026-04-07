@@ -46,7 +46,7 @@ const char* red::ProfileEx::sProfileNames[ProfileInfo::cProfileID_Max + cMaxCust
 Profile* red::ProfileEx::get(const sead::SafeString& identifier)  {
     Profile** it = sCustomProfiles.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::print("ERROR: Profile identifier \"%s\" was not found\n", identifier.cstr());
+        tk::print("ERROR: Profile identifier \"%s\" was not found. sCustomProfiles: %d\n", identifier.cstr(), sCustomProfiles.size());
         return nullptr;
     }
     return *it;
