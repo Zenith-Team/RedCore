@@ -169,7 +169,7 @@ namespace red {
         ImGui_ImplWiiU_ProcessInput(&sImguiInput);
         ImGui::NewFrame();
         
-        ImGui::ShowDemoWindow();
+        //ImGui::ShowDemoWindow();
     
         static_cast<red::pub::GameFrameworkCafe*>(fw)->procDraw_();
     }
