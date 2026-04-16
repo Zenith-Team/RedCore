@@ -259,6 +259,8 @@
     _ZN14ActorCollision8doDeleteEv = 0x02003724;
     _ZN14ActorCollision5vf144Ei = 0x0200375C;
     _ZN14ActorCollision15setSmokeDamage_EP5Actor = 0x02003760;
+    _ZNK14ActorCollision12bgCheckFoot_Ev = 0x02003764;
+    _ZNK14ActorCollision12bgCheckWall_Ev = 0x02003770;
     _ZN14ActorCollision8bgCheck_Ev = 0x020037F4;
     _ZN14ActorCollision11calcSpeedY_Ev = 0x020039AC;
     _ZN14ActorCollision8posMove_Ev = 0x02003AE4;
@@ -341,6 +343,15 @@
 
 // EffectCreateUtil
     _ZN16EffectCreateUtil12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB080;
+
+// EffectObj
+    _ZN9EffectObj12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB52C;
+    _ZN9EffectObj9sTypeInfoE = __deleted_virtual_called;
+
+// EffectObjBase
+    _ZN13EffectObjBaseC2Ev = 0x022AB868;
+    _ZN13EffectObjBase7cleanupEv = 0x022AB7DC;
+    _ZN13EffectObjBase9sTypeInfoE = __deleted_virtual_called;
 
 // Enemy
     _ZN5EnemyC2ERK16ActorCreateParam = 0x02328494;
