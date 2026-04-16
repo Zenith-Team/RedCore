@@ -1,4 +1,4 @@
-<img alt="banner" src="https://github.com/user-attachments/assets/274eb044-4277-4771-9aa3-939f25d0ad06" />
+<img alt="banner" src="https://github.com/user-attachments/assets/4060bc9b-185c-4944-9b66-d18025d08a15" />
 <div align="center">
   <img alt="wiiu" height="56" src="https://github.com/user-attachments/assets/fc1f38b1-46a1-44ee-acfb-ac436d900dc6">
   <a href="https://go.nsmbu.net/discord">
