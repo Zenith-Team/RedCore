@@ -21,7 +21,20 @@ A modern C++ API and modding framework for **New Super Mario Bros. U** codemods.
 - **ImGui**: Easily produce visual interfaces for fast debugging and development.
 
 ## Quick Start
-TODO (Fork a template repo, install tachyon, compile & launch)
+Fork the [Example Mod](https://github.com/Zenith-Team/RedCore-Example-Mod), and clone the repository
+```sh
+git clone https://github.com/Zenith-Team/RedCore-Example-Mod MyMod
+cd MyMod
+```
+Install the [Tachyon SDK](https://github.com/Zenith-Team/Tachyon) (requires [Node.js](https://nodejs.org/) v24+)
+```yml
+npm i -g https://github.com/Zenith-Team/Tachyon/releases/latest/download/Tachyon.tgz
+```
+Build and run the project for your region:
+```rb
+tachyon compile US
+tachyon launch US
+```
 
 ## Usage (Actor)
 Create a registrar for your mod:
@@ -100,7 +113,11 @@ See the [documentation](https://zenith.nsmbu.net/wiki/RedCore) for comprehensive
 ## Usage (Event)
 Hooking into the rendering loop using the event system:
 ```cpp
-#include <red/event/RenderEvent.h>
+#include <red/event/RenderStepEvent.h>
+#include <game/AreaLayerMgr.h>
+#include <graphics/RenderObjLayer.h>
+#include <imgui/imgui.h>
+
 using namespace red;
 
 // Register a listener
@@ -123,9 +140,11 @@ RenderStepEvent::Listener<RenderStepEvent::Stage::BeforePost> MyEvent([](RenderS
 See the [documentation](https://zenith.nsmbu.net/wiki/RedCore) for a list of all available events.
 
 ## Credits
-- [Luminyx](https://github.com/Luminyx1) - API packages, Infrastructure, Headers
-- [stupidestmodder](https://github.com/stupidestmodder) - API packages, Headers
+- [Luminyx](https://github.com/Luminyx1) - API, Infrastructure, Headers
+- [stupidestmodder](https://github.com/stupidestmodder) - API, Headers
 - [jhmaster](https://github.com/jhmaster2000) - Infrastructure
+
+## Special Thanks
 - [AboodXD](https://github.com/aboood40091) - Headers
 - [Omar](https://github.com/ocornut) - ImGui Library
 - [GaryOderNichts](https://github.com/GaryOderNichts) - ImGui GX2 Backend
