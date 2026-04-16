@@ -558,9 +558,12 @@
 
 // SndObjctCmnEmy
     _ZN14SndObjctCmnEmy10startSoundEPKcRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BEB48;
+    _ZN14SndObjctCmnEmy9holdSoundEPKciRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BEB50;
 
 // SndObjctCmnMap
     _ZN14SndObjctCmnMap10startSoundEPKcRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BED48;
+    _ZN14SndObjctCmnMap9holdSoundEPKciRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BED50;
+    _ZN14SndObjctCmnMap9holdSoundEPKciRKN4sead7Vector2IfEEsN2nw3snd10OutputLineE = 0x029BEE18;
 
 // StateMethod
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
