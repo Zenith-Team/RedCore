@@ -556,6 +556,9 @@
     _ZNK6ResMgr27getFileFromCourseArchiveResERKN4sead14SafeStringBaseIcEEPj = 0x029D33EC;
     _ZN6ResMgr9sInstanceE = 0x101E7D94;
 
+// SkeletalAnimation
+    _ZN17SkeletalAnimation4playEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FDADC;
+
 // SndObjctCmnEmy
     _ZN14SndObjctCmnEmy10startSoundEPKcRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BEB48;
     _ZN14SndObjctCmnEmy9holdSoundEPKciRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BEB50;
