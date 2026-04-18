@@ -1,4 +1,3 @@
-#define PROFILE_INFO_AS_NAMESPACE
 #include <red/profile/ProfileEx.h>
 
 #define TELKIN_REGISTERS

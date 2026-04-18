@@ -3,7 +3,6 @@
 #define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
 
-#define PROFILE_INFO_AS_NAMESPACE
 #include <actor/MapActor.h>
 #include <actor/Profile.h>
 #include <system/ResMgr.h>

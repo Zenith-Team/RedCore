@@ -17,7 +17,6 @@
 #include <math/seadVector.h>
 #include <random/seadGlobalRandom.h>
 
-#define PROFILE_INFO_AS_NAMESPACE
 #include <audio/GameAudio.h>
 #include <boss/Boss.h>
 #include <course_select/CourseSelectTask.h>

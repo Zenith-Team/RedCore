@@ -1,6 +1,5 @@
 #pragma once
 
-#define PROFILE_INFO_AS_NAMESPACE
 #include <actor/ProfileInfo.h>
 #include <basis/seadTypes.h>
 #include <actor/Profile.h>
