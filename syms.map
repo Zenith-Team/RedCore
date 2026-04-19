@@ -291,6 +291,7 @@
     _ZN23ActorEllipseBgCollision9sTypeInfoE = 0x101EA3A0;
 
 // ActorMgr
+    _ZN8ActorMgr17createImmediatelyERK16ActorCreateParamNS_12CreateOptionE = 0x02009A58;
     _ZN8ActorMgr9sInstanceE = 0x101C30C8;
 
 // ActorMultiState
