@@ -34,7 +34,7 @@ void MapActorMgr::init() {
 
     u32 spritemapVersion = rawRead<u32>(data);
     if (spritemapVersion != cSpritemapVersion) [[unlikely]] {
-        tk::print("ERROR: spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, cSpritemapVersion);
+        tk::fatal("spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, cSpritemapVersion);
         return;
     }
 
@@ -55,7 +55,7 @@ void MapActorMgr::init() {
 
         Profile* prof = ProfileEx::get(id);
         if (!prof) [[unlikely]] {
-            tk::print("ERROR: Failed to find profile for spritemap entry %u with identifier \"%s\"\n", i, id);
+            tk::fatal("Failed to find profile for spritemap entry %u with identifier \"%s\"\n", i, id);
             mProfileID[i] = -1;
             continue;
         }
@@ -67,7 +67,7 @@ void MapActorMgr::init() {
 
 s32 MapActorMgr::mapToProf(u16 mapActor) {
     if (mapActor == 0xFFFF) [[unlikely]] {
-        tk::print("ERROR: Requested mapActor -1\n");
+        tk::fatal("Requested mapActor -1\n");
         return -1;
     }
 
@@ -75,19 +75,19 @@ s32 MapActorMgr::mapToProf(u16 mapActor) {
         return MapActor::cProfileID[mapActor];
 
     if (!(mapActor & cMapMetaMask)) [[unlikely]] {
-        tk::print("ERROR: Requested mapActor(0x%04X) is not a valid name map actor\n", int(mapActor));
+        tk::fatal("Requested mapActor(0x%04X) is not a valid named map actor\n", int(mapActor));
         return -1;
     }
 
     mapActor &= ~cMapMetaMask; //? Remove metadata so it can used as a index
 
     if (!mProfileID.isBufferReady()) [[unlikely]] {
-        tk::print("ERROR: Requesting mapActor(%i) without spritemap present\n", int(mapActor));
+        tk::fatal("Requesting mapActor(%i) without spritemap present\n", int(mapActor));
         return -1;
     }
 
     if (mapActor >= mProfileID.size()) [[unlikely]] {
-        tk::print("ERROR: Requested mapActor(%i) is out of bounds(%i)\n", int(mapActor), mProfileID.size());
+        tk::fatal("Requested mapActor(%i) is out of bounds(%i)\n", int(mapActor), mProfileID.size());
         return -1;
     }
 
