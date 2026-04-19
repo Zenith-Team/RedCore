@@ -560,6 +560,9 @@
     _ZNK6ResMgr27getFileFromCourseArchiveResERKN4sead14SafeStringBaseIcEEPj = 0x029D33EC;
     _ZN6ResMgr9sInstanceE = 0x101E7D94;
 
+// ShaderParamAnimation
+    _ZN20ShaderParamAnimation14playTexSrtAnimEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FEE50;
+
 // SkeletalAnimation
     _ZN17SkeletalAnimation4playEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FDADC;
 
