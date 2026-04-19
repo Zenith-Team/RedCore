@@ -49,6 +49,9 @@
     __pure_virtual_called = 0x02AFA554;
     __deleted_virtual_called = 0x02AFA5E8;
 
+// nw::g3d::res::ResDicPatricia
+    _ZNK2nw3g3d3res14ResDicPatricia9FindIndexEPKc = 0x02AB1364;
+
 // sead::BufferedSafeStringBase<char>
     _ZN4sead22BufferedSafeStringBaseIcE7formatVEPKcP13__va_list_tag = 0x02A0F1CC;
     _ZN4sead22BufferedSafeStringBaseIcE6formatEPKcz = 0x02A0F1E4;
@@ -341,6 +344,9 @@
 // CourseTimer
     _ZN11CourseTimer19addTimeLimitSecondsEj = 0x024C14C0;
     _ZN11CourseTimer9sInstanceE = 0x101D15F4;
+
+// DistantViewMgr
+    _ZN14DistantViewMgr9sInstanceE = 0x101CD394;
 
 // EffectCreateUtil
     _ZN16EffectCreateUtil12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB080;
