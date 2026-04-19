@@ -1,4 +1,5 @@
 #include <red/profile/ProfileEx.h>
+#include <red/public/ProfileInfo.h>
 
 #define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
@@ -100,7 +101,7 @@ s16 red::ProfileEx::getDrawPriority(const s32 id) {
     }
     
     if (id < ProfileInfo::cProfileID_Max) {
-        return ProfileInfo::cDrawPriority[id];
+        return pub::ProfileInfo::cDrawPriority[id];
     }
     
     sead::SafeString identifier = getName(id);
@@ -137,7 +138,7 @@ ProfileInfo::ResType red::ProfileEx::getResType(const s32 id) {
     
     if (id < ProfileInfo::cProfileID_Max) {
         //tk::print("ID was less than %i, using cResType\n", ProfileInfo::cProfileID_Max);
-        return static_cast<const ProfileInfo::ResType>(ProfileInfo::cResType[id]);
+        return static_cast<const ProfileInfo::ResType>(pub::ProfileInfo::cResType[id]);
     }
     
     //tk::print("ID was >= %i, querying name... ", ProfileInfo::cProfileID_Max);
@@ -168,7 +169,7 @@ u32 red::ProfileEx::getResNum(const s32 id) {
     }
     
     if (id < ProfileInfo::cProfileID_Max) {
-        return ProfileInfo::cResNum[id];
+        return pub::ProfileInfo::cResNum[id];
     }
     
     sead::SafeString identifier = getName(id);
@@ -197,7 +198,7 @@ const sead::SafeString* red::ProfileEx::getResList(const s32 id) {
     }
     
     if (id < ProfileInfo::cProfileID_Max) {
-        return ProfileInfo::cResList[id];
+        return pub::ProfileInfo::cResList[id];
     }
     
     sead::SafeString identifier = getName(id);
