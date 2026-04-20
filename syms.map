@@ -588,6 +588,9 @@
 // SysController
     _ZN13SysController9sTypeInfoE = 0x101EAE78;
 
+// TexturePatternAnimation
+    _ZN23TexturePatternAnimation4playEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x0250B1EC;
+
 // UnitBgCollisionHolder
     _ZN21UnitBgCollisionHolder13setFromBgUnitERKN4sead7Vector2IfEEhRKNS0_7BitFlagIhEE = 0x021B1094;
     _ZN21UnitBgCollisionHolder9sInstanceE = 0x101C9650;
