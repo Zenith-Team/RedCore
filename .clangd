@@ -3,3 +3,6 @@ Diagnostics: {
         static_assert_requirement_failed
     ]
 }
+Documentation: {
+    CommentFormat: Doxygen
+}
