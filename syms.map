@@ -545,6 +545,12 @@
 // ModelUtil
     _ZN9ModelUtil9createG3dERK13ModelResourceRKN4sead14SafeStringBaseIcEEiiiiiN5Model12BoundingModeEPNS3_4HeapE = 0x024EE440;
 
+// ParentMovementMgr
+    _ZN17ParentMovementMgrC1Ev = 0x02849C40;
+    _ZN17ParentMovementMgr22getMaskForMovementTypeE18ParentMovementType = 0x0284A37C;
+    _ZN17ParentMovementMgr4linkERKN4sead7Vector3IfEEjh = 0x0284B6F4;
+    _ZN17ParentMovementMgr7executeEv = 0x0284B8C4;
+
 // PoleRopeBgCollision
     _ZN19PoleRopeBgCollision9sTypeInfoE = 0x101EA384;
 
