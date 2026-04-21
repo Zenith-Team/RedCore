@@ -547,7 +547,7 @@
 
 // ParentMovementMgr
     _ZN17ParentMovementMgrC1Ev = 0x02849C40;
-    _ZN17ParentMovementMgr22getMaskForMovementTypeE18ParentMovementType = 0x0284A37C;
+    _ZN17ParentMovementMgr11getTypeMaskE18ParentMovementType = 0x0284A37C;
     _ZN17ParentMovementMgr4linkERKN4sead7Vector3IfEEjh = 0x0284B6F4;
     _ZN17ParentMovementMgr7executeEv = 0x0284B8C4;
 
