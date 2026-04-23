@@ -5,6 +5,7 @@ notes
 compile_commands.json
 .DS_Store
 .vscode
+.idea
 
 # For development purposes only
 project-deps.json
