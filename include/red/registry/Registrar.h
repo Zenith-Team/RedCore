@@ -1,6 +1,6 @@
 #pragma once
 
-#include <actor/ActorBase>
+#include <actor/ActorBase.h>
 #include <red/registry/builder/ProfileCreateBuilder.h>
 #include <red/registry/builder/ProfileReplaceBuilder.h>
 #include <red/registry/builder/ProfileEditBuilder.h>
