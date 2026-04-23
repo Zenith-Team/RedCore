@@ -2,7 +2,7 @@
 #include <gfx/cafe/seadPrimitiveRendererCafe.h>
 #include <telkin/Telkin.h>
 
-void sead::PrimitiveRendererCafe::drawLines_(const Matrix34f& model_mtx, const Color4f& c0, const Color4f& c1, PrimitiveRendererUtil::Vertex* vtx, u32 vtx_num, u16* idx, u32 idx_num) {
+void sead::PrimitiveRendererCafe::drawLines_(const Matrix34f& model_mtx, const Color4f& c0, const Color4f& c1, PrimitiveRendererUtil::Vertex* vtx, const u32 vtx_num, u16* idx, const u32 idx_num) {
     GX2SetVertexUniformReg(mParamUserOffset, 12, &model_mtx);
     GX2SetVertexUniformReg(mParamColor0Offset, 4, &c0);
     GX2SetVertexUniformReg(mParamColor1Offset, 4, &c1);
@@ -31,12 +31,12 @@ void sead::PrimitiveRendererCafe::drawCircle32Impl(const Matrix34f& model_mtx, c
 }
 tPointer(0x10190F8C, sead::PrimitiveRendererCafe::drawCircle32Impl, false);
 
-void sead::PrimitiveRendererCafe::drawCubeImpl(const sead::Matrix34f& modelMtx, const Color4f& c0, const Color4f& c1) {
-    drawTriangles_(modelMtx, c0, c1, mCubeVertexBuf, 8, mCubeIndexBuf, 36, nullptr);
+void sead::PrimitiveRendererCafe::drawCubeImpl(const sead::Matrix34f& model_mtx, const Color4f& c0, const Color4f& c1) {
+    drawTriangles_(model_mtx, c0, c1, mCubeVertexBuf, 8, mCubeIndexBuf, 36, nullptr);
 }
 tPointer(0x10190F4C, sead::PrimitiveRendererCafe::drawCubeImpl, false);
 
-void sead::PrimitiveRendererCafe::drawWireCubeImpl(const sead::Matrix34f& modelMtx, const Color4f& c0, const Color4f& c1) {
-    drawLines_(modelMtx, c0, c1, mWireCubeVertexBuf, 8, mWireCubeIndexBuf, 17);
+void sead::PrimitiveRendererCafe::drawWireCubeImpl(const sead::Matrix34f& model_mtx, const Color4f& c0, const Color4f& c1) {
+    drawLines_(model_mtx, c0, c1, mWireCubeVertexBuf, 8, mWireCubeIndexBuf, 17);
 }
 tPointer(0x10190F54, sead::PrimitiveRendererCafe::drawWireCubeImpl, false);

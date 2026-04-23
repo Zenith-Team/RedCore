@@ -17,7 +17,7 @@ void PrimitiveRenderer::drawCube(const Color4f& c0, const Color4f& c1) {
     mRendererImpl->drawCubeImpl(mModelMtx, c0, c1);
 }
 
-PrimitiveRenderer::QuadArg& PrimitiveRenderer::QuadArg::setBoundBox(const BoundBox2f& box, f32 z) {
+PrimitiveRenderer::QuadArg& PrimitiveRenderer::QuadArg::setBoundBox(const BoundBox2f& box, const f32 z) {
     Vector2f p;
     box.getCenter(&p);
 
@@ -31,13 +31,13 @@ void PrimitiveRenderer::drawBox(const QuadArg& arg) {
 
     if (arg.isHorizontal()) {
         const sead::Vector2f& size = arg.getSize();
-        sead::Vector3f scale(size.x, size.y, 1.0f); //? No flipping of x and y. Bug?
-        sead::Vector3f rotation(0.0f, 0.0f, sead::Mathf::deg2rad(90));
+        const sead::Vector3f scale(size.x, size.y, 1.0f); //? No flipping of x and y. Bug?
+        const sead::Vector3f rotation(0.0f, 0.0f, sead::Mathf::deg2rad(90));
 
         mtx.makeSRT(scale, rotation, arg.getCenter());
     } else {
         const sead::Vector2f& size = arg.getSize();
-        sead::Vector3f scale(size.x, size.y, 1.0f);
+        const sead::Vector3f scale(size.x, size.y, 1.0f);
 
         mtx.makeST(scale, arg.getCenter());
     }
@@ -95,12 +95,12 @@ void PrimitiveRenderer::drawLine(const sead::Vector3f& from, const sead::Vector3
     mRendererImpl->drawLineImpl(outMtx, c0, c1);
 }
 
-void PrimitiveRenderer::drawCircle16(const sead::Vector3f& position, f32 radius, const Color4f& color) {
-    f32 diameter = radius + radius;
-    sead::Vector3f scale(diameter, diameter, diameter);
+void PrimitiveRenderer::drawCircle16(const sead::Vector3f& pos, const f32 radius, const Color4f& color) {
+    const f32 diameter = radius + radius;
+    const sead::Vector3f scale(diameter, diameter, diameter);
 
     sead::Matrix34f mtx;
-    mtx.makeST(scale, position);
+    mtx.makeST(scale, pos);
 
     sead::Matrix34f outMtx;
     ASM_MTXMultiply(&outMtx, &mModelMtx, &mtx);
@@ -108,12 +108,12 @@ void PrimitiveRenderer::drawCircle16(const sead::Vector3f& position, f32 radius,
     mRendererImpl->drawCircle16Impl(outMtx, color);
 }
 
-void PrimitiveRenderer::drawCircle32(const sead::Vector3f& position, f32 radius, const Color4f& color) {
-    f32 diameter = radius + radius;
-    sead::Vector3f scale(diameter, diameter, diameter);
+void PrimitiveRenderer::drawCircle32(const sead::Vector3f& pos, const f32 radius, const Color4f& color) {
+    const f32 diameter = radius + radius;
+    const sead::Vector3f scale(diameter, diameter, diameter);
 
     sead::Matrix34f mtx;
-    mtx.makeST(scale, position);
+    mtx.makeST(scale, pos);
 
     sead::Matrix34f outMtx;
     ASM_MTXMultiply(&outMtx, &mModelMtx, &mtx);
