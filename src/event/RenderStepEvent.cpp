@@ -1,8 +1,6 @@
 #define TELKIN_REGISTERS
 #include <layer/aglLayer.h>
 #include <layer/aglRenderInfo.h>
-#include <layer/aglRenderStep.h>
-#include <prim/seadDelegateEventSlot.h>
 #include <red/event/RenderStepEvent.h>
 #include <red/public/aglRenderer.h>
 #include <telkin/Hooks.h>
