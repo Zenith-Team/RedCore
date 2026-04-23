@@ -17,7 +17,7 @@ template red::RenderStepEvent::Delegator& red::RenderStepEvent::getDelegator<red
 template red::RenderStepEvent::Delegator& red::RenderStepEvent::getDelegator<red::RenderStepEvent::Stage::Post>();
 
 void red::RenderStepEvent::hookPre(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo) {
-    pub::Renderer* renderer = static_cast<pub::Renderer*>(agl::lyr::Renderer::instance());
+    const pub::Renderer* renderer = static_cast<pub::Renderer*>(agl::lyr::Renderer::instance());
     
     emit<Stage::Pre>(layer, renderer->isDisplayList_(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
     layer->preDraw(*renderInfo);
@@ -27,7 +27,7 @@ tBranch(0x02A39644, red::RenderStepEvent::hookPre, tk::BranchType::bl); // agl::
 tBranch(0x02A395D0, red::RenderStepEvent::hookPre, tk::BranchType::bl); // agl::lyr::Layer::draw_()
 
 void red::RenderStepEvent::hookPost(agl::lyr::Layer* layer, agl::lyr::RenderInfo* renderInfo) {
-    pub::Renderer* renderer = static_cast<pub::Renderer*>(agl::lyr::Renderer::instance());
+    const pub::Renderer* renderer = static_cast<pub::Renderer*>(agl::lyr::Renderer::instance());
     
     emit<Stage::BeforePost>(layer, renderer->isDisplayList_(), &layer->getRenderStep(renderInfo->getRenderStep()), renderInfo);
     layer->postDraw(*renderInfo);
