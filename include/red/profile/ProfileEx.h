@@ -17,48 +17,48 @@ public:
     static Profile* get(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static Profile* get(const s32 id);
+    static Profile* get(s32 id);
     
     [[nodiscard]]
-    static const char* getName(const s32 id);
+    static const char* getName(s32 id);
     
     [[nodiscard]]
     static s16 getDrawPriority(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static s16 getDrawPriority(const s32 id);
+    static s16 getDrawPriority(s32 id);
     
     [[nodiscard]]
     static s16 getExecutePriority(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static s16 getExecutePriority(const s32 id);
+    static s16 getExecutePriority(s32 id);
     
     [[nodiscard]]
     static ProfileInfo::ResType getResType(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static ProfileInfo::ResType getResType(const s32 id);
+    static ProfileInfo::ResType getResType(s32 id);
     
     [[nodiscard]]
     static u32 getResNum(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static u32 getResNum(const s32 id);
+    static u32 getResNum(s32 id);
     
     [[nodiscard]]
     static const sead::SafeString* getResList(const sead::SafeString& identifier);
     
     [[nodiscard]]
-    static const sead::SafeString* getResList(const s32 id);
+    static const sead::SafeString* getResList(s32 id);
 
 public: //! The below are RedCore-internal APIs, do not use!
     static void addIdentifierProfile(const sead::SafeString& identifier, Profile* profile);
-    static void setResources(const sead::SafeString& identifier, const ProfileInfo::ResType resourceType, sead::SafeString* resources, const u8 resourceCount);
-    static void setName(const s32 id, const char* name);
-    static void setDrawPriority(const sead::SafeString& identifier, const s16 priority);
-    static void setExecutePriority(const sead::SafeString& identifier, const s16 priority);
-    static void setExecutePriority(const s32 id, const s16 priority);
+    static void setResources(const sead::SafeString& identifier, ProfileInfo::ResType resourceType, sead::SafeString* resources, u8 resourceCount);
+    static void setName(s32 id, const char* name);
+    static void setDrawPriority(const sead::SafeString& identifier, s16 priority);
+    static void setExecutePriority(const sead::SafeString& identifier, s16 priority);
+    static void setExecutePriority(s32 id, s16 priority);
     
     struct ResourceData {
         u8 resource_count = 0;
@@ -71,7 +71,7 @@ private:
     public:
         VanillaProfileExecutePriorities() {
             for (s32 i = 0; i < ProfileInfo::cProfileID_Max; i++)
-                (*this)[i] = i;
+                (*this)[i] = static_cast<s16>(i);
         }
     };
 
