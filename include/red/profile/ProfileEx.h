@@ -1,5 +1,6 @@
 #pragma once
 
+#include <container/seadSafeArray.h>
 #include <container/seadStrTreeMap.h>
 #include <actor/ProfileInfo.h>
 #include <actor/Profile.h>
@@ -28,6 +29,12 @@ public:
     static s16 getDrawPriority(const s32 id);
     
     [[nodiscard]]
+    static s16 getExecutePriority(const sead::SafeString& identifier);
+    
+    [[nodiscard]]
+    static s16 getExecutePriority(const s32 id);
+    
+    [[nodiscard]]
     static ProfileInfo::ResType getResType(const sead::SafeString& identifier);
     
     [[nodiscard]]
@@ -50,6 +57,8 @@ public: //! The below are RedCore-internal APIs, do not use!
     static void setResources(const sead::SafeString& identifier, const ProfileInfo::ResType resourceType, sead::SafeString* resources, const u8 resourceCount);
     static void setName(const s32 id, const char* name);
     static void setDrawPriority(const sead::SafeString& identifier, const s16 priority);
+    static void setExecutePriority(const sead::SafeString& identifier, const s16 priority);
+    static void setExecutePriority(const s32 id, const s16 priority);
     
     struct ResourceData {
         u8 resource_count = 0;
@@ -58,9 +67,20 @@ public: //! The below are RedCore-internal APIs, do not use!
     };
 
 private:
+    class VanillaProfileExecutePriorities : public sead::SafeArray<s16, ProfileInfo::cProfileID_Max> {
+    public:
+        VanillaProfileExecutePriorities() {
+            for (s32 i = 0; i < ProfileInfo::cProfileID_Max; i++)
+                (*this)[i] = i;
+        }
+    };
+
+private:
     static sead::FixedStrTreeMap<cNameMaxLen, Profile*, cMaxCustomProfiles> sCustomProfiles;
     static sead::FixedStrTreeMap<cNameMaxLen, ResourceData, cMaxCustomProfiles> sCustomProfileResources;
     static sead::FixedStrTreeMap<cNameMaxLen, s16, cMaxCustomProfiles> sCustomProfileDrawPriorities;
+    static sead::FixedStrTreeMap<cNameMaxLen, s16, cMaxCustomProfiles> sCustomProfileExecutePriorities;
+    static VanillaProfileExecutePriorities sVanillaProfileExecutePriorities;
     static const char* sProfileNames[];
 };
 

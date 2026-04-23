@@ -30,6 +30,10 @@ public:
             tk::privilegedWrite(pub::ProfileInfo::cDrawPriority + mID, &mDrawPriority, sizeof(s16));
         }
         
+        if (mExecutePriorityModified) {
+            ProfileEx::setExecutePriority(mID, mExecutePriority);
+        }
+        
         return profile;
     }
 

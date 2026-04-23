@@ -562,6 +562,7 @@
     _ZN11ProfileInfo13cDrawPriorityE = 0x10001940;
     _ZN11ProfileInfo8cResTypeE = 0x10002064;
     _ZN11ProfileInfo7cResNumE = 0x100023F8;
+    _ZN11ProfileInfo17cProfileID_KuriboE = 0x100044A0;
     _ZN11ProfileInfo8cResListE = 0x101C321C;
 
 // Renderer

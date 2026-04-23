@@ -1,5 +1,6 @@
 #include <red/profile/ProfileEx.h>
 #include <red/public/ProfileInfo.h>
+#include <actor/ActorBase.h>
 
 #define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
@@ -40,6 +41,8 @@ Profile* Profile::get(s32 id) {
 sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, Profile*, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfiles;
 sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, red::ProfileEx::ResourceData, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfileResources;
 sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, s16, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfileDrawPriorities;
+sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, s16, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfileExecutePriorities;
+red::ProfileEx::VanillaProfileExecutePriorities red::ProfileEx::sVanillaProfileExecutePriorities;
 
 const char* red::ProfileEx::sProfileNames[ProfileInfo::cProfileID_Max + cMaxCustomProfiles] = { nullptr };
 
@@ -112,6 +115,40 @@ s16 red::ProfileEx::getDrawPriority(const s32 id) {
     }
     
     s16* it = sCustomProfileDrawPriorities.find(identifier);
+    if (it == nullptr) [[unlikely]] {
+        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        return 0;
+    }
+    return *it;
+}
+
+s16 red::ProfileEx::getExecutePriority(const sead::SafeString& identifier) {
+    s16* it = sCustomProfileExecutePriorities.find(identifier);
+    if (it == nullptr) [[unlikely]] {
+        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        return 0;
+    }
+    return *it;
+}
+
+s16 red::ProfileEx::getExecutePriority(const s32 id) {
+    if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
+        tk::fatal("Profile ID %i was not found\n", id);
+        return 0;
+    }
+    
+    if (id < ProfileInfo::cProfileID_Max) {
+        return sVanillaProfileExecutePriorities[id];
+    }
+    
+    sead::SafeString identifier = getName(id);
+    
+    if (identifier.isEmpty()) [[unlikely]] {
+        tk::fatal("Failed to get exec priority\n");
+        return 0;
+    }
+    
+    s16* it = sCustomProfileExecutePriorities.find(identifier);
     if (it == nullptr) [[unlikely]] {
         tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
         return 0;
@@ -232,6 +269,14 @@ void red::ProfileEx::setDrawPriority(const sead::SafeString& identifier, const s
     sCustomProfileDrawPriorities.insert(identifier, priority);
 }
 
+void red::ProfileEx::setExecutePriority(const sead::SafeString& identifier, const s16 priority) {
+    sCustomProfileExecutePriorities.insert(identifier, priority);
+}
+
+void red::ProfileEx::setExecutePriority(const s32 id, const s16 priority) {
+    sVanillaProfileExecutePriorities[id] = priority;
+}
+
 // Patch info
 
 // Profile::get
@@ -272,3 +317,14 @@ namespace red {
 
 // ActorResLoader::unload
 tBranch(0x200a950, red::loadProfileCountR30, tk::BranchType::bl);
+
+// Execute Priority
+
+namespace red {
+    s16 getExecutePriority(const ActorBase* actor) {
+        // Sort by custom value instead of by profile ID. Vanilla ones default to profile ID, but can be edited via ProfileEditBuilder.
+        return red::ProfileEx::getExecutePriority(actor->getProfileID());
+    }
+}
+tBranch(0x2009428, red::getExecutePriority, tk::BranchType::bl); // ActorMgr::pushExecuteAndDrawList_
+tBranch(0x200945C, red::getExecutePriority, tk::BranchType::bl); // ActorMgr::pushExecuteAndDrawList_

@@ -61,6 +61,17 @@ public:
         return *static_cast<Derived*>(this);
     }
     
+    [[nodiscard]]
+    Derived& executePriority(const s16 executePriority) {
+        if (mExecutePriorityModified) {
+            tk::print("WARNING: .executePriority() called twice\n");
+        }
+        
+        mExecutePriorityModified = true;
+        mExecutePriority = executePriority;
+        return *static_cast<Derived*>(this);
+    }
+    
     template <ComptimeFixedString... Args> requires (sizeof...(Args) > 0)
     [[nodiscard]]
     Derived& resources(ProfileInfo::ResType type) {
@@ -82,12 +93,14 @@ protected:
     const ActorCreateInfo* mCreateInfo = nullptr;
     Profile::Flag mFlag = Profile::cFlag_None;
     s16 mDrawPriority = ProfileInfo::cProfileID_Max;
+    s16 mExecutePriority = ProfileInfo::cProfileID_Max;
     u8 mResourceCount = 0;
     sead::SafeString* mResources = nullptr;
     ProfileInfo::ResType mResourceType = ProfileInfo::cResType_Course;
     bool mCreateInfoModified = false;
     bool mFlagModified = false;
     bool mDrawPriorityModified = false;
+    bool mExecutePriorityModified = false;
     bool mResourcesModified = false;
 };
 

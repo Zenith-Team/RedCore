@@ -32,6 +32,8 @@ public:
         profile->mActorCreateInfo = this->mCreateInfo != nullptr ? this->mCreateInfo : &ActorCreateInfo::cDefault;
         profile->mIsResLoaded = false;
         profile->mFlag = this->mFlag;
+        
+        ProfileEx::setExecutePriority(mID, this->mExecutePriority);
     
         return profile;
     }
