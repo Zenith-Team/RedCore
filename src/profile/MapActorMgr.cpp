@@ -25,20 +25,19 @@ MapActorMgr::~MapActorMgr() {
 
 void MapActorMgr::init() {
     const u8* file = static_cast<u8*>(ResMgr::instance()->getFileFromCourseArchiveRes("course/spritemap.bin"));
-    if (file == nullptr) {
+    if (file == nullptr) [[unlikely]] {
         //tk::print("Level has no spritemap.bin, skipping...\n");
         return;
     }
 
-    const u8* data = static_cast<const u8*>(file);
+    const u8* data = file;
 
-    u32 spritemapVersion = rawRead<u32>(data);
-    if (spritemapVersion != cSpritemapVersion) [[unlikely]] {
+    if (u32 spritemapVersion = rawRead<u32>(data); spritemapVersion != cSpritemapVersion) [[unlikely]] {
         tk::fatal("spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, cSpritemapVersion);
         return;
     }
 
-    u32 entryNum = rawRead<u32>(data);
+    const u32 entryNum = rawRead<u32>(data);
     if (entryNum == 0) {
         //tk::print("Spritemap was empty, skipping...\n");
         return;
@@ -48,12 +47,12 @@ void MapActorMgr::init() {
 
     mProfileID.allocBuffer(static_cast<s32>(entryNum));
     for (u32 i = 0; i < entryNum; i++) {
-        u32 strOffset = rawRead<u32>(data);
+        const u32 strOffset = rawRead<u32>(data);
         // red::print("Entry %u str offset: 0x%08X\n", i, strOffset);
 
         const char* id = reinterpret_cast<const char*>(file + strOffset);
 
-        Profile* prof = ProfileEx::get(id);
+        const Profile* prof = ProfileEx::get(id);
         if (!prof) [[unlikely]] {
             tk::fatal("Failed to find profile for spritemap entry %u with identifier \"%s\"\n", i, id);
             mProfileID[i] = -1;
@@ -75,19 +74,19 @@ s32 MapActorMgr::mapToProf(u16 mapActor) {
         return MapActor::cProfileID[mapActor];
 
     if (!(mapActor & cMapMetaMask)) [[unlikely]] {
-        tk::fatal("Requested mapActor(0x%04X) is not a valid named map actor\n", int(mapActor));
+        tk::fatal("Requested mapActor(0x%04X) is not a valid named map actor\n", mapActor);
         return -1;
     }
 
-    mapActor &= ~cMapMetaMask; //? Remove metadata so it can used as a index
+    mapActor &= ~cMapMetaMask; //? Remove metadata so it can be used as an index
 
     if (!mProfileID.isBufferReady()) [[unlikely]] {
-        tk::fatal("Requesting mapActor(%i) without spritemap present\n", int(mapActor));
+        tk::fatal("Requesting mapActor(%i) without spritemap present\n", mapActor);
         return -1;
     }
 
     if (mapActor >= mProfileID.size()) [[unlikely]] {
-        tk::fatal("Requested mapActor(%i) is out of bounds(%i)\n", int(mapActor), mProfileID.size());
+        tk::fatal("Requested mapActor(%i) is out of bounds(%i)\n", mapActor, mProfileID.size());
         return -1;
     }
 
@@ -128,19 +127,19 @@ tPatch16u(0x02008262, 0xFFFF); // ActorCreateMgr::FUN_20081B8
 tPatch16u(0x0200844E, 0xFFFF); // ActorCreateMgr::FUN_20083A0
 
 namespace red {
-    s32 mapToProfR3(u16 mapActor) tRegSave {
+    s32 mapToProfR3(const u16 mapActor) tRegSave {
         return red::MapActorMgr::instance()->mapToProf(mapActor);
     }
     
-    s32 mapToProfR6(int, int, int, u16 mapActor) tRegSave {
+    s32 mapToProfR6(int, int, int, const u16 mapActor) tRegSave {
         return red::MapActorMgr::instance()->mapToProf(mapActor);
     }
     
-    s32 mapToProfR8(int, int, int, int, int, u16 mapActor) tRegSave {
+    s32 mapToProfR8(int, int, int, int, int, const u16 mapActor) tRegSave {
         return red::MapActorMgr::instance()->mapToProf(mapActor);
     }
     
-    s32 mapToProfR9(int, int, int, int, int, int, u16 mapActor) tRegSave {
+    s32 mapToProfR9(int, int, int, int, int, int, const u16 mapActor) tRegSave {
         return red::MapActorMgr::instance()->mapToProf(mapActor);
     }
 }

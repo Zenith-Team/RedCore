@@ -7,8 +7,7 @@ namespace red {
 
 constexpr s32 cMapActorNum = 724; // TODO: Move to game headers ?
 
-class MapActorMgr
-{
+class MapActorMgr {
     SEAD_SINGLETON_DISPOSER(MapActorMgr)
 
 public:
