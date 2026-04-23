@@ -6,13 +6,25 @@
 #include <red/public/Profile.h>
 
 namespace red {
-    
+
+/**
+ * @brief Builder for partially modifying fields on a vanilla profile by its numeric ID.
+ * @details Intended to be constructed via a per-mod @c red::Registrar object.
+ */
 class ProfileEditBuilder : public ProfileBuilder<ProfileEditBuilder> {
 public:
-    ProfileEditBuilder(s32 id)
+    /**
+     * @brief Begins editing a vanilla profile.
+     * @param id The target profile ID to modify.
+     */
+    explicit ProfileEditBuilder(s32 id)
         : mID(id)
     { }
 
+    /**
+     * @brief Completes the builder by applying the changes to the vanilla profile.
+     * @return The vanilla profile which was modified.
+     */
     Profile* build() {
         pub::Profile* profile = static_cast<pub::Profile*>(Profile::get(mID));
 
@@ -38,7 +50,7 @@ public:
     }
 
 private:
-    s32 mID;
+    s32 mID; ///< The target profile ID to modify.
 };
 
 }
