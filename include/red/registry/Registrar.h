@@ -27,7 +27,7 @@ public:
      * @tparam T Target actor class that this profile represents and will instantiate.
      * @param name The identifier of this profile, to which the namespace will automatically be prefixed.
      * @return A builder on which additional methods for setting parameters are available.
-     * @details One profile per instantiation of T, meaning if two profiles with the same class are desired, a second class that inherits the first is required to force creation of a new template instance.
+     * @warning One profile per instantiation of T, meaning if two profiles with the same class are desired, a second class that inherits the first is required to force creation of a new template instance.
      */
     template <class T> requires std::derived_from<T, ActorBase>
     ProfileCreateBuilder<T> newProfile(const char* name) const {
