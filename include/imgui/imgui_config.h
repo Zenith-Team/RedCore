@@ -12,7 +12,7 @@ do                                                              \
 {                                                               \
     if (!(_EXPR))                                               \
     {                                                           \
-        tk::print("ImGui assert failed: " PP_STR(_EXPR) "\n");  \
+        tk::println("ImGui assert failed: " PP_STR(_EXPR));     \
         OSFatal("ImGui assert failed: " PP_STR(_EXPR));         \
     }                                                           \
 }                                                               \

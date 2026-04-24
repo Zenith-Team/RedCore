@@ -25,7 +25,7 @@ public:
         , mID(id)
     {
         if (id > ProfileInfo::cProfileID_Max) {
-            tk::fatal("ERROR: Attempting to replace invalid vanilla profile ID: %i\n", id);
+            tk::fatal("ERROR: Attempting to replace invalid vanilla profile ID: %i", id);
         }
     }
 

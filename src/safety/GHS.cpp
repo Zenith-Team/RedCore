@@ -2,11 +2,11 @@
 
 namespace red {
     void handlePVC() {
-        tk::fatal("A pure virtual function was called\n");
+        tk::fatal("A pure virtual function was called");
     }
     
     void handleDVC() {
-        tk::fatal("A deleted virtual function was called\n");
+        tk::fatal("A deleted virtual function was called");
     }
 }
 

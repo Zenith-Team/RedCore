@@ -39,7 +39,7 @@ public:
     [[nodiscard]]
     Derived& createInfo(const ActorCreateInfo* createInfo) {
         if (mCreateInfoModified) {
-            tk::print("WARNING: .createInfo() called twice\n");
+            tk::println("WARNING: .createInfo() called twice");
         }
         
         mCreateInfoModified = true;
@@ -54,7 +54,7 @@ public:
     [[nodiscard]]
     Derived& flag(const Profile::Flag flag) {
         if (mFlagModified) {
-            tk::print("WARNING: .flag() called twice\n");
+            tk::println("WARNING: .flag() called twice");
         }
         
         mFlagModified = true;
@@ -69,7 +69,7 @@ public:
     [[nodiscard]]
     Derived& drawPriority(const s16 drawPriority) {
         if (mDrawPriorityModified) {
-            tk::print("WARNING: .drawPriority() called twice\n");
+            tk::println("WARNING: .drawPriority() called twice");
         }
         
         mDrawPriorityModified = true;
@@ -85,7 +85,7 @@ public:
     [[nodiscard]]
     Derived& executePriority(const s16 executePriority) {
         if (mExecutePriorityModified) {
-            tk::print("WARNING: .executePriority() called twice\n");
+            tk::println("WARNING: .executePriority() called twice");
         }
         
         mExecutePriorityModified = true;
@@ -105,7 +105,7 @@ public:
         static sead::SafeString sResources[] = { sead::SafeString(Args.cstr())... };
         static bool instanciationUsed = false;
         if (instanciationUsed) {
-            tk::print("WARNING: SafeArray instanciation already used. Might be bad...\n");
+            tk::println("WARNING: SafeArray instanciation already used. Might be bad...");
         }
         instanciationUsed = true;
         

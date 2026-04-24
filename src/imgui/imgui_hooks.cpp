@@ -141,13 +141,13 @@ namespace red {
         u8* fontFile = sead::FileDeviceMgr::instance()->tryLoad(loadArg);
         
         if (fontFile) {
-            tk::print("ImGui font file loaded\n");
+            tk::println("ImGui font file loaded");
             
             ImFontConfig fontConfig;
             fontConfig.FontDataOwnedByAtlas = loadArg.need_unload;
             ImFont* font = io.Fonts->AddFontFromMemoryTTF(fontFile, loadArg.read_size, 17.0f, &fontConfig);
             
-            tk::print("ImGui font loaded\n");
+            tk::println("ImGui font loaded");
         }
     
         sImguiInput.vpad = &sVPadInfo.status[0];

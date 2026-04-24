@@ -26,47 +26,47 @@ MapActorMgr::~MapActorMgr() {
 void MapActorMgr::init() {
     const u8* file = static_cast<u8*>(ResMgr::instance()->getFileFromCourseArchiveRes("course/spritemap.bin"));
     if (file == nullptr) [[unlikely]] {
-        //tk::print("Level has no spritemap.bin, skipping...\n");
+        //tk::println("Level has no spritemap.bin, skipping...");
         return;
     }
 
     const u8* data = file;
 
     if (u32 spritemapVersion = rawRead<u32>(data); spritemapVersion != cSpritemapVersion) [[unlikely]] {
-        tk::fatal("spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X\n", spritemapVersion, cSpritemapVersion);
+        tk::fatal("spritemap.bin version mismatch. Encountered 0x%08X, expected 0x%08X", spritemapVersion, cSpritemapVersion);
         return;
     }
 
     const u32 entryNum = rawRead<u32>(data);
     if (entryNum == 0) {
-        //tk::print("Spritemap was empty, skipping...\n");
+        //tk::println("Spritemap was empty, skipping...");
         return;
     }
 
-    // red::print("entryNum: %u\n", entryNum);
+    // tk::println("entryNum: %u", entryNum);
 
     mProfileID.allocBuffer(static_cast<s32>(entryNum));
     for (u32 i = 0; i < entryNum; i++) {
         const u32 strOffset = rawRead<u32>(data);
-        // red::print("Entry %u str offset: 0x%08X\n", i, strOffset);
+        // tk::println("Entry %u str offset: 0x%08X", i, strOffset);
 
         const char* id = reinterpret_cast<const char*>(file + strOffset);
 
         const Profile* prof = ProfileEx::get(id);
         if (!prof) [[unlikely]] {
-            tk::fatal("Failed to find profile for spritemap entry %u with identifier \"%s\"\n", i, id);
+            tk::fatal("Failed to find profile for spritemap entry %u with identifier \"%s\"", i, id);
             mProfileID[i] = -1;
             continue;
         }
 
         mProfileID[i] = prof->getID();
-        //tk::print("Loaded spritemap entry [%u]->[%s]\n", i, id);
+        //tk::println("Loaded spritemap entry [%u]->[%s]", i, id);
     }
 }
 
 s32 MapActorMgr::mapToProf(u16 mapActor) {
     if (mapActor == 0xFFFF) [[unlikely]] {
-        tk::fatal("Requested mapActor -1\n");
+        tk::fatal("Requested mapActor -1");
         return -1;
     }
 
@@ -74,19 +74,19 @@ s32 MapActorMgr::mapToProf(u16 mapActor) {
         return MapActor::cProfileID[mapActor];
 
     if (!(mapActor & cMapMetaMask)) [[unlikely]] {
-        tk::fatal("Requested mapActor(0x%04X) is not a valid named map actor\n", mapActor);
+        tk::fatal("Requested mapActor(0x%04X) is not a valid named map actor", mapActor);
         return -1;
     }
 
     mapActor &= ~cMapMetaMask; //? Remove metadata so it can be used as an index
 
     if (!mProfileID.isBufferReady()) [[unlikely]] {
-        tk::fatal("Requesting mapActor(%i) without spritemap present\n", mapActor);
+        tk::fatal("Requesting mapActor(%i) without spritemap present", mapActor);
         return -1;
     }
 
     if (mapActor >= mProfileID.size()) [[unlikely]] {
-        tk::fatal("Requested mapActor(%i) is out of bounds(%i)\n", mapActor, mProfileID.size());
+        tk::fatal("Requested mapActor(%i) is out of bounds(%i)", mapActor, mProfileID.size());
         return -1;
     }
 

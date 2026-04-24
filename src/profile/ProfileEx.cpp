@@ -26,10 +26,10 @@ Profile::Profile(ActorFactory factory, s32 id, const sead::SafeString& name, con
     red::ProfileEx::setName(mID, name.cstr());
     
     if (id != -1 && id < ProfileInfo::cProfileID_Max) { // vanilla replacements
-        tk::print("Registering vanilla profile %i\n", id);
+        tk::println("Registering vanilla profile %i", id);
         sProfileList[id] = this;
     } else {
-        tk::print("Registering custom profile [%i:%i:%s]\n", id, mID, name.cstr());
+        tk::println("Registering custom profile [%i:%i:%s]", id, mID, name.cstr());
         red::ProfileEx::addIdentifierProfile(name, this);
     }
 }
@@ -49,7 +49,7 @@ const char* red::ProfileEx::sProfileNames[ProfileInfo::cProfileID_Max + cMaxCust
 Profile* red::ProfileEx::get(const sead::SafeString& identifier)  {
     Profile** it = sCustomProfiles.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::fatal("Profile identifier \"%s\" was not found. sCustomProfiles: %d\n", identifier.cstr(), sCustomProfiles.size());
+        tk::fatal("Profile identifier \"%s\" was not found. sCustomProfiles: %d", identifier.cstr(), sCustomProfiles.size());
         return nullptr;
     }
     return *it;
@@ -57,7 +57,7 @@ Profile* red::ProfileEx::get(const sead::SafeString& identifier)  {
 
 Profile* red::ProfileEx::get(const s32 id) {
     if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-        tk::fatal("Profile ID %i was not found\n", id);
+        tk::fatal("Profile ID %i was not found", id);
         return nullptr;
     }
     
@@ -68,7 +68,7 @@ Profile* red::ProfileEx::get(const s32 id) {
     const sead::SafeString identifier = ProfileEx::getName(id);
     
     if (identifier.isEmpty()) [[unlikely]] {
-        tk::fatal("Failed to get profile\n");
+        tk::fatal("Failed to get profile");
         return nullptr;
     }
     
@@ -77,13 +77,13 @@ Profile* red::ProfileEx::get(const s32 id) {
 
 const char* red::ProfileEx::getName(const s32 id) {
     if (id < 0 || id >= cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-        tk::fatal("Profile ID %i was not found\n", id);
+        tk::fatal("Profile ID %i was not found", id);
         return "";
     }
     
     const char* name = sProfileNames[id];
     
-    //tk::print("Mapped ID [%i:%u]\n", id, name);
+    //tk::println("Mapped ID [%i:%u]", id, name);
     
     return name;
 }
@@ -91,7 +91,7 @@ const char* red::ProfileEx::getName(const s32 id) {
 s16 red::ProfileEx::getDrawPriority(const sead::SafeString& identifier) {
     const s16* it = sCustomProfileDrawPriorities.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        tk::fatal("Profile identifier \"%s\" was not found", identifier.cstr());
         return 0;
     }
     return *it;
@@ -99,7 +99,7 @@ s16 red::ProfileEx::getDrawPriority(const sead::SafeString& identifier) {
 
 s16 red::ProfileEx::getDrawPriority(const s32 id) {
     if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-        tk::fatal("Profile ID %i was not found\n", id);
+        tk::fatal("Profile ID %i was not found", id);
         return 0;
     }
     
@@ -110,13 +110,13 @@ s16 red::ProfileEx::getDrawPriority(const s32 id) {
     const sead::SafeString identifier = getName(id);
     
     if (identifier.isEmpty()) [[unlikely]] {
-        tk::fatal("Failed to get draw priority\n");
+        tk::fatal("Failed to get draw priority");
         return 0;
     }
 
     const s16* it = sCustomProfileDrawPriorities.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        tk::fatal("Profile identifier \"%s\" was not found", identifier.cstr());
         return 0;
     }
     return *it;
@@ -125,7 +125,7 @@ s16 red::ProfileEx::getDrawPriority(const s32 id) {
 s16 red::ProfileEx::getExecutePriority(const sead::SafeString& identifier) {
     const s16* it = sCustomProfileExecutePriorities.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        tk::fatal("Profile identifier \"%s\" was not found", identifier.cstr());
         return 0;
     }
     return *it;
@@ -133,7 +133,7 @@ s16 red::ProfileEx::getExecutePriority(const sead::SafeString& identifier) {
 
 s16 red::ProfileEx::getExecutePriority(const s32 id) {
     if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-        tk::fatal("Profile ID %i was not found\n", id);
+        tk::fatal("Profile ID %i was not found", id);
         return 0;
     }
     
@@ -144,13 +144,13 @@ s16 red::ProfileEx::getExecutePriority(const s32 id) {
     const sead::SafeString identifier = getName(id);
     
     if (identifier.isEmpty()) [[unlikely]] {
-        tk::fatal("Failed to get exec priority\n");
+        tk::fatal("Failed to get exec priority");
         return 0;
     }
     
     s16* it = sCustomProfileExecutePriorities.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        tk::fatal("Profile identifier \"%s\" was not found", identifier.cstr());
         return 0;
     }
     return *it;
@@ -159,41 +159,41 @@ s16 red::ProfileEx::getExecutePriority(const s32 id) {
 ProfileInfo::ResType red::ProfileEx::getResType(const sead::SafeString& identifier) {
     const ResourceData* it = sCustomProfileResources.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        tk::fatal("Profile identifier \"%s\" was not found", identifier.cstr());
         return ProfileInfo::cResType_Num;
     }
     return it->resource_type;
 }
 
 ProfileInfo::ResType red::ProfileEx::getResType(const s32 id) {
-    //tk::print("Requesting res type for ProfileID %i\n", id);
+    //tk::println("Requesting res type for ProfileID %i", id);
     
     if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-        tk::fatal("ProfileID %i (0x%x) was not found\n", id, id);
+        tk::fatal("ProfileID %i (0x%x) was not found", id, id);
         return ProfileInfo::cResType_Boot;
     }
     
     if (id < ProfileInfo::cProfileID_Max) {
-        //tk::print("ID was less than %i, using cResType\n", ProfileInfo::cProfileID_Max);
+        //tk::println("ID was less than %i, using cResType", ProfileInfo::cProfileID_Max);
         return static_cast<const ProfileInfo::ResType>(pub::ProfileInfo::cResType[id]);
     }
     
-    //tk::print("ID was >= %i, querying name... ", ProfileInfo::cProfileID_Max);
+    //tk::println("ID was >= %i, querying name... ", ProfileInfo::cProfileID_Max);
     const sead::SafeString identifier = getName(id);
     
     if (identifier.isEmpty()) [[unlikely]] {
-        tk::fatal("Failed to get res type\n");
+        tk::fatal("Failed to get res type");
         return ProfileInfo::cResType_Boot;
     }
     
-    //tk::print("Querying overload\n");
+    //tk::println("Querying overload");
     return ProfileEx::getResType(identifier);
 }
 
 u32 red::ProfileEx::getResNum(const sead::SafeString& identifier) {
     const ResourceData* it = sCustomProfileResources.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        tk::fatal("Profile identifier \"%s\" was not found", identifier.cstr());
         return 0;
     }
     return it->resource_count;
@@ -201,7 +201,7 @@ u32 red::ProfileEx::getResNum(const sead::SafeString& identifier) {
 
 u32 red::ProfileEx::getResNum(const s32 id) {
     if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-        tk::fatal("Profile ID %i was not found\n", id);
+        tk::fatal("Profile ID %i was not found", id);
         return 0;
     }
     
@@ -212,7 +212,7 @@ u32 red::ProfileEx::getResNum(const s32 id) {
     const sead::SafeString identifier = getName(id);
     
     if (identifier.isEmpty()) [[unlikely]] {
-        tk::fatal("Failed to get resource count\n");
+        tk::fatal("Failed to get resource count");
         return 0;
     }
     
@@ -222,7 +222,7 @@ u32 red::ProfileEx::getResNum(const s32 id) {
 const sead::SafeString* red::ProfileEx::getResList(const sead::SafeString& identifier) {
     const ResourceData* it = sCustomProfileResources.find(identifier);
     if (it == nullptr) [[unlikely]] {
-        tk::fatal("Profile identifier \"%s\" was not found\n", identifier.cstr());
+        tk::fatal("Profile identifier \"%s\" was not found", identifier.cstr());
         return nullptr;
     }
     return it->resources;
@@ -230,7 +230,7 @@ const sead::SafeString* red::ProfileEx::getResList(const sead::SafeString& ident
 
 const sead::SafeString* red::ProfileEx::getResList(const s32 id) {
     if (id < 0 || id > cMaxCustomProfiles + ProfileInfo::cProfileID_Max) [[unlikely]] {
-        tk::fatal("Profile ID %i was not found\n");
+        tk::fatal("Profile ID %i was not found");
         return nullptr;
     }
     
@@ -241,7 +241,7 @@ const sead::SafeString* red::ProfileEx::getResList(const s32 id) {
     const sead::SafeString identifier = getName(id);
     
     if (identifier.isEmpty()) [[unlikely]] {
-        tk::fatal("Failed to get resource list\n");
+        tk::fatal("Failed to get resource list");
         return nullptr;
     }
     
