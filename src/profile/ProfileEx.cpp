@@ -15,6 +15,14 @@ static s32 getNext(const s32 id) {
     return id;
 }
 
+static consteval auto makeVanillaPriorities() {
+    sead::SafeArray<s16, ProfileInfo::cProfileID_Max> arr;
+    for (s32 i = 0; i < ProfileInfo::cProfileID_Max; i++) {
+        arr[i] = static_cast<s16>(i);
+    }
+    return arr;
+}
+
 // Custom impl of profile ctor, mods use this instead of defining the symbol for original.
 Profile::Profile(ActorFactory factory, s32 id, const sead::SafeString& name, const ActorCreateInfo* createInfo, Flag flag)
     : mFactory(factory)
@@ -42,7 +50,7 @@ sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, Profile*, red::ProfileEx::cMa
 sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, red::ProfileEx::ResourceData, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfileResources;
 sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, s16, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfileDrawPriorities;
 sead::FixedStrTreeMap<red::ProfileEx::cNameMaxLen, s16, red::ProfileEx::cMaxCustomProfiles> red::ProfileEx::sCustomProfileExecutePriorities;
-red::ProfileEx::VanillaProfileExecutePriorities red::ProfileEx::sVanillaProfileExecutePriorities;
+auto red::ProfileEx::sVanillaProfileExecutePriorities = makeVanillaPriorities();
 
 const char* red::ProfileEx::sProfileNames[ProfileInfo::cProfileID_Max + cMaxCustomProfiles] = { nullptr };
 

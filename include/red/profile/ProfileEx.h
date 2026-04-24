@@ -67,20 +67,11 @@ public: //! The below are RedCore-internal APIs, do not use!
     };
 
 private:
-    class VanillaProfileExecutePriorities : public sead::SafeArray<s16, ProfileInfo::cProfileID_Max> {
-    public:
-        VanillaProfileExecutePriorities() {
-            for (s32 i = 0; i < ProfileInfo::cProfileID_Max; i++)
-                (*this)[i] = static_cast<s16>(i);
-        }
-    };
-
-private:
     static sead::FixedStrTreeMap<cNameMaxLen, Profile*, cMaxCustomProfiles> sCustomProfiles;
     static sead::FixedStrTreeMap<cNameMaxLen, ResourceData, cMaxCustomProfiles> sCustomProfileResources;
     static sead::FixedStrTreeMap<cNameMaxLen, s16, cMaxCustomProfiles> sCustomProfileDrawPriorities;
     static sead::FixedStrTreeMap<cNameMaxLen, s16, cMaxCustomProfiles> sCustomProfileExecutePriorities;
-    static VanillaProfileExecutePriorities sVanillaProfileExecutePriorities;
+    static sead::SafeArray<s16, ProfileInfo::cProfileID_Max> sVanillaProfileExecutePriorities;
     static const char* sProfileNames[];
 };
 
