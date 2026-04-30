@@ -362,6 +362,10 @@
 // CourseSelectTask
     _ZN16CourseSelectTask9sInstanceE = 0x101CC96C;
 
+// CourseTask
+    _ZN10CourseTask9sInstanceE = 0x101D15F0;
+    _ZN10CourseTask21doTimerIncreaseLayoutEj = 0x024C0D20;
+
 // CourseTimer
     _ZN11CourseTimer19addTimeLimitSecondsEj = 0x024C14C0;
     _ZN11CourseTimer9sInstanceE = 0x101D15F4;
