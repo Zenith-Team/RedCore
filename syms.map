@@ -299,7 +299,6 @@
 
 // ActorMultiState
     _ZN15ActorMultiStateC2ERK16ActorCreateParam = 0x0200AA8C;
-    _ZN11StateMethod17changeStateMethodERK7StateID = 0x0200B090;
     _ZN15ActorMultiState9sTypeInfoE = 0x101E9CE8;
 
 // ActorPtrCache
@@ -591,6 +590,11 @@
 // StateMethod
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
     _ZNK11StateMethod10getStateIDEv = 0x029C4B88;
+    _ZN11StateMethod17changeStateMethodERK7StateID = 0x029C4AF0;
+
+// SwitchFlagMgr
+    _ZN13SwitchFlagMgr9sInstanceE = 0x101DB06C;
+    _ZN13SwitchFlagMgr3setEhhbbbjNS_8FlagTypeE = 0x0269CD68;
 
 // SysController
     _ZN13SysController9sTypeInfoE = 0x101EAE78;
