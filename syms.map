@@ -625,9 +625,6 @@
     _ZN13SwitchFlagMgr9sInstanceE = 0x101DB06C;
     _ZN13SwitchFlagMgr3setEhhbbbjNS_8FlagTypeE = 0x0269CD68;
 
-// SwitchFlagMgr
-    _ZN13SwitchFlagMgr9sInstanceE = 0x101db06c;
-
 // SysController
     _ZN13SysController9sTypeInfoE = 0x101EAE78;
 
