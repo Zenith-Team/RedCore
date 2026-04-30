@@ -132,6 +132,7 @@
     _ZN4sead8ListNode6erase_Ev = 0x029F1A70;
 
 // sead::MathCalcCommon<f32>
+    _ZN4sead14MathCalcCommonIfE5chaseEPfff = 0x02027984;
     _ZN4sead14MathCalcCommonIfE8atanIdx_Ef = 0x02A0E124;
     _ZN4sead14MathCalcCommonIfE10cSinCosTblE = 0x10191538;
 
@@ -250,6 +251,7 @@
 
 // ActorBgCollisionMgr
     _ZN19ActorBgCollisionMgr9sInstanceE = 0x101C9360;
+    _ZN19ActorBgCollisionMgr5entryERK11BgCollision = 0x0219269C;
 
 // ActorCircleBgCollision
     _ZN22ActorCircleBgCollision9sTypeInfoE = 0x101EA398;
@@ -321,8 +323,28 @@
     _ZN8AreaTask11drawLayer3DERKN3agl3lyr10RenderInfoE = 0x024B84A8;
     _ZN8AreaTask9sInstanceE = 0x101D1598;
 
+// BasicRideLine
+    _ZN13BasicRideLineC1Ev = 0x021A1ACC;
+
 // BasicRideLineBgCollision
     _ZN24BasicRideLineBgCollision9sTypeInfoE = 0x101E9FA8;
+    _ZN24BasicRideLineBgCollisionC2EiPN4sead7Vector2IfEEP13BasicRideLineS5_ = 0x021A1E04;
+    _ZN24BasicRideLineBgCollision3setEP5ActorRKN11BgCollision7InitArgE = 0x021A2310;
+    _ZN24BasicRideLineBgCollisionD1Ev = 0x021A1F18;
+    _ZN24BasicRideLineBgCollision4vf34Ev = 0x021A25B4;
+    _ZN24BasicRideLineBgCollision7executeEv = 0x021A2E0C;
+    _ZN24BasicRideLineBgCollision14checkAreaBasicEP26BgCollisionCheckResultAreaRK21BasicBgCollisionCheckRKN4sead7Vector2IfEES9_h = 0x021A2E64;
+    _ZN24BasicRideLineBgCollision14checkAreaActorEP27ActorBgCollisionCheckResultPN4sead7Vector2IfEES5_hP21ActorBgCollisionCheck = 0x021A4994;
+    _ZN24BasicRideLineBgCollision4vf5CEPj = __deleted_virtual_called;
+    _ZN24BasicRideLineBgCollision4vf64Ev = 0x021A4C4C;
+    _ZN24BasicRideLineBgCollision4vf6CEv = 0x021A4CB0;
+    _ZN24BasicRideLineBgCollision19onBgCheckDataChangeERKy = 0x021A4FDC;
+
+// BgCollision
+    _ZN11BgCollision7setTypeENS_4TypeE = 0x021A5A70;
+    _ZN11BgCollision4vf24EPjj = 0x021A7688;
+    _ZN11BgCollision4vf2CEPj = __deleted_virtual_called;
+    _ZN11BgCollision9sTypeInfoE = 0x101E9FA4;
 
 // BgScrollMgr
     _ZN11BgScrollMgr9sInstanceE = 0x101E7C54;
@@ -550,6 +572,9 @@
     _ZN17ParentMovementMgr4linkERKN4sead7Vector3IfEEjh = 0x0284B6F4;
     _ZN17ParentMovementMgr7executeEv = 0x0284B8C4;
 
+// PlayerRideUtil
+    _ZN14PlayerRideUtil11getRideFlagEP13ActorUniqueIDPjRK11BgCollision = 0x02857AF8;
+
 // PoleRopeBgCollision
     _ZN19PoleRopeBgCollision9sTypeInfoE = 0x101EA384;
 
@@ -595,6 +620,9 @@
 // SwitchFlagMgr
     _ZN13SwitchFlagMgr9sInstanceE = 0x101DB06C;
     _ZN13SwitchFlagMgr3setEhhbbbjNS_8FlagTypeE = 0x0269CD68;
+
+// SwitchFlagMgr
+    _ZN13SwitchFlagMgr9sInstanceE = 0x101db06c;
 
 // SysController
     _ZN13SysController9sTypeInfoE = 0x101EAE78;
