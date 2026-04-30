@@ -30,8 +30,9 @@ Install the [Tachyon SDK](https://github.com/Zenith-Team/Tachyon) (requires [Nod
 ```yml
 npm i -g https://github.com/Zenith-Team/Tachyon/releases/latest/download/Tachyon.tgz
 ```
-Build and run the project for your region:
+Build and run the project for your region (example with `US`)
 ```rb
+tachyon pm install
 tachyon compile US
 tachyon launch US
 ```
