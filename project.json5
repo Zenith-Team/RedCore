@@ -4,6 +4,7 @@
     Name: "RedCore",
     Version: "1.0.0",
     Type: "CoreAPI",
+    Description: "The modern NSMBU custom code API.",
     
     PrecompiledHeader: "src/PCH.h",
     
