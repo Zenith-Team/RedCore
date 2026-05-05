@@ -253,6 +253,9 @@
     _ZN19ActorBgCollisionMgr9sInstanceE = 0x101C9360;
     _ZN19ActorBgCollisionMgr5entryERK11BgCollision = 0x0219269C;
 
+// ActorBoxBgCollision
+    _ZN19ActorBoxBgCollision9sTypeInfoE = 0x101E9FBC;
+
 // ActorCircleBgCollision
     _ZN22ActorCircleBgCollision9sTypeInfoE = 0x101EA398;
 
@@ -340,14 +343,28 @@
     _ZN24BasicRideLineBgCollision4vf6CEv = 0x021A4CB0;
     _ZN24BasicRideLineBgCollision19onBgCheckDataChangeERKy = 0x021A4FDC;
 
+// Bg
+    _ZN2Bg20getUnitCurrentCdFileEtthPi = 0x02685000;
+
 // BgCollision
     _ZN11BgCollision7setTypeENS_4TypeE = 0x021A5A70;
     _ZN11BgCollision4vf24EPjj = 0x021A7688;
+    _ZN11BgCollision7setAttrEN10BgUnitCode4AttrE = 0x021A5AD0;
     _ZN11BgCollision4vf2CEPj = __deleted_virtual_called;
     _ZN11BgCollision9sTypeInfoE = 0x101E9FA4;
 
 // BgScrollMgr
     _ZN11BgScrollMgr9sInstanceE = 0x101E7C54;
+
+// CourseData
+    _ZN10CourseData7getFileEi = 0x0269A2DC;
+    _ZN10CourseData9sInstanceE = 0x101DB048;
+
+// CourseDataFile
+    _ZNK14CourseDataFile11getLocationEPN4sead9BoundBox2IfEEh = 0x0269A020;
+
+// CourseInfo
+    _ZN10CourseInfo9sInstanceE = 0x101D18EC;
 
 // CourseSelectActor
     _ZN17CourseSelectActor9sTypeInfoE = 0x101EA3C8;
@@ -558,7 +575,22 @@
     _ZN8LayerMgr9sInstanceE = 0x101D2BE4;
 
 // LoopRideLineBgCollision
+    _ZN23LoopRideLineBgCollision7executeEv = 0x021A871C;
+    _ZN23LoopRideLineBgCollisionD1Ev = 0x021A7A04;
+    _ZN23LoopRideLineBgCollision4vf34Ev = 0x021A7E34;
+    _ZN23LoopRideLineBgCollision14checkAreaBasicEP26BgCollisionCheckResultAreaRK21BasicBgCollisionCheckRKN4sead7Vector2IfEES9_h = 0x021A8780;
+    _ZN23LoopRideLineBgCollision14checkAreaActorEP27ActorBgCollisionCheckResultPN4sead7Vector2IfEES5_hP21ActorBgCollisionCheck = 0x021ABFD8;
+    _ZN23LoopRideLineBgCollisionC2EiPN4sead7Vector2IfEEP13BasicRideLineS5_ = 0x021A7904;
+    _ZN23LoopRideLineBgCollision4vf5CEPj = __deleted_virtual_called;
+    _ZN23LoopRideLineBgCollision4vf64Ev = 0x021ACB50;
+    _ZN23LoopRideLineBgCollision4vf6CEv = 0x021ACBB4;
+    _ZN23LoopRideLineBgCollision19onBgCheckDataChangeERKy = 0x021ACE40;
+    _ZNK23LoopRideLineBgCollision32checkPointInsideOrWithinDistanceERKN4sead7Vector2IfEEf = 0x021ACE8C;
+    _ZN23LoopRideLineBgCollision4vf84Ev = 0x021AC8F8;
     _ZN23LoopRideLineBgCollision9sTypeInfoE = 0x101E9FB4;
+
+// LoopRideLineBgCollisionUtil
+    _ZN27LoopRideLineBgCollisionUtil3setEP23LoopRideLineBgCollisionP5ActorRKN11BgCollision10BoxInitArgE = 0x021AD3BC;
 
 // MapActor
     _ZN8MapActor10cProfileIDE = 0x101ECD8C;
@@ -595,6 +627,7 @@
 
 // Renderer
     _ZN8Renderer9drawModelEPK9AnimModel = 0x024FAC98;
+    _ZN8Renderer15drawActorBgUnitE6UnitIDRKN4sead7Vector3IfEE5AngleS5_ = 0x024FAD28;
     _ZN8Renderer9sInstanceE = 0x101D2D88;
 
 // ResMgr
@@ -603,6 +636,13 @@
 
 // ShaderParamAnimation
     _ZN20ShaderParamAnimation14playTexSrtAnimEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FEE50;
+
+// SimpleBoxBgCollision
+    _ZN20SimpleBoxBgCollision9sTypeInfoE = 0x101E9FCC;
+
+// SimpleShapeBgCollision
+    _ZN22SimpleShapeBgCollision9sTypeInfoE = 0x101E9FB8;
+    _ZNK22SimpleShapeBgCollision16checkPointInsideEPbRKN4sead7Vector2IfEE = 0x021B096C;
 
 // SkeletalAnimation
     _ZN17SkeletalAnimation4playEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FDADC;
