@@ -248,6 +248,7 @@
     _ZN21ActorBgCollisionCheckD1Ev = 0x0218ADFC;
     _ZN21ActorBgCollisionCheck3setEP5ActorPKNS_6SensorES4_S4_ = 0x0218AF6C;
     _ZNK21ActorBgCollisionCheck9getSensorEh = 0x0218CE74;
+    _ZN21ActorBgCollisionCheck10checkWaterEPfRKN4sead7Vector3IfEEh = 0x0218F0C0;
 
 // ActorBgCollisionMgr
     _ZN19ActorBgCollisionMgr9sInstanceE = 0x101C9360;
@@ -362,6 +363,9 @@
 
 // CourseDataFile
     _ZNK14CourseDataFile11getLocationEPN4sead9BoundBox2IfEEh = 0x0269A020;
+    _ZNK14CourseDataFile11getNextGotoEh = 0x02699BD8;
+    _ZNK14CourseDataFile11getRailInfoEh = 0x0269A0A8;
+    _ZNK14CourseDataFile12getRailPointEh = 0x0269A0F4;
 
 // CourseInfo
     _ZN10CourseInfo9sInstanceE = 0x101D18EC;
@@ -382,6 +386,7 @@
 // CourseTask
     _ZN10CourseTask9sInstanceE = 0x101D15F0;
     _ZN10CourseTask11doBonusTimeEa = 0x024C0D20;
+    _ZNK10CourseTask19getGamesceneUnkBoolEv = 0x024C0D6C;
 
 // CourseTimer
     _ZN11CourseTimer19addTimeLimitSecondsEj = 0x024C14C0;
@@ -595,6 +600,9 @@
 // MapActor
     _ZN8MapActor10cProfileIDE = 0x101ECD8C;
 
+// MaskMgr
+    _ZN7MaskMgr9sInstanceE = 0x101DF8B4;
+
 // ModelResourceMgr
     _ZNK16ModelResourceMgr11getResourceERKN4sead14SafeStringBaseIcEE = 0x024F60EC;
     _ZN16ModelResourceMgr9sInstanceE = 0x101D2D50;
@@ -607,6 +615,41 @@
     _ZN17ParentMovementMgr11getTypeMaskE18ParentMovementType = 0x0284A37C;
     _ZN17ParentMovementMgr4linkERKN4sead7Vector3IfEEjh = 0x0284B6F4;
     _ZN17ParentMovementMgr7executeEv = 0x0284B8C4;
+
+// PlayerBase
+    _ZN10PlayerBase15changeDemoStateERK7StateIDi = 0x028FAF1C;
+    _ZN10PlayerBase17demo_dokan_move_xEff = 0x028FDFBC;
+    _ZN10PlayerBase10setDokanSEEv = 0x028FE030;
+    _ZN10PlayerBase17demo_dokan_move_yEff = 0x028FE054;
+    _ZN10PlayerBase15changeNextSceneEi = 0x028FB338;
+    _ZN10PlayerBase12getMukiAngleE7DirType = 0x029065F0;
+    _ZN10PlayerBase13addCalcAngleYERK5Anglef = 0x02907A00;
+    _ZN10PlayerBase25getWaterDokanCenterOffsetEf = 0x028FE3BC;
+    _ZN10PlayerBase11setFaderPosERKN4sead7Vector3IfEE = 0x028FB1D8;
+    _ZN10PlayerBase18changeNormalActionEv = 0x028FBAAC;
+    _ZN10PlayerBase12dokanMoveOutEv = 0x028FEEA8;
+    _ZN10PlayerBase10startSoundEPKcNS_14StartSoundTypeE = 0x0290B9A4;
+    _ZN10PlayerBase21StateID_DemoOutDokanLE = 0x1022A170;
+    _ZN10PlayerBase21StateID_DemoOutDokanRE = 0x1022A14C;
+    _ZN10PlayerBase20StateID_DemoInDokanDE = 0x1022A200;
+    _ZN10PlayerBase20StateID_DemoInDokanUE = 0x1022A1DC;
+    _ZN10PlayerBase20StateID_DemoInDokanRE = 0x1022A224;
+    _ZN10PlayerBase20StateID_DemoInDokanLE = 0x1022A248;
+
+// PlayerDemoMgr
+    _ZN13PlayerDemoMgr11setDemoModeENS_4ModeE = 0x0290CB8C;
+    _ZN13PlayerDemoMgr14turnNextDemoNoEv = 0x0290FA60;
+    _ZN13PlayerDemoMgr13getNextDemoNoEv = 0x0290FA10;
+    _ZN13PlayerDemoMgr9sInstanceE = 0x101E2238;
+
+// PlayerKey
+    _ZNK9PlayerKey10buttonWalkEP7DirType = 0x029161C8;
+
+// PlayerModelBase
+    _ZN15PlayerModelBase9isAnmStopEv = 0x0292211C;
+
+// PlayerModelBaseMgr
+    _ZN18PlayerModelBaseMgr6setAnmEif = 0x02922A84;
 
 // PlayerRideUtil
     _ZN14PlayerRideUtil11getRideFlagEP13ActorUniqueIDPjRK11BgCollision = 0x02857AF8;
