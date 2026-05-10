@@ -178,6 +178,9 @@
 // sead::Thread
     _ZN4sead6Thread5sleepENS_8TickSpanE = 0x02A19A50;
 
+// sead::ThreadMgr
+    _ZN4sead9ThreadMgr9sInstanceE = 0x101E80A0;
+
 // sead::TickSpan
     _ZN4sead8TickSpan10cFrequencyE = 0x105EAFB8;
 
@@ -650,6 +653,10 @@
 
 // PlayerModelBaseMgr
     _ZN18PlayerModelBaseMgr6setAnmEif = 0x02922A84;
+
+// PlayerObject
+    _ZN12PlayerObject9sTypeInfoE = 0x101E9CA0;
+    _ZN12PlayerObject7setItemE10PlayerMode = 0x02931C1C;
 
 // PlayerRideUtil
     _ZN14PlayerRideUtil11getRideFlagEP13ActorUniqueIDPjRK11BgCollision = 0x02857AF8;
