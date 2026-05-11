@@ -657,6 +657,7 @@
 // PlayerObject
     _ZN12PlayerObject9sTypeInfoE = 0x101E9CA0;
     _ZN12PlayerObject7setItemE10PlayerMode = 0x02931C1C;
+    _ZN12PlayerObject16bouncePlayerSpinEff = 0x02925C70;
 
 // PlayerRideUtil
     _ZN14PlayerRideUtil11getRideFlagEP13ActorUniqueIDPjRK11BgCollision = 0x02857AF8;
