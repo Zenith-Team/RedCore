@@ -683,6 +683,8 @@
 
 // ResMgr
     _ZNK6ResMgr27getFileFromCourseArchiveResERKN4sead14SafeStringBaseIcEEPj = 0x029D33EC;
+    _ZNK6ResMgr13getArchiveResERKN4sead14SafeStringBaseIcEE = 0x029D3CA0;
+    _ZN6ResMgr26getFileFromArchiveResImpl_EPN4sead10ArchiveResERKNS0_14SafeStringBaseIcEEPj = 0x029D338C;
     _ZN6ResMgr9sInstanceE = 0x101E7D94;
 
 // ShaderParamAnimation
