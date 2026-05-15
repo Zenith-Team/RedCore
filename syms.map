@@ -731,3 +731,7 @@
 // UnitBgCollisionHolder
     _ZN21UnitBgCollisionHolder13setFromBgUnitERKN4sead7Vector2IfEEhRKNS0_7BitFlagIhEE = 0x021B1094;
     _ZN21UnitBgCollisionHolder9sInstanceE = 0x101C9650;
+
+// Yoshi
+    _ZN5Yoshi9sTypeInfoE = 0x101E9ED0;
+    _ZNK5Yoshi15getPlayerRideOnEv = 0x0296B3C4;
