@@ -250,6 +250,7 @@
 // ActorBgCollisionCheck
     _ZN21ActorBgCollisionCheckD1Ev = 0x0218ADFC;
     _ZN21ActorBgCollisionCheck3setEP5ActorPKNS_6SensorES4_S4_ = 0x0218AF6C;
+    _ZN21ActorBgCollisionCheck9setSensorEPKNS_6SensorEh = 0x0218AEFC;
     _ZNK21ActorBgCollisionCheck9getSensorEh = 0x0218CE74;
     _ZN21ActorBgCollisionCheck10checkWaterEPfRKN4sead7Vector3IfEEh = 0x0218F0C0;
 
@@ -354,11 +355,37 @@
     _ZN11BgCollision7setTypeENS_4TypeE = 0x021A5A70;
     _ZN11BgCollision4vf24EPjj = 0x021A7688;
     _ZN11BgCollision7setAttrEN10BgUnitCode4AttrE = 0x021A5AD0;
+    _ZN11BgCollision11setSlipAttrEN10BgUnitCode8SlipAttrE = 0x021A5B14;
     _ZN11BgCollision4vf2CEPj = __deleted_virtual_called;
     _ZN11BgCollision9sTypeInfoE = 0x101E9FA4;
 
 // BgScrollMgr
     _ZN11BgScrollMgr9sInstanceE = 0x101E7C54;
+
+// ChikuwaBlockBase
+    _ZN16ChikuwaBlockBaseC2ERK16ActorCreateParam = 0x02747DE4;
+    _ZN16ChikuwaBlockBase12loadActorResEv = 0x027480C0;
+    _ZN16ChikuwaBlockBase12stepCallbackEP11BgCollisionP21ActorBgCollisionCheck = 0x02747FB4;
+    _ZN16ChikuwaBlockBase4initEv = 0x0274849C;
+    _ZN16ChikuwaBlockBase4drawEv = 0x02747F84;
+    _ZN16ChikuwaBlockBase9resetStepEv = 0x0274830C;
+    _ZN16ChikuwaBlockBase10hasContactEv = 0x02748354;
+    _ZN16ChikuwaBlockBase20initializeState_StepEv = 0x027484F0;
+    _ZN16ChikuwaBlockBase17executeState_StepEv = 0x02748504;
+    _ZN16ChikuwaBlockBase18finalizeState_StepEv = 0x02748E5C;
+    _ZN16ChikuwaBlockBase23initializeState_FallingEv = 0x02748630;
+    _ZN16ChikuwaBlockBase20executeState_FallingEv = 0x02748640;
+    _ZN16ChikuwaBlockBase21finalizeState_FallingEv = 0x02748E60;
+    _ZN16ChikuwaBlockBase24initializeState_CooldownEv = 0x027486E8;
+    _ZN16ChikuwaBlockBase21executeState_CooldownEv = 0x027486F4;
+    _ZN16ChikuwaBlockBase22finalizeState_CooldownEv = 0x02748E64;
+    _ZN16ChikuwaBlockBase23initializeState_RespawnEv = 0x02748E68;
+    _ZN16ChikuwaBlockBase20executeState_RespawnEv = 0x02748784;
+    _ZN16ChikuwaBlockBase21finalizeState_RespawnEv = 0x02748E6C;
+    _ZN16ChikuwaBlockBase11updateModelEf = 0x02748204;
+    _ZTV16ChikuwaBlockBase = 0x1010A30C;
+    _ZN16ChikuwaBlockBase12StateID_StepE = 0x102216C8;
+    _ZN16ChikuwaBlockBase15StateID_FallingE = 0x102216EC;
 
 // CourseData
     _ZN10CourseData7getFileEi = 0x0269A2DC;
@@ -717,6 +744,9 @@
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
     _ZNK11StateMethod10getStateIDEv = 0x029C4B88;
     _ZN11StateMethod17changeStateMethodERK7StateID = 0x029C4AF0;
+
+// StateID
+    _ZN7StateID5cNullE = 0x1022D390;
 
 // SwitchFlagMgr
     _ZN13SwitchFlagMgr9sInstanceE = 0x101DB06C;
