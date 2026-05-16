@@ -1,3 +1,4 @@
+#include "map_obj/ChikuwaBlockBase.h"
 #include <red/actor/ActorDonutBlock.h>
 #include <collision/ActorBgCollisionMgr.h>
 
@@ -56,6 +57,10 @@ bool red::ActorDonutBlock::execute() {
     updateModel(8.0f);
     
     return true;
+}
+
+void red::ActorDonutBlock::loadActorRes() {
+    ChikuwaBlockBase::loadActorRes();
 }
 
 void red::ActorDonutBlock::reviveCollisionCheck() {

@@ -24,6 +24,8 @@ namespace red {
         void reset1() override;
         void reset2() override;
         
+        virtual void loadActorRes();
+        
         DECLARE_STATE_ID(ActorDonutBlock, Idle)
     };
 
