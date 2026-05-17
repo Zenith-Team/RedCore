@@ -16,6 +16,19 @@ namespace red {
         [[nodiscard]]
         bool isConsumed() const { return mConsumed; }
     
+    protected:
+        class BasicListener {
+        public:
+            BasicListener(ListenerFunc f, s32 priority = 0)
+                : mListener(f, priority)
+            {
+                T::subscribe(mListener);
+            }
+            
+        private:
+            EventDelegator<T>::Listener mListener;
+        };
+    
     private:
         bool mConsumed = false;
     };
