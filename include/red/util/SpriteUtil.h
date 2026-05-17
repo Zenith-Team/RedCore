@@ -1,6 +1,7 @@
 #pragma once
 
 #include <actor/Actor.h>
+#include <telkin/Print.h>
 
 namespace red {
 
@@ -129,11 +130,11 @@ namespace red {
         //* Advanced functions
 
         /**
-         * Extract the value of an arbitrary 32-bit range of bits from the given actor's full 96 bits of spritedata which make up all nybbles 1-24.
+         * @brief Extract the value of an arbitrary 32-bit range of bits from the given actor's full 96 bits of spritedata which make up all nybbles 1-24.
          * *Bit layout cheatsheet:*
          * nybbles 1-4 (bits 0-15), nybbles 5-12 (bits 16-47), nybbles 13-20 (bits 48-79), nybbles 21-24 (bits 80-96)
          *
-         * Max. output is limited to a 32-bit value for performance, if the requested range exceeds 32 bits in size or is invalid, @c OSFatal is called.
+         * @details Max. output is limited to a 32-bit value for performance, if the requested range exceeds 32 bits in size or is invalid, @c OSFatal is called.
          * Use @c mParam0/1 directly to manually extract values greater than 32 bits.
          *
          * @param from 0-indexed Big Endian (left-to-right) *inclusive* bit index to start the range at.
@@ -142,7 +143,7 @@ namespace red {
         [[nodiscard]]
         static u32 getBitRange(Actor* target, u8 from, u8 end) {
             const u8 bitsCount = end - from;
-            if (bitsCount > 32) OSFatal("red::SpriteUtil::getBitRange called with an invalid bit range.");
+            if (bitsCount > 32) tk::fatal("red::SpriteUtil::getBitRange called with an invalid bit range. (%i - %i)", from, end);
             if (bitsCount == 0) return 0;
 
             SpriteUtil* actor = static_cast<SpriteUtil*>(target);
