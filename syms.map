@@ -52,6 +52,10 @@
 // nw::g3d::res::ResDicPatricia
     _ZNK2nw3g3d3res14ResDicPatricia9FindIndexEPKc = 0x02AB1364;
 
+// nw::snd::SoundHeap
+    _ZN2nw3snd9SoundHeap9SaveStateEv = 0x02ADE408;
+    _ZN2nw3snd9SoundHeap9LoadStateEi = 0x02ADE45C;
+
 // sead::BufferedSafeStringBase<char>
     _ZN4sead22BufferedSafeStringBaseIcE7formatVEPKcP13__va_list_tag = 0x02A0F1CC;
     _ZN4sead22BufferedSafeStringBaseIcE6formatEPKcz = 0x02A0F1E4;
@@ -589,9 +593,11 @@
     _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
 
 // GameAudio
+    _ZN9GameAudio9initSoundEv = 0x02028F2C;
     _ZN9GameAudio20convertAudioObjctPosEPN4sead7Vector2IfEERKS2_ = 0x02029368;
     _ZN9GameAudio12sAudioObjEmyE = 0x101C63CC;
     _ZN9GameAudio12sAudioObjMapE = 0x101C63D0;
+    _ZN9GameAudio9sInstanceE = 0x101C63E0;
 
 // IceMgr
     _ZN6IceMgrD1Ev = 0x0237CD54;
