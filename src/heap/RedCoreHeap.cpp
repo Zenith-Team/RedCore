@@ -1,4 +1,3 @@
-#include "prim/seadDelegate.h"
 #include <red/heap/RedCoreHeap.h>
 #include <telkin/Hooks.h>
 #include <telkin/Print.h>
@@ -20,4 +19,3 @@ TaskPrepareEvent::Listener<TaskPrepareEvent::Stage::Before> MakeRedCoreHeap([](T
 }, 10000);
 
 }
-
