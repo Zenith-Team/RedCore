@@ -12,17 +12,7 @@ namespace red {
     
     class RegisterActorExtensionsEvent : public EventBase<RegisterActorExtensionsEvent> {
     public:
-    class Listener {
-        public:
-            Listener(ListenerFunc f, s32 priority = 0)
-                : mListener(f, priority)
-            {
-                RegisterActorExtensionsEvent::subscribe(mListener);
-            }
-            
-        private:
-            EventDelegator<RegisterActorExtensionsEvent>::Listener mListener;
-        };
+        using Listener = EventBase<RegisterActorExtensionsEvent>::BasicListener;
     
     public:
         [[nodiscard]]
