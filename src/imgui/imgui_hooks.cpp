@@ -16,6 +16,8 @@
 #include <system/ApplicationFramework.h>
 
 #include <red/public/seadGameFrameworkCafe.h>
+#include <red/heap/RedCoreHeap.h>
+#include <red/event/TaskPrepareEvent.h>
 
 #include <telkin/Hooks.h>
 
@@ -116,8 +118,11 @@ static void setupDarkTheme() {
 }
 
 namespace red {
-    void initImGui() {
-        sead::ExpHeap* imguiHeap = sead::ExpHeap::tryCreate(5 * 1024 * 1024, "ImGuiHeap"); // 5MB
+    TaskPrepareEvent::Listener<TaskPrepareEvent::Stage::After> InitImGui([](TaskPrepareEvent& e) {
+        if (e.getTask()->getName() != "RootTask")
+            return;
+        
+        sead::ExpHeap* imguiHeap = sead::ExpHeap::tryCreate(5 * 1024 * 1024, "ImGuiHeap", RedCoreHeap::instance()); // 5MiB
         ImGui::SetAllocatorFunctions(&imguiAlloc, &imguiFree, imguiHeap);
     
         IMGUI_CHECKVERSION();
@@ -156,9 +161,8 @@ namespace red {
         sead::GameFrameworkCafe* fw = static_cast<sead::GameFrameworkCafe*>(LayerMgr::instance()->getFramework());
         fw->setCurrentDisplaybuffer([](u32) -> void { });
         fw->set36c(true);
-    }
+    });
 } // namespace red
-tBranch(0x029D5B68, red::initImGui, tk::BranchType::b); // RootTask::prepare
 
 namespace red {
     void beginImGui(sead::GameFrameworkCafe* fw) {
