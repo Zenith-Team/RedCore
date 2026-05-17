@@ -8,17 +8,7 @@ namespace red {
     
     class ActorCreateEvent : public EventBase<ActorCreateEvent> {
     public:
-        class Listener {
-        public:
-            Listener(ListenerFunc f, s32 priority = 0)
-                : mListener(f, priority)
-            {
-                ActorCreateEvent::subscribe(mListener);
-            }
-            
-        private:
-            EventDelegator<ActorCreateEvent>::Listener mListener;
-        };
+        using Listener = EventBase<ActorCreateEvent>::BasicListener;
     
     public:
         [[nodiscard]]
