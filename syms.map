@@ -665,6 +665,7 @@
     _ZN10PlayerBase18changeNormalActionEv = 0x028FBAAC;
     _ZN10PlayerBase12dokanMoveOutEv = 0x028FEEA8;
     _ZN10PlayerBase10startSoundEPKcNS_14StartSoundTypeE = 0x0290B9A4;
+    _ZN10PlayerBase9sTypeInfoE = 0x101E9CD0;
     _ZN10PlayerBase21StateID_DemoOutDokanLE = 0x1022A170;
     _ZN10PlayerBase21StateID_DemoOutDokanRE = 0x1022A14C;
     _ZN10PlayerBase20StateID_DemoInDokanDE = 0x1022A200;
