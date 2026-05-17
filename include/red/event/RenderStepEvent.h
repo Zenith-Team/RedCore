@@ -23,7 +23,7 @@ namespace red {
         template <Stage S>
         class Listener {
         public:
-            Listener(ListenerFunc f, /* filters here, */ s32 priority = 0)
+            Listener(ListenerFunc f, s32 priority = 0)
                 : mListener(f, priority)
             {
                 RenderStepEvent::subscribe<S>(mListener);
