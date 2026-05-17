@@ -8,17 +8,7 @@ namespace red {
     
     class ActorDeleteEvent : public EventBase<ActorDeleteEvent> {
     public:
-        class Listener {
-        public:
-            Listener(ListenerFunc f, s32 priority = 0)
-                : mListener(f, priority)
-            {
-                ActorDeleteEvent::subscribe(mListener);
-            }
-            
-        private:
-            EventDelegator<ActorDeleteEvent>::Listener mListener;
-        };
+        using Listener = EventBase<ActorDeleteEvent>::BasicListener;
     
     public:
         [[nodiscard]]
