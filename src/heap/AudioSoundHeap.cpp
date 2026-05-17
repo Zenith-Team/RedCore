@@ -1,6 +1,7 @@
 #include <audio/GameAudio.h>
 #include <sound/SndAudioMgr.h>
 #include <audio/cafe/seadAudioSoundHeapCafe.h>
+#include <sound/AudAudioPlayer.h>
 #include <telkin/Telkin.h>
 
 static int sState = 0;
