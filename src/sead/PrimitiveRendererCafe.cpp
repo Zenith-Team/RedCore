@@ -14,29 +14,29 @@ void sead::PrimitiveRendererCafe::drawLines_(const Matrix34f& model_mtx, const C
 void sead::PrimitiveRendererCafe::drawBoxImpl(const Matrix34f& model_mtx, const Color4f& colorL, const Color4f& colorR) {
     drawLines_(model_mtx, colorL, colorR, mQuadVertexBuf, 4, mBoxIndexBuf, 4);
 }
-tPointer(0x10190F44, sead::PrimitiveRendererCafe::drawBoxImpl, false);
+tPointerCode(0x10190F44, sead::PrimitiveRendererCafe::drawBoxImpl);
 
 void sead::PrimitiveRendererCafe::drawLineImpl(const Matrix34f& model_mtx, const Color4f& c0, const Color4f& c1) {
     drawLines_(model_mtx, c0, c1, mLineVertexBuf, 2, mLineIndexBuf, 2);
 }
-tPointer(0x10190F5C, sead::PrimitiveRendererCafe::drawLineImpl, false);
+tPointerCode(0x10190F5C, sead::PrimitiveRendererCafe::drawLineImpl);
 
 void sead::PrimitiveRendererCafe::drawCircle16Impl(const Matrix34f& model_mtx, const Color4f& edge) {
     drawLines_(model_mtx, edge, edge, mDiskSVertexBuf, 17, mCircleSIndexBuf, 16);
 }
-tPointer(0x10190F84, sead::PrimitiveRendererCafe::drawCircle16Impl, false);
+tPointerCode(0x10190F84, sead::PrimitiveRendererCafe::drawCircle16Impl);
 
 void sead::PrimitiveRendererCafe::drawCircle32Impl(const Matrix34f& model_mtx, const Color4f& edge) {
     drawLines_(model_mtx, edge, edge, mDiskLVertexBuf, 33, mCircleLIndexBuf, 32);
 }
-tPointer(0x10190F8C, sead::PrimitiveRendererCafe::drawCircle32Impl, false);
+tPointerCode(0x10190F8C, sead::PrimitiveRendererCafe::drawCircle32Impl);
 
 void sead::PrimitiveRendererCafe::drawCubeImpl(const sead::Matrix34f& model_mtx, const Color4f& c0, const Color4f& c1) {
     drawTriangles_(model_mtx, c0, c1, mCubeVertexBuf, 8, mCubeIndexBuf, 36, nullptr);
 }
-tPointer(0x10190F4C, sead::PrimitiveRendererCafe::drawCubeImpl, false);
+tPointerCode(0x10190F4C, sead::PrimitiveRendererCafe::drawCubeImpl);
 
 void sead::PrimitiveRendererCafe::drawWireCubeImpl(const sead::Matrix34f& model_mtx, const Color4f& c0, const Color4f& c1) {
     drawLines_(model_mtx, c0, c1, mWireCubeVertexBuf, 8, mWireCubeIndexBuf, 17);
 }
-tPointer(0x10190F54, sead::PrimitiveRendererCafe::drawWireCubeImpl, false);
+tPointerCode(0x10190F54, sead::PrimitiveRendererCafe::drawWireCubeImpl);
