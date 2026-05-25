@@ -7,3 +7,4 @@ AllowShortLambdasOnASingleLine: Empty
 LambdaBodyIndentation: Signature
 BinPackArguments: true
 ColumnLimit: 0
+IndentCaseLabels: true
