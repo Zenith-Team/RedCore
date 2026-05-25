@@ -2,6 +2,8 @@
 #include <sound/SndAudioMgr.h>
 #include <audio/cafe/seadAudioSoundHeapCafe.h>
 #include <sound/AudAudioPlayer.h>
+#include <sound/SndSceneMgr.h>
+#include <sound/SndItemID.h>
 #include <telkin/Telkin.h>
 
 static int sState = 0;
@@ -43,3 +45,12 @@ tBranch(0x024BFD54, red::loadSoundHeapState, tk::BranchType::b); // CourseTask::
 // shrink the sound heap size from 239MiB to 140MiB
 tPatch32u(0x020293EC, lis(GPR::r3, 0x08C0)); // GameAudio::createSoundExpHeap
 tPatchNop(0x020293F8); // GameAudio::createSoundExpHeap
+
+// fixes the file select menu bgm not playing (because the heap state restoration unloads it)
+namespace red {
+    void preloadMenuBgm(SndSceneMgr* self) {
+        self->loadBaseSndGroup();
+        self->loadData(GROUP_MENU);
+    }
+}
+tBranch(0x029C0F24, red::preloadMenuBgm, tk::BranchType::bl); // SndSceneMgr::loadSceneSound

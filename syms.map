@@ -747,6 +747,10 @@
     _ZN14SndObjctCmnMap9holdSoundEPKciRKN4sead7Vector2IfEEN2nw3snd10OutputLineE = 0x029BED50;
     _ZN14SndObjctCmnMap9holdSoundEPKciRKN4sead7Vector2IfEEsN2nw3snd10OutputLineE = 0x029BEE18;
 
+// SndSceneMgr
+    _ZN11SndSceneMgr8loadDataEj = 0x029BFE1C;
+    _ZN11SndSceneMgr16loadBaseSndGroupEv = 0x029BFE44;
+
 // StateMethod
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
     _ZNK11StateMethod10getStateIDEv = 0x029C4B88;
