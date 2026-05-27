@@ -335,6 +335,10 @@
     _ZN8AreaTask11drawLayer3DERKN3agl3lyr10RenderInfoE = 0x024B84A8;
     _ZN8AreaTask9sInstanceE = 0x101D1598;
 
+// BasicBgCollisionCheck
+    _ZN21BasicBgCollisionCheckC1ERK21BgCollisionCheckParam = 0x021A0C44;
+    _ZNK21BasicBgCollisionCheck9checkAreaEP26BgCollisionCheckResultAreaRKN4sead7Vector2IfEES6_h = 0x021A13F0;
+
 // BasicRideLine
     _ZN13BasicRideLineC1Ev = 0x021A1ACC;
 
