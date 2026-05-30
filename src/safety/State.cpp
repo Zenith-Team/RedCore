@@ -10,7 +10,7 @@ namespace red {
 
     void checkNullState() tAssembly (
         cmpwi r3, 0x0;
-        beql _ZN3red15caughtNullStateEv;
+        beq _ZN3red15caughtNullStateEv;
         
         lwz r11, 0x0(r3); // replaced instruction
         blr;

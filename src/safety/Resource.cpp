@@ -13,7 +13,7 @@ namespace red {
     
     void checkNullResource() tAssembly (
         cmpwi r21, 0x0;
-        beql _ZN3red25caughtNullResourceInModelEv;
+        beq _ZN3red25caughtNullResourceInModelEv;
         
         lwz r20, 0x10(r21); // replaced instruction
         blr;

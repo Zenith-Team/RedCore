@@ -8,7 +8,7 @@ namespace red {
     
     void checkNullEntrance() tAssembly (
         cmpwi r3, 0x0;
-        beql _ZN3red18caughtNullEntranceEv;
+        beq _ZN3red18caughtNullEntranceEv;
         
         lbz r10, 0xD(r3); // replaced instruction
         blr;
