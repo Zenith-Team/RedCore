@@ -130,6 +130,24 @@ namespace red {
         //* Advanced functions
 
         /**
+         * @brief Extract the combined value of a range of up to 8 sequential nybbles from the given actor's full 24 nybbles of spritedata.
+         *
+         * @details Max. output is limited to a 32-bit value (8 nybbles) for performance, if the requested range exceeds 8 nybbles in size or is invalid, @c OSFatal is called.
+         * Use multiple @c getNybbleRange calls and manually combine their outputs for values greater than 32 bits.
+         *
+         * @param from 1-indexed left-to-right inclusive nybble index to start the range at. (1-24)
+         * @param end 1-indexed left-to-right inclusive nybble index to end the range at. (1-24)
+         */
+        [[nodiscard]]
+        static u32 getNybbleRange(Actor* target, u8 from, u8 end) {
+            const u8 nybbleCount = end - (from - 1);
+            if (nybbleCount == 0 || nybbleCount > 8 || from > 24 || end > 24) {
+                tk::fatal("red::SpriteUtil::getNybbleRange called with an invalid nybble range. (%i - %i)", from, end);
+            }
+            return getBitRange(target, from * 4 - 4, end * 4);
+        }
+
+        /**
          * @brief Extract the value of an arbitrary 32-bit range of bits from the given actor's full 96 bits of spritedata which make up all nybbles 1-24.
          * *Bit layout cheatsheet:*
          * nybbles 1-4 (bits 0-15), nybbles 5-12 (bits 16-47), nybbles 13-20 (bits 48-79), nybbles 21-24 (bits 80-96)
@@ -137,14 +155,15 @@ namespace red {
          * @details Max. output is limited to a 32-bit value for performance, if the requested range exceeds 32 bits in size or is invalid, @c OSFatal is called.
          * Use @c mParam0/1 directly to manually extract values greater than 32 bits.
          *
-         * @param from 0-indexed Big Endian (left-to-right) *inclusive* bit index to start the range at.
-         * @param end 0-indexed Big Endian (left-to-right) *exclusive* bit index to end the range at.
+         * @param from 0-indexed Big Endian (left-to-right) *inclusive* bit index to start the range at. (0-96)
+         * @param end 0-indexed Big Endian (left-to-right) *exclusive* bit index to end the range at. (0-96)
          */
         [[nodiscard]]
         static u32 getBitRange(Actor* target, u8 from, u8 end) {
             const u8 bitsCount = end - from;
-            if (bitsCount > 32) tk::fatal("red::SpriteUtil::getBitRange called with an invalid bit range. (%i - %i)", from, end);
-            if (bitsCount == 0) return 0;
+            if (bitsCount == 0 || bitsCount > 32 || from > 96 || end > 96) {
+                tk::fatal("red::SpriteUtil::getBitRange called with an invalid bit range. (%i - %i)", from, end);
+            }
 
             SpriteUtil* actor = static_cast<SpriteUtil*>(target);
 
