@@ -153,19 +153,19 @@ namespace red {
          * nybbles 1-4 (bits 0-15), nybbles 5-12 (bits 16-47), nybbles 13-20 (bits 48-79), nybbles 21-24 (bits 80-96)
          *
          * @details Max. output is limited to a 32-bit value for performance, if the requested range exceeds 32 bits in size or is invalid, @c OSFatal is called.
-         * Use @c mParam0/1 directly to manually extract values greater than 32 bits.
+         * Use the other overload if you need to extract more than 32 bits.
          *
          * @param from 0-indexed Big Endian (left-to-right) *inclusive* bit index to start the range at. (0-96)
          * @param end 0-indexed Big Endian (left-to-right) *exclusive* bit index to end the range at. (0-96)
          */
         [[nodiscard]]
-        static u32 getBitRange(Actor* target, u8 from, u8 end) {
+        static u32 getBitRange(const Actor* target, u8 from, u8 end) {
             const u8 bitsCount = end - from;
             if (bitsCount == 0 || bitsCount > 32 || from > 96 || end > 96) {
                 tk::fatal("red::SpriteUtil::getBitRange called with an invalid bit range. (%i - %i)", from, end);
             }
 
-            SpriteUtil* actor = static_cast<SpriteUtil*>(target);
+            const SpriteUtil* actor = static_cast<const SpriteUtil*>(target);
 
             // Fast path 1: The entire range fits within the 16-bit mSwitchFlags fields (bits 0 - 15)
             if (end <= 16) {
@@ -218,6 +218,70 @@ namespace red {
             const u32 lowerValue = getBitRangeInt32(lowerField, 0, lowerBitsCount);
 
             return (upperValue << lowerBitsCount) | lowerValue;
+        }
+
+        /**
+         * @brief Extract a compile-time defined range of bits (up to 96) from the given actor's spritedata.
+         * *Bit layout cheatsheet:*
+         * nybbles 1-4 (bits 0-15), nybbles 5-12 (bits 16-47), nybbles 13-20 (bits 48-79), nybbles 21-24 (bits 80-96)
+         *
+         * @details The output is right-aligned in the provided buffer. All memory safety checks and 
+         * bounds validations are resolved at compile-time. Fast/Slow paths are optimized statically.
+         *
+         * @param target The actor whose spritedata will be extracted.
+         * @param out Reference to a buffer where the extracted bits will be written (size deduced automatically).
+         * @tparam TFrom 0-indexed Big Endian *inclusive* start bit index.
+         * @tparam TEnd 0-indexed Big Endian *exclusive* end bit index.
+         * @tparam TOutBytes Deduced byte size of the provided output array.
+         */
+        template <u8 TFrom, u8 TEnd, s32 TOutBytes>
+        static void getBitRange(const Actor* target, u8 (&out)[TOutBytes]) {
+            static_assert(TFrom <= 96 && TEnd <= 96, "getBitRange: Bit range out of bounds (max 96).");
+            static_assert(TEnd > TFrom, "getBitRange: End index must be strictly greater than From index.");
+            
+            constexpr u8 bitsCount = TEnd - TFrom;
+            constexpr u8 outBytesCount = (bitsCount + 7) / 8;
+            
+            static_assert(TOutBytes >= outBytesCount, "getBitRange: Output buffer is too small for the requested bit range.");
+ 
+            // Fast Path: The range is <= 32 bits, delegate to the 32-bit overload
+            if constexpr (bitsCount <= 32) {
+                u32 val = getBitRange(target, TFrom, TEnd);
+                for (u8 i = 0; i < outBytesCount; i++) {
+                    out[i] = static_cast<u8>((val >> ((outBytesCount - 1 - i) * 8)) & 0xFF);
+                }
+                return;
+            } else { // Slow Path
+                const SpriteUtil* actor = static_cast<const SpriteUtil*>(target);
+
+                u8 src[12];
+                src[0] = actor->mSwitchFlag1;
+                src[1] = actor->mSwitchFlag0;
+                src[2] = static_cast<u8>((actor->mParam0 >> 24) & 0xFF);
+                src[3] = static_cast<u8>((actor->mParam0 >> 16) & 0xFF);
+                src[4] = static_cast<u8>((actor->mParam0 >> 8) & 0xFF);
+                src[5] = static_cast<u8>( actor->mParam0 & 0xFF);
+                src[6] = static_cast<u8>((actor->mParam1 >> 24) & 0xFF);
+                src[7] = static_cast<u8>((actor->mParam1 >> 16) & 0xFF);
+                src[8] = static_cast<u8>((actor->mParam1 >> 8) & 0xFF);
+                src[9] = static_cast<u8>( actor->mParam1 & 0xFF);
+                src[10] = actor->mParamEx.course.movement_id;
+                src[11] = actor->mParamEx.course.link_id;
+
+                constexpr u8 paddingBits = (8 - (bitsCount % 8)) % 8;
+
+                for (u8 i = 0; i < outBytesCount; i++) {
+                    out[i] = 0;
+                }
+
+                for (u8 i = 0; i < bitsCount; i++) {
+                    const u8 srcBitIdx = TFrom + i;
+                    const u8 destBitIdx = paddingBits + i;
+     
+                    const u8 srcBit = (src[srcBitIdx / 8] >> (7 - (srcBitIdx % 8))) & 1;
+                    out[destBitIdx / 8] |= (srcBit << (7 - (destBitIdx % 8)));
+                }
+            }
         }
 
     private:
