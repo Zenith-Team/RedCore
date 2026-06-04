@@ -20,6 +20,7 @@ public:
 
     void init();
     s32 mapToProf(u16 mapActor);
+    u16 profToMap(s32 profileID);
 
 private:
     sead::Buffer<s32> mProfileID;

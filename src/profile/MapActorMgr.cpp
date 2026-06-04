@@ -93,6 +93,18 @@ s32 MapActorMgr::mapToProf(u16 mapActor) {
     return mProfileID[mapActor];
 }
 
+u16 MapActorMgr::profToMap(s32 profileID) {
+    // TODO: Optimize this
+    
+    for (s32 i = 0; i < mProfileID.size(); i++) {
+        if (mProfileID[i] == profileID) {
+            return i | cMapMetaMask;
+        }
+    }
+    
+    return 0xFFFF;
+}
+
 }
 
 extern "C" void red_CreateMapActorMgr() {
