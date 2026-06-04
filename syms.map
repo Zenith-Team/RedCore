@@ -404,6 +404,7 @@
     _ZNK14CourseDataFile11getNextGotoEh = 0x02699BD8;
     _ZNK14CourseDataFile11getRailInfoEh = 0x0269A0A8;
     _ZNK14CourseDataFile12getRailPointEh = 0x0269A0F4;
+    _ZNK14CourseDataFile11getMapActorEtPK12MapActorData = 0x02699C08;
 
 // CourseInfo
     _ZN10CourseInfo9sInstanceE = 0x101D18EC;
@@ -705,6 +706,7 @@
 
 // Profile
     _ZN7Profile12sProfileListE = 0x101ED8DC;
+    _ZN7Profile12loadResourceEPN4sead4HeapE = 0x020195FC;
 
 // ProfileInfo
     _ZN11ProfileInfo15getDrawPriorityEi = 0x02019988;
