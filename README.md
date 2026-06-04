@@ -57,7 +57,7 @@ public:
     // Holds registry information
     static Profile* sProfile;
 
-    // Constructor
+    // Constructor (only used for setting initial values)
     DemoActor(const ActorCreateParam& param);
     // Destructor (the heap is managed, unnecessary to implement beyond default)
     ~DemoActor() override = default;
@@ -84,7 +84,7 @@ DemoActor::DemoActor(const ActorCreateParam& param)
 
 ActorBase::Result DemoActor::create() {
     // Load our model
-    // SZS name, then the model name inside
+    // SZS/BFRES name, then the model name inside
     mModel = AnimModel::create("star_coin", "star_coinA");
     
     return cResult_Success;
@@ -93,12 +93,8 @@ ActorBase::Result DemoActor::create() {
 bool DemoActor::execute() {
     // Called every tick, any behavioural logic goes here
     
-    // Update our model's transformation
-    sead::Matrix34f mtx;
-    mtx.makeRTIdx(mAngle, mPos);
-    mModel->setMtxRT(mtx);
-    mModel->setScale(mScale);
-    mModel->calcMdl();
+    // Update our model's transformation/animation
+    mModel->update(mPos, mAngle, mScale);
     
     return true;
 }
