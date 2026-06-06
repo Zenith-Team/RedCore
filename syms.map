@@ -395,6 +395,9 @@
     _ZN16ChikuwaBlockBase12StateID_StepE = 0x102216C8;
     _ZN16ChikuwaBlockBase15StateID_FallingE = 0x102216EC;
 
+// CoinOrigin
+    _ZN10CoinOrigin9sInstanceE = 0x101DB040;
+
 // CourseData
     _ZN10CourseData7getFileEi = 0x0269A2DC;
     _ZN10CourseData9sInstanceE = 0x101DB048;
