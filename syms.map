@@ -434,6 +434,10 @@
 // DistantViewMgr
     _ZN14DistantViewMgr9sInstanceE = 0x101CD394;
 
+// Effect
+    _ZN6Effect8setColorERKN4sead7Color4fE = 0x022AA8D4;
+    _ZN6Effect10setVisibleEbi = 0x022AAE8C;
+
 // EffectCreateUtil
     _ZN16EffectCreateUtil12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB080;
 
