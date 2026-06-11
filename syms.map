@@ -82,6 +82,8 @@
     _ZN4sead7Color4f7cYellowE = 0x105EA0E0;
     _ZN4sead7Color4f8cMagentaE = 0x105EA0F0;
     _ZN4sead7Color4f5cCyanE = 0x105EA100;
+    _ZN4sead7Color4f11cElementMaxE = 0x101908E4;
+    _ZN4sead7Color4f11cElementMinE = 0x101908E8;
 
 // sead::ControllerMgr
     _ZN4sead13ControllerMgr9sInstanceE = 0x101E7EFC;
@@ -433,6 +435,7 @@
 // CourseTimer
     _ZN11CourseTimer19addTimeLimitSecondsEj = 0x024C14C0;
     _ZN11CourseTimer9sInstanceE = 0x101D15F4;
+    _ZN11CourseTimer8setTimerEj = 0x024C134C;
 
 // DistantViewMgr
     _ZN14DistantViewMgr9sInstanceE = 0x101CD394;
@@ -440,6 +443,7 @@
 // Effect
     _ZN6Effect8setColorERKN4sead7Color4fE = 0x022AA8D4;
     _ZN6Effect10setVisibleEbi = 0x022AAE8C;
+    _ZN6Effect4killEv = 0x022AA84C;
 
 // EffectCreateUtil
     _ZN16EffectCreateUtil12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB080;
