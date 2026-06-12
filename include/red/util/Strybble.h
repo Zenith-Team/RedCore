@@ -35,7 +35,7 @@ namespace red {
                 processCount--;
             }
 
-            char buffer[TInCount + 3] = { 0 }; // safe lookahead for underscore chain sequences
+            char buffer[TInCount + 4] = { 0 }; // safe lookahead for underscore chain sequences
             
             for (s32 i = 0; i < processCount; i++) {
                 buffer[i] = cCharMap[static_cast<u8>(encoded[i])];
@@ -49,8 +49,13 @@ namespace red {
                 
                 if (buffer[i] == '_' && buffer[i + 1] == '_') {
                     if (buffer[i + 2] == '_') {
-                        decoded[newCharCount++] = '.';
-                        i += 2;
+                        if (buffer[i + 3] == '_') {
+                            decoded[newCharCount++] = ':';
+                            i += 3;
+                        } else {
+                            decoded[newCharCount++] = '.';
+                            i += 2;
+                        }
                     } else {
                         decoded[newCharCount++] = '/';
                         i += 1;
