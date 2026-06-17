@@ -36,13 +36,8 @@ body:
     attributes:
       label: System Info (Optional)
       description: "Tell us about your environment"
-      placeholder: |
-        Info
-        Model: Black (32GB)
-        Aroma Version: beta-25
-        Telkin Version: 1.0.0
       value: |
-        Model: 
+        Console Model: 
         Aroma Version: 
         Telkin Version: 
         RedCore Version: 
@@ -59,6 +54,6 @@ body:
     attributes:
       label: "Logs (Optional)"
       description: |
-        "Attach `log.txt` from your Cemu folder (*File > Open Cemu folder*)".
+        "If you have debug logs from the COS Shell attach them here.".
     validations:
       required: false
