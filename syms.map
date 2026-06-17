@@ -444,6 +444,7 @@
     _ZN6Effect8setColorERKN4sead7Color4fE = 0x022AA8D4;
     _ZN6Effect10setVisibleEbi = 0x022AAE8C;
     _ZN6Effect4killEv = 0x022AA84C;
+    _ZN6Effect8setAlphaEf = 0x022AA91C;
 
 // EffectCreateUtil
     _ZN16EffectCreateUtil12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB080;
@@ -604,6 +605,17 @@
 
 // EnemyEatData
     _ZN12EnemyEatDataC1E13ActorUniqueID = 0x0232F00C;
+
+// EventBase
+    _ZN9EventBaseC2Ev = 0x024A4AC8;
+    _ZN9EventBaseD1Ev = 0x024A4B28;
+    _ZN9EventBase9sTypeInfoE = 0x101EA7C8;
+
+// EventMgr
+    _ZN8EventMgr9sInstanceE = 0x101D136C;
+    _ZN8EventMgr9pushEventEP9EventBase = 0x024A5EA4;
+
+
 
 // FrameCtrl
     _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
