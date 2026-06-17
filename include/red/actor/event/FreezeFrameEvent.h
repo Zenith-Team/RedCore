@@ -8,7 +8,7 @@ namespace red {
     class FreezeFrameEvent : public EventBase {
     public:
         bool isJoin(const ActorBase* actor) const override {
-            if ((... || (sead::DynamicCast<T*>(actor) != nullptr))) { 
+            if ((... || (sead::DynamicCast<T>(actor) != nullptr))) { 
                 return true;
             }
 
