@@ -32,3 +32,4 @@ HTML_COLORSTYLE_SAT     = 120
 HTML_DYNAMIC_SECTIONS   = YES
 FULL_SIDEBAR            = YES
 CLASS_GRAPH             = TEXT
+HAVE_DOT                = NO
