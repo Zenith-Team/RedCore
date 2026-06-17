@@ -1,4 +1,4 @@
-sudo apt-get update && sudo apt-get install -y graphviz
+apt-get update && apt-get install -y graphviz
 wget https://github.com/doxygen/doxygen/releases/download/Release_1_14_0/doxygen-1.14.0.linux.bin.tar.gz
 tar -xzf doxygen-1.14.0.linux.bin.tar.gz
 wget https://nsmbu.github.io/sead/sead.tag -O sead.tag
