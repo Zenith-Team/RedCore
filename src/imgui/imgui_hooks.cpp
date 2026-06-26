@@ -160,7 +160,7 @@ namespace red {
         // Set variables that are checked in sead::GameFrameworkCafe::swapBuffer_() to copy the FrameBuffers to the DisplayBuffers
         sead::GameFrameworkCafe* fw = static_cast<sead::GameFrameworkCafe*>(LayerMgr::instance()->getFramework());
         fw->setDeferredCopyCallback([](s32) -> void { });
-        fw->set36c(true);
+        fw->setCopyPostDrawAll(true);
     });
 } // namespace red
 
