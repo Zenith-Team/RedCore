@@ -422,7 +422,7 @@
 
 // CourseSelectMap
     _ZN15CourseSelectMap15getBoneWorldPosEPN4sead7Vector3IfEEiiRKNS0_14SafeStringBaseIcEE = 0x021F59A8;
-    _ZN15CourseSelectMap9sInstanceE = 0x101CBD38;
+    _ZN15CourseSelectMap9sInstanceE = 0x101CBD34;
 
 // CourseSelectTask
     _ZN16CourseSelectTask9sInstanceE = 0x101CC96C;
