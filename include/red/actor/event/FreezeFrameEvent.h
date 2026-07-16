@@ -18,6 +18,13 @@ namespace red {
         void unfreeze() {
             mFrozen = false;
         }
+        
+        /**
+         * @brief Re-activates the freeze event.
+         */
+        void freeze() {
+            mFrozen = true;
+        }
 
     private:
         bool isJoin(const ActorBase* actor) const override {
