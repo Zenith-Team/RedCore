@@ -626,6 +626,7 @@
     _ZN9GameAudio12sAudioObjEmyE = 0x101C63CC;
     _ZN9GameAudio12sAudioObjMapE = 0x101C63D0;
     _ZN9GameAudio9sInstanceE = 0x101C63E0;
+    _ZN9GameAudio9setClapSEEv = 0x02029ACC;
 
 // IceMgr
     _ZN6IceMgrD1Ev = 0x0237CD54;
