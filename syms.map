@@ -615,8 +615,6 @@
     _ZN8EventMgr9sInstanceE = 0x101D136C;
     _ZN8EventMgr9pushEventEP9EventBase = 0x024A5EA4;
 
-
-
 // FrameCtrl
     _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
 
@@ -713,6 +711,9 @@
 
 // PlayerKey
     _ZNK9PlayerKey10buttonWalkEP7DirType = 0x029161C8;
+
+// PlayerMgr 
+    _ZN9PlayerMgr9sInstanceE = 0x101E6994;
 
 // PlayerModelBase
     _ZN15PlayerModelBase9isAnmStopEv = 0x0292211C;
