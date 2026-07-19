@@ -43,6 +43,12 @@
         },
         JP: {
             TitleID: "00050000-10101C00"
+        },
+        USBundle: {
+            TitleID: "00050000-1014B700"
+        },
+        EUBundle: {
+            TitleID: "00050000-1014B800"
         }
     }
 }

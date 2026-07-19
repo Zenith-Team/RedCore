@@ -15,7 +15,7 @@ A modern C++ API and modding framework for **New Super Mario Bros. U** code mods
 ## Features
 - **Dynamic**: Powered by [Telkin](https://github.com/Zenith-Team/Telkin), multiple code mods using RedCore can be loaded simultaneously!
 - **Headers**: All libraries and game interfaces are accessible and rapidly updated.
-- **Target Support**: Pre-configured for US, EU, and JP titles on both Cemu and Console.
+- **Target Support**: Pre-configured for US, EU, JP regions along with the bundle (+NSLU) release on both Cemu and Console.
 - **Named Registries**: Register custom actors in a quick and compatible manner using string names.
 - **Event System**: Delegate-based event handling with listeners for simple hooks without ASM/RE or conflicts.
 - **ImGui**: Easily produce visual interfaces for fast debugging and development.
