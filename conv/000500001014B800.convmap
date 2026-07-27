@@ -1,3 +1,7 @@
+// Copyright (c) 2026 Zenith Team as part of RedCore
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0 and is “Incompatible With Secondary Licenses”, as defined by the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 // .syscall
 02000000 - 02000007: +0x0
 
@@ -219,65 +223,6 @@
 1022D3AC - 105EC194: +0xF6F0
 105EC1C0 - 10607BFC: +0xF700
 
-// .dimport_coreinit
-C000BE40 - C000BECF: +0x200
-
-// .dimport_nn_boss
-C00056C0 - C00056CF: +0x1C0
-
-// .dimport_snd_core.rpl
-C0007F00 - C0007F97: +0x140
-
-// .dimport_snd_user.rpl
-C0008B00 - C0008B4F: +0x140
-
-// .fimport_coreinit
-C0009F00 - C000BE27: +0x200
-
-// .fimport_gx2
-C0006C40 - C00076CF: +0x140
-
-// .fimport_nlibcurl.rpl
-C0006580 - C000673F: +0x140
-
-// .fimport_nn_ac
-C0009000 - C00096AF: +0x200
-
-// .fimport_nn_act
-C0005700 - C0005B27: +0x1C0
-
-// .fimport_nn_boss
-C0004DC0 - C000568F: +0x1C0
-
-// .fimport_nn_olv.rpl
-C0005E00 - C00064F7: +0x1C0
-
-// .fimport_nn_save
-C0008B80 - C0008CA7: +0x200
-
-// .fimport_nsysnet.rpl
-C0006740 - C0006C1F: +0x140
-
-// .fimport_padscore
-C00096C0 - C0009EF7: +0x200
-
-// .fimport_proc_ui
-C0004BC0 - C0004C47: +0x1C0
-
-// .fimport_snd_core.rpl
-C0007700 - C0007ECF: +0x140
-
-// .fimport_snd_user.rpl
-C0007FC0 - C0008AEF: +0x140
-
-// .fimport_sysapp
-C0005B40 - C0005DE7: +0x1C0
-
-// .fimport_vpad.rpl
-C0008CC0 - C0008EC7: +0x200
-
-// .fimport_vpadbase.rpl
-C0008F00 - C0008FD7: +0x200
-
-// .fimport_zlib125.rpl
-C0004C80 - C0004D9F: +0x1C0
+@platform CONSOLE:
+    02000000 - 03440000: + 0x0CBC0000;
+    10000000 - 1FAFDE00: + 0x00502200;
