@@ -36,11 +36,16 @@ body:
     attributes:
       label: System Info (Optional)
       description: "Tell us about your environment"
+      placeholder: |
+        Aroma Version: Beta-27
+        Telkin Version: 1.0.0
+        RedCore Version: 1.0.0
+        Game Edition/Region: NSMBU Standalone (US)
       value: |
-        Console Model: 
         Aroma Version: 
         Telkin Version: 
         RedCore Version: 
+        Game Edition/Region: 
   - type: textarea
     id: loaded_mods
     attributes:

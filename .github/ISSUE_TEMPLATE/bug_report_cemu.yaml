@@ -37,18 +37,19 @@ body:
       label: System Info (Optional)
       description: "Tell us about your environment"
       placeholder: |
-        Info
         OS: Windows 10
         GPU: NVIDIA GeForce RTX 4090
         Cemu Version: 2.7
         Telkin Version: 1.0.0
         RedCore Version: 1.0.0
+        Game Edition/Region: NSMBU Standalone (US)
       value: |
         OS: 
         GPU: 
         Cemu Version: 
         Telkin Version: 
         RedCore Version: 
+        Game Edition/Region: 
   - type: textarea
     id: loaded_mods
     attributes:
