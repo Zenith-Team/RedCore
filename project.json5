@@ -49,6 +49,15 @@
         },
         EUBundle: {
             TitleID: "00050000-1014B800"
+        },
+        USLuigi: {
+            TitleID: "00050000-10142300"
+        },
+        EULuigi: {
+            TitleID: "00050000-10142400"
+        },
+        JPLuigi: {
+            TitleID: "00050000-10142200"
         }
     }
 }
