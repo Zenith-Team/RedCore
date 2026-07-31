@@ -7,7 +7,5 @@ compile_commands.json
 .vscode
 .idea
 
-# For development purposes only
-project-deps.json
 docs/html
 docs/latex

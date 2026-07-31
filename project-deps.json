@@ -1,0 +1,23 @@
+{
+  "WURPLSLockfileVersion": "1.0",
+  "DirectDependencies": {
+    "Telkin": {
+      "Source": "Telkin",
+      "Version": "*",
+      "Dependencies": {}
+    }
+  },
+  "ResolvedDependencies": {
+    "Telkin": {
+      "Current": "1.0.6",
+      "Source": "https://github.com/Zenith-Team/Telkin/releases/download/1.0.7/package.zip",
+      "Hash": "9aed7992a0b4e84ccfa2b1e27aad9d6aa9c1b814677ed7ff32e8e1966b748e55",
+      "IncludeDirs": [
+        ".tachyon/packages/Telkin/include",
+        ".tachyon/packages/Telkin/libs/DynamicLibs/dynamic_libs/include",
+        ".tachyon/packages/Telkin/libs/DynamicLibs/cafe_sdk/include",
+        ".tachyon/packages/Telkin/libs/semverc"
+      ]
+    }
+  }
+}
