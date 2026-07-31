@@ -800,6 +800,9 @@
 // SysController
     _ZN13SysController9sTypeInfoE = 0x101EAE78;
 
+// TextBox
+    _ZN7TextBox10setMessageERKN4sead14SafeStringBaseIcEEjz = 0x026819F8;
+
 // TexturePatternAnimation
     _ZN23TexturePatternAnimation4playEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x0250B1EC;
 
