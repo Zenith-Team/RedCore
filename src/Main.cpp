@@ -15,9 +15,9 @@ void titleVer(TextBox* textBox) {
     textBox->SetVtxColor(2, nw::ut::Color8(255, 0, 0, 255));
 }
 
-}
+} // namespace red
 
-#ifndef __BUNDLE__
+#ifdef __STANDALONE__
 tBranch(0x02668138, red::titleVer, tk::BranchType::bl); // Title::create
 tBranch(0x026681A0, red::titleVer, tk::BranchType::bl); // Title::create
 
