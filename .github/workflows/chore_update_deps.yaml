@@ -1,0 +1,43 @@
+name: "Chore: Update deps"
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Setup Tachyon
+        run: npm i -g https://github.com/Zenith-Team/Tachyon/releases/latest/download/Tachyon.tgz
+
+      - name: Update deps
+        run: tachyon pm update
+
+      - name: Update libs
+        run: git submodule update --remote libs/Eft libs/FFL libs/G3d libs/headers libs/imgui_gx2 libs/Lyt libs/sead libs/Snd libs/Sys
+
+      - name: Commit changes
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "🤖 (chore): Update deps"
+          title: "🤖 (chore): Update deps"
+          branch: "bot/update-deps"
+          delete-branch: true
+          committer: "GitHub Actions <actions@github.com>"
+          author: "GitHub Actions <actions@github.com>"
