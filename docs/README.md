@@ -26,7 +26,7 @@ Fork the [Example Mod](https://github.com/Zenith-Team/RedCore-Example-Mod), and 
 git clone https://github.com/Zenith-Team/RedCore-Example-Mod MyMod
 cd MyMod
 ```
-Install the [Tachyon SDK](https://github.com/Zenith-Team/Tachyon) (requires [Node.js](https://nodejs.org/) v24+)
+Install [Tachyon](https://github.com/Zenith-Team/Tachyon) (requires [Node.js](https://nodejs.org/) v24+)
 ```yml
 npm i -g https://github.com/Zenith-Team/Tachyon/releases/latest/download/Tachyon.tgz
 ```
