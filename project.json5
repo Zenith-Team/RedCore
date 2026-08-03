@@ -2,7 +2,7 @@
     WURPLSVersion: "1.0",
     
     Name: "RedCore",
-    Version: "1.0.1",
+    Version: "1.0.2",
     Type: "CoreAPI",
     Description: "The modern NSMBU custom code API.",
     
