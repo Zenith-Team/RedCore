@@ -264,7 +264,7 @@
     _ZN19ActorBgCollisionMgr9sInstanceE = 0x101C9360;
     _ZN19ActorBgCollisionMgr5entryERK11BgCollision = 0x0219269C;
 
-// ActorBlockBase sort
+// ActorBlockBase
     _ZN14ActorBlockBase9sTypeInfoE = 0x101E9CF8;
     _ZN14ActorBlockBase12StateID_WaitE = 0x1021E8E0;
     _ZN14ActorBlockBase4drawEv = 0x0269e77c;
@@ -277,8 +277,8 @@
     _ZN14ActorBlockBase7destroyEv = 0x0269f25c;
     _ZN14ActorBlockBase8destroy2Ev = 0x0269f33c;
     _ZN14ActorBlockBase4initEbb = 0x0269f6c8;
-    _ZN14ActorBlockBase12executeBlockEv = 0x0269f078; // ?
-    _ZN14ActorBlockBase13isBlockActiveEv = 0x0269ec1c; // ?
+    _ZN14ActorBlockBase12executeBlockEv = 0x0269f078;
+    _ZN14ActorBlockBase13isBlockActiveEv = 0x0269ec1c;
     _ZN14ActorBlockBase12preSpawnItemEv = 0x0269efe4;
     _ZN14ActorBlockBase7executeEv = 0x0269e6c4;
     _ZN14ActorBlockBaseC2ERK16ActorCreateParam = 0x0269E614;
@@ -292,7 +292,7 @@
 // ActorBoxBgCollision
     _ZN19ActorBoxBgCollision9sTypeInfoE = 0x101E9FBC;
 
-// ActorCircleBgCollision sort
+// ActorCircleBgCollision
     _ZN22ActorCircleBgCollisionC1Ev = 0x02197C88;
     _ZN22ActorCircleBgCollision3setEP5ActorRKN11BgCollision13CircleInitArgE = 0x02197FF0;
     _ZN22ActorCircleBgCollision7executeEv = 0x02198614;
@@ -407,7 +407,7 @@
 // BgScrollMgr
     _ZN11BgScrollMgr9sInstanceE = 0x101E7C54;
 
-// BlockCoinBase sort
+// BlockCoinBase
     _ZTV13BlockCoinBase = 0x10101a80;
     _ZN13BlockCoinBase5vf1D4Ei = 0x02704868;
     _ZN13BlockCoinBase15spawnCoinShowerEv = 0x027048e4;
@@ -435,11 +435,11 @@
     _ZN13BlockCoinBase12callbackFootEP11BgCollisionP21ActorBgCollisionCheck = 0x02704ECC;
     _ZN13BlockCoinBase12callbackHeadEP11BgCollisionP21ActorBgCollisionCheck = 0x02705528;
     _ZN13BlockCoinBase12callBackWallEP11BgCollisionP21ActorBgCollisionCheckh = 0x02705EFC;
-    _ZN13BlockCoinBase17spawnMultiPowerupERKN4sead7Vector3IfEEjjb = 0x2706FF4;
-    _ZN13BlockCoinBase12spawnPowerupERKN4sead7Vector3IfEEjjb = 0x2706D1C;
+    _ZN13BlockCoinBase17spawnMultiPowerupERKN4sead7Vector3IfEEjjb = 0x02706FF4;
+    _ZN13BlockCoinBase12spawnPowerupERKN4sead7Vector3IfEEjjb = 0x02706D1C;
     _ZN13BlockCoinBase9sTypeInfoE = 0x101e9ca8;
 
-// ChangeBlockCoinBase sort
+// ChangeBlockCoinBase
     _ZN19ChangeBlockCoinBase5vf1DCEv = 0x02726644;
     _ZN19ChangeBlockCoinBase11setTileFlagEv = 0x027265bc;
     _ZN19ChangeBlockCoinBase5vf2CCEv = 0x02726654;
