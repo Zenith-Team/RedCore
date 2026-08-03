@@ -24,7 +24,7 @@ jobs:
           node-version: 24
 
       - name: Setup Tachyon
-        run: npm i -g https://github.com/Zenith-Team/Tachyon/releases/latest/download/Tachyon.tgz
+        run: npm i -g --allow-remote=root https://github.com/Zenith-Team/Tachyon/releases/latest/download/tachyon.tgz
 
       - name: Update deps
         run: tachyon pm update
