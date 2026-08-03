@@ -428,7 +428,7 @@
     _ZN13BlockCoinBase25finalizeState_UpMove_DiffEv = 0x02708f3c;
     _ZN13BlockCoinBase29initializeState_DownMove_DiffEv = 0x0270812c;
     _ZN13BlockCoinBase26executeState_DownMove_DiffEv = 0x02708198;
-    _ZN13BlockCoinBase27finalizeState_DownMove_DiffEv = 0x02708f44;
+    _ZN13BlockCoinBase27finalizeState_DownMove_DiffEv = 0x02708f40;
     _ZN13BlockCoinBase32initializeState_DownMove_DiffEndEv = 0x0270828c;
     _ZN13BlockCoinBase29executeState_DownMove_DiffEndEv = 0x02708298;
     _ZN13BlockCoinBase30finalizeState_DownMove_DiffEndEv = 0x02708f44;
