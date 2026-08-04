@@ -486,6 +486,7 @@
     _ZNK14CourseDataFile11getMapActorEtPK12MapActorData = 0x02699C08;
 
 // CourseInfo
+    _ZNK10CourseInfo7isTitleEv = 0x024D3940;
     _ZN10CourseInfo9sInstanceE = 0x101D18EC;
 
 // CourseSelectActor

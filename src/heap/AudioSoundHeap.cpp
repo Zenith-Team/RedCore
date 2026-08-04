@@ -1,9 +1,10 @@
+#include <audio/cafe/seadAudioSoundHeapCafe.h>
 #include <audio/GameAudio.h>
 #include <sound/SndAudioMgr.h>
-#include <audio/cafe/seadAudioSoundHeapCafe.h>
 #include <sound/AudAudioPlayer.h>
 #include <sound/SndSceneMgr.h>
 #include <sound/SndItemID.h>
+#include <game_info/CourseInfo.h>
 #include <telkin/Telkin.h>
 
 static int sState = 0;
@@ -18,13 +19,16 @@ tPatchNop(0x0223B680); // CourseSelectPlayer::setDestinationLevel
 
 namespace red {
     void saveSoundHeapState() {
-        AudAudioPlayer* audioPlayer = SndAudioMgr::instance()->getAudioPlayer();
-        sead::AudioSoundHeapCafe* soundHeap = audioPlayer->getSoundHeap();
-        
-        sState = soundHeap->SaveState();
-        
-        //tk::print("Saving sound heap state: %d\n", sState);
-        
+        if (!CourseInfo::instance()->isTitle())
+        {
+            AudAudioPlayer* audioPlayer = SndAudioMgr::instance()->getAudioPlayer();
+            sead::AudioSoundHeapCafe* soundHeap = audioPlayer->getSoundHeap();
+
+            sState = soundHeap->SaveState();
+
+            //tk::print("Saving sound heap state: %d\n", sState);
+        }
+
         GameAudio::instance()->initSound(); // replaced call
     }
 }
@@ -32,12 +36,15 @@ tBranch(0x0202ADD4, red::saveSoundHeapState, tk::BranchType::b); // GameAudio::i
 
 namespace red {
     void loadSoundHeapState() {
-        AudAudioPlayer* audioPlayer = SndAudioMgr::instance()->getAudioPlayer();
-        sead::AudioSoundHeapCafe* soundHeap = audioPlayer->getSoundHeap();
-        
-        //tk::print("Loading sound heap state: %d\n", sState);
-        
-        soundHeap->LoadState(sState);
+        if (!CourseInfo::instance()->isTitle())
+        {
+            AudAudioPlayer* audioPlayer = SndAudioMgr::instance()->getAudioPlayer();
+            sead::AudioSoundHeapCafe* soundHeap = audioPlayer->getSoundHeap();
+
+            //tk::print("Loading sound heap state: %d\n", sState);
+
+            soundHeap->LoadState(sState);
+        }
     }
 }
 tBranch(0x024BFD54, red::loadSoundHeapState, tk::BranchType::b); // CourseTask::exit
