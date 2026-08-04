@@ -105,7 +105,7 @@ public:
         static sead::SafeString sResources[] = { sead::SafeString(Args.cstr())... };
         static bool instanciationUsed = false;
         if (instanciationUsed) {
-            tk::println("WARNING: SafeArray instanciation already used. Might be bad...");
+            tk::fatal("Cannot reuse the same class for a registry. Create an inherited class instead.");
         }
         instanciationUsed = true;
         
