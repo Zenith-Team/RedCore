@@ -267,6 +267,7 @@
 // ActorBlockBase
     _ZN14ActorBlockBase9sTypeInfoE = 0x101E9CF8;
     _ZN14ActorBlockBase12StateID_WaitE = 0x1021E8E0;
+    _ZN14ActorBlockBase15StateID_HitWaitE = 0x1021E904;
     _ZN14ActorBlockBase4drawEv = 0x0269e77c;
     _ZN14ActorBlockBase11spawnItemUpEv = 0x0269ebc0;
     _ZN14ActorBlockBase13spawnItemDownEv = 0x0269ebc4;
