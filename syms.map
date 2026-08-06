@@ -52,9 +52,35 @@
 // nw::g3d::res::ResDicPatricia
     _ZNK2nw3g3d3res14ResDicPatricia9FindIndexEPKc = 0x02AB1364;
 
+// nw::snd::SoundHandle
+    _ZN2nw3snd11SoundHandle11DetachSoundEv = 0x02ADDFAC;
+
 // nw::snd::SoundHeap
     _ZN2nw3snd9SoundHeap9SaveStateEv = 0x02ADE408;
     _ZN2nw3snd9SoundHeap9LoadStateEi = 0x02ADE45C;
+
+// nw::snd::SoundStartable
+    _ZN2nw3snd14SoundStartable10StartSoundEPNS0_11SoundHandleEPKcPKNS1_9StartInfoE = 0x02ADEECC;
+
+// sead::AliasFileDevice
+    _ZN4sead15AliasFileDeviceC1ERKNS_14SafeStringBaseIcEEPNS_10FileDeviceES4_ = 0x029F5C14;
+    _ZN4sead15AliasFileDeviceD1Ev = 0x029F5BAC;
+
+// sead::AnyFileDevice
+    _ZNK4sead13AnyFileDevice21findFileDeviceByFile_ERKNS_14SafeStringBaseIcEE = 0x029F6814;
+
+// sead::AudioMgr
+    _ZN4sead8AudioMgr4calcEv = 0x029E4BF0;
+    _ZN4sead8AudioMgr9sInstanceE = 0x101E7E30;
+
+// sead::AudioPlayerCafe
+    _ZN4sead15AudioPlayerCafe19setupDataManagementEjjjPNS_4HeapE = 0x029E6C38;
+    _ZN4sead15AudioPlayerCafe15createSoundHeapEjPNS_4HeapE = 0x029E6BC0;
+
+// sead::AudioSoundDataMgrCafe
+    _ZN4sead21AudioSoundDataMgrCafe18setContentRootPathEPKc = 0x029E7904;
+    _ZN4sead21AudioSoundDataMgrCafe23mountSoundArchiveFromFsERKNS_14SafeStringBaseIcEEPNS_4HeapEbb = 0x029E7990;
+    _ZN4sead21AudioSoundDataMgrCafe8loadDataEjjjPNS_18AudioSoundHeapCafeE = 0x029E7BB8;
 
 // sead::BufferedSafeStringBase<char>
     _ZN4sead22BufferedSafeStringBaseIcE7formatVEPKcP13__va_list_tag = 0x02A0F1CC;
@@ -68,6 +94,12 @@
 
 // sead::CafeVPadDevice::VPadInfo
     _ZN4sead14CafeVPadDevice8VPadInfoC1Ev = 0x029F4EDC;
+
+// sead::CafeFSAFileDevice
+    _ZNK4sead17CafeFSAFileDevice18getUsableFSClient_Ev = 0x029FA104;
+
+// sead::CafeSaveFileDevice
+    _ZNK4sead18CafeSaveFileDevice18getUsableFSClient_Ev = 0x029FB8AC;
 
 // sead::Camera
     _ZNK4sead6Camera15projectByMatrixEPNS_7Vector2IfEERKNS_7Vector3IfEERKNS_10ProjectionERKNS_8ViewportE = 0x02A04A34;
@@ -98,7 +130,15 @@
 // sead::ExpHeap
     _ZN4sead7ExpHeap9tryCreateEjRKNS_14SafeStringBaseIcEEPNS_4HeapENS5_13HeapDirectionEb = 0x02A0A7AC;
 
+// sead::FileDevice
+    _ZNK4sead10FileDevice11isAvailableEv = 0x029F77A4;
+    _ZN4sead10FileDevice14tryIsExistFileEPbRKNS_14SafeStringBaseIcEE = 0x029F7D48;
+    _ZN4sead10FileDevice16tryOpenDirectoryEPNS_15DirectoryHandleERKNS_14SafeStringBaseIcEE = 0x029F7D74;
+    _ZN4sead10FileDevice17tryCloseDirectoryEPNS_15DirectoryHandleE = 0x029F7E20;
+
 // sead::FileDeviceMgr
+    _ZN4sead13FileDeviceMgr5mountEPNS_10FileDeviceERKNS_14SafeStringBaseIcEE = 0x029F857C;
+    _ZN4sead13FileDeviceMgr7unmountEPNS_10FileDeviceE = 0x029F8CE8;
     _ZN4sead13FileDeviceMgr7tryLoadERNS_10FileDevice7LoadArgE = 0x029F8BBC;
     _ZN4sead13FileDeviceMgr9sInstanceE = 0x101E7F18;
 
@@ -174,6 +214,7 @@
 
 // sead::SafeStringBase<char>
     _ZN4sead14SafeStringBaseIcE9cNullCharE = 0x10000044;
+    _ZN4sead14SafeStringBaseIcE12cEmptyStringE = 0x105EAA7C;
 
 // sead::TaskBase
     _ZNK4sead8TaskBase12getFrameworkEv = 0x029FFA64;
@@ -189,6 +230,9 @@
 
 // sead::TickSpan
     _ZN4sead8TickSpan10cFrequencyE = 0x105EAFB8;
+
+// sead::Vector2<f32>
+    _ZN4sead7Vector2IfE4zeroE = 0x105EA740;
 
 // sead::Vector3<f32>
     _ZN4sead7Vector3IfE4zeroE = 0x105EA760;
@@ -207,6 +251,13 @@
 // agl::lyr::Renderer
     _ZNK3agl3lyr8Renderer14isDisplayList_Ev = 0x02A3AA94;
     _ZN3agl3lyr8Renderer9sInstanceE = 0x101E8A2C;
+
+// AudAudioPlayer
+    _ZN14AudAudioPlayerC1Ev = 0x029B2140;
+    _ZN14AudAudioPlayerD1Ev = 0x029B20D8;
+    _ZN14AudAudioPlayer10initializeEv = 0x029B21A0;
+    _ZN14AudAudioPlayer8finalizeEv = 0x029B21A4;
+    _ZN14AudAudioPlayer4calcEv = 0x029B21A8;
 
 // Actor
     _ZN5Actor20removeCollisionCheckEv = 0x020002CC;
