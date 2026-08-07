@@ -128,7 +128,9 @@ bool Mod::initFileSystem(sead::Heap* heap)
         return false;
     }
 
-    mFileSystem = new(heap) FileSystem(mNamespace);
+    sead::CurrentHeapSetter chs(heap);
+
+    mFileSystem = new FileSystem(mNamespace);
     return true;
 }
 
@@ -144,7 +146,9 @@ bool Mod::initAudioSystem(sead::Heap* heap)
         return false;
     }
 
-    mAudioSystem = new(heap) AudioSystem(mNamespace);
+    sead::CurrentHeapSetter chs(heap);
+
+    mAudioSystem = new AudioSystem(mNamespace);
     return true;
 }
 
@@ -165,10 +169,9 @@ TaskPrepareEvent::Listener<TaskPrepareEvent::Stage::After> StartModsAudio([](Tas
         return;
 
     sead::ExpHeap* audioHeap = sead::ExpHeap::create(0, "AudioHeap", RedCoreHeap::instance());
-    sead::CurrentHeapSetter chs(audioHeap);
 
-    sMods.forEach([](const sead::SafeString& key, Mod* mod) {
-        if (mod->initAudioSystem(nullptr))
+    sMods.forEach([&](const sead::SafeString& key, Mod* mod) {
+        if (mod->initAudioSystem(audioHeap))
         {
             tk::println("Initialized AudioSystem for mod: %s", mod->getNamespace());
 
