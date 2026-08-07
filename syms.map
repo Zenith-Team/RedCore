@@ -52,6 +52,11 @@
 // nw::g3d::res::ResDicPatricia
     _ZNK2nw3g3d3res14ResDicPatricia9FindIndexEPKc = 0x02AB1364;
 
+// nw::snd::internal::BasicSound
+    _ZN2nw3snd8internal10BasicSound9SetVolumeEfi = 0x02ACB1E0;
+    _ZN2nw3snd8internal10BasicSound8SetPitchEf = 0x02ACB26C;
+    _ZN2nw3snd8internal10BasicSound6SetPanEf = 0x02ACB28C;
+
 // nw::snd::SoundActor
     _ZN2nw3snd10SoundActor21SetPlayableSoundCountEii = 0x02AD6870;
     _ZN2nw3snd10SoundActor17detail_SetupSoundEPNS0_11SoundHandleEjbPKNS0_14SoundStartable9StartInfoE = 0x02AD6884;
@@ -72,6 +77,7 @@
 
 // nw::snd::SoundStartable
     _ZN2nw3snd14SoundStartable10StartSoundEPNS0_11SoundHandleEPKcPKNS1_9StartInfoE = 0x02ADEECC;
+    _ZN2nw3snd14SoundStartable9HoldSoundEPNS0_11SoundHandleEPKcPKNS1_9StartInfoE = 0x02ADF034;
 
 // sead::AliasFileDevice
     _ZN4sead15AliasFileDeviceC1ERKNS_14SafeStringBaseIcEEPNS_10FileDeviceES4_ = 0x029F5C14;
@@ -802,6 +808,9 @@
 // LoopRideLineBgCollisionUtil
     _ZN27LoopRideLineBgCollisionUtil3setEP23LoopRideLineBgCollisionP5ActorRKN11BgCollision10BoxInitArgE = 0x021AD3BC;
 
+// MainGame
+    _ZN8MainGame9sInstanceE = 0x101E7D7C;
+
 // MapActor
     _ZN8MapActor10cProfileIDE = 0x101ECD8C;
 
@@ -912,6 +921,9 @@
 
 // SkeletalAnimation
     _ZN17SkeletalAnimation4playEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FDADC;
+
+// Snd2DCalc
+    _ZN9Snd2DCalc9calcParamEPNS_5ParamERKN4sead7Vector2IfEEjS6_ = 0x029BB8C0;
 
 // SndAudioMgr
     _ZN11SndAudioMgr14getAudioPlayerEv = 0x029B68DC;
