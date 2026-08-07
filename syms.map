@@ -52,6 +52,17 @@
 // nw::g3d::res::ResDicPatricia
     _ZNK2nw3g3d3res14ResDicPatricia9FindIndexEPKc = 0x02AB1364;
 
+// nw::snd::SoundActor
+    _ZN2nw3snd10SoundActor21SetPlayableSoundCountEii = 0x02AD6870;
+    _ZN2nw3snd10SoundActor17detail_SetupSoundEPNS0_11SoundHandleEjbPKNS0_14SoundStartable9StartInfoE = 0x02AD6884;
+    _ZN2nw3snd10SoundActor16detail_GetItemIdEPKc = 0x02AD68BC;
+    _ZN2nw3snd10SoundActor10SetupSoundEPNS0_11SoundHandleEjPKNS0_14SoundStartable9StartInfoEPv = 0x02AD6804;
+    _ZN2nw3snd10SoundActor32detail_SetupSoundWithAmbientInfoEPNS0_11SoundHandleEjPKNS0_14SoundStartable9StartInfoEPNS0_8internal10BasicSound11AmbientInfoEPv = __deleted_virtual_called;
+
+// nw::snd::SoundArchive
+    _ZNK2nw3snd12SoundArchive9GetItemIdEPKc = 0x02AD6988;
+    _ZNK2nw3snd12SoundArchive17GetSoundUserParamEj = 0x02AD6998;
+
 // nw::snd::SoundHandle
     _ZN2nw3snd11SoundHandle11DetachSoundEv = 0x02ADDFAC;
 
@@ -81,6 +92,7 @@
     _ZN4sead21AudioSoundDataMgrCafe18setContentRootPathEPKc = 0x029E7904;
     _ZN4sead21AudioSoundDataMgrCafe23mountSoundArchiveFromFsERKNS_14SafeStringBaseIcEEPNS_4HeapEbb = 0x029E7990;
     _ZN4sead21AudioSoundDataMgrCafe8loadDataEjjjPNS_18AudioSoundHeapCafeE = 0x029E7BB8;
+    _ZNK4sead21AudioSoundDataMgrCafe15getSoundArchiveEv = 0x029E779C;
 
 // sead::BufferedSafeStringBase<char>
     _ZN4sead22BufferedSafeStringBaseIcE7formatVEPKcP13__va_list_tag = 0x02A0F1CC;
@@ -803,6 +815,11 @@
 // ModelUtil
     _ZN9ModelUtil9createG3dERK13ModelResourceRKN4sead14SafeStringBaseIcEEiiiiiN5Model12BoundingModeEPNS3_4HeapE = 0x024EE440;
 
+// NMSndObjectBase
+    _ZN15NMSndObjectBaseC2ENS_7ObjTypeEPN4sead11AudioPlayerE = 0x029BBC44;
+    _ZN15NMSndObjectBaseD1Ev = 0x029BBBD8;
+    _ZN15NMSndObjectBase4vf34EPKci = 0x029BBE20;
+
 // ParentMovementMgr
     _ZN17ParentMovementMgrC1Ev = 0x02849C40;
     _ZN17ParentMovementMgr11getTypeMaskE18ParentMovementType = 0x0284A37C;
@@ -898,6 +915,7 @@
 
 // SndAudioMgr
     _ZN11SndAudioMgr14getAudioPlayerEv = 0x029B68DC;
+    _ZN11SndAudioMgr18setSoundOutputLineEPN2nw3snd11SoundHandleE = 0x029B554C;
     _ZN11SndAudioMgr9sInstanceE = 0x101E7C84;
 
 // SndObjctCmnEmy
@@ -912,6 +930,10 @@
 // SndSceneMgr
     _ZN11SndSceneMgr8loadDataEj = 0x029BFE1C;
     _ZN11SndSceneMgr16loadBaseSndGroupEv = 0x029BFE44;
+
+// SndSpeakerMgr
+    _ZN13SndSpeakerMgr13setRemoteSendEPN2nw3snd11SoundHandleENS1_10OutputLineEj = 0x029C37BC;
+    _ZN13SndSpeakerMgr9sInstanceE = 0x101E7D0C;
 
 // StateMethod
     _ZN11StateMethod18executeStateMethodEv = 0x029C4A80;
