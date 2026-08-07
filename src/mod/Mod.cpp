@@ -12,8 +12,6 @@
 
 #include <telkin/Hooks.h>
 
-#include <imgui/imgui.h>
-
 namespace red {
 
 sead::FixedStrTreeMap<Mod::cModNameMax, Mod*, 32> sMods; // TODO: Dynamic
@@ -204,31 +202,6 @@ void UpdateModsAudio() {
             mod->getAudioSystem()->update();
         }
     });
-
-    Mod* mod = Mod::getMod("zap");
-
-    if (ImGui::Begin("Sound System"))
-    {
-        static sead::Vector2f pos;
-        if (PlayerMgr::instance() && PlayerMgr::instance()->getPlayerObject(0))
-        {
-            pos = PlayerMgr::instance()->getPlayerObject(0)->getPos2D();
-        }
-
-        ImGui::DragFloat2("Pos", &pos.x, 0.01f);
-
-        if (ImGui::Button("Play Sound"))
-        {
-            mod->getAudioSystem()->getAudioObject()->startSound("SE_TEST", pos);
-        }
-
-        ImGui::Button("Hold Sound");
-        if (ImGui::IsItemActive())
-        {
-            mod->getAudioSystem()->getAudioObject()->holdSound("SE_TEST", pos);
-        }
-    }
-    ImGui::End();
 }
 
 } // namespace red
