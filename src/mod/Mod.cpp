@@ -6,8 +6,6 @@
 #include <audio/seadAudioMgr.h>
 #include <filedevice/seadFileDeviceMgr.h>
 
-#include <player/PlayerMgr.h>
-#include <player/PlayerObject.h>
 #include <sound/SndAudioMgr.h>
 
 #include <telkin/Hooks.h>
