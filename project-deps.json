@@ -3,7 +3,7 @@
   "DirectDependencies": {
     "Telkin": {
       "Source": "Zenith-Team/Telkin",
-      "Version": "^1.0.9",
+      "Version": "1.0.9",
       "Dependencies": {}
     }
   },
