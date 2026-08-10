@@ -332,6 +332,7 @@
 // ActorBgCollisionMgr
     _ZN19ActorBgCollisionMgr9sInstanceE = 0x101C9360;
     _ZN19ActorBgCollisionMgr5entryERK11BgCollision = 0x0219269C;
+    _ZN19ActorBgCollisionMgr7releaseERK11BgCollision = 0x0219282C;
 
 // ActorBlockBase
     _ZN14ActorBlockBase9sTypeInfoE = 0x101E9CF8;
@@ -358,6 +359,7 @@
     _ZN14ActorBlockBase23initializeState_HitWaitEv = 0x026a0624;
     _ZN14ActorBlockBase20executeState_HitWaitEv = 0x026a0074;
     _ZN14ActorBlockBase21finalizeState_HitWaitEv = 0x026a0628;
+    _ZN14ActorBlockBase9initMoverEv = 0x0269fb30;
 
 // ActorBoxBgCollision
     _ZN19ActorBoxBgCollision9sTypeInfoE = 0x101E9FBC;
