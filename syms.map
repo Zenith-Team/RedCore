@@ -348,8 +348,8 @@
     _ZN14ActorBlockBase7destroyEv = 0x0269f25c;
     _ZN14ActorBlockBase8destroy2Ev = 0x0269f33c;
     _ZN14ActorBlockBase4initEbb = 0x0269f6c8;
-    _ZN14ActorBlockBase12executeBlockEv = 0x0269f078;
-    _ZN14ActorBlockBase13isBlockActiveEv = 0x0269ec1c;
+    _ZN14ActorBlockBase14updateMovementEv = 0x0269f078;
+    _ZN14ActorBlockBase12restoreStateEv = 0x0269ec1c;
     _ZN14ActorBlockBase12preSpawnItemEv = 0x0269efe4;
     _ZN14ActorBlockBase7executeEv = 0x0269e6c4;
     _ZN14ActorBlockBaseC2ERK16ActorCreateParam = 0x0269E614;
@@ -481,7 +481,7 @@
 
 // BlockCoinBase
     _ZTV13BlockCoinBase = 0x10101a80;
-    _ZN13BlockCoinBase5vf1D4Ei = 0x02704868;
+    _ZN13BlockCoinBase15updateBumpScaleEh = 0x02704868;
     _ZN13BlockCoinBase15spawnCoinShowerEv = 0x027048e4;
     _ZN13BlockCoinBase22initializeState_UpMoveEv = 0x02707cb4;
     _ZN13BlockCoinBase19executeState_UpMoveEv = 0x02707cf0;
@@ -512,7 +512,7 @@
     _ZN13BlockCoinBase9sTypeInfoE = 0x101e9ca8;
 
 // ChangeBlockCoinBase
-    _ZN19ChangeBlockCoinBase5vf1DCEv = 0x02726644;
+    _ZN19ChangeBlockCoinBase15updateBumpScaleEh = 0x02726644;
     _ZN19ChangeBlockCoinBase11setTileFlagEv = 0x027265bc;
     _ZN19ChangeBlockCoinBase5vf2CCEv = 0x02726654;
     _ZN19ChangeBlockCoinBase26registerColliderActiveInfoEv = 0x02726760;
