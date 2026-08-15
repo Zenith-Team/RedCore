@@ -383,7 +383,7 @@
     _ZN14ActorCollision10preExecuteEv = 0x020035FC;
     _ZN14ActorCollision11postExecuteEN9ActorBase9MainStateE = 0x020036D8;
     _ZN14ActorCollision8doDeleteEv = 0x02003724;
-    _ZN14ActorCollision5vf144Ei = 0x0200375C;
+    _ZN14ActorCollision9setQuake_ENS_9QuakeTypeE = 0x0200375C;
     _ZN14ActorCollision15setSmokeDamage_EP5Actor = 0x02003760;
     _ZNK14ActorCollision12bgCheckFoot_Ev = 0x02003764;
     _ZNK14ActorCollision12bgCheckWall_Ev = 0x02003770;
@@ -391,7 +391,7 @@
     _ZN14ActorCollision11calcSpeedY_Ev = 0x020039AC;
     _ZN14ActorCollision8posMove_Ev = 0x02003AE4;
     _ZN14ActorCollision15calcJumpSpeedF_Ev = 0x02003C10;
-    _ZN14ActorCollision5vf13CEv = 0x02004008;
+    _ZN14ActorCollision14isQuakeEnable_Ev = 0x02004008;
     _ZTV14ActorCollision = 0x1000084C;
     _ZN14ActorCollision9sTypeInfoE = 0x101E9CD8;
 
@@ -641,7 +641,7 @@
     _ZN5Enemy14mamefumiEffectEP5Actor = 0x0232A24C;
     _ZN5Enemy11yoshifumiSEEP5Actor = 0x0232A250;
     _ZN5Enemy12hipatkEffectERKN4sead7Vector3IfEE = 0x0232A2D4;
-    _ZN5Enemy5vf34CEv = 0x0232A2E4;
+    _ZN5Enemy12setQuakeJumpEv = 0x0232A2E4;
     _ZN5Enemy11checkDispInEv = 0x0232A2FC;
     _ZN5Enemy9setAwaHitEP5Actor = 0x0232A364;
     _ZN5Enemy12awaCatchMoveEP5Actor = 0x0232A418;
@@ -672,7 +672,7 @@
     _ZN5Enemy26hitCallback_ChibiYoshiStarEP19ActorCollisionCheckS1_ = 0x0232DA14;
     _ZN5Enemy23hitCallback_AttackUnk27EPbP19ActorCollisionCheckS2_ = 0x0232DA24;
     _ZN5Enemy17setDeathInfo_FumiEP5ActorRKN4sead7Vector2IfEERK7StateID = 0x0232DA34;
-    _ZN5Enemy18setDeathInfo_QuakeEi = 0x0232DAF0;
+    _ZN5Enemy18setDeathInfo_QuakeENS_14QuakeDeathTypeE = 0x0232DAF0;
     _ZN5Enemy15setSmokeDamage_EP5Actor = 0x0232DC88;
     _ZN5Enemy21setDeathInfo_IceBreakEv = 0x0232DD48;
     _ZN5Enemy17setDeathInfo_StarEP19ActorCollisionCheckS1_ = 0x0232E048;
@@ -745,7 +745,7 @@
     _ZN5Enemy11StateID_IceE = 0x10201218;
 
 // EnemyChibiYoshiAwaData
-    _ZN22EnemyChibiYoshiAwaDataC1E13ActorUniqueID = 0x0232AB90;
+    _ZN22EnemyChibiYoshiAwaDataC1EP5Enemy = 0x0232AB90;
 
 // EnemyChibiYoshiEatData
     _ZN22EnemyChibiYoshiEatDataC1E13ActorUniqueID = 0x0232ADAC;
