@@ -925,7 +925,7 @@
     _ZN17SkeletalAnimation4playEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FDADC;
 
 // Snd2DCalc
-    _ZN9Snd2DCalc9calcParamEPNS_5ParamERKN4sead7Vector2IfEEjS6_ = 0x029BB8C0;
+    _ZN9Snd2DCalc9calcParamEPNS_5ParamERKN4sead7Vector2IfEEjPS5_ = 0x029BB8C0;
 
 // SndAudioMgr
     _ZN11SndAudioMgr14getAudioPlayerEv = 0x029B68DC;

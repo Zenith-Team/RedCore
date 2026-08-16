@@ -58,7 +58,7 @@ void SoundObject::setSoundPosition(nw::snd::SoundHandle* handle, const sead::Vec
     Snd2DCalc::Param param;
 
     Snd2DCalc snd2DCalc;
-    snd2DCalc.calcParam(&param, pos, flags, screenSize);
+    snd2DCalc.calcParam(&param, pos, flags, &screenSize);
 
     handle->SetVolume(param.volume);
     handle->SetPitch(param.pitch);
