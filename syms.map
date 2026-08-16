@@ -677,7 +677,7 @@
     _ZN5Enemy21setDeathInfo_IceBreakEv = 0x0232DD48;
     _ZN5Enemy17setDeathInfo_StarEP19ActorCollisionCheckS1_ = 0x0232E048;
     _ZN5Enemy17applyWaterRollDecE5Angle = 0x0232E144;
-    _ZN5Enemy18setTouchDrcDamage_ERKN4sead7Vector2IfEE = 0x0232E1A4;
+    _ZN5Enemy18setTouchDrcDamage_ERKN4sead7Vector3IfEE = 0x0232E1A4;
     _ZN5Enemy13isQuakeDamageEv = 0x0232E2EC;
     _ZN5Enemy18setDeathSound_FireEv = 0x0232E2F8;
     _ZN5Enemy21setDeathSound_HipAttkEv = 0x0232E358;
