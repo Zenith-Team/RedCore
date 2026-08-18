@@ -41,21 +41,22 @@ public:
     /**
      * @brief Replace a vanilla profile by its numeric ID.
      * @tparam T Actor class that this profile will now instantiate.
-     * @param id The target profile ID to replace.
+     * @tparam ID The target profile ID to replace.
      * @return A builder on which additional methods for setting parameters are available.
      */
-    template <class T> requires std::derived_from<T, ActorBase>
-    ProfileReplaceBuilder<T> replaceProfile(s32 id) const {
-        return ProfileReplaceBuilder<T>(id);
+    template <class T, s32 ID> requires std::derived_from<T, ActorBase>
+    ProfileReplaceBuilder<T, ID> replaceProfile() const {
+        return ProfileReplaceBuilder<T, ID>();
     }
 
     /**
      * @brief Partially modify fields on a vanilla profile by its numeric ID.
-     * @param id The target profile ID to modify.
+     * @tparam ID The target profile ID to modify.
      * @return A builder on which additional methods for setting parameters are available.
      */
-    ProfileEditBuilder editProfile(s32 id) const {
-        return ProfileEditBuilder(id);
+    template <s32 ID>
+    ProfileEditBuilder<ID> editProfile() const {
+        return ProfileEditBuilder<ID>();
     }
 
 private:

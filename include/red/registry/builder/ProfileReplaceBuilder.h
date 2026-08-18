@@ -6,52 +6,56 @@
 #include <actor/Actor.h>
 #include <red/registry/builder/ProfileBuilder.h>
 #include <red/public/Profile.h>
+#include <red/profile/ProfileEx.h>
+#include <red/event/StaticInitEvent.h>
 
 namespace red {
 
 /**
  * @brief Builder for replacing a vanilla profile with a custom one by its numeric ID.
  * @tparam T Actor class that the profile will now instantiate.
+ * @tparam ID The target profile ID to replace.
  */
-template <class T> requires std::derived_from<T, ActorBase>
-class ProfileReplaceBuilder : public ProfileBuilder<ProfileReplaceBuilder<T>> {
+template <class T, s32 ID> requires std::derived_from<T, ActorBase>
+class ProfileReplaceBuilder : public ProfileBuilder<ProfileReplaceBuilder<T, ID>> {
 public:
-    /**
-     * @brief Begins replacing a vanilla profile.
-     * @param id The target profile ID to replace.
-     */
-    explicit ProfileReplaceBuilder(s32 id)
-        : ProfileBuilder<ProfileReplaceBuilder<T>>()
-        , mID(id)
-    {
-        if (id > ProfileInfo::cProfileID_Max) {
-            tk::fatal("ERROR: Attempting to replace invalid vanilla profile ID: %i", id);
-        }
-    }
+    static_assert(ID <= ProfileInfo::cProfileID_Max, "ERROR: Attempting to replace an invalid vanilla profile ID.");
+
+    ProfileReplaceBuilder()
+        : ProfileBuilder<ProfileReplaceBuilder<T, ID>>()
+    { }
 
     /**
      * @brief Completes the builder by replacing the vanilla profile.
      * @return The profile which now contains the replaced data.
      */
     Profile* build() {
-        if (mID > ProfileInfo::cProfileID_Max) {
-            return nullptr;
+        static bool instantiated = false;
+        if (instantiated) {
+            tk::fatal("Cannot reuse the same template instanciation for two replacements.");
         }
-        
-        pub::Profile* profile = static_cast<pub::Profile*>(Profile::get(mID));
-        
-        profile->mFactory = &TActorFactory<T>;
-        profile->mActorCreateInfo = this->mCreateInfo != nullptr ? this->mCreateInfo : &ActorCreateInfo::cDefault;
-        profile->mIsResLoaded = false;
-        profile->mFlag = this->mFlag;
-        
-        ProfileEx::setExecutePriority(mID, this->mExecutePriority);
-    
-        return profile;
-    }
+        instantiated = true;
 
-private:
-    s32 mID; ///< The target profile ID to replace.
+        // defer until the vanilla profile is inited so we have the final say
+        static const struct {
+            const ActorCreateInfo* mCreateInfo;
+            Profile::Flag mFlag;
+            s16 mExecutePriority;
+        } sSnapshot = { this->mCreateInfo, this->mFlag, this->mExecutePriority };
+
+        static red::StaticInitEvent::Listener listener([](red::StaticInitEvent&) {
+            pub::Profile* profile = static_cast<pub::Profile*>(Profile::get(ID));
+
+            profile->mFactory = &TActorFactory<T>;
+            profile->mActorCreateInfo = sSnapshot.mCreateInfo != nullptr ? sSnapshot.mCreateInfo : &ActorCreateInfo::cDefault;
+            profile->mIsResLoaded = false;
+            profile->mFlag = sSnapshot.mFlag;
+
+            ProfileEx::setExecutePriority(ID, sSnapshot.mExecutePriority);
+        });
+
+        return ProfileEx::get(ID);
+    }
 };
 
 }
