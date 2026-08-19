@@ -780,6 +780,9 @@
 // InputMgr
     _ZN8InputMgr9sInstanceE = 0x101D2DF8;
 
+// InputMgr::Controller
+    _ZN8InputMgr10Controller7getTiltERK5Anglef = 0x0250ECAC;
+
 // JointBlendModel
     _ZN15JointBlendModelC1EP5Modeliiiii = 0x024DFBF0;
     _ZN15JointBlendModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x024DFC78;
