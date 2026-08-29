@@ -31,6 +31,7 @@
     ASM_MTXConcat = 0x02AF98A0;
     ASM_MTXTrans = 0x02AF9AD4;
     ASM_MTXScale = 0x02AF9B64;
+    ASM_MTXMultVec = 0x02AF9788;
 
 // GFD
     _GFDCheckHeaderVersions = 0x02AF8A18;
@@ -303,6 +304,10 @@
     _ZN5Actor18poisonSplashEffectERKN4sead7Vector3IfEE = 0x02002AE4;
     _ZN5Actor9sTypeInfoE = 0x101E9CC0;
 
+// ActorAdditionalHeap
+    _ZN19ActorAdditionalHeap6createEv = 0x02002C70;
+    _ZN19ActorAdditionalHeap7destroyEv = 0x02002C54;
+
 // ActorBase
     _ZNK9ActorBase12getProfileIDEv = 0x02002C80;
     _ZN9ActorBaseC2ERK16ActorCreateParam = 0x02002CE0;
@@ -391,6 +396,7 @@
     _ZN14ActorCollision11calcSpeedY_Ev = 0x020039AC;
     _ZN14ActorCollision8posMove_Ev = 0x02003AE4;
     _ZN14ActorCollision15calcJumpSpeedF_Ev = 0x02003C10;
+    _ZN14ActorCollision11checkWater_EPf = 0x02003C58;
     _ZN14ActorCollision14isQuakeEnable_Ev = 0x02004008;
     _ZTV14ActorCollision = 0x1000084C;
     _ZN14ActorCollision9sTypeInfoE = 0x101E9CD8;
@@ -467,6 +473,8 @@
 
 // Bg
     _ZN2Bg20getUnitCurrentCdFileEtthPi = 0x02685000;
+    _ZN2Bg14setWaterInWaveERKN4sead7Vector2IfEEh = 0x0268B71C;
+    _ZN2Bg9sInstanceE = 0x101DAB94;
 
 // BgCollision
     _ZN11BgCollision7setTypeENS_4TypeE = 0x021A5A70;
@@ -592,6 +600,7 @@
     _ZN6Effect10setVisibleEbi = 0x022AAE8C;
     _ZN6Effect4killEv = 0x022AA84C;
     _ZN6Effect8setAlphaEf = 0x022AA91C;
+    _ZN6Effect4fadeEv = 0x022AA824;
 
 // EffectCreateUtil
     _ZN16EffectCreateUtil12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB080;
@@ -914,8 +923,13 @@
     _ZN6ResMgr26getFileFromArchiveResImpl_EPN4sead10ArchiveResERKNS0_14SafeStringBaseIcEEPj = 0x029D338C;
     _ZN6ResMgr9sInstanceE = 0x101E7D94;
 
+// RotShake
+    _ZN8RotShake4initERKNS_3ArgE = 0x029E2CE8;
+    _ZN8RotShake4moveEv = 0x029E2D34;
+
 // ShaderParamAnimation
     _ZN20ShaderParamAnimation14playTexSrtAnimEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FEE50;
+    _ZN20ShaderParamAnimation13playColorAnimEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FECC8;
 
 // SimpleBoxBgCollision
     _ZN20SimpleBoxBgCollision9sTypeInfoE = 0x101E9FCC;
@@ -926,6 +940,29 @@
 
 // SkeletalAnimation
     _ZN17SkeletalAnimation4playEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FDADC;
+
+// SnakeBlock
+    _ZN10SnakeBlock6createEv = 0x0245B164;
+    _ZN10SnakeBlock7executeEv = 0x0245B6A0;
+    _ZN10SnakeBlock4drawEv = 0x0245B77C;
+    _ZN10SnakeBlock8doDeleteEv = 0x0245B7F8;
+    _ZN10SnakeBlock5vf4E4Ev = __deleted_virtual_called;
+    _ZNK10SnakeBlock9toDelete_Ev = 0x0245CE3C;
+    _ZTV10SnakeBlock = 0x100A717C;
+
+// SnakeBlock::DrcTouchCB
+    _ZTVN10SnakeBlock10DrcTouchCBE = 0x100A7124;
+
+// SnakeBlock::EdgePiece
+    _ZN10SnakeBlock9EdgePieceD1Ev = 0x0245E658;
+    _ZTVN10SnakeBlock9EdgePieceE = 0x100A6F4C;
+
+// SnakeBlock::Piece
+    _ZN10SnakeBlock5PieceD1Ev = 0x0245E5E0;
+    _ZTVN10SnakeBlock5PieceE = 0x100A6F4C;
+
+// SnakeBlockBoyoMgr
+    _ZTV17SnakeBlockBoyoMgr = 0x100A6D94;
 
 // Snd2DCalc
     _ZN9Snd2DCalc9calcParamEPNS_5ParamERKN4sead7Vector2IfEEjPS5_ = 0x029BB8C0;
