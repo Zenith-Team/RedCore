@@ -147,6 +147,12 @@ namespace red {
         return red::MapActorMgr::instance()->mapToProf(mapActor);
     }
     
+    s32* mapToProfR6Ptr(int, int, int, const u16 mapActor) tRegSave {
+        static s32 sProf = -1;
+        sProf = red::MapActorMgr::instance()->mapToProf(mapActor);
+        return &sProf;
+    }
+    
     s32 mapToProfR8(int, int, int, int, int, const u16 mapActor) tRegSave {
         return red::MapActorMgr::instance()->mapToProf(mapActor);
     }
@@ -163,8 +169,7 @@ tBranch(0x02004584, red::mapToProfR9, tk::BranchType::bl);
 tBranch(0x020045B0, red::mapToProfR9, tk::BranchType::bl);
 tPatch32u(0x020045B4, mr(R::r6, R::r3));
 
-tBranch(0x02004948, red::mapToProfR6, tk::BranchType::bl);
-tPatchNop(0x200C990); // we're not passing a pointer so skip the deref
+tBranch(0x02004948, red::mapToProfR6Ptr, tk::BranchType::bl);
 
 tBranch(0x02004DA8, red::mapToProfR6, tk::BranchType::bl);
 tBranch(0x02005024, red::mapToProfR6, tk::BranchType::bl);
