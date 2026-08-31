@@ -74,7 +74,7 @@ s32 MapActorMgr::mapToProf(u16 mapActor) {
         return MapActor::cProfileID[mapActor];
 
     if (!(mapActor & cMapMetaMask)) [[unlikely]] {
-        tk::fatal("Requested mapActor(0x%04X) is not a valid named map actor", mapActor);
+        tk::fatal("Requested mapActor(0x%04X) is not a valid named map actor (Your level has invalid actors somewhere)", mapActor);
         return -1;
     }
 
@@ -86,7 +86,7 @@ s32 MapActorMgr::mapToProf(u16 mapActor) {
     }
 
     if (mapActor >= mProfileID.size()) [[unlikely]] {
-        tk::fatal("Requested mapActor(%i) is out of bounds(%i)", mapActor, mProfileID.size());
+        tk::fatal("Requested mapActor(%i) is out of bounds(%i) (Try restarting Pyamoto)", mapActor, mProfileID.size());
         return -1;
     }
 
