@@ -949,6 +949,7 @@
     _ZN10SnakeBlock5vf4E4Ev = __deleted_virtual_called;
     _ZNK10SnakeBlock9toDelete_Ev = 0x0245CE3C;
     _ZTV10SnakeBlock = 0x100A717C;
+    _ZN10SnakeBlock14StateID_MovingE = 0x1020742C;
 
 // SnakeBlock::DrcTouchCB
     _ZTVN10SnakeBlock10DrcTouchCBE = 0x100A7124;
