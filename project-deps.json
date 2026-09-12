@@ -3,15 +3,15 @@
   "DirectDependencies": {
     "Telkin": {
       "Source": "zenith-team/telkin",
-      "Version": "^1.0.10",
+      "Version": "^1.0.11",
       "Dependencies": {}
     }
   },
   "ResolvedDependencies": {
     "Telkin": {
-      "Current": "1.0.10",
-      "Source": "https://github.com/zenith-team/telkin/releases/download/1.0.10/package.zip",
-      "Hash": "2b8816bb84381a910d01bc9008aa4f514d983e38cf6ae48d265090ad7a5e4c53",
+      "Current": "1.0.11",
+      "Source": "https://github.com/zenith-team/telkin/releases/download/1.0.11/package.zip",
+      "Hash": "117286112eba930f4a69f381e6254db8377c8a342bd39c917347c6556b96f3ca",
       "IncludeDirs": [
         ".tachyon/packages/Telkin/include",
         ".tachyon/packages/Telkin/libs/DynamicLibs/dynamic_libs/include",
