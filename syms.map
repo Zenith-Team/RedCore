@@ -101,6 +101,9 @@
     _ZN4sead21AudioSoundDataMgrCafe8loadDataEjjjPNS_18AudioSoundHeapCafeE = 0x029E7BB8;
     _ZNK4sead21AudioSoundDataMgrCafe15getSoundArchiveEv = 0x029E779C;
 
+// sead::BitFlagUtil
+    _ZN4sead11BitFlagUtil10countOnBitEj = 0x02A0EF58;
+
 // sead::BufferedSafeStringBase<char>
     _ZN4sead22BufferedSafeStringBaseIcE7formatVEPKcP13__va_list_tag = 0x02A0F1CC;
     _ZN4sead22BufferedSafeStringBaseIcE6formatEPKcz = 0x02A0F1E4;
