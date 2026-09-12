@@ -10,7 +10,7 @@ namespace red {
      * @details Push this to @ref EventMgr to freeze, then call @c unfreeze() to end the event.
      */
     template <typename... T>
-    class FreezeFrameEvent : public EventBase {
+    class FreezeFrameEvent : public ::EventBase {
     public:
         /**
          * @brief Ends the freeze event and resumes execution of all actors.
