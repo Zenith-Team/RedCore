@@ -1,5 +1,5 @@
-#define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
+#include <telkin/DefineRegisters.h>
 
 namespace red {
     void caughtNullEntrance() {

@@ -2,8 +2,8 @@
 #include <red/public/ProfileInfo.h>
 #include <actor/ActorBase.h>
 
-#define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
+#include <telkin/DefineRegisters.h>
 
 s32 red_sProfileCount = ProfileInfo::cProfileID_Max;
 

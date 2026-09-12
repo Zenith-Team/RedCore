@@ -1,7 +1,7 @@
 #include <cstring>
 
-#define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
+#include <telkin/DefineRegisters.h>
 
 #include <actor/MapActor.h>
 #include <actor/Profile.h>

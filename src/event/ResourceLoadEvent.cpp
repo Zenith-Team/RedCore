@@ -1,7 +1,7 @@
 #include <red/event/ResourceLoadEvent.h>
 
-#define TELKIN_REGISTERS
 #include <telkin/Telkin.h>
+#include <telkin/DefineRegisters.h>
 
 template <red::ResourceLoadEvent::Stage S>
 red::ResourceLoadEvent::Delegator& red::ResourceLoadEvent::getDelegator() {

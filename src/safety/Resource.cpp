@@ -1,8 +1,8 @@
 #include <system/ResMgr.h>
 #include <red/public/ResMgr.h>
 
-#define TELKIN_REGISTERS
 #include <telkin/Assembly.h>
+#include <telkin/DefineRegisters.h>
 #include <telkin/Hooks.h>
 #include <telkin/Print.h>
 
