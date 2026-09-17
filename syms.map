@@ -578,9 +578,19 @@
 // CourseSelectCollisionCheckMgr
     _ZN29CourseSelectCollisionCheckMgr9sInstanceE = 0x101C9758;
 
+// CourseSelectCoursePoint
+    _ZN23CourseSelectCoursePoint8playAnimENS_8AnimTypeEf = 0x021C9E0C;
+
 // CourseSelectMap
     _ZN15CourseSelectMap15getBoneWorldPosEPN4sead7Vector3IfEEiiRKNS0_14SafeStringBaseIcEE = 0x021F59A8;
     _ZN15CourseSelectMap9sInstanceE = 0x101CBD34;
+
+// CourseSelectMgr
+    _ZN15CourseSelectMgr9sInstanceE = 0x101CBE14;
+    _ZN15CourseSelectMgr7getPathEhh = 0x021F9FC8;
+
+// CourseSelectPath
+    _ZNK16CourseSelectPath8getPointEj = 0x021D23AC;
 
 // CourseSelectTask
     _ZN16CourseSelectTask9sInstanceE = 0x101CC96C;
@@ -930,9 +940,13 @@
     _ZN8RotShake4initERKNS_3ArgE = 0x029E2CE8;
     _ZN8RotShake4moveEv = 0x029E2D34;
 
+// SaveData::LevelStat
+    _ZN8SaveData9LevelStat17getCompletionFlagEhh = 0x024BB028;
+
 // ShaderParamAnimation
     _ZN20ShaderParamAnimation14playTexSrtAnimEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FEE50;
     _ZN20ShaderParamAnimation13playColorAnimEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FECC8;
+    _ZN20ShaderParamAnimation11unbindModelEv = 0x024FEC54;
 
 // SimpleBoxBgCollision
     _ZN20SimpleBoxBgCollision9sTypeInfoE = 0x101E9FCC;
