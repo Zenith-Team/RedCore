@@ -476,6 +476,7 @@
 
 // Bg
     _ZN2Bg20getUnitCurrentCdFileEtthPi = 0x02685000;
+    _ZN2Bg9checkGustENS_8GustTypeERKN4sead7Vector3IfEEPf = 0x02685FB0;
     _ZN2Bg14setWaterInWaveERKN4sead7Vector2IfEEh = 0x0268B71C;
     _ZN2Bg9sInstanceE = 0x101DAB94;
 
@@ -553,6 +554,9 @@
     _ZTV16ChikuwaBlockBase = 0x1010A30C;
     _ZN16ChikuwaBlockBase12StateID_StepE = 0x102216C8;
     _ZN16ChikuwaBlockBase15StateID_FallingE = 0x102216EC;
+
+// CircleLightMask
+    _ZN15CircleLightMaskC1Ev = 0x02815C9C;
 
 // CoinOrigin
     _ZN10CoinOrigin9sInstanceE = 0x101DB040;
@@ -816,6 +820,11 @@
 // LayerMgr
     _ZN8LayerMgr16calcParallelExecEv = 0x024E0FEC;
     _ZN8LayerMgr9sInstanceE = 0x101D2BE4;
+
+// Light
+    _ZN5LightC1Ev = 0x024E24BC;
+    _ZN5Light6updateE9LightTypePN4sead7Vector3IfEEPjPfS6_PNS1_7Color4fES6_S6_ = 0x024E26BC;
+    _ZN5LightD1Ev = 0x024E2580;
 
 // LoopRideLineBgCollision
     _ZN23LoopRideLineBgCollision7executeEv = 0x021A871C;
