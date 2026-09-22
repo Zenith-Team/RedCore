@@ -427,6 +427,7 @@
 
 // ActorMgr
     _ZN8ActorMgr17createImmediatelyERK16ActorCreateParamNS_12CreateOptionE = 0x02009A58;
+    _ZNK8ActorMgr4findEiPKP9ActorBase = 0x02009B6C;
     _ZN8ActorMgr9sInstanceE = 0x101C30C8;
 
 // ActorMultiState
