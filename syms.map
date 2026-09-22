@@ -987,6 +987,7 @@
 
 // SnakeBlock::Piece
     _ZN10SnakeBlock5PieceD1Ev = 0x0245E5E0;
+    _ZN10SnakeBlock5Piece12callbackFootEP11BgCollisionP21ActorBgCollisionCheck = 0x024598AC;
     _ZTVN10SnakeBlock5PieceE = 0x100A6F4C;
 
 // SnakeBlockBoyoMgr
