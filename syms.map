@@ -977,6 +977,8 @@
     _ZNK10SnakeBlock9toDelete_Ev = 0x0245CE3C;
     _ZTV10SnakeBlock = 0x100A717C;
     _ZN10SnakeBlock14StateID_MovingE = 0x1020742C;
+    _ZN10SnakeBlock12StateID_WaitE = 0x1020740C;
+    _ZN10SnakeBlock16StateID_InactiveE = 0x102074EC;
 
 // SnakeBlock::DrcTouchCB
     _ZTVN10SnakeBlock10DrcTouchCBE = 0x100A7124;
