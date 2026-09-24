@@ -874,6 +874,8 @@
     _ZN17ParentMovementMgr11getTypeMaskE18ParentMovementType = 0x0284A37C;
     _ZN17ParentMovementMgr4linkERKN4sead7Vector3IfEEjh = 0x0284B6F4;
     _ZN17ParentMovementMgr7executeEv = 0x0284B8C4;
+    _ZN17ParentMovementMgr11linkPivotalERKN4sead7Vector3IfEEjaS4_bbbb = 0x0284B824;
+    _ZN17ParentMovementMgr12linkPivotal2ENS_23PivotalRotationSettingsE = 0x0284B7C8;
 
 // PlayerBase
     _ZN10PlayerBase15changeDemoStateERK7StateIDi = 0x028FAF1C;
