@@ -37,13 +37,13 @@ public:
      * @return The builder object for chaining calls.
      */
     [[nodiscard]]
-    Derived& createInfo(const ActorCreateInfo* createInfo) {
+    Derived& createInfo(const ActorCreateInfo& createInfo) {
         if (mCreateInfoModified) {
             tk::println("WARNING: .createInfo() called twice");
         }
         
         mCreateInfoModified = true;
-        mCreateInfo = createInfo;
+        mCreateInfo = &createInfo;
         return *static_cast<Derived*>(this);
     }
 
