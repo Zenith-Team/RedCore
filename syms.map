@@ -558,6 +558,9 @@
 
 // CircleLightMask
     _ZN15CircleLightMaskC1Ev = 0x02815C9C;
+    _ZN15CircleLightMask6createEPN4sead4HeapEN4Mask7TexNameE = 0x02815D20;
+    _ZN15CircleLightMask7executeEv = 0x02815DCC;
+    _ZN15CircleLightMask4drawEv = 0x028160C8;
 
 // CoinOrigin
     _ZN10CoinOrigin9sInstanceE = 0x101DB040;
