@@ -1,7 +1,7 @@
 #include <telkin/Print.h>
 #include <telkin/Hooks.h>
 #include <layout_sys/TextBox.h>
-#include <red/util/Edition.h>
+#include <red/utility/Edition.h>
 
 void main() {
     tk::println("Welcome to REDCORE");
