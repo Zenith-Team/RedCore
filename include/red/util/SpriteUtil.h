@@ -8,122 +8,122 @@ namespace red {
     class SpriteUtil : private Actor {
     public:
         [[nodiscard]]
-        static u8 getNybble1(Actor* target) {
+        static u8 getNybble1(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mSwitchFlag1 >> 0x04 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble2(Actor* target) {
+        static u8 getNybble2(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mSwitchFlag1 >> 0x00 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble3(Actor* target) {
+        static u8 getNybble3(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mSwitchFlag0 >> 0x04 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble4(Actor* target) {
+        static u8 getNybble4(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mSwitchFlag0 >> 0x00 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble5(Actor* target) {
+        static u8 getNybble5(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam0 >> 0x1C & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble6(Actor* target) {
+        static u8 getNybble6(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam0 >> 0x18 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble7(Actor* target) {
+        static u8 getNybble7(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam0 >> 0x14 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble8(Actor* target) {
+        static u8 getNybble8(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam0 >> 0x10 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble9(Actor* target) {
+        static u8 getNybble9(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam0 >> 0x0C & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble10(Actor* target) {
+        static u8 getNybble10(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam0 >> 0x08 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble11(Actor* target) {
+        static u8 getNybble11(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam0 >> 0x04 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble12(Actor* target) {
+        static u8 getNybble12(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam0 >> 0x00 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble13(Actor* target) {
+        static u8 getNybble13(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam1 >> 0x1C & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble14(Actor* target) {
+        static u8 getNybble14(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam1 >> 0x18 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble15(Actor* target) {
+        static u8 getNybble15(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam1 >> 0x14 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble16(Actor* target) {
+        static u8 getNybble16(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam1 >> 0x10 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble17(Actor* target) {
+        static u8 getNybble17(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam1 >> 0x0C & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble18(Actor* target) {
+        static u8 getNybble18(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam1 >> 0x08 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble19(Actor* target) {
+        static u8 getNybble19(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam1 >> 0x04 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble20(Actor* target) {
+        static u8 getNybble20(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParam1 >> 0x00 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble21(Actor* target) {
+        static u8 getNybble21(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParamEx.course.movement_id >> 0x04 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble22(Actor* target) {
+        static u8 getNybble22(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParamEx.course.movement_id >> 0x00 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble23(Actor* target) {
+        static u8 getNybble23(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParamEx.course.link_id >> 0x04 & 0xF;
         }
         
         [[nodiscard]]
-        static u8 getNybble24(Actor* target) {
+        static u8 getNybble24(ActorBase* target) {
             return static_cast<SpriteUtil*>(target)->mParamEx.course.link_id >> 0x00 & 0xF;
         };
 
@@ -139,7 +139,7 @@ namespace red {
          * @param end 1-indexed left-to-right inclusive nybble index to end the range at. (1-24)
          */
         [[nodiscard]]
-        static u32 getNybbleRange(Actor* target, u8 from, u8 end) {
+        static u32 getNybbleRange(ActorBase* target, u8 from, u8 end) {
             const u8 nybbleCount = end - (from - 1);
             if (nybbleCount == 0 || nybbleCount > 8 || from > 24 || end > 24) {
                 tk::fatal("red::SpriteUtil::getNybbleRange called with an invalid nybble range. (%i - %i)", from, end);
@@ -159,7 +159,7 @@ namespace red {
          * @param end 0-indexed Big Endian (left-to-right) *exclusive* bit index to end the range at. (0-96)
          */
         [[nodiscard]]
-        static u32 getBitRange(const Actor* target, u8 from, u8 end) {
+        static u32 getBitRange(const ActorBase* target, u8 from, u8 end) {
             const u8 bitsCount = end - from;
             if (bitsCount == 0 || bitsCount > 32 || from > 96 || end > 96) {
                 tk::fatal("red::SpriteUtil::getBitRange called with an invalid bit range. (%i - %i)", from, end);
@@ -235,7 +235,7 @@ namespace red {
          * @tparam TOutBytes Deduced byte size of the provided output array.
          */
         template <u8 TFrom, u8 TEnd, s32 TOutBytes>
-        static void getBitRange(const Actor* target, u8 (&out)[TOutBytes]) {
+        static void getBitRange(const ActorBase* target, u8 (&out)[TOutBytes]) {
             static_assert(TFrom <= 96 && TEnd <= 96, "getBitRange: Bit range out of bounds (max 96).");
             static_assert(TEnd > TFrom, "getBitRange: End index must be strictly greater than From index.");
             
