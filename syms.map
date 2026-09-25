@@ -984,6 +984,10 @@
     _ZN10SnakeBlock14StateID_MovingE = 0x1020742C;
     _ZN10SnakeBlock12StateID_WaitE = 0x1020740C;
     _ZN10SnakeBlock16StateID_InactiveE = 0x102074EC;
+    _ZN10SnakeBlock24StateID_FallThroughFirstE = 0x1020746C;
+    _ZN10SnakeBlock23StateID_FallFirstToLastE = 0x1020748C;
+    _ZN10SnakeBlock15StateID_FallAllE = 0x102074AC;
+    _ZN10SnakeBlock23StateID_FallLastToFirstE = 0x102074CC;
 
 // SnakeBlock::DrcTouchCB
     _ZTVN10SnakeBlock10DrcTouchCBE = 0x100A7124;
