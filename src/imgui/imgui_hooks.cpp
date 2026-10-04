@@ -19,6 +19,7 @@
 #include <red/heap/RedCoreHeap.h>
 #include <red/event/TaskPrepareEvent.h>
 
+#include <cafe/gx2.h>
 #include <telkin/Hooks.h>
 
 static ImGui_ImplWiiU_ControllerInput sImguiInput;
@@ -207,6 +208,10 @@ tBranch(0x02A031F0, red::endImGui, tk::BranchType::bl); // sead::GameFrameworkCa
 
 namespace red {
     void ApplicationFramework__calc_(ApplicationFramework* self) {
+        // Vanilla starts with a GX2DrawDone() here. Without it calcParallelExec() below can overwrite model data
+        // the GPU is still reading. The one in swapBuffer_() comes too late for that.
+        GX2DrawDone();
+
         // Skip copying the FrameBuffers to the DisplayBuffers here.
         // It's going to be copied later in sead::GameFrameworkCafe::swapBuffer_()
     
