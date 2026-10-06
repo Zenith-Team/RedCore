@@ -208,8 +208,6 @@ tBranch(0x02A031F0, red::endImGui, tk::BranchType::bl); // sead::GameFrameworkCa
 
 namespace red {
     void ApplicationFramework__calc_(ApplicationFramework* self) {
-        // Vanilla starts with a GX2DrawDone() here. Without it calcParallelExec() below can overwrite model data
-        // the GPU is still reading. The one in swapBuffer_() comes too late for that.
         GX2DrawDone();
 
         // Skip copying the FrameBuffers to the DisplayBuffers here.
