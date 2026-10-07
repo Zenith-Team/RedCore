@@ -282,12 +282,12 @@
 // FireBallBase::DrcTouchCB
     _ZN12FireBallBase10DrcTouchCB16ccSetTouchNormalEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x0216F9F0;
     _ZN12FireBallBase10DrcTouchCB9ccOnTouchEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x02171600;
-    _ZTV24FireBallBase::DrcTouchCB = 0x1003B09C;
+    _ZTVN12FireBallBase10DrcTouchCBE = 0x1003B09C;
 
 // IceBallBase::DrcTouchCB
     _ZN11IceBallBase10DrcTouchCB9ccOnTouchEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x02171600;
     _ZN11IceBallBase10DrcTouchCB16ccSetTouchNormalEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x0217F5D4;
-    _ZTV23IceBallBase::DrcTouchCB = 0x1003E9C0;
+    _ZTVN11IceBallBase10DrcTouchCBE = 0x1003E9C0;
 
 // InputMgr::Controller
     _ZN8InputMgr10ControllerC1Ev = 0x0250EC54;
@@ -297,7 +297,7 @@
 // KuriboBase::DrcTouchCB
     _ZN10KuriboBase10DrcTouchCB16ccSetTouchNormalEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x023DDBF8;
     _ZN10KuriboBase10DrcTouchCB9ccOnTouchEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x023DDC90;
-    _ZTV22KuriboBase::DrcTouchCB = 0x10091CD4;
+    _ZTVN10KuriboBase10DrcTouchCBE = 0x10091CD4;
 
 // Mii::CafeResInitializer
     _ZN3Mii18CafeResInitializerC1Eb = 0x024E7990;
@@ -333,7 +333,7 @@
     _ZN3Mii15IconFacelineObj9setVertexEPKNS0_6VertexEj = 0x024E8EB0;
     _ZN3Mii15IconFacelineObj7destroyEv = 0x024E9070;
     _ZN3Mii15IconFacelineObj4calcEv = 0x024E9074;
-    _ZTV3Mii15IconFacelineObj = 0x100BBF7C;
+    _ZTVN3Mii15IconFacelineObjE = 0x100BBF7C;
 
 // Mii::IconFacelineShader
     _ZN3Mii18IconFacelineShaderC1Ev = 0x024E9078;
@@ -391,15 +391,15 @@
     _ZN3Mii7SlotMgr10initializeEv = 0x024ECDDC;
     _ZN3Mii7SlotMgr7destroyEv = 0x024ECF34;
     _ZN3Mii7SlotMgr12getStoreDataEP12FFLStoreDataRKNS_6SlotIDE = 0x024ECF98;
-    _ZTV3Mii7SlotMgr = 0x100BBE24;
+    _ZTVN3Mii7SlotMgrE = 0x100BBE24;
 
 // ModelResourceMgr::ModelResourceHolder
     _ZN16ModelResourceMgr19ModelResourceHolderC1ERKN4sead14SafeStringBaseIcEEP13ModelResource = 0x024F5F88;
     _ZN16ModelResourceMgr19ModelResourceHolderC2ERKN4sead14SafeStringBaseIcEEP13ModelResource = 0x024F5F88;
-    _ZTV37ModelResourceMgr::ModelResourceHolder = 0x100BD364;
+    _ZTVN16ModelResourceMgr19ModelResourceHolderE = 0x100BD364;
 
 // NMSndObject::SoundHandlePrm
-    _ZTV27NMSndObject::SoundHandlePrm = 0x1017DB14;
+    _ZTVN11NMSndObject14SoundHandlePrmE = 0x1017DB14;
 
 // PropelParts::Part
     _ZN11PropelParts4PartC1Ev = 0x020271B8;
@@ -411,23 +411,23 @@
 // Shell::DrcTouchCB
     _ZN5Shell10DrcTouchCB16ccSetTouchNormalEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x024520F4;
     _ZN5Shell10DrcTouchCB9ccOnTouchEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x0245213C;
-    _ZTV17Shell::DrcTouchCB = 0x100A6520;
+    _ZTVN5Shell10DrcTouchCBE = 0x100A6520;
 
 // SnakeBlock::DrcTouchCB
     _ZN10SnakeBlock10DrcTouchCB16bcSetTouchNormalEP11BgCollisionRKN4sead7Vector2IfEE = 0x0245CF04;
     _ZN10SnakeBlock10DrcTouchCB9bcOnTouchEP11BgCollisionRKN4sead7Vector2IfEE = 0x0245D018;
-    _ZTV22SnakeBlock::DrcTouchCB = 0x100A7124;
+    _ZTVN10SnakeBlock10DrcTouchCBE = 0x100A7124;
 
 // SnakeBlock::EdgePiece
     _ZN10SnakeBlock9EdgePieceD1Ev = 0x0245E658;
-    _ZTV21SnakeBlock::EdgePiece = 0x100A6F4C;
+    _ZTVN10SnakeBlock9EdgePieceE = 0x100A6F4C;
 
 // SnakeBlock::Piece
     _ZN10SnakeBlock5Piece12callbackFootEP11BgCollisionP21ActorBgCollisionCheck = 0x024598AC;
     _ZN10SnakeBlock5Piece4initEPS_RKN4sead7Vector3IfEENS_9SnakeTypeE = 0x0245A074;
     _ZNK10SnakeBlock5Piece9drawModelEv = 0x0245A2D0;
     _ZN10SnakeBlock5PieceD1Ev = 0x0245E5E0;
-    _ZTV17SnakeBlock::Piece = 0x100A6F4C;
+    _ZTVN10SnakeBlock5PieceE = 0x100A6F4C;
 
 // Actor
     _ZN5Actor20removeCollisionCheckEv = 0x020002CC;
@@ -501,6 +501,7 @@
     _ZN9ActorBase6createEv = 0x02002F84;
     _ZN9ActorBase7executeEv = 0x02002F8C;
     _ZN9ActorBase11finalUpdateEv = 0x02002F94;
+    _ZN9ActorBase7preDrawEv = 0x02002F98;
     _ZN9ActorBase4drawEv = 0x02002FA0;
     _ZN9ActorBase9preDeleteEv = 0x02002FA8;
     _ZN9ActorBase8doDeleteEv = 0x02002FB0;
@@ -635,9 +636,43 @@
     _ZTV22ActorCircleBgCollision = 0x10041B28;
     _ZN22ActorCircleBgCollision9sTypeInfoE = 0x101EA398;
 
+// ActorCoin
+    _ZN9ActorCoinC1ERK16ActorCreateParam = 0x026BC2E8;
+    _ZN9ActorCoinC2ERK16ActorCreateParam = 0x026BC2E8;
+    _ZN9ActorCoin7executeEv = 0x026BC364;
+    _ZN9ActorCoin6createEv = 0x026BC4C8;
+    _ZN9ActorCoinD1Ev = 0x026BCC1C;
+    _ZTV9ActorCoin = 0x100F0218;
+    _ZN9ActorCoin9sTypeInfoE = 0x101EB06C;
+
 // ActorCoinBase
+    _ZN13ActorCoinBaseC1ERK16ActorCreateParam = 0x026BF78C;
+    _ZN13ActorCoinBaseC2ERK16ActorCreateParam = 0x026BF78C;
+    _ZN13ActorCoinBase11updateModelEv = 0x026BF900;
+    _ZN13ActorCoinBase7executeEv = 0x026BF9D0;
+    _ZN13ActorCoinBase4drawEv = 0x026BFB9C;
+    _ZN13ActorCoinBase5vf2DCEv = 0x026BFD40;
+    _ZN13ActorCoinBase4initEv = 0x026BFF4C;
+    _ZN13ActorCoinBase9initMoverEv = 0x026C0070;
+    _ZN13ActorCoinBase11createModelEv = 0x026C0104;
+    _ZN13ActorCoinBase18incrementYRotationEv = 0x026C01F0;
+    _ZN13ActorCoinBase12initColliderEj = 0x026C0E24;
+    _ZN13ActorCoinBase5vf2ECEv = 0x026C1084;
+    _ZN13ActorCoinBase5vf2FCEv = 0x026C11F8;
+    _ZN13ActorCoinBase18executeState_EatInEv = 0x026C1510;
+    _ZN13ActorCoinBase5vf2D4Ev = 0x026C1C08;
+    _ZN13ActorCoinBase5vf2F4Ev = 0x026C1DCC;
+    _ZN13ActorCoinBase5vf30CEv = 0x026C1DD0;
+    _ZN13ActorCoinBase21initializeState_EatInEv = 0x026C1DD4;
+    _ZN13ActorCoinBase19finalizeState_EatInEv = 0x026C1DD8;
+    _ZN13ActorCoinBase22initializeState_EatNowEv = 0x026C1DDC;
+    _ZN13ActorCoinBase19executeState_EatNowEv = 0x026C1DE0;
+    _ZN13ActorCoinBase20finalizeState_EatNowEv = 0x026C1DE4;
+    _ZN13ActorCoinBaseD1Ev = 0x026C1DE8;
     _ZTV13ActorCoinBase = 0x100F1AF0;
     _ZN13ActorCoinBase9sTypeInfoE = 0x101EA3B8;
+    _ZN13ActorCoinBase13StateID_EatInE = 0x1021F09C;
+    _ZN13ActorCoinBase14StateID_EatNowE = 0x1021F0BC;
 
 // ActorCoinMgr
     _ZN12ActorCoinMgr14deleteInstanceEv = __deleted_virtual_called;
@@ -1676,6 +1711,13 @@
     _ZN10CourseData7getFileEi = 0x0269A2DC;
     _ZN10CourseData9sInstanceE = 0x101DB048;
 
+// CourseDataFile
+    _ZNK14CourseDataFile11getNextGotoEh = 0x02699BD8;
+    _ZNK14CourseDataFile11getMapActorEtPK12MapActorData = 0x02699C08;
+    _ZNK14CourseDataFile11getLocationEPN4sead9BoundBox2IfEEh = 0x0269A020;
+    _ZNK14CourseDataFile11getRailInfoEh = 0x0269A0A8;
+    _ZNK14CourseDataFile12getRailPointEh = 0x0269A0F4;
+
 // CourseInfo
     _ZN10CourseInfo14deleteInstanceEv = __deleted_virtual_called;
     _ZN10CourseInfoC1Ev = 0x024D281C;
@@ -1937,6 +1979,7 @@
     _ZN5Enemy12setFumiSoundEPKc = 0x02329AA8;
     _ZN5Enemy14spinfumiEffectEP5Actor = 0x02329B20;
     _ZN5Enemy16spinFumiScoreSetEP5Actor = 0x02329B6C;
+    _ZN5Enemy9fumiCheckEP19ActorCollisionCheckS1_NS_10FumiSeTypeE = 0x02329B88;
     _ZN5Enemy14playerFumiJumpEP5Actorf = 0x02329E54;
     _ZN5Enemy11fumiJumpSetEP5Actor = 0x02329EA4;
     _ZN5Enemy17setFumiComboScoreEP5Actor = 0x02329EC0;
@@ -1954,6 +1997,7 @@
     _ZN5Enemy11yoshifumiSEEP5Actor = 0x0232A250;
     _ZN5Enemy12hipatkEffectERKN4sead7Vector3IfEE = 0x0232A2D4;
     _ZN5Enemy12setQuakeJumpEv = 0x0232A2E4;
+    _ZN5Enemy11checkDispInEv = 0x0232A2FC;
     _ZN5Enemy9setAwaHitEP5Actor = 0x0232A364;
     _ZN5Enemy12awaCatchMoveEP5Actor = 0x0232A418;
     _ZN5Enemy14setAwaCatchEndEP5Actor = 0x0232A4CC;
@@ -1998,6 +2042,7 @@
     _ZN5Enemy17setDeathInfo_StarEP19ActorCollisionCheckS1_ = 0x0232E048;
     _ZN5Enemy17applyWaterRollDecE5Angle = 0x0232E144;
     _ZN5Enemy18setTouchDrcDamage_ERKN4sead7Vector3IfEE = 0x0232E1A4;
+    _ZN5Enemy13isQuakeDamageEv = 0x0232E2EC;
     _ZN5Enemy18setDeathSound_FireEv = 0x0232E2F8;
     _ZN5Enemy21setDeathSound_HipAttkEv = 0x0232E358;
     _ZN5Enemy12initDieStateEv = 0x0232E3FC;
@@ -2024,6 +2069,7 @@
     _ZN5Enemy19executeState_DieAwaEv = 0x0232EEEC;
     _ZN5Enemy20finalizeState_DieAwaEv = 0x0232EEF0;
     _ZN5Enemy11changeStateERK7StateID = 0x02330404;
+    _ZN5Enemy14createIceActorEv = 0x023304F8;
     _ZN5Enemy15returnState_IceEv = 0x02330568;
     _ZN5Enemy21initializeState_EatInEv = 0x023305E4;
     _ZN5Enemy18executeState_EatInEv = 0x023305EC;
@@ -2062,10 +2108,12 @@
     _ZN5Enemy17cWaterBoundSpeedYE = 0x10072088;
     _ZN5Enemy18cWaterMaxFallSpeedE = 0x1007208C;
     _ZN5Enemy17cWaterRollDecRateE = 0x10072090;
+    _ZN5Enemy7cEnMukiE = 0x10072094;
     _ZTV5Enemy = 0x1007209C;
     _ZN5Enemy18cDieFallInitSpeedYE = 0x10072EA8;
     _ZN5Enemy20cDieFallMaxFallSpeedE = 0x10072EAC;
     _ZN5Enemy9sTypeInfoE = 0x101E9EF0;
+    _ZN5Enemy11cBaseAngleYE = 0x10200DD8;
     _ZN5Enemy14cBaseAngleYAddE = 0x10200DE0;
     _ZN5Enemy14cDeadNetSpeedXE = 0x10200DE8;
     _ZN5Enemy15StateID_DieFumiE = 0x10200FB0;
@@ -3290,8 +3338,13 @@
     _ZTV8PaCursor = 0x100D6B34;
 
 // ParentMovementMgr
+    _ZN17ParentMovementMgrC1Ev = 0x02849C40;
+    _ZN17ParentMovementMgrC2Ev = 0x02849C40;
+    _ZN17ParentMovementMgr11getTypeMaskE18ParentMovementType = 0x0284A37C;
+    _ZN17ParentMovementMgr4linkERKN4sead7Vector3IfEEjh = 0x0284B6F4;
     _ZN17ParentMovementMgr12linkPivotal2ENS_23PivotalRotationSettingsE = 0x0284B7C8;
     _ZN17ParentMovementMgr11linkPivotalERKN4sead7Vector3IfEEjaS4_bbbb = 0x0284B824;
+    _ZN17ParentMovementMgr7executeEv = 0x0284B8C4;
 
 // PartsAnimLayoutBase
     _ZN19PartsAnimLayoutBaseC1EPN7Multi2D9AnimationEi = 0x02673124;
@@ -3926,6 +3979,7 @@
 // PlayerDemoMgr
     _ZN13PlayerDemoMgr19startControlDemoAllEv = 0x0290F584;
     _ZN13PlayerDemoMgr17endControlDemoAllEv = 0x029103A4;
+    _ZN13PlayerDemoMgr9sInstanceE = 0x101E2238;
 
 // PlayerDrcTouchCB
     _ZN16PlayerDrcTouchCB16ccSetTouchNormalEP19ActorCollisionCheckRKN4sead7Vector2IfEE = 0x029117C0;
@@ -4008,6 +4062,7 @@
 
 // PlayerMgr
     _ZN9PlayerMgr11getYoshiNumEv = 0x02918144;
+    _ZN9PlayerMgr9sInstanceE = 0x101E6994;
 
 // PlayerModel
     _ZN11PlayerModel16setModelLoadFlagEv = 0x0291A1CC;
@@ -4847,6 +4902,7 @@
     _ZN22SimpleShapeBgCollision9sTypeInfoE = 0x101E9FB8;
 
 // SkeletalAnimation
+    _ZN17SkeletalAnimation15disableBindFlagEi = __deleted_virtual_called;
     _ZN17SkeletalAnimationC1Ev = 0x024FD7E8;
     _ZN17SkeletalAnimationC2Ev = 0x024FD7E8;
     _ZN17SkeletalAnimation14updateInitArg_EPN2nw3g3d15SkeletalAnimObj7InitArgEPK13ModelResource = 0x024FD86C;
@@ -5009,7 +5065,9 @@
     _ZN10SubjectMgr9sInstanceE = 0x101D1874;
 
 // SwitchFlagMgr
+    _ZN13SwitchFlagMgr3setEhhbbbjNS_8FlagTypeE = 0x0269CD68;
     _ZN13SwitchFlagMgr16condenseEventIdsEjj = 0x0269D654;
+    _ZN13SwitchFlagMgr9sInstanceE = 0x101DB06C;
 
 // SysController
     _ZN13SysControllerC1EPN4sead13ControllerMgrENS_2IdE = 0x02511C40;
