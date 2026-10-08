@@ -405,6 +405,9 @@
     _ZN11PropelParts4PartC1Ev = 0x020271B8;
     _ZN11PropelParts4PartC2Ev = 0x020271B8;
 
+// RouletteBlock::DrcTouchCB
+    _ZN13RouletteBlock10DrcTouchCB16bcSetTouchNormalEP11BgCollisionRKN4sead7Vector2IfEE = 0x02879160;
+
 // SaveData::LevelStat
     _ZN8SaveData9LevelStat17getCompletionFlagEhh = 0x024BB028;
 
@@ -613,6 +616,39 @@
     _ZN14ActorBlockBase10getContentEj = 0x0269FAB0;
     _ZN14ActorBlockBase9initMoverEv = 0x0269FB30;
 
+// ActorBlockHatena
+    _ZN16ActorBlockHatenaC1ERK16ActorCreateParam = 0x026A4FAC;
+    _ZN16ActorBlockHatenaC2ERK16ActorCreateParam = 0x026A4FAC;
+    _ZN16ActorBlockHatena6createEv = 0x026A5010;
+    _ZN16ActorBlockHatena19updateLiquidEffectsEv = 0x026A52EC;
+    _ZN16ActorBlockHatena10onBumpDiffEv = 0x026A5330;
+    _ZN16ActorBlockHatena8postBumpEv = 0x026A5394;
+    _ZN16ActorBlockHatena5vf32CEv = 0x026A5434;
+    _ZN16ActorBlockHatenaD1Ev = 0x026A58C8;
+    _ZTV16ActorBlockHatena = 0x100E874C;
+    _ZN16ActorBlockHatena9sTypeInfoE = 0x101EAFB0;
+
+// ActorBlockRenga
+    _ZN15ActorBlockRengaC1ERK16ActorCreateParam = 0x026B5134;
+    _ZN15ActorBlockRengaC2ERK16ActorCreateParam = 0x026B5134;
+    _ZN15ActorBlockRenga6createEv = 0x026B5198;
+    _ZN15ActorBlockRengaD1Ev = 0x026B5A40;
+    _ZTV15ActorBlockRenga = 0x100ECBEC;
+    _ZN15ActorBlockRenga9sTypeInfoE = 0x101EB014;
+
+// ActorBlockSwitch
+    _ZN16ActorBlockSwitchC1ERK16ActorCreateParam = 0x026BA304;
+    _ZN16ActorBlockSwitchC2ERK16ActorCreateParam = 0x026BA304;
+    _ZN16ActorBlockSwitch6createEv = 0x026BA370;
+    _ZN16ActorBlockSwitch11spawnSwitchEb = 0x026BA4FC;
+    _ZN16ActorBlockSwitch9spawnItemEb = 0x026BA828;
+    _ZN16ActorBlockSwitch11spawnItemUpEv = 0x026BA8D4;
+    _ZN16ActorBlockSwitch13spawnItemDownEv = 0x026BA8DC;
+    _ZN16ActorBlockSwitchD1Ev = 0x026BAF80;
+    _ZN16ActorBlockSwitch11cCreateInfoE = 0x100EF29C;
+    _ZTV16ActorBlockSwitch = 0x100EF330;
+    _ZN16ActorBlockSwitch9sTypeInfoE = 0x101EB054;
+
 // ActorBoxBgCollision
     _ZN19ActorBoxBgCollision9sTypeInfoE = 0x101E9FBC;
 
@@ -657,8 +693,10 @@
     _ZN13ActorCoinBase11createModelEv = 0x026C0104;
     _ZN13ActorCoinBase18incrementYRotationEv = 0x026C01F0;
     _ZN13ActorCoinBase12initColliderEj = 0x026C0E24;
+    _ZN13ActorCoinBase5vf2E4Ev = 0x026C0F7C;
     _ZN13ActorCoinBase5vf2ECEv = 0x026C1084;
     _ZN13ActorCoinBase5vf2FCEv = 0x026C11F8;
+    _ZN13ActorCoinBase5vf304Ev = 0x026C1300;
     _ZN13ActorCoinBase18executeState_EatInEv = 0x026C1510;
     _ZN13ActorCoinBase5vf2D4Ev = 0x026C1C08;
     _ZN13ActorCoinBase5vf2F4Ev = 0x026C1DCC;
@@ -1548,8 +1586,11 @@
     _ZN12CarryObjBase9sTypeInfoE = 0x101EA8D0;
 
 // ChangeBlockCoinBase
+    _ZN19ChangeBlockCoinBase11spawnItemUpEv = 0x02726610;
+    _ZN19ChangeBlockCoinBase13spawnItemDownEv = 0x02726634;
     _ZN19ChangeBlockCoinBase10onDrcTouchEv = 0x02726654;
     _ZN19ChangeBlockCoinBase26registerColliderActiveInfoEv = 0x02726760;
+    _ZN19ChangeBlockCoinBase5vf2C4Ev = 0x02727998;
 
 // ChangeMgr
     _ZN9ChangeMgrC1Ev = 0x02975AE0;
@@ -4736,6 +4777,22 @@
 // RotShake
     _ZN8RotShake4initERKNS_3ArgE = 0x029E2CE8;
     _ZN8RotShake4moveEv = 0x029E2D34;
+
+// RouletteBlock
+    _ZN13RouletteBlockC1ERK16ActorCreateParam = 0x02879078;
+    _ZN13RouletteBlockC2ERK16ActorCreateParam = 0x02879078;
+    _ZN13RouletteBlock12loadActorResEv = 0x0287920C;
+    _ZN13RouletteBlock11updateModelEv = 0x02879460;
+    _ZN13RouletteBlock6createEv = 0x02879570;
+    _ZN13RouletteBlock12rollRouletteEv = 0x02879884;
+    _ZN13RouletteBlock7executeEv = 0x028799B8;
+    _ZN13RouletteBlock4drawEv = 0x02879A40;
+    _ZN13RouletteBlock5vf2DCEv = 0x02879A94;
+    _ZN13RouletteBlock10onDrcTouchEv = 0x02879C64;
+    _ZN13RouletteBlockD1Ev = 0x0287A0FC;
+    _ZN13RouletteBlock11cCreateInfoE = 0x10151098;
+    _ZTV13RouletteBlock = 0x101511D4;
+    _ZN13RouletteBlock9sTypeInfoE = 0x101EB8C8;
 
 // RyusaBgHitCheckCallback
     _ZN23RyusaBgHitCheckCallback3hitERK27BgCollisionCheckResultPoint = 0x021AF6AC;
