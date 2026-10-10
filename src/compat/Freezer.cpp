@@ -32,6 +32,7 @@ namespace red {
 
 using namespace tk::ppc;
 
+// Freezer::checkMeltActor
 tBranch(0x02779FCC, red::FreezerAddFireBallCastCheck, tk::BranchType::bl);
 tPatchNop(0x02779FD4);
 tPatchNop(0x02779FD8);
