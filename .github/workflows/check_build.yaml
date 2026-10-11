@@ -1,0 +1,38 @@
+name: "Check Build"
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check-build:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lld
+
+      - name: Download Tachyon
+        run: npm i -g --allow-remote=root https://github.com/Zenith-Team/Tachyon/releases/latest/download/tachyon.tgz
+
+      - name: Setup Tachyon
+        run: |
+          tachyon setup
+          tachyon pm install
+
+      - name: Compile
+        run: |
+          tachyon package
+          tachyon bundle
