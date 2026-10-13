@@ -1123,8 +1123,10 @@
     _ZN2Bg14createInstanceEPN4sead4HeapE = 0x02684EF0;
     _ZN2Bg7getUnitEttjhPi = 0x02684F74;
     _ZN2Bg20getUnitCurrentCdFileEtthPi = 0x02685000;
+    _ZN2Bg14getBgCheckDataEtthb = 0x026850F0;
     _ZN2Bg7setUnitEttjht = 0x02685378;
     _ZN2Bg20setUnitCurrentCdFileEttht = 0x026854A8;
+    _ZN2Bg12FUN_026854c0Etthb = 0x026854C0;
     _ZN2Bg17registerButterflyEfffhhh = 0x02685914;
     _ZN2Bg9checkGustENS_8GustTypeERKN4sead7Vector3IfEEPf = 0x02685FB0;
     _ZN2Bg12registerGustENS_8GustTypeERKN4sead7Vector3IfEEha = 0x02686080;
@@ -1136,6 +1138,13 @@
     _ZN2Bg12updateFlowerEffhb = 0x0268B974;
     _ZN2BgD1Ev = 0x0268BB9C;
     _ZN2Bg9sInstanceE = 0x101DAB94;
+
+// BgActorBase
+    _ZN11BgActorBaseC1ERK16ActorCreateParam = 0x026F0A88;
+    _ZN11BgActorBaseC2ERK16ActorCreateParam = 0x026F0A88;
+    _ZN11BgActorBase7executeEv = 0x026F0E9C;
+    _ZN11BgActorBaseD1Ev = 0x026F36E8;
+    _ZTV11BgActorBase = 0x100FCF48;
 
 // BgCollision
     _ZN11BgCollision4vf2CEPj = __deleted_virtual_called;
@@ -5829,6 +5838,36 @@
     _ZNK6ResMgr13getArchiveResERKN4sead14SafeStringBaseIcEE = 0x029D3CA0;
     _ZN6ResMgr9sInstanceE = 0x101E7D94;
 
+// RingBase
+    _ZN8RingBaseC1ERK16ActorCreateParam = 0x02871254;
+    _ZN8RingBaseC2ERK16ActorCreateParam = 0x02871254;
+    _ZN8RingBase11updateModelEv = 0x02871388;
+    _ZN8RingBase6createEv = 0x0287142C;
+    _ZN8RingBase7executeEv = 0x0287163C;
+    _ZN8RingBase4drawEv = 0x0287168C;
+    _ZN8RingBase20collectSetSwitchFlagEv = 0x028716BC;
+    _ZN8RingBase22calcDeltaFromPlayerPosEi = 0x02871700;
+    _ZN8RingBase19isPlayerWithinRangeEi = 0x02871864;
+    _ZN8RingBase17executeState_WaitEv = 0x028718E0;
+    _ZN8RingBase18finalizeState_WaitEv = 0x02871B94;
+    _ZN8RingBase23initializeState_CollectEv = 0x02871C34;
+    _ZN8RingBase20executeState_CollectEv = 0x02871C4C;
+    _ZN8RingBase5vf18CEv = 0x02872124;
+    _ZN8RingBase12loadActorResEv = 0x02872128;
+    _ZN8RingBase5vf19CEv = 0x0287212C;
+    _ZN8RingBase11playTexAnimEv = 0x02872130;
+    _ZN8RingBase15createParticlesEv = 0x02872134;
+    _ZN8RingBase9onCollectEv = 0x02872138;
+    _ZN8RingBase5vf1BCEv = 0x0287213C;
+    _ZN8RingBase5vf1CCEv = 0x02872140;
+    _ZN8RingBase20initializeState_WaitEv = 0x02872280;
+    _ZN8RingBase21finalizeState_CollectEv = 0x02872284;
+    _ZN8RingBaseD1Ev = 0x02872288;
+    _ZTV8RingBase = 0x1014F3CC;
+    _ZN8RingBase9sTypeInfoE = 0x101EB268;
+    _ZN8RingBase12StateID_WaitE = 0x102275A8;
+    _ZN8RingBase15StateID_CollectE = 0x102275C8;
+
 // RotShake
     _ZN8RotShake4initERKNS_3ArgE = 0x029E2CE8;
     _ZN8RotShake4moveEv = 0x029E2D34;
@@ -6312,6 +6351,13 @@
 // UtilCursorButtonMgr
     _ZN19UtilCursorButtonMgrC1Ev = 0x02681FC4;
     _ZN19UtilCursorButtonMgrC2Ev = 0x02681FC4;
+
+// Wave
+    _ZN4Wave3vfCEv = __deleted_virtual_called;
+    _ZN4Wave4vf10Ev = __deleted_virtual_called;
+    _ZN4Wave9setupWaveEv = 0x028B5B04;
+    _ZN4Wave20updateWaveCollisionsEv = 0x028B8D5C;
+    _ZN4Wave10updateWaveEv = 0x028B8E64;
 
 // Yoshi
     _ZNK5Yoshi15getPlayerRideOnEv = 0x0296B3C4;
