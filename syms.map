@@ -459,7 +459,7 @@
     _ZN5Actor11postExecuteEN9ActorBase9MainStateE = 0x020010BC;
     _ZN5Actor7preDrawEv = 0x020011A0;
     _ZN5Actor14drawCullCheck_Ev = 0x02001254;
-    _ZN5Actor13splashEffect_ERKN4sead7Vector3IfEEihPKc = 0x02001304;
+    _ZN5Actor13splashEffect_ERKN4sead7Vector3IfEE8EffectIDhPKc = 0x02001304;
     _ZN5Actor10setAreaNo_Ev = 0x020013D4;
     _ZN5Actor11calcSpeedX_Ev = 0x020013E8;
     _ZN5Actor11calcSpeedY_Eff = 0x02001430;
@@ -2065,9 +2065,9 @@
 // Effect
     _ZN6Effect6reset_Ev = 0x022AA5DC;
     _ZN6Effect14getEmitterSet_Ev = 0x022AA618;
-    _ZN6Effect13createEffect_Ei = 0x022AA64C;
+    _ZN6Effect13createEffect_E8EffectID = 0x022AA64C;
     _ZNK6Effect7isAliveEv = 0x022AA738;
-    _ZN6Effect12createEffectEi = 0x022AA780;
+    _ZN6Effect12createEffectE8EffectID = 0x022AA780;
     _ZN6Effect10followFadeEv = 0x022AA7F0;
     _ZN6Effect4fadeEv = 0x022AA824;
     _ZN6Effect4killEv = 0x022AA84C;
@@ -2086,22 +2086,22 @@
     _ZN6Effect10setVisibleEbi = 0x022AAE8C;
 
 // EffectCreateUtil
-    _ZN16EffectCreateUtil18createPlayerEffectEiiRKN4sead8Matrix34IfEEb = __deleted_virtual_called;
-    _ZN16EffectCreateUtil18createPlayerEffectEiP12FollowEffectiRKN4sead8Matrix34IfEEb = __deleted_virtual_called;
-    _ZN16EffectCreateUtil12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB080;
-    _ZN16EffectCreateUtil12createEffectEiRKN4sead8Matrix34IfEEb = 0x022AB0F4;
-    _ZN16EffectCreateUtil18createPlayerEffectEiiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB158;
-    _ZN16EffectCreateUtil18createPlayerEffectEiP9EffectObjiPKN4sead7Vector3IfEEPK6Angle3S6_ = 0x022AB1BC;
-    _ZN16EffectCreateUtil18createPlayerEffectEiP9EffectObjiRKN4sead8Matrix34IfEEb = 0x022AB224;
-    _ZN16EffectCreateUtil18createPlayerEffectEiP12FollowEffectiPKN4sead7Vector3IfEEPK6Angle3S6_ = 0x022AB288;
+    _ZN16EffectCreateUtil18createPlayerEffectEi8EffectIDRKN4sead8Matrix34IfEEb = __deleted_virtual_called;
+    _ZN16EffectCreateUtil18createPlayerEffectEiP12FollowEffect8EffectIDRKN4sead8Matrix34IfEEb = __deleted_virtual_called;
+    _ZN16EffectCreateUtil12createEffectE8EffectIDPKN4sead7Vector3IfEEPK6Angle3S5_ = 0x022AB080;
+    _ZN16EffectCreateUtil12createEffectE8EffectIDRKN4sead8Matrix34IfEEb = 0x022AB0F4;
+    _ZN16EffectCreateUtil18createPlayerEffectEi8EffectIDPKN4sead7Vector3IfEEPK6Angle3S5_ = 0x022AB158;
+    _ZN16EffectCreateUtil18createPlayerEffectEiP9EffectObj8EffectIDPKN4sead7Vector3IfEEPK6Angle3S7_ = 0x022AB1BC;
+    _ZN16EffectCreateUtil18createPlayerEffectEiP9EffectObj8EffectIDRKN4sead8Matrix34IfEEb = 0x022AB224;
+    _ZN16EffectCreateUtil18createPlayerEffectEiP12FollowEffect8EffectIDPKN4sead7Vector3IfEEPK6Angle3S7_ = 0x022AB288;
     _ZN16EffectCreateUtil19isCreateAboveLayer0ERKN4sead7Vector3IfEE = 0x022AB2F0;
 
 // EffectObj
     _ZN9EffectObj9sTypeInfoE = __deleted_virtual_called;
     _ZN9EffectObj6followEPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB448;
-    _ZN9EffectObj12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB52C;
+    _ZN9EffectObj12createEffectE8EffectIDPKN4sead7Vector3IfEEPK6Angle3S5_ = 0x022AB52C;
     _ZN9EffectObj6followERKN4sead8Matrix34IfEEb = 0x022AB608;
-    _ZN9EffectObj12createEffectEiPKN4sead8Matrix34IfEEb = 0x022AB6EC;
+    _ZN9EffectObj12createEffectE8EffectIDPKN4sead8Matrix34IfEEb = 0x022AB6EC;
 
 // EffectObjBase
     _ZN13EffectObjBase9sTypeInfoE = __deleted_virtual_called;
@@ -2478,13 +2478,13 @@
     _ZN8FlagCtrl9sInstanceE = 0x101D160C;
 
 // FollowEffect
-    _ZN12FollowEffect12createEffectEiPKN4sead7Vector3IfEEPK6Angle3S4_ = 0x022AB980;
-    _ZN12FollowEffect12createEffectEiPKN4sead8Matrix34IfEEb = 0x022AB9F0;
+    _ZN12FollowEffect12createEffectE8EffectIDPKN4sead7Vector3IfEEPK6Angle3S5_ = 0x022AB980;
+    _ZN12FollowEffect12createEffectE8EffectIDPKN4sead8Matrix34IfEEb = 0x022AB9F0;
 
 // FragmentMgr
     _ZN11FragmentMgr14deleteInstanceEv = __deleted_virtual_called;
     _ZN11FragmentMgr14createInstanceEPN4sead4HeapE = 0x024B0FBC;
-    _ZN11FragmentMgr20createWaterSplashEffERKN4sead7Vector3IfEEhi = 0x024B15AC;
+    _ZN11FragmentMgr20createWaterSplashEffERKN4sead7Vector3IfEEh8EffectID = 0x024B15AC;
     _ZN11FragmentMgr21createBigBlockFragEffERKN4sead7Vector3IfEEi = 0x024B1754;
     _ZTV11FragmentMgr = 0x100B6098;
     _ZN11FragmentMgr9sInstanceE = 0x101D155C;
@@ -5726,8 +5726,8 @@
     _ZN7PtclMgr22resetUserDataCallbacksEv = 0x022AD468;
     _ZN7PtclMgr7executeEv = 0x022AD4E0;
     _ZN7PtclMgr9drawRangeERKN3agl3lyr10RenderInfoEii = 0x022AD8BC;
-    _ZNK7PtclMgr8getParamEi = 0x022AD930;
-    _ZN7PtclMgr16createEmitterSetEPN2nw3eft6HandleERKN4sead8Matrix34IfEEi = 0x022AD948;
+    _ZNK7PtclMgr8getParamE8EffectID = 0x022AD930;
+    _ZN7PtclMgr16createEmitterSetEPN2nw3eft6HandleERKN4sead8Matrix34IfEE8EffectID = 0x022AD948;
     _ZN7PtclMgr21setFrameBufferTextureERKN3agl14TextureSamplerEffff = 0x022ADA08;
     _ZN7PtclMgr9sInstanceE = 0x101CD3A8;
 
