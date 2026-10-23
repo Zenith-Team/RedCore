@@ -32,6 +32,7 @@
     ASM_MTXTrans = 0x02AF9AD4;
     ASM_MTXScale = 0x02AF9B64;
     ASM_MTXMultVec = 0x02AF9788;
+    ASM_MTXIdentity = 0x02AF9830;
 
 // GFD
     _GFDCheckHeaderVersions = 0x02AF8A18;
