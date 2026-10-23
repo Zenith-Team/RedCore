@@ -9,3 +9,6 @@ Diagnostics: {
 Documentation: {
     CommentFormat: Doxygen
 }
+Completion: {
+    HeaderInsertion: Never
+}
