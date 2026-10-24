@@ -537,6 +537,7 @@
     _ZN21ActorBgCollisionCheck12getSakaAngleE7DirType = 0x0218E260;
     _ZN21ActorBgCollisionCheck16getHeadSakaAngleE7DirType = 0x0218E28C;
     _ZN21ActorBgCollisionCheck12getWallAngleE7DirType = 0x0218E2B8;
+    _ZN21ActorBgCollisionCheck14checkBombBreakERKN4sead7Vector2IfEES4_ = 0x0218E48C;
     _ZN21ActorBgCollisionCheck10checkWaterEPfRKN4sead7Vector3IfEEh = 0x0218F0C0;
     _ZN21ActorBgCollisionCheck10checkWaterEPfP25BgCollisionCheckHitResultRKN4sead7Vector3IfEEh = 0x0218F72C;
     _ZN21ActorBgCollisionCheck10checkWaterERKN4sead7Vector3IfEEh = 0x0219047C;
@@ -1463,13 +1464,14 @@
     _ZTV14BossDrcTouchCB = 0x10005E2C;
 
 // BrosBase
-    _ZN8BrosBase5vf58CEv = __deleted_virtual_called;
+    _ZN8BrosBase11getWristPosEv = __deleted_virtual_called;
     _ZN8BrosBase12checkAtkAreaEv = __deleted_virtual_called;
     _ZN8BrosBase15getAdjustOffsetEv = __deleted_virtual_called;
     _ZN8BrosBase5vf63CEv = __deleted_virtual_called;
     _ZN8BrosBase5vf644Ev = __deleted_virtual_called;
     _ZN8BrosBaseC1ERK16ActorCreateParam = 0x022DA0AC;
     _ZN8BrosBaseC2ERK16ActorCreateParam = 0x022DA0AC;
+    _ZN8BrosBase9initModelEv = 0x022DA2EC;
     _ZN8BrosBase6createEv = 0x022DA758;
     _ZN8BrosBase7executeEv = 0x022DAFE8;
     _ZN8BrosBase4drawEv = 0x022DB08C;
